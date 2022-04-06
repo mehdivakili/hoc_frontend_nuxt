@@ -1,6 +1,6 @@
 <template>
   <footer>
-<!--    <div id="footer-wave" :style="{'&#45;&#45;bgColor': bgColor}"></div>-->
+        <div id="footer-wave" :style="{'--bgColor': bgColor}"></div>
     <div class="footer-content">
       <div class="footer-info">
         <h5> ارتباط با ما: </h5>
@@ -48,7 +48,7 @@
 <script>
 export default {
   name: "TheFooter",
-  props: {bgColor:{default: 'white'}}
+  props: {bgColor: {default: 'white'}}
 }
 </script>
 
@@ -60,13 +60,18 @@ footer {
   color: black;
 }
 
+@media screen and (min-width: 500px) {
+
+}
+
 .footer-logos {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-end;
-  gap: 20px;
   max-width: 600px;
-  /*margin: 30px auto;*/
+  margin: 30px auto;
+  gap: 50px;
+  flex-wrap: wrap;
 }
 
 .footer-logos a {
@@ -115,7 +120,6 @@ footer {
     flex-direction: row;
     justify-content: space-around;
     align-items: flex-end;
-    gap: 20%;
   }
 
   #footer-wave {
@@ -147,6 +151,10 @@ footer {
     background: var(--bgColor);
     left: -25%;
     top: -240px;
+  }
+
+  .footer-info {
+    width: 50%;
   }
 }
 </style>

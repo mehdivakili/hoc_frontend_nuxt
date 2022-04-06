@@ -8,8 +8,8 @@
         </button>
       </li>
     </ul>
-    <div class="tab-content" id="TeamTabContent">
-      <div v-for="(group,groupKey) in team" class="tab-pane fade"
+    <div class="tab-content" id="TeamTabContent" style="height: 200px">
+      <div v-for="(group,groupKey) in team" :class="['tab-pane','fade',(!groupKey) ? 'show' : '']"
            :id="`group-${groupKey}`" role="tabpanel"
            :aria-labelledby="`group-${groupKey}-tab`">
 
@@ -21,9 +21,6 @@
 </template>
 
 <script>
-window.Popper = require('popper.js').default;
-window.$ = window.jQuery = require('jquery');
-require('bootstrap');
 export default {
   name: "TeamTab",
   data() {

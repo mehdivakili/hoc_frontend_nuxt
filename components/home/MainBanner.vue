@@ -43,11 +43,18 @@ export default {
   text-align: center;
   align-items: center;
   gap: 40px;
-  padding: 100px;
+  padding: 10px;
 }
+
 
 h4 {
   line-height: 40px;
+}
+
+@media screen and (min-width: 1000px){
+  .banner{
+    padding: 100px;
+  }
 }
 
 

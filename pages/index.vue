@@ -48,7 +48,7 @@
     </Banner>
 
     <TeamTab/>
-
+    <Statistics/>
     <Questions/>
   </div>
 
@@ -60,12 +60,17 @@ import MainBanner from "@/components/home/MainBanner";
 import Banner from "@/components/home/Banner";
 import Questions from "@/components/home/Questions";
 import TeamTab from "@/components/home/TeamTab";
+import Statistics from "@/components/home/Statistics";
 
 export default {
   name: 'IndexPage',
   components: {
+    Statistics,
     MainBanner,
-    Banner, Questions,TeamTab
+    Banner, Questions, TeamTab
+  },
+  mounted() {
+    this.$store.commit('setFooterColor', '#004948')
   }
 }
 </script>

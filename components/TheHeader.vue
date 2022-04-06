@@ -1,57 +1,115 @@
 <template>
-  <v-app-bar
-    fixed
-    app
-  >
-    <v-btn v-for="item in items"
-           text
-    >
-      <NuxtLink :to="item.link">{{ item.title }}</NuxtLink>
-    </v-btn>
-
-    <div class="authentication-buttons">
-      <div v-if="$auth.loggedIn">
-        {{ $auth.user.email }}
-        <v-btn icon to="/logout" class="logout-btn">
-          <v-icon light @click="$auth.logout()">mdi-logout</v-icon>
-        </v-btn>
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <router-link class="navbar-brand" to="/">
+      <img class="img-fluid" src="images/logo.png">
+    </router-link>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="#navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"
+            v-on:click="() => {navShow = !navShow}">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div :class="navClasses">
+      <div class="navbar-nav">
+        <router-link v-for="navItem in navItems" class="nav-item nav-link" :to="navItem.link">{{
+            navItem.title
+          }}
+        </router-link>
       </div>
-      <div v-else>
-        <v-btn icon to="/login" class="login-btn">
-          <v-icon>mdi-login</v-icon>
-        </v-btn>
-        <v-btn icon to="/register" class="register-btn">
-          <v-icon>mdi-account-key-outline</v-icon>
-        </v-btn>
+      <div v-if="$auth.loggedIn" class="button-container">
+        <v-btn to="/logout" @click="$auth.logout()" class="head-button login-button">خروج</v-btn>
+      </div>
+      <div v-else class="button-container">
+        <NuxtLink to="/login" class="head-button login-button">ورود</NuxtLink>
+        <NuxtLink to="/register" class="head-button register-button">ثبت نام</NuxtLink>
       </div>
     </div>
-  </v-app-bar>
-
+  </nav>
 </template>
 
 <script>
+
+
 export default {
-  name: "TheHeader",
+  name: "Header",
   data() {
-    return {
-      items: [{'link': '/', 'title': 'خانه'},
-        {'link': '/about', 'title': 'درباره'},
-        {'link': '/login', title: 'ورود'}
-      ]
+    return {navShow: false}
+  },
+  computed: {
+    navItems() {
+      return this.$store.state.menu
+    },
+    navClasses() {
+      if (this.$data.navShow) {
+        return ['collapse', 'navbar-collapse', 'show']
+      } else {
+        return ['collapse', 'navbar-collapse']
+      }
     }
-  }, computed: {},
+
+  },
+
   mounted() {
-    console.log(this.$store.state.auth.loggedIn)
+    this.$axios.post('menu/').then((response) => {
+      this.$store.commit('setMenu', response.data)
+    })
   }
 }
 </script>
 
 <style scoped>
-
-a {
-  color: black;
-  text-decoration: none;
+nav {
+  background: white;
+  padding: 10px;
 }
+
+.nav-item {
+  color: #004948 !important;
+  padding-left: 48px !important;
+}
+
+.navbar-brand {
+  padding-left: 48px;
+}
+.head-button {
+  width: 90px;
+  height: 40px;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  font-size: 17px;
+}
+@media screen and (min-width: 1000px){
+  .button-container {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 15px;
+    box-sizing: border-box;
+    margin-right: auto;
+  }
+
+
+
+
+  .head-button.register-button {
+    box-shadow: inset 0px -4px 4px rgba(255, 252, 252, 0.25);
+    filter: drop-shadow(0px 8px 10px rgba(0, 146, 143, 0.25));
+    background: linear-gradient(180deg, #03B9B5 0%, #009592 100%);
+    border-radius: 15px;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+  }
+
+  .head-button.login-button {
+    box-shadow: inset 0px -4px 4px rgba(255, 255, 255, 0.25);
+    filter: drop-shadow(0px 4px 4px rgba(0, 150, 147, 0.25));
+    border-radius: 15px;
+    border: solid #03B9B5 3px;
+    padding: 10px 15px;
+    background-color: white;
+    color: #03B9B5;
+  }
+}
+
+
 </style>
-
-

@@ -1,9 +1,14 @@
 export const state = () => ({
-  counter: 0
+  menu: [],
+  footerColor: 'white'
 })
 
 export const mutations = {
-  increment(state) {
-    state.counter++
+
+  setMenu(state, data) {
+    state.menu = data
+  },
+  setFooterColor(state, data) {
+    state.footerColor = data
   }
 }

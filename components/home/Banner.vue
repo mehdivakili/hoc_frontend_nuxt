@@ -11,7 +11,6 @@
     <div class="banner-img img-fluid">
       <img :src="image" :alt="alt"/>
     </div>
-
   </div>
 
 </template>
