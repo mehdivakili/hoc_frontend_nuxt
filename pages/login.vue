@@ -36,7 +36,8 @@ export default {
     return {
       passwordShow: false,
       userData: {username: '', password: ''},
-      error: ""
+      error: "",
+      sending: false
 
     }
   },
@@ -50,10 +51,14 @@ export default {
       this.$data.passwordShow = !this.$data.passwordShow
     },
     async logInUser(userData) {
+      if (this.$data.sending)
+        return
+      this.$data.sending = true
       try {
-        await this.$auth.loginWith('local', {
+        let response = await this.$auth.loginWith('local', {
           data: userData,
         })
+
         this.$notify({
           group: 'foo',
           type: 'success',
@@ -68,7 +73,9 @@ export default {
           title: 'نام کاربری یا رمز عبور اشتباه است',
           text: 'لطفا نام کاربری یا رمز عبورتان را اصلاح کنید'
         });
+        console.log(error)
         this.$data.error = 'error'
+        this.$data.sending = false
 
       }
     },

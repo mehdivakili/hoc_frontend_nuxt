@@ -9,7 +9,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - front_nuxt',
+    titleTemplate: '%s - زنگ برنامه نویسی دانشگاه شیراز',
     title: 'زنگ برنامه نویسی دانشگاه شیراز',
     meta: [
       {charset: 'utf-8'},
@@ -17,9 +17,7 @@ export default {
       {hid: 'description', name: 'description', content: ''},
       {name: 'format-detection', content: 'telephone=no'}
     ],
-    link: [
-      {rel: 'icon', href: 'images/logo.png'}
-    ]
+    link: []
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -28,7 +26,8 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/axios',
-    '~/plugins/notification.js'
+    '~/plugins/notification.js',
+    '~/plugins/select.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -37,7 +36,7 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/vuetify
-      '@nuxtjs/vuetify',
+    '@nuxtjs/vuetify',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -49,7 +48,7 @@ export default {
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
 
-    '@nuxtjs/auth',
+    '@nuxtjs/auth-next',
 
 
   ],
@@ -95,11 +94,18 @@ export default {
   auth: {
     strategies: {
       local: {
+        token: {
+          property: 'auth_token',
+          type: 'Token'
+        },
+        user: {
+          property: false,
+        },
         endpoints: {
           login: {
             url: 'token/login/',
             method: 'post',
-            propertyName: 'auth_token',
+            property: 'auth_token',
           },
           logout: {url: 'token/logout/', method: 'post'},
           user: {
@@ -108,11 +114,34 @@ export default {
             propertyName: false,
           },
         },
-        tokenType: 'Token',
-        tokenName: 'Authorization',
+      },
+
+      register: {
+        scheme: 'local',
+        token: {
+          property: 'auth_token',
+          type: 'Token'
+        },
+        user: {
+          property: false,
+        },
+        endpoints: {
+          login: {
+            url: 'register/',
+            method: 'post',
+            property: 'auth_token',
+          },
+          logout: {url: 'token/logout/', method: 'post'},
+          user: {
+            url: 'me/',
+            method: 'get',
+            propertyName: false,
+          },
+        },
       },
 
 
-    }
+    },
+
   }
 }
