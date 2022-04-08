@@ -18,11 +18,6 @@
 import TheFooter from "@/components/TheFooter";
 import TheHeader from "@/components/TheHeader";
 
-window.Popper = require('popper.js').default;
-
-window.$ = window.jQuery = require('jquery');
-
-require('bootstrap');
 
 export default {
   name: 'DefaultLayout',
@@ -44,6 +39,19 @@ export default {
 
 footer {
   text-align: center;
+}
+nav{
+  position: fixed !important;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-active {
+  opacity: 0;
 }
 
 

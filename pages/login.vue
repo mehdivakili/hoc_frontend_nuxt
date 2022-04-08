@@ -82,7 +82,8 @@ export default {
   },
   mounted() {
     this.$store.commit('setFooterColor', '#A9E3E1')
-  }
+  },
+  auth: 'guest'
 }
 </script>
 

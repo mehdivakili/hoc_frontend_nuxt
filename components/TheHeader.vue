@@ -17,7 +17,7 @@
       </div>
       <div v-if="$auth.loggedIn" class="button-container">
         <v-btn to="/logout" @click="$auth.logout()" class="head-button login-button">خروج</v-btn>
-        {{$auth.user.email}} {{$auth.user.phone_number}}
+        {{$auth.user.first_name_persian}} {{$auth.user.last_name_persian}}
       </div>
       <div v-else class="button-container">
         <NuxtLink to="/login" class="head-button login-button">ورود</NuxtLink>

@@ -27,7 +27,9 @@ export default {
   plugins: [
     '~/plugins/axios',
     '~/plugins/notification.js',
-    '~/plugins/select.js'
+    '~/plugins/select.js',
+    '~/plugins/datePicker.js',
+    '~/plugins/city.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -143,5 +145,9 @@ export default {
 
     },
 
+
+  },
+  router: {
+    middleware: ['auth']
   }
 }
