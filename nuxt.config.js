@@ -144,7 +144,11 @@ export default {
 
 
     },
-
+    redirect: {
+      login: "/login",//this example of the path of login page in your project
+      logout: "/", //this will redirect to your home after logout
+      home: "/" //this example will redirect to the path of user account page in your project.
+    }
 
   },
   router: {

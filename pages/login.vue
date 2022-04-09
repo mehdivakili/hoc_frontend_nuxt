@@ -65,6 +65,7 @@ export default {
           title: 'با موفقیت وارد شدید',
           text: 'الان به صفحه پروفایلتان منتقل می شوید'
         });
+        this.$router.push('/account')
       } catch (error) {
         this.$notify({
           group: 'foo',

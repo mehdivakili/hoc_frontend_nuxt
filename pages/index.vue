@@ -69,6 +69,7 @@ export default {
     MainBanner,
     Banner, Questions, TeamTab
   },
+  auth: false,
   mounted() {
     this.$store.commit('setFooterColor', '#004948')
   }

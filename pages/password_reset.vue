@@ -23,7 +23,7 @@
       <Transition name="fade" :duration="350" mode="out-in">
         <div style="width: 100%" :key="0" v-if="state === 0">
           <v-row justify="center" align="center">
-            <v-col cols="4">
+            <v-col cols="9" md="5">
               <v-text-field :error-messages="error.phone_number" :error="!!error.phone_number" flat
                             :hide-details="!error.phone_number" v-model="phone_number"
                             solo
@@ -36,7 +36,7 @@
           </v-row>
 
           <v-row justify="center" align="center">
-            <v-col cols="4">
+            <v-col cols="9" md="5">
               <v-otp-input dir="ltr" type="number" :hide-details="true" v-model="otp_code"
                             length="5"
               >
@@ -234,7 +234,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
 
   i {
     color: white;
