@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <router-link class="navbar-brand" to="/">
-      <img class="img-fluid" src="images/logo.png">
+      <img class="img-fluid" src="/images/logo.png">
     </router-link>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="#navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"
@@ -50,9 +50,10 @@ export default {
   },
 
   mounted() {
-    this.$axios.post('menu/').then((response) => {
-      this.$store.commit('setMenu', response.data)
-    })
+    this.$store.commit('setMenu', {})
+    // this.$axios.post('menu/').then((response) => {
+    //   this.$store.commit('setMenu', response.data)
+    // })
   }
 }
 </script>

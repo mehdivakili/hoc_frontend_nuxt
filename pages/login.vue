@@ -14,7 +14,7 @@
               <input type="checkbox" id="showPassword" v-model="passwordShow">
               <label for="showPassword">نمایش رمز عبور</label>
             </div>
-            <NuxtLink to="reset_password/">رمز عبور خود را فراموش کرده اید؟</NuxtLink>
+            <NuxtLink to="password_reset/">رمز عبور خود را فراموش کرده اید؟</NuxtLink>
           </div>
           <input type="submit" value="ورود">
         </div>
