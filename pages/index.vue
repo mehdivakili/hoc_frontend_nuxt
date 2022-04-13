@@ -1,8 +1,8 @@
 <template>
   <div>
-    <MainBanner image="images/main_banner.png" alt="" text-color="white"/>
+    <MainBanner :image="require('~/assets/images/main_banner.png')" alt="" text-color="white"/>
 
-    <Banner text-color="#004948" bg-color="#FEFEFE" image="images/banner1.png" alt="یک عکس">
+    <Banner text-color="#004948" bg-color="#FEFEFE" :image="require('~/assets/images/banner1.png')" alt="یک عکس">
       <template v-slot:banner-title>
         چرا برنامه نویسی یاد بگیریم ؟
       </template>
@@ -16,7 +16,7 @@
     </Banner>
 
     <Banner text-color="#FEFEFE" bg-color="linear-gradient(104.71deg, #00928F 11.26%, #00ADAA 90.55%)"
-            direction="row-reverse" image="images/banner2.png" alt="یک عکس">
+            direction="row-reverse" :image="require('~/assets/images/banner2.png')" alt="یک عکس">
       <template v-slot:banner-title>
         زنگ برنامه نویسی چیست؟
       </template>
@@ -33,7 +33,7 @@
       </template>
     </Banner>
 
-    <Banner text-color="#004948" bg-color="#FEFEFE" image="images/banner3.png" alt="یک عکس">
+    <Banner text-color="#004948" bg-color="#FEFEFE" :image="require('~/assets/images/banner3.png')" alt="یک عکس">
       <template v-slot:banner-title>
         زنگ برنامه نویسی دانشگاه شیراز
       </template>

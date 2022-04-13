@@ -17,7 +17,13 @@ export default {
       {hid: 'description', name: 'description', content: ''},
       {name: 'format-detection', content: 'telephone=no'}
     ],
-    link: []
+    link: [
+      {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
+      {rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png'},
+      {rel: 'icon', sizes: '32x32', href: '/favicon-32x32.png'},
+      {rel: 'icon', sizes: '16x16', href: '/favicon-16x16.png'},
+      {rel: 'manifest', href: '/site.webmanifest'}
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -39,7 +45,18 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+    "nuxt-compress",
+
   ],
+
+  imagemin: {
+    plugins: [
+      ['gifsicle', {interlaced: true}],
+      ['jpegtran', {progressive: true}],
+      ['optipng', {optimizationLevel: 5}],
+      ['svgo', {plugins: [{removeViewBox: false}]}]
+    ]
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -58,13 +75,18 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: 'http://localhost:8000/api/',
+    baseURL: 'https://hocshirazu.tk/api/',
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
       lang: 'fa'
+
+    },
+    icon: {
+      source: '~/static/icon.png',
+      fileName: 'icon.png'
     }
   },
 

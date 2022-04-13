@@ -79,7 +79,7 @@ export default {
 
 <style scoped>
 .banner {
-  background-image: url("/images/team_bg.png");
+  background-image: url(~/assets/images/team_bg.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

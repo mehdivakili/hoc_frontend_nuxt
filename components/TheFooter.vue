@@ -17,27 +17,27 @@
         <h5>با زنگ برنامه نویسی در شبکه های اجتماعی باشید !</h5>
         <div class="footer-contacts">
           <a>
-            <img src="/images/telegram.png">
+            <img src="~/assets/images/telegram.png">
           </a>
           <a>
-            <img src="/images/instagram.png">
+            <img src="~/assets/images/instagram.png">
           </a>
           <a>
-            <img src="/images/linkedin.png">
+            <img src="~/assets/images/linkedin.png">
           </a>
         </div>
       </div>
       <div class="footer-logos">
         <a>
-          <img src="/images/logo.png">
+          <img src="~/assets/images/logo.png">
           <p>زنگ برنامه نویسی بین المللی</p>
         </a>
         <a>
-          <img src="/images/shiraz.png">
+          <img src="~/assets/images/shiraz.png">
           <p>دانشگاه شیراز</p>
         </a>
         <a>
-          <img src="/images/acm.png">
+          <img src="~/assets/images/acm.png">
           <p>انجمن ACM</p>
         </a>
       </div>

@@ -198,7 +198,7 @@
       </v-form>
     </div>
     <div class="image">
-      <img src="images/register_image.svg">
+      <img src="~/assets/images/register_image.svg">
     </div>
   </div>
 </template>

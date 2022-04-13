@@ -33,14 +33,20 @@ export default {
 <style lang="scss">
 @import "~bootstrap/scss/bootstrap";
 
+@font-face {
+  font-family: myFont;
+  src: url(~/assets/fonts/Vazir.woff);
+}
+
 * {
-  font-family: Vazir !important;
+  font-family: myFont !important;
 }
 
 footer {
   text-align: center;
 }
-nav{
+
+nav {
   position: fixed !important;
 }
 

@@ -73,7 +73,7 @@
       </Transition>
     </div>
     <div class="image">
-      <img src="/images/password_reset_image.svg">
+      <img src="~/assets/images/password_reset_image.svg">
     </div>
   </div>
 </template>
