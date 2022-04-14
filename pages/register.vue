@@ -241,6 +241,8 @@ export default {
       if (this.$data.sending)
         return
       this.$data.sending = true
+      this.$nuxt.$loading.start()
+
       try {
         await this.$auth.loginWith('register', {
           data: {
@@ -254,6 +256,7 @@ export default {
           title: 'با موفقیت وارد شدید',
           text: 'الان به صفحه پروفایلتان منتقل می شوید'
         });
+
       } catch (error) {
         let text = ''
         if (error.response !== undefined) {
@@ -274,6 +277,8 @@ export default {
 
         }
       }
+      this.$nuxt.$loading.finish()
+
     },
   },
   mounted() {

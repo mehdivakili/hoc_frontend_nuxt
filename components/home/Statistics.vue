@@ -28,6 +28,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.banner{
+  background: #FEFEFE;
+}
 .squire {
   background: #ECF0F3;
 

@@ -53,6 +53,7 @@ export default {
     async logInUser(userData) {
       if (this.$data.sending)
         return
+      this.$nuxt.$loading.start()
       this.$data.sending = true
       try {
         let response = await this.$auth.loginWith('local', {
@@ -77,6 +78,8 @@ export default {
         console.log(error)
         this.$data.error = 'error'
         this.$data.sending = false
+        this.$nuxt.$loading.finish()
+
 
       }
     },

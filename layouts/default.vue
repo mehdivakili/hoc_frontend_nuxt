@@ -1,10 +1,10 @@
 <template>
-  <v-app dir="rtl">
+  <v-app>
     <TheHeader/>
 
     <div style="height: 100px"></div>
 
-    <v-main>
+    <v-main :style=" {backgroundColor:footerColor}">
       <notifications style="margin-top: 110px" position="top left" group="foo"/>
 
       <Nuxt/>
