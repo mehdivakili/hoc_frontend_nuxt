@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
     <div v-show="loading" class="loading-page">
-      <p>در حال ارسال اطلاعات</p>
+      <p>لطفا کمی صبر کنید...</p>
       <v-progress-circular
         indeterminate
         color="white"

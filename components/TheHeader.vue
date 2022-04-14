@@ -21,6 +21,7 @@
       </div>
       <div v-else class="button-container">
         <NuxtLink to="/login" class="head-button login-button">ورود</NuxtLink>
+        <br>
         <NuxtLink to="/register" class="head-button register-button">ثبت نام</NuxtLink>
       </div>
     </div>
@@ -107,7 +108,7 @@ nav {
     filter: drop-shadow(0px 4px 4px rgba(0, 150, 147, 0.25));
     border-radius: 15px;
     border: solid #03B9B5 3px;
-    padding: 10px 15px;
+    padding: 5px 15px;
     background-color: white;
     color: #03B9B5;
   }
