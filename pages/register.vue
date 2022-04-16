@@ -274,6 +274,7 @@ export default {
           });
           this.$data.error = error.response.data
           this.$data.sending = false
+          this.state = 0
 
         }
       }

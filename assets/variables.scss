@@ -3,3 +3,13 @@
 // The variables you want to modify
 // $font-size-root: 20px;
 $text-field-border-radius: 15px;
+
+
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.3s;
+}
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}

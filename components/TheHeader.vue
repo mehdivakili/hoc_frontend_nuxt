@@ -10,14 +10,20 @@
     </button>
     <div :class="navClasses">
       <div class="navbar-nav">
-        <router-link v-for="navItem in navItems" class="nav-item nav-link" :to="navItem.link">{{
-            navItem.title
-          }}
-        </router-link>
+        <template v-for="navItem in navItems">
+          <router-link v-if="navItem.link.startsWith('/')" class="nav-item nav-link" :to="navItem.link">
+            {{ navItem.title }}
+          </router-link>
+          <a v-else class="nav-item nav-link" :href="navItem.link">
+            {{ navItem.title }}
+          </a>
+        </template>
       </div>
       <div v-if="$auth.loggedIn" class="button-container">
-        <v-btn to="/logout" @click="$auth.logout()" class="head-button login-button">خروج</v-btn>
-        {{$auth.user.first_name_persian}} {{$auth.user.last_name_persian}}
+        <v-btn @click="$auth.logout()" class="head-button login-button">خروج</v-btn>
+        <NuxtLink to="/account" class="head-button register-button">پروفايل</NuxtLink>
+
+        {{ $auth.user.first_name_persian }} {{ $auth.user.last_name_persian }}
       </div>
       <div v-else class="button-container">
         <NuxtLink to="/login" class="head-button login-button">ورود</NuxtLink>
@@ -51,10 +57,10 @@ export default {
   },
 
   mounted() {
-    this.$store.commit('setMenu', [{link:'/',title:'خانه'}])
-    // this.$axios.post('menu/').then((response) => {
-    //   this.$store.commit('setMenu', response.data)
-    // })
+    // this.$store.commit('setMenu', [{link:'/',title:'خانه'}])
+    this.$axios.post('menu/').then((response) => {
+      this.$store.commit('setMenu', response.data)
+    })
   }
 }
 </script>
@@ -73,6 +79,7 @@ nav {
 .navbar-brand {
   padding-left: 48px;
 }
+
 .head-button {
   width: 90px;
   height: 40px;
@@ -81,7 +88,8 @@ nav {
   color: black;
   font-size: 17px;
 }
-@media screen and (min-width: 1000px){
+
+@media screen and (min-width: 1000px) {
   .button-container {
     display: flex;
     flex-direction: row-reverse;
@@ -89,8 +97,6 @@ nav {
     box-sizing: border-box;
     margin-right: auto;
   }
-
-
 
 
   .head-button.register-button {

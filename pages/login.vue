@@ -75,7 +75,6 @@ export default {
           title: 'نام کاربری یا رمز عبور اشتباه است',
           text: 'لطفا نام کاربری یا رمز عبورتان را اصلاح کنید'
         });
-        console.log(error)
         this.$data.error = 'error'
         this.$data.sending = false
         this.$nuxt.$loading.finish()
