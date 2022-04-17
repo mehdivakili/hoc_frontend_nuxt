@@ -36,6 +36,7 @@ export default {
     '~/plugins/select.js',
     '~/plugins/datePicker.js',
     '~/plugins/city.js',
+    '~/plugins/OTPInput.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

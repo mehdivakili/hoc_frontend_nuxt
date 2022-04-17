@@ -37,10 +37,14 @@
 
           <v-row justify="center" align="center">
             <v-col cols="9" md="5">
-              <v-otp-input dir="ltr" type="number" :hide-details="true" v-model="otp_code"
-                            length="5"
-              >
-              </v-otp-input>
+              <vue-otp-input dir="ltr"
+                ref="otpInput"
+                input-classes="otp-input"
+                separator="&nbsp;"
+                :num-inputs="5"
+                :is-input-num="true"
+              />
+
             </v-col>
             <v-col cols="2">
               <v-btn @click="validate_token()">ارسال کد تایید</v-btn>
@@ -280,7 +284,7 @@ export default {
 
 </style>
 
-<style>
+<style lang="scss">
 .vpd-input-group {
   background: white !important;
   height: 48px !important;
@@ -290,5 +294,27 @@ export default {
 
 .vpd-icon-btn {
   border-radius: 0 5px 5px 0;
+}
+
+.otp-input {
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  font-size: 20px;
+  border-radius: 4px;
+  text-align: center;
+  outline: none;
+  background: white;
+
+  &.error {
+    border: 1px solid red !important;
+  }
+}
+
+
+.otp-input::-webkit-inner-spin-button,
+.otp-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 </style>

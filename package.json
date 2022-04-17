@@ -10,6 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@bachdgvn/vue-otp-input": "^1.0.8",
     "@nuxt/content": "^1.15.1",
     "@nuxt/image": "^0.6.2",
     "@nuxtjs/auth": "^4.8.0",
