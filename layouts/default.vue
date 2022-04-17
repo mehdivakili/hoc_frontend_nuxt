@@ -26,6 +26,12 @@ export default {
     footerColor() {
       return this.$store.state.footerColor
     }
+  },
+  beforeMount() {
+    this.$axios.post('menu/').then((response) => {
+      this.$store.commit('setMenu', response.data)
+
+    })
   }
 }
 </script>

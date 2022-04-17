@@ -56,12 +56,7 @@ export default {
 
   },
 
-  mounted() {
-    // this.$store.commit('setMenu', [{link:'/',title:'خانه'}])
-    this.$axios.post('menu/').then((response) => {
-      this.$store.commit('setMenu', response.data)
-    })
-  }
+
 }
 </script>
 
