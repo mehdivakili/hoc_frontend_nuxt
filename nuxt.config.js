@@ -121,7 +121,8 @@ export default {
       local: {
         token: {
           property: 'auth_token',
-          type: 'Token'
+          type: 'Token',
+          maxAge: 60 * 60 * 24 * 30 * 12
         },
         user: {
           property: false,
