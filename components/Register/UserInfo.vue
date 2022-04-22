@@ -78,8 +78,18 @@
       </v-col>
       <v-col cols="12" md="6">
 
-        <date-picker v-model="error.birth_date" placeholder="تاریخ تولد"></date-picker>
+        <date-picker v-model="userData.birth_date" placeholder="تاریخ تولد"></date-picker>
 
+      </v-col>
+      <v-col cols="12" md="6">
+
+        <v-file-input
+          accept="image/*"
+          label="عکس کارت واکسن"
+          solo flat
+          prepend-icon=""
+
+        ></v-file-input>
       </v-col>
     </v-row>
   </div>
