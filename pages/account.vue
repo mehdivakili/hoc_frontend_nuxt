@@ -1,5 +1,8 @@
 <template>
   <div class="main-content">
+    <div class="content">
+      <NuxtChild></NuxtChild>
+    </div>
     <div id="sidebar" class="sidebar">
       <div class="sidebar__inner">
         <div class="profile">
@@ -11,22 +14,19 @@
         <div class="profile-menu">
 
           <p class="menu-item">
-            <v-icon size="10">mdi-circle</v-icon>
+            <v-icon size="15">mdi-circle</v-icon>
             <router-link to="/account/">داشبورد</router-link>
           </p>
           <p class="menu-item">
-            <v-icon size="10">mdi-circle</v-icon>
-            <router-link to="/account/edit">ویرایش حساب کاربری</router-link>
+            <v-icon size="15">mdi-circle</v-icon>
+            <router-link to="/account/edit/">ویرایش حساب کاربری</router-link>
           </p>
           <p class="menu-item">
-            <v-icon size="10">mdi-circle</v-icon>
-            <a @click="$auth.logout()">خروج</a>
+            <v-icon size="15">mdi-circle</v-icon>
+            <a @click="() =>{$nuxt.$loading.start();$auth.logout().then($nuxt.$loading.finish);}">خروج</a>
           </p>
         </div>
       </div>
-    </div>
-    <div class="content">
-      <NuxtChild></NuxtChild>
     </div>
 
   </div>
@@ -34,11 +34,21 @@
 
 <script>
 import StickySidebar from 'sticky-sidebar-v2'
+import StickySideber from "sticky-sidebar-v2";
 
 export default {
   name: "account",
   mounted() {
     this.$store.commit('setFooterColor', '#A9E3E1')
+    var sidebar = new StickySideber('.sidebar', {
+      topSpacing: 120,
+      bottomSpacing: 20,
+      containerSelector: '.main-content',
+      innerWrapperSelector: '.sidebar__inner',
+
+      scrollContainer: '#main-viewport'
+    });
+
 
 
   },
@@ -49,12 +59,13 @@ export default {
 .main-content {
   position: relative;
   display: flex;
-  padding: 20px;
+  flex-direction: row-reverse;
+  margin: 20px;
   gap: 20px;
 }
 
 .content {
-  flex-grow: 10;
+  width: calc(100vw - 380px);
 
 }
 

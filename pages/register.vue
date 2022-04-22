@@ -12,7 +12,8 @@
               <p>{{ page.title }}</p>
 
             </div>
-            <div v-if="index !== pages.length -1" :class="['line',(state === index)? 'line-current':(state > index) ?'line-before': '']"></div>
+            <div v-if="index !== pages.length -1"
+                 :class="['line',(state === index)? 'line-current':(state > index) ?'line-before': '']"></div>
           </template>
         </div>
         <Transition name="fade" :duration="350" mode="out-in">
@@ -28,7 +29,9 @@
       </v-form>
     </div>
     <div class="image">
-      <img src="~/assets/images/register_image.svg">
+      <div class="register_sidebar">
+      <img id="registerImage" src="~/assets/images/register_image.svg">
+      </div>
     </div>
   </div>
 </template>
@@ -37,6 +40,7 @@
 import UserInfo from "@/components/Register/UserInfo";
 import UserPass from "@/components/Register/UserPass";
 import UserAddress from "@/components/Register/UserAddress";
+import StickySideber from "sticky-sidebar-v2";
 
 export default {
   name: "register",
@@ -97,7 +101,16 @@ export default {
     }
   },
   mounted() {
-    this.$store.commit('setFooterColor', '#A9E3E1')
+    this.$store.commit('setFooterColor', '#A9E3E1');
+    var sidebar = new StickySideber('.image', {
+      topSpacing: 130,
+      bottomSpacing: 30,
+      containerSelector: '.login',
+      innerWrapperSelector: '.register_sidebar',
+
+      scrollContainer: '#main-viewport'
+    });
+
   },
   auth: 'guest'
 
@@ -108,26 +121,22 @@ export default {
 
 .login {
   background: #A9E3E1;
-  padding: 30px;
+  margin: 30px;
 }
+
 
 @media screen and (min-width: 1000px) {
   .login {
     background: #A9E3E1;
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 30px;
-    gap: 30px;
 
     .content, .image {
       width: 50%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      margin: auto;
-
+      .register_sidebar{
+        display: flex;
+        justify-content: center;
+      }
     }
 
   }

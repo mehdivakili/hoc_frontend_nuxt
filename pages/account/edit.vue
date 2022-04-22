@@ -1,7 +1,7 @@
 <template>
   <div style="width: 100%">
     <div class="user-info-container">
-      <h2>ویرایش حساب کاربری</h2>
+      <h2>ویرایش اطلاعات</h2>
       <hr>
       <div class="user-info">
         hello

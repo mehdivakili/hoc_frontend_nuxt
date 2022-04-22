@@ -20,7 +20,7 @@
         </template>
       </div>
       <div v-if="$auth.loggedIn" class="button-container">
-        <v-btn @click="$auth.logout()" class="head-button login-button">خروج</v-btn>
+        <v-btn @click="$nuxt.$loading.start();$auth.logout().then($nuxt.$loading.finish);" class="head-button login-button">خروج</v-btn>
         <NuxtLink to="/account" class="head-button register-button">پروفايل</NuxtLink>
 
         {{ $auth.user.first_name_persian }} {{ $auth.user.last_name_persian }}
