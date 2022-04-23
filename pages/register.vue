@@ -22,8 +22,8 @@
 
         </Transition>
         <div style="display: flex; justify-content: space-between; margin-top: 100px">
-          <v-btn :disabled="!state" v-on:click="()=>{(!state)?0: state--}">قبلی</v-btn>
-          <v-btn v-on:click="(state===2)? logInUser($store.state.register.userData) : state++">بعدی</v-btn>
+          <v-btn class="button-outline" v-on:click="()=>{(!state)?0: state--}">قبلی</v-btn>
+          <v-btn class="button-fill" v-on:click="(state===2)? logInUser($store.state.register.userData) : state++">بعدی</v-btn>
           <input type="submit" hidden>
         </div>
       </v-form>

@@ -22,8 +22,6 @@
       <div v-if="$auth.loggedIn" class="button-container">
         <v-btn @click="$nuxt.$loading.start();$auth.logout().then($nuxt.$loading.finish);" class="head-button login-button">خروج</v-btn>
         <NuxtLink to="/account" class="head-button register-button">پروفايل</NuxtLink>
-
-        {{ $auth.user.first_name_persian }} {{ $auth.user.last_name_persian }}
       </div>
       <div v-else class="button-container">
         <NuxtLink to="/login" class="head-button login-button">ورود</NuxtLink>

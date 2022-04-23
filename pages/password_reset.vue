@@ -31,38 +31,41 @@
               </v-text-field>
             </v-col>
             <v-col cols="2">
-              <v-btn @click="send_sms()">دریافت پیامک</v-btn>
+              <v-btn class="button-fill" @click="send_sms()">دریافت پیامک</v-btn>
             </v-col>
           </v-row>
 
           <v-row justify="center" align="center">
             <v-col cols="9" md="5">
               <vue-otp-input dir="ltr"
-                ref="otpInput"
-                input-classes="otp-input"
-                separator="&nbsp;"
-                :num-inputs="5"
-                :is-input-num="true"
+                             ref="otpInput"
+                             input-classes="otp-input"
+                             separator="&nbsp;"
+                             :num-inputs="5"
+                             :is-input-num="true"
               />
 
             </v-col>
             <v-col cols="2">
-              <v-btn @click="validate_token()">ارسال کد تایید</v-btn>
+              <v-btn class="button-fill" @click="validate_token()">ارسال کد تایید</v-btn>
             </v-col>
           </v-row>
         </div>
 
         <div style="width: 100%" :key="1" v-else-if="state === 1">
-          <h5>زمر عبور جدید خود را وارد نمایید</h5>
-          <v-row>
-            <v-col cols="12">
+          <v-spacer style="height: 20px;"></v-spacer>
+          <v-row justify="center">
+            <h5 style="text-align: center">رمز عبور جدید خود را وارد نمایید</h5>
+          </v-row>
+          <v-row justify="center">
+            <v-col cols="12" sm="6">
               <v-text-field type="password" :error-messages="error.password" :error="!!error.password" flat
                             :hide-details="!error.password" v-model="password" placeholder="رمز عبور جدید"
                             solo></v-text-field>
             </v-col>
           </v-row>
-          <v-row>
-            <v-col cols="12">
+          <v-row justify="center">
+            <v-col cols="12" sm="6">
               <v-text-field type="password" :error-messages="error.confirm_password" :error="!!error.confirm_password"
                             flat
                             :hide-details="!error.confirm_password" v-model="confirm_password"
@@ -71,7 +74,12 @@
               ></v-text-field>
             </v-col>
           </v-row>
-          <v-btn @click="change_password()">تغییر رمز عبور</v-btn>
+          <v-row justify="center">
+            <v-col cols="12" sm="6">
+              <v-btn class="button-big" @click="change_password()">تغییر رمز عبور</v-btn>
+
+            </v-col>
+          </v-row>
         </div>
 
       </Transition>
@@ -316,5 +324,20 @@ export default {
 .otp-input::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.button-big {
+  box-shadow: inset 0px -4px 4px rgba(255, 252, 252, 0.25);
+  filter: drop-shadow(0px 8px 10px rgba(0, 146, 143, 0.25));
+  background: linear-gradient(180deg, #03B9B5 0%, #009592 100%);
+  border-radius: 15px;
+  padding: 10px 15px;
+  border: none;
+  width: 100%;
+  height: 50px !important;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  color: #FEFEFE !important;
 }
 </style>
