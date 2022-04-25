@@ -98,7 +98,9 @@ nav {
     background: linear-gradient(180deg, #03B9B5 0%, #009592 100%);
     border-radius: 15px;
     color: white;
-    padding: 10px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: none;
   }
 
@@ -107,7 +109,9 @@ nav {
     filter: drop-shadow(0px 4px 4px rgba(0, 150, 147, 0.25));
     border-radius: 15px;
     border: solid #03B9B5 3px;
-    padding: 5px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: white;
     color: #03B9B5;
   }

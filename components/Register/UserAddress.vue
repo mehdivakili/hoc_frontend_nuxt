@@ -1,6 +1,16 @@
 <template>
   <div :key="1" v-else-if="state === 1">
+    <v-row>
+      <v-col cols="12" >
+        <v-alert
+          outlined
+          type="warning"
+          prominent
 
+        >
+        </v-alert>
+      </v-col>
+    </v-row>
     <v-row>
       <v-col cols="12" md="6">
 
