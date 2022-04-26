@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <TheHeader/>
+    <Header/>
 
     <div style="height: 100px"></div>
 
@@ -16,12 +16,12 @@
 
 <script setup>
 import TheFooter from "@/components/TheFooter";
-import TheHeader from "@/components/TheHeader";
+import Header from "@/components/Header";
 
 
 export default {
   name: 'DefaultLayout',
-  components: {TheHeader, TheFooter},
+  components: {Header, TheFooter},
   computed: {
     footerColor() {
       return this.$store.state.footerColor
