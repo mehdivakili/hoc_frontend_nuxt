@@ -1,5 +1,5 @@
 <template>
-  <div v-if="$route.fullPath.endsWith('register/')" class="login">
+  <div v-if="$route.fullPath.endsWith('register/') || $route.fullPath.endsWith('register')" class="login">
     <div class="content">
       <v-form style="width: 100% !important;" @submit.prevent="logInUser($store.state.register.userData)" method="post">
         <div class="p-bars">
@@ -65,7 +65,7 @@ export default {
     }
   },
   mounted() {
-    if (this.$route.fullPath.endsWith('register/')) {
+    if (this.$route.fullPath.endsWith('register/') || this.$route.fullPath.endsWith('register')) {
       this.$store.commit('setFooterColor', '#A9E3E1');
       var sidebar = new StickySidebar('.image', {
         topSpacing: 130,

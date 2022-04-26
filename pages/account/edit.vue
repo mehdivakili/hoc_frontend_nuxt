@@ -4,25 +4,29 @@
       <h2>ویرایش اطلاعات</h2>
       <hr>
       <div class="user-info">
-        hello
+        <Userinfo :is_register="false"/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Userinfo from "@/components/Register/UserInfo";
+
 export default {
-  name: "edit"
+  name: "edit",
+  components: {Userinfo}
 }
 </script>
 
 <style scoped lang="scss">
-.user-info-container{
+.user-info-container {
   border: 3px white solid;
   border-radius: 15px;
   padding: 20px;
 }
-hr{
+
+hr {
   background: white;
   height: 3px;
   opacity: 1;

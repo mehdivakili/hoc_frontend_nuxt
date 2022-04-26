@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-row>
+    <v-row v-show="is_register">
       <v-col cols="12">
         <v-alert
           outlined
@@ -140,7 +140,8 @@
                       placeholder="ناحیه"/>
       </v-col>
     </v-row>
-    <div style="display: flex; flex-direction: row-reverse; justify-content: space-between; margin-top: 100px">
+    <div v-show="is_register"
+         style="display: flex; flex-direction: row-reverse; justify-content: space-between; margin-top: 100px">
       <v-btn class="button-fill" v-on:click="goToNextPage()">مرحله بعد</v-btn>
     </div>
   </div>
@@ -152,7 +153,7 @@ export default {
   name: "user_info",
   data() {
     return {
-      userData: {...this.$store.state.register.userData},
+      userData: (this.$auth.loggedIn) ? this.$auth.user : this.$store.state.register.userData,
     }
   },
   methods: {
@@ -182,6 +183,9 @@ export default {
       deep: true,
 
     }
+  },
+  props: {
+    is_register: {default: true}
   }
 }
 </script>
