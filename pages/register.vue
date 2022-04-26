@@ -1,12 +1,12 @@
 <template>
-  <div class="login">
+  <div v-if="$route.fullPath.endsWith('register/')" class="login">
     <div class="content">
       <v-form style="width: 100% !important;" @submit.prevent="logInUser($store.state.register.userData)" method="post">
         <div class="p-bars">
           <template v-for="(page,index) in pages">
             <div
               :class="['bar',(state === index)? 'bar-current':(state > index) ?'bar-before': '']">
-              <div class="bar-icon" @click="state = index">
+              <div class="bar-icon">
                 <v-icon :size="page.size">{{ page.icon }}</v-icon>
               </div>
               <p>{{ page.title }}</p>
@@ -18,98 +18,64 @@
         </div>
         <Transition name="fade" :duration="350" mode="out-in">
 
-          <Component :is="pages[state].component"/>
+          <Component ref="page" :is="pages[state].component"/>
 
         </Transition>
-        <div style="display: flex; justify-content: space-between; margin-top: 100px">
-          <v-btn class="button-outline" v-on:click="()=>{(!state)?0: state--}">قبلی</v-btn>
-          <v-btn class="button-fill" v-on:click="(state===2)? logInUser($store.state.register.userData) : state++">بعدی</v-btn>
-          <input type="submit" hidden>
-        </div>
       </v-form>
     </div>
     <div class="image">
       <div class="register_sidebar">
-      <img id="registerImage" src="~/assets/images/register_image.svg">
+        <img id="registerImage" src="~/assets/images/register_image.svg">
       </div>
     </div>
   </div>
+  <NuxtChild v-else/>
 </template>
 
 <script>
 import UserInfo from "@/components/Register/UserInfo";
 import UserPass from "@/components/Register/UserPass";
-import UserAddress from "@/components/Register/UserAddress";
-import StickySideber from "sticky-sidebar-v2";
+import Finish from "@/components/Register/Finish";
+import UserConfirm from "@/components/Register/UserConfirm";
+import StickySidebar from "sticky-sidebar-v2";
+import UserForm from "@/components/Register/UserForm";
 
 export default {
   name: "register",
   data() {
     return {
-      state: 0,
       pages: [
         {title: 'اطلاعات شخصی', icon: 'mdi-alert-circle', size: 80, component: UserInfo},
-        {title: 'آدرس', icon: 'mdi-map-marker', size: 80, component: UserAddress},
         {title: 'اطلاعات کاربري', icon: 'mdi-account-circle', size: 80, component: UserPass},
+        {title: 'پرسشنامه', icon: 'mdi-account-circle', size: 80, component: UserForm},
+        {title: 'تعهد نامه', icon: 'mdi-account-circle', size: 80, component: UserConfirm},
+        {title: 'پایان', icon: 'mdi-account-circle', size: 80, component: Finish},
       ]
 
     }
   },
-  methods: {
-    async logInUser(userData) {
-      if (this.$data.sending)
-        return
-      this.$nuxt.$loading.start()
-
-      try {
-        await this.$auth.loginWith('register', {
-          data: {
-            ...userData,
-            // providence: this.providences.filter((providence) => providence.id === userData.providence)[0].name
-          },
-        })
-        this.$notify({
-          group: 'foo',
-          type: 'success',
-          title: 'با موفقیت وارد شدید',
-          text: 'الان به صفحه پروفایلتان منتقل می شوید'
-        });
-        this.$store.commit('register/setError', {})
-
-
-      } catch (error) {
-        let text = ''
-        if (error.response !== undefined) {
-          if (error.response.data.non_field_errors !== undefined) {
-            error.response.data.non_field_errors.forEach((value) => {
-              text += value
-            })
-          }
-          this.$notify({
-            group: 'foo',
-            type: 'error',
-
-            title: 'لطفا موارد را با دقت پر کنید',
-            text: text
-          });
-          this.$store.commit('register/setError', error.response.data)
-          this.state = 0
-        }
+  computed: {
+    state: {
+      get() {
+        return this.$store.state.register.state
+      },
+      set(data) {
+        return this.$store.commit('register/setState', data)
       }
-      this.$nuxt.$loading.finish()
-
     }
   },
   mounted() {
-    this.$store.commit('setFooterColor', '#A9E3E1');
-    var sidebar = new StickySideber('.image', {
-      topSpacing: 130,
-      bottomSpacing: 30,
-      containerSelector: '.login',
-      innerWrapperSelector: '.register_sidebar',
+    if (this.$route.fullPath.endsWith('register/')) {
+      this.$store.commit('setFooterColor', '#A9E3E1');
+      var sidebar = new StickySidebar('.image', {
+        topSpacing: 130,
+        bottomSpacing: 30,
+        containerSelector: '.login',
+        innerWrapperSelector: '.register_sidebar',
 
-      scrollContainer: '#main-viewport'
-    });
+        scrollContainer: '#main-viewport'
+      });
+    }
 
   },
   auth: 'guest'
@@ -133,7 +99,8 @@ export default {
 
     .content, .image {
       width: 50%;
-      .register_sidebar{
+
+      .register_sidebar {
         display: flex;
         justify-content: center;
       }
