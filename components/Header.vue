@@ -1,21 +1,27 @@
 <template>
-  <v-app-bar app class="nav d-flex justify-space-between align-center pa-4">
-    <div class="">
-      <img src="../assets/images/logo.png" alt="" />
-      <nuxt-link class="px-4" to="">خانه</nuxt-link>
-      <nuxt-link class="px-4" to="">اعتبار سنجی مدرک</nuxt-link>
-      <nuxt-link class="px-4" to="">زنگ برنامه نویسی دروه ششم</nuxt-link>
-    </div>
-    <div class="d-flex">
-      <v-app-bar-nav-icon
-        @click="drawer = true"
-        class="d-flex d-sm-none"
-      ></v-app-bar-nav-icon>
-      <v-btn class="button-fill">ثبت نام</v-btn>
-      <div class="mx-4"></div>
-      <v-btn class="button-outline">ورود</v-btn>
-    </div>
-  </v-app-bar>
+  <div>
+    <v-app-bar>
+      <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
+
+      <v-toolbar-title>Title</v-toolbar-title>
+    </v-app-bar>
+
+    <v-navigation-drawer v-model="drawer" absolute temporary>
+      <v-list nav dense>
+        <v-list-item-group
+          v-model="group"
+          active-class="deep-purple--text text--accent-4"
+        >
+          <v-list-item>
+            <v-list-item-icon>
+              <v-icon>mdi-home</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Home</v-list-item-title>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
+  </div>
 </template>
 
 <script>
@@ -29,15 +35,4 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-.nav {
-  width: 100%;
-  z-index: 2;
-  background-color: white;
-
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-}
-</style>
+<style scoped lang="scss"></style>
