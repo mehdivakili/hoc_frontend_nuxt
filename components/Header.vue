@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app-bar>
+    <v-app-bar height="100" app>
       <img src="../assets/images/logo.png" alt="" />
       <div class="d-none d-sm-flex" v-for="item in navItems" :key="item.path">
         <v-btn :to="item.path">{{ item.name }}</v-btn>
