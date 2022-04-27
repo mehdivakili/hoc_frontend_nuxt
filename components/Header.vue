@@ -9,7 +9,9 @@
       </div>
       <v-spacer></v-spacer>
       <div class="d-none d-md-flex" v-for="item in navButtons" :key="item.path">
-        <v-btn :class="item.class" class="pa-5" :to="item.path">{{ item.name }}</v-btn>
+        <v-btn :class="item.class" class="py-4 px-6 mx-2" :to="item.path">{{
+          item.name
+        }}</v-btn>
       </div>
       <v-app-bar-nav-icon
         class="d-flex d-md-none"
@@ -37,7 +39,7 @@ export default {
       ],
       navButtons: [
         { name: "ثبت نام", path: "/register", class: "nav__btn__register" },
-        { name: "ورود", path: "/login", class: "" },
+        { name: "ورود", path: "/login", class: "nav__btn__login" },
       ],
     };
   },
@@ -56,6 +58,16 @@ export default {
       border-radius: 15px;
       color: #fff;
       border: none;
+      font-size: 16px;
+    }
+
+    &__login {
+      box-shadow: inset 0 -4px 4px hsl(0deg 0% 100% / 25%);
+      filter: drop-shadow(0 4px 4px rgba(0, 150, 147, 0.25));
+      background-color: #fff !important;
+      border-radius: 15px;
+      border: 3px solid #03b9b5;
+      color: #03b9b5;
       font-size: 16px;
     }
   }
