@@ -1,9 +1,11 @@
 <template>
   <div>
-    <v-app-bar height="100" app>
-      <img src="../assets/images/logo.png" alt="" />
+    <v-app-bar height="100" class="white" app>
+      <img src="../assets/images/logo.png" alt="hoc" />
       <div class="d-none d-sm-flex" v-for="item in navItems" :key="item.path">
-        <v-btn :to="item.path">{{ item.name }}</v-btn>
+        <v-btn elevation="0" class="nav__btn mx-4 px-4 py-6" :to="item.path">{{
+          item.name
+        }}</v-btn>
       </div>
       <v-spacer></v-spacer>
       <div class="d-none d-sm-flex" v-for="item in navButtons" :key="item.path">
@@ -42,4 +44,13 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+
+
+
+.nav {
+  &__btn {
+    background-color: transparent !important;
+  }
+}
+</style>
