@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-app-bar height="100" class="white" app>
-      <img src="../assets/images/logo.png" alt="hoc" />
+      <img class="ml-6" src="../assets/images/logo.png" alt="hoc" />
       <div class="d-none d-md-flex" v-for="item in navItems" :key="item.path">
         <v-btn elevation="0" class="nav__btn mx-4 px-4 py-6" :to="item.path">{{
           item.name
