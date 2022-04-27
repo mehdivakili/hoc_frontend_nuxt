@@ -2,7 +2,7 @@
   <v-app>
     <Header/>
 
-    <div style="height: 100px"></div>
+    <!-- <div style="height: 100px"></div> -->
 
     <v-main :style=" {backgroundColor:footerColor}">
       <notifications style="margin-top: 110px" position="top left" group="foo"/>
