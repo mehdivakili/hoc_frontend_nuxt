@@ -31,7 +31,6 @@ export default {
   data() {
     return {
       drawer: false,
-      group: null,
       navItems: [
         { name: "خانه", path: "/" },
         { name: "اعتبار سنجی مردک", path: "/verify" },
