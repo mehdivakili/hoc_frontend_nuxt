@@ -50,6 +50,7 @@ export default {
 .nav {
   &__btn {
     background-color: transparent !important;
+    color: #004948 !important;
 
     &__register {
       box-shadow: inset 0 -4px 4px rgb(255 252 252 / 25%);
