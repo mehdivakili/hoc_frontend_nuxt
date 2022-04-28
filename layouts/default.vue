@@ -74,5 +74,9 @@ nav {
   opacity: 0;
 }
 
-
+.v-btn {
+  span {
+    font-size: 16px;
+  }
+}
 </style>
