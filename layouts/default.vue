@@ -40,12 +40,12 @@ export default {
 @import "~bootstrap/scss/bootstrap";
 
 @font-face {
-  font-family: myFont;
+  font-family: Vazir;
   src: url(~/assets/fonts/Vazir.woff);
 }
 
 * {
-  font-family: myFont !important;
+  font-family: Vazir !important;
 }
 
 footer {
