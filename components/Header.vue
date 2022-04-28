@@ -79,6 +79,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.v-btn--active::before{
+  opacity: 0;
+}
+
 .nav {
   &__btn {
     background-color: transparent !important;
