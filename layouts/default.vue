@@ -54,6 +54,7 @@ export default {
 * {
   font-family: "Vazir" !important;
   letter-spacing: 0;
+
 }
 
 footer {

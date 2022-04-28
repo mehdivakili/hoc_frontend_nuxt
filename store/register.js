@@ -1,6 +1,7 @@
 export const state = () => ({
   userData: {},
-  error: {}
+  error: {},
+  state: 0
 })
 
 export const mutations = {
@@ -10,5 +11,8 @@ export const mutations = {
   },
   setError(state, data) {
     state.error = data
+  },
+  setState(state, data) {
+    state.state = data
   }
 }
