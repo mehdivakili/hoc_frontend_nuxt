@@ -3,9 +3,13 @@
     <v-app-bar height="100" class="white" app>
       <img class="ml-6" src="../assets/images/logo.png" alt="hoc" />
       <div class="d-none d-md-flex" v-for="item in navItems" :key="item.path">
-        <v-btn elevation="0" class="nav__btn mx-4 px-4 py-6" :to="item.path">{{
-          item.name
-        }}</v-btn>
+        <v-btn
+          elevation="0"
+          class="nav__btn mx-4 px-4 py-6"
+          :to="item.path ? item.path : ''"
+          :href="item.href ? item.href : ''"
+          >{{ item.name }}</v-btn
+        >
       </div>
       <v-spacer></v-spacer>
       <div class="d-none d-md-flex" v-for="item in navButtons" :key="item.path">
@@ -20,7 +24,32 @@
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" absolute temporary>
-      <v-list nav dense></v-list>
+      <v-list nav dense>
+        <v-list-item-group v-model="group">
+          <div
+            class="d-flex flex-column"
+            v-for="item in navItems"
+            :key="item.name"
+          >
+            <v-btn
+              elevation="0"
+              class="nav__btn my-2 px-2 py-6"
+              :to="item.path ? item.path : ''"
+              :href="item.href ? item.href : ''"
+              >{{ item.name }}</v-btn
+            >
+          </div>
+          <div
+            class="d-flex flex-column"
+            v-for="item in navButtons"
+            :key="item.name + 'mobile'"
+          >
+            <v-btn :class="item.class" class="py-4 px-6 my-2" :to="item.path">{{
+              item.name
+            }}</v-btn>
+          </div>
+        </v-list-item-group>
+      </v-list>
     </v-navigation-drawer>
   </div>
 </template>
@@ -31,10 +60,14 @@ export default {
   data() {
     return {
       drawer: false,
+      group: null,
       navItems: [
         { name: "خانه", path: "/" },
-        { name: "اعتبار سنجی مردک", path: "/verify" },
-        { name: "دوره قبلی", path: "/hoc6" },
+        { name: "اعتبار سنجی مدرک", path: "/verify" },
+        {
+          name: "زنگ برنامه نویسی دوره ششم",
+          href: "https://hoc6.hocshirazu.ir",
+        },
       ],
       navButtons: [
         { name: "ثبت نام", path: "/register", class: "nav__btn__register" },
@@ -46,6 +79,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.v-btn--active::before{
+  opacity: 0;
+}
+
 .nav {
   &__btn {
     background-color: transparent !important;

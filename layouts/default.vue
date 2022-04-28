@@ -40,12 +40,21 @@ export default {
 @import "~bootstrap/scss/bootstrap";
 
 @font-face {
-  font-family: Vazir;
-  src: url(~/assets/fonts/Vazir.woff);
+  font-family: "Vazir";
+  src: url('@/assets/fonts/Vazir.ttf') format('truetype');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Vazir";
+  src: url('@/assets/fonts/Vazir-Bold.ttf') format('truetype');
+  font-weight: bold;
 }
 
 * {
-  font-family: Vazir !important;
+  font-family: "Vazir" !important;
+  letter-spacing: 0;
+
 }
 
 footer {
@@ -66,5 +75,9 @@ nav {
   opacity: 0;
 }
 
-
+.v-btn {
+  span {
+    font-size: 16px;
+  }
+}
 </style>
