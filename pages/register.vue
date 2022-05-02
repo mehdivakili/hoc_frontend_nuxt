@@ -7,10 +7,11 @@
             <div
               :class="['bar',(state === index)? 'bar-current':(state > index) ?'bar-before': '']">
               <div class="bar-icon">
-                <v-icon :size="page.size">{{ page.icon }}</v-icon>
+                <v-icon v-if="page.icon" :size="page.size" :color="(state === index)? 'white' :'#004948'">{{ page.icon }}</v-icon>
+                <component v-else :is="page.iconComponent" :fill="(state === index)? 'white' :'#004948'" :size="page.size"/>
               </div>
-              <p>{{ page.title }}</p>
 
+              <p>{{ page.title }}</p>
             </div>
             <div v-if="index !== pages.length -1"
                  :class="['line',(state === index)? 'line-current':(state > index) ?'line-before': '']"></div>
@@ -40,16 +41,19 @@ import UserConfirm from "@/components/Register/UserConfirm";
 import StickySidebar from "sticky-sidebar-v2";
 import UserForm from "@/components/Register/UserForm";
 
+import CertificateSvg from "@/components/icons/certificate.svg"
+import FinishFlag from "@/components/icons/finish_flag.svg"
+
 export default {
   name: "register",
   data() {
     return {
       pages: [
         {title: 'اطلاعات شخصی', icon: 'mdi-alert-circle', size: 80, component: UserInfo},
-        {title: 'اطلاعات کاربري', icon: 'mdi-account-circle', size: 80, component: UserPass},
-        {title: 'پرسشنامه', icon: 'mdi-account-circle', size: 80, component: UserForm},
-        {title: 'تعهد نامه', icon: 'mdi-account-circle', size: 80, component: UserConfirm},
-        {title: 'پایان', icon: 'mdi-account-circle', size: 80, component: Finish},
+        {title: 'اطلاعات کاربری', icon: 'mdi-account-circle', size: 80, component: UserPass},
+        {title: 'پرسشنامه', icon: 'mdi-help-circle', size: 80, component: UserForm},
+        {title: 'تعهد نامه', iconComponent: CertificateSvg, size: 67, component: UserConfirm},
+        {title: 'پایان', iconComponent: FinishFlag, size: 67, component: Finish},
       ]
 
     }
@@ -151,8 +155,7 @@ export default {
   align-items: center;
   cursor: pointer;
 
-  i {
-    color: white;
+  i ,svg {
     transition: color 0.7s;
   }
 }
