@@ -153,7 +153,7 @@ export default {
   name: "user_info",
   data() {
     return {
-      userData: (this.$auth.loggedIn) ? this.$auth.user : this.$store.state.register.userData,
+      userData: (this.$auth.loggedIn) ? {...this.$auth.user} : {...this.$store.state.register.userData},
     }
   },
   methods: {
