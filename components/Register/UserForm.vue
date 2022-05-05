@@ -1,10 +1,18 @@
 <template>
   <v-row justify="center">
-    <v-col cols="12" md="6" class="con">
-      <p>برای ادامه ثبت نام حتما
+    <v-card outlined  elevation="15" class="con">
+      <v-card-text >
+
+      <p style="text-align: center; font-weight: bold;">برای ادامه ثبت نام حتما<br />
         در پرسشنامه شرکت کنید.</p>
-      <v-btn to="/register/form/" class="button-fill" style="width: 100%">ورود به پرسشنامه</v-btn>
-    </v-col>
+
+      </v-card-text>
+
+
+        <v-btn to="/register/form/" class="button-fill" style="width: 70%;margin-right: 2.5em;margin-bottom: 2em">ورود به پرسشنامه</v-btn>
+
+
+    </v-card>
   </v-row>
 </template>
 
@@ -18,9 +26,8 @@ export default {
 .con {
   margin-top: 100px;
   max-width: 300px;
-  background: white;
-  border-radius: 15px;
-  padding: 40px;
+  background: #C7E4E4;
+  border-radius: 8px;
 
 }
 </style>
