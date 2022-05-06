@@ -40,7 +40,7 @@
                  </v-col>
                  <v-col>
                    <v-radio-group
-                     v-model="row"
+                     v-model="q1"
                      row
                      dense
                      style="margin-top: -2px;"
@@ -48,22 +48,22 @@
                    >
                      <v-radio
                        label="خوب"
-                       value="radio-1"
+                       value="high"
                        color="#004948"
                      ></v-radio>
                      <v-radio
                        label="متوسط"
-                       value="radio-2"
+                       value="normal"
                        color="#004948"
                      ></v-radio>
                      <v-radio
                        label="کم"
-                       value="radio-3"
+                       value="low"
                        color="#004948"
                      ></v-radio>
                      <v-radio
                        label="آشنایی ندارم"
-                       value="radio-4"
+                       value="zero"
                        color="#004948"
                      ></v-radio>
                    </v-radio-group>
@@ -79,6 +79,47 @@
                 class="Sheets"
 
               >
+                <v-row>
+                  <v-col>
+                    <p style="margin-right: 2em;">تا به حال برنامه نویسی کردید؟ </p>
+                  </v-col>
+                  <v-col>
+                    <v-radio-group
+                      v-model="q2"
+                      row
+                      dense
+                      style="margin-top: -2px;"
+
+                    >
+                      <v-radio
+                        label="بله"
+                        value="true"
+                        color="#004948"
+                      ></v-radio>
+                      <v-radio
+                        label="خیر"
+                        value="false"
+                        color="#004948"
+                      ></v-radio>
+
+                    </v-radio-group>
+                  </v-col>
+                </v-row>
+                <v-row v-if="q2=== 'true'">
+                  <v-col cols="12">
+                    <p style="margin-right: 2em;">با چه زبون هایی؟ از چه طریقی یاد گرفتید؟</p>
+                  </v-col>
+                  <v-col cols="12">
+                    <v-textarea
+                      solo
+                      name="input-7-4"
+                      label="اینجا بنویسید . . ."
+                      style="margin-right: 2em;margin-left: 2em;margin-top: -1.5em"
+                      clearable
+                      v-model="q2_text"
+                    ></v-textarea>
+                  </v-col>
+                </v-row>
 
               </v-sheet>
             </v-col>
@@ -87,8 +128,8 @@
                 color="#C5E3E3"
                 outlined
                 class="Sheets"
-
               >
+
 
               </v-sheet>
             </v-col>
@@ -106,7 +147,9 @@ export default {
   data () {
     return {
 
-      row: null,
+      q1: null,
+      q2:null,
+      q2_text:null,
     }
   },
 }
