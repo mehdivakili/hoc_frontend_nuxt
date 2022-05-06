@@ -260,7 +260,7 @@
           <v-row>
             <v-col cols="5"></v-col>
             <v-col cols="2">
-              <v-btn style="margin-bottom: 4em;" to="" class="button-fill">ثبت پرسشنامه و ادامه </v-btn>
+              <v-btn style="margin-bottom: 4em;" to="" class="button-fill" @click="goToNextPage">ثبت پرسشنامه و ادامه </v-btn>
             </v-col>
             <v-col cols="5"></v-col>
           </v-row>
@@ -286,6 +286,12 @@ export default {
       q3_text:null,
     }
   },
+  methods:{
+     goToNextPage() {
+       this.$store.commit('register/setState', this.$store.state.register.state + 1)
+       this.$router.push('/register/')
+    }
+  }
 }
 </script>
 
