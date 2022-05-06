@@ -255,6 +255,14 @@
 
               </v-sheet>
             </v-col>
+
+          </v-row>
+          <v-row>
+            <v-col cols="5"></v-col>
+            <v-col cols="2">
+              <v-btn style="margin-bottom: 4em;" to="" class="button-fill">ثبت پرسشنامه و ادامه </v-btn>
+            </v-col>
+            <v-col cols="5"></v-col>
           </v-row>
         </v-card>
       </v-col>
@@ -295,6 +303,7 @@ export default {
   background-color: #C5E3E3;
   margin-right: 50px;
   margin-left:50px;
+  margin-bottom: 4em;
 }
 
 .cardT {
@@ -303,6 +312,7 @@ export default {
   font-style: normal;
   font-weight: 700;
   margin-right: 2em;
+
 }
 
 .Sheets {
