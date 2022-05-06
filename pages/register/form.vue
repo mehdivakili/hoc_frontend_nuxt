@@ -112,7 +112,7 @@
                   <v-col cols="12">
                     <v-textarea
                       solo
-                      name="input-7-4"
+                      name="q2_text_area"
                       label="اینجا بنویسید . . ."
                       style="margin-right: 2em;margin-left: 2em;margin-top: -1.5em"
                       clearable
@@ -129,7 +129,129 @@
                 outlined
                 class="Sheets"
               >
+              <v-row>
+                <v-col>
+                  <p style="margin-right: 2em;">در دوره های قبلی hoc شرکت کردید؟</p>
+                </v-col>
+                <v-col>
+                  <v-radio-group
+                    v-model="q3_1"
+                    row
+                    dense
+                    style="margin-top: -2px;"
 
+                  >
+                    <v-radio
+                      label="بله"
+                      value="true"
+                      color="#004948"
+                    ></v-radio>
+                    <v-radio
+                      label="خیر"
+                      value="false"
+                      color="#004948"
+                    ></v-radio>
+
+                  </v-radio-group>
+                </v-col>
+              </v-row>
+              <v-row v-if="q3_1 ==='true'">
+                <v-col>
+                  <p style="margin-right: 2em;">کدام دوره؟</p>
+                </v-col>
+                <v-col>
+                  <v-radio-group
+                    v-model="q3_2"
+                    row
+                    dense
+                    style="margin-top: -2px;"
+
+                  >
+                    <v-radio
+                      label="اول"
+                      value="first"
+                      color="#004948"
+                    ></v-radio>
+                    <v-radio
+                      label="دوم"
+                      value="second"
+                      color="#004948"
+                    ></v-radio>
+                    <v-radio
+                      label="سوم"
+                      value="third"
+                      color="#004948"
+                    ></v-radio>
+                    <v-radio
+                      label="چهارم"
+                      value="forth"
+                      color="#004948"
+                    ></v-radio>
+                    <v-radio
+                      label="پنجم"
+                      value="fifth"
+                      color="#004948"
+                    ></v-radio>
+                    <v-radio
+                      label="ششم"
+                      value="sixth"
+                      color="#004948"
+                    ></v-radio>
+
+                  </v-radio-group>
+                </v-col>
+              </v-row>
+              <v-row v-if="q3_1 ==='true'">
+                <v-col>
+                  <p style="margin-right: 2em;">تا چه اندازه از حضور در همایش رضایت داشتید؟</p>
+                </v-col>
+                <v-col>
+                  <v-radio-group
+                    v-model="q3_3"
+                    row
+                    dense
+                    style="margin-top: -2px;"
+
+                  >
+                    <v-radio
+                      label="زیاد"
+                      value="high1"
+                      color="#004948"
+                    ></v-radio>
+                    <v-radio
+                      label="متوسط"
+                      value="normal1"
+                      color="#004948"
+                    ></v-radio>
+                    <v-radio
+                      label="کم"
+                      value="low1"
+                      color="#004948"
+                    ></v-radio>
+                    <v-radio
+                      label="راضی نبودم"
+                      value="zero1"
+                      color="#004948"
+                    ></v-radio>
+
+                  </v-radio-group>
+                </v-col>
+              </v-row>
+                <v-row v-if="q3_1=== 'true'">
+                  <v-col cols="12">
+                    <p style="margin-right: 2em;">چرا؟</p>
+                  </v-col>
+                  <v-col cols="12">
+                    <v-textarea
+                      solo
+                      name="q3_text_area"
+                      label="اینجا بنویسید . . ."
+                      style="margin-right: 2em;margin-left: 2em;margin-top: -1.5em"
+                      clearable
+                      v-model="q3_text"
+                    ></v-textarea>
+                  </v-col>
+                </v-row>
 
               </v-sheet>
             </v-col>
@@ -150,6 +272,10 @@ export default {
       q1: null,
       q2:null,
       q2_text:null,
+      q3_1:null,
+      q3_2:null,
+      q3_3:null,
+      q3_text:null,
     }
   },
 }
