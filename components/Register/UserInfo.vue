@@ -13,23 +13,7 @@
         </v-alert>
       </v-col>
     </v-row>
-    <v-row>
-      <v-col cols="12" md="6">
-        <v-text-field dir="ltr" solo flat :hide-details="!error.first_name" :error-messages="error.first_name"
-                      :error="!!error.first_name"
-                      name="first_name" v-model="userData.first_name"
-                      placeholder="first name (english)"/>
-      </v-col>
-      <v-col cols="12" md="6">
 
-        <v-text-field dir="ltr" solo flat :hide-details="!error.last_name" :error-messages="error.last_name"
-                      :error="!!error.last_name"
-                      name="last_name"
-                      v-model="userData.last_name"
-                      placeholder="first name (english)"/>
-      </v-col>
-
-    </v-row>
     <v-row>
       <v-col cols="12" md="6">
         <v-text-field solo flat :hide-details="!error.first_name_persian"
@@ -46,6 +30,23 @@
                       v-model="userData.last_name_persian"
                       placeholder="نام (خانوادگی)"/>
       </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="12" md="6">
+        <v-text-field dir="ltr" solo flat :hide-details="!error.first_name" :error-messages="error.first_name"
+                      :error="!!error.first_name"
+                      name="first_name" v-model="userData.first_name"
+                      placeholder="Name (english)"/>
+      </v-col>
+      <v-col cols="12" md="6">
+
+        <v-text-field dir="ltr" solo flat :hide-details="!error.last_name" :error-messages="error.last_name"
+                      :error="!!error.last_name"
+                      name="last_name"
+                      v-model="userData.last_name"
+                      placeholder="Last Name (english)"/>
+      </v-col>
+
     </v-row>
     <v-row>
       <v-col cols="12" md="6">
@@ -69,13 +70,13 @@
         <date-picker v-model="userData.birth_date" placeholder="تاریخ تولد"></date-picker>
 
       </v-col>
-      <v-col cols="12" md="6">
-        <v-text-field solo flat :hide-details="!error.vaccine_code"
-                      :error-messages="error.vaccine_code" :error="!!error.vaccine_code"
-                      name="vaccine_code"
-                      v-model="userData.vaccine_code"
-                      placeholder="کد کارت واکسن"/>
-      </v-col>
+<!--      <v-col cols="12" md="6">-->
+<!--        <v-text-field solo flat :hide-details="!error.vaccine_code"-->
+<!--                      :error-messages="error.vaccine_code" :error="!!error.vaccine_code"-->
+<!--                      name="vaccine_code"-->
+<!--                      v-model="userData.vaccine_code"-->
+<!--                      placeholder="کد کارت واکسن"/>-->
+<!--      </v-col>-->
     </v-row>
     <v-row>
       <v-col cols="12" md="6">
@@ -84,7 +85,7 @@
                       :error="!!error.phone_number"
                       name="phone_number"
                       v-model="userData.phone_number"
-                      placeholder="شماره همراه دانش آموز"/>
+                      placeholder="شماره همراه دانش آموز (دارای واتساپ)"/>
       </v-col>
       <v-col cols="12" md="6">
 
@@ -92,25 +93,25 @@
                       :error-messages="error.parent_phone_number" :error="!!error.parent_phone_number"
                       name="parent_phone_number"
                       v-model="userData.parent_phone_number"
-                      placeholder="شماره همراه ولی"/>
+                      placeholder="شماره ضروری"/>
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="12" md="6">
-        <v-text-field solo flat type="number" :hide-details="!error.home_phone_number"
-                      :error-messages="error.home_phone_number" :error="!!error.home_phone_number"
-                      name="home_phone_number"
-                      v-model="userData.home_phone_number"
-                      placeholder="تلفن ثابت"/>
-      </v-col>
+<!--      <v-col cols="12" md="6">-->
+<!--        <v-text-field solo flat type="number" :hide-details="!error.home_phone_number"-->
+<!--                      :error-messages="error.home_phone_number" :error="!!error.home_phone_number"-->
+<!--                      name="home_phone_number"-->
+<!--                      v-model="userData.home_phone_number"-->
+<!--                      placeholder="تلفن ثابت"/>-->
+<!--      </v-col>-->
     </v-row>
     <v-row>
       <v-col cols="12" md="6">
-        <v-text-field :error-messages="error.grade" :error="!!error.grade" :hide-details="!error.grade"
+        <v-select :error-messages="error.grade" :error="!!error.grade" :hide-details="!error.grade"
                       v-model="userData.grade" solo flat
                       placeholder="پایه تحصیلی"
-                      name="grade">
-        </v-text-field>
+                      :items="['هفتم','هشتم','نهم','دهم','یازدهم','دوازدهم']" name="grade">
+        </v-select>
       </v-col>
       <v-col cols="12" md="6">
         <v-text-field solo flat type="number" step="0.01" :hide-details="!error.current_grade"
