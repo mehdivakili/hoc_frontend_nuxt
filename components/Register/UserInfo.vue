@@ -114,10 +114,10 @@
         </v-select>
       </v-col>
       <v-col cols="12" md="6">
-        <v-text-field solo flat type="number" step="0.01" :hide-details="!error.current_grade"
-                      :error-messages="error.current_grade" :error="!!error.current_grade"
-                      name="current_grade"
-                      v-model="userData.current_grade"
+        <v-text-field solo flat type="number" step="0.01" :hide-details="!error.before_grade_score"
+                      :error-messages="error.before_grade_score" :error="!!error.before_grade_score"
+                      name="before_grade_score"
+                      v-model="userData.before_grade_score"
                       placeholder="معدل پایه تحصیلی مرحله قبل"/>
       </v-col>
 
@@ -134,10 +134,10 @@
       </v-col>
       <v-col cols="12" md="6">
 
-        <v-text-field solo flat :hide-details="!error.area_name"
-                      :error-messages="error.area_name" :error="!!error.area_name"
-                      name="area_name"
-                      v-model="userData.area_name"
+        <v-text-field solo flat :hide-details="!error.aria"
+                      :error-messages="error.aria" :error="!!error.aria"
+                      name="aria"
+                      v-model="userData.aria"
                       placeholder="ناحیه"/>
       </v-col>
     </v-row>
