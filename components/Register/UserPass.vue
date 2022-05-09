@@ -33,6 +33,16 @@
                       placeholder="تکرار رمز عبور"/>
       </v-col>
     </v-row>
+    <v-row>
+      <v-col cols="12" md="6">
+        <v-text-field solo flat :hide-details="!error.code"
+                      :error-messages="error.code"
+                      :error="!!error.code"
+                      v-model="userData.code"
+                      name="code"
+                      placeholder="کد معرف"/>
+      </v-col>
+    </v-row>
     <div style="display: flex; flex-direction: row; justify-content: space-between; margin-top: 100px">
       <v-btn class="button-outline" v-on:click="goToPrevPage()">مرحله قبل</v-btn>
 
