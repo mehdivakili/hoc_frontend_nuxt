@@ -91,32 +91,32 @@ export default {
     },
     async goToNextPage(page) {
       this.$nuxt.$loading.start()
-      try {
-        await this.$axios.post('register_validate/', this.$store.state.register.userData)
-        this.$store.commit('register/setError', {})
+      // try {
+      //   await this.$axios.post('register_validate/', this.$store.state.register.userData)
+      //   this.$store.commit('register/setError', {})
         this.state = this.state + 1
-      } catch (error) {
-        let text = ''
-        if (error.response !== undefined) {
-          if (error.response.data.non_field_errors !== undefined) {
-            error.response.data.non_field_errors.forEach((value) => {
-              text += value
-            })
-          }
-          this.$notify({
-            group: 'foo',
-            type: 'error',
-
-            title: 'لطفا موارد را با دقت پر کنید',
-            text: text
-          });
-          this.$store.commit('register/setError', error.response.data)
-          this.state = 0
-        }
-      } finally {
+      // } catch (error) {
+      //   let text = ''
+      //   if (error.response !== undefined) {
+      //     if (error.response.data.non_field_errors !== undefined) {
+      //       error.response.data.non_field_errors.forEach((value) => {
+      //         text += value
+      //       })
+      //     }
+      //     this.$notify({
+      //       group: 'foo',
+      //       type: 'error',
+      //
+      //       title: 'لطفا موارد را با دقت پر کنید',
+      //       text: text
+      //     });
+      //     this.$store.commit('register/setError', error.response.data)
+      //     this.state = 0
+      //   }
+      // } finally {
         this.$nuxt.$loading.finish()
 
-      }
+      // }
 
 
     },
