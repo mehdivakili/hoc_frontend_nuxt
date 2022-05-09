@@ -1,21 +1,23 @@
 <template>
   <div>
     <v-app-bar height="100" class="white" app>
-      <img class="ml-6" src="../assets/images/logo.png" alt="hoc" />
+      <img class="ml-6" src="../assets/images/logo.png" alt="hoc"/>
       <div class="d-none d-md-flex" v-for="item in navItems" :key="item.path">
         <v-btn
           elevation="0"
           class="nav__btn mx-4 px-4 py-6"
           :to="item.path ? item.path : ''"
           :href="item.href ? item.href : ''"
-          >{{ item.name }}</v-btn
+        >{{ item.name }}
+        </v-btn
         >
       </div>
       <v-spacer></v-spacer>
-      <div class="d-none d-md-flex" v-for="item in navButtons" :key="item.path">
+      <div class="d-none d-md-flex" v-for="item in ($auth.loggedIn) ?navButtonsLogin:navButtons" :key="item.path">
         <v-btn :class="item.class" class="py-4 px-6 mx-2" :to="item.path">{{
-          item.name
-        }}</v-btn>
+            item.name
+          }}
+        </v-btn>
       </div>
       <v-app-bar-nav-icon
         class="d-flex d-md-none"
@@ -36,17 +38,19 @@
               class="nav__btn my-2 px-2 py-6"
               :to="item.path ? item.path : ''"
               :href="item.href ? item.href : ''"
-              >{{ item.name }}</v-btn
+            >{{ item.name }}
+            </v-btn
             >
           </div>
           <div
             class="d-flex flex-column"
-            v-for="item in navButtons"
+            v-for="item in ($auth.loggedIn) ?navButtonsLogin:navButtons"
             :key="item.name + 'mobile'"
           >
             <v-btn :class="item.class" class="py-4 px-6 my-2" :to="item.path">{{
-              item.name
-            }}</v-btn>
+                item.name
+              }}
+            </v-btn>
           </div>
         </v-list-item-group>
       </v-list>
@@ -62,16 +66,20 @@ export default {
       drawer: false,
       group: null,
       navItems: [
-        { name: "خانه", path: "/" },
-        { name: "اعتبار سنجی مدرک", path: "/verify" },
+        {name: "خانه", path: "/"},
+        {name: "اعتبار سنجی مدرک", path: "/verify"},
         {
           name: "زنگ برنامه نویسی دوره ششم",
           href: "https://hoc6.hocshirazu.ir",
         },
       ],
       navButtons: [
-        { name: "ثبت نام", path: "/register", class: "nav__btn__register" },
-        { name: "ورود", path: "/login", class: "nav__btn__login" },
+        {name: "ثبت نام", path: "/register", class: "nav__btn__register"},
+        {name: "ورود", path: "/login", class: "nav__btn__login"},
+      ],
+      navButtonsLogin: [
+        {name: "پروفایل", path: "/profile", class: "nav__btn__register"},
+        {name: "خروج", path: "/logout", click: this.$auth.logout, class: "nav__btn__login"},
       ],
     };
   },
@@ -79,7 +87,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.v-btn--active::before{
+.v-btn--active::before {
   opacity: 0;
 }
 
