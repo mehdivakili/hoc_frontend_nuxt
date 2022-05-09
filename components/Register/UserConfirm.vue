@@ -27,7 +27,8 @@
     ندارند.
 
     <div style="display: flex; justify-content: space-between; align-items: center">
-      <v-checkbox label="شرایط گفته شده را مطالعه نموده و قبول دارم."></v-checkbox>
+      <v-checkbox :error-messages="error" v-model="checked"
+                  label="شرایط گفته شده را مطالعه نموده و قبول دارم."></v-checkbox>
       <v-btn class="button-fill" style="color: #FEFEFE" @click="goToNextPage">تکمیل ثبت نام</v-btn>
     </div>
   </div>
@@ -36,9 +37,42 @@
 <script>
 export default {
   name: "UserConfirm",
+  auth: false,
+  data() {
+    return {
+      error: "",
+      checked: false
+    }
+  },
   methods: {
-    goToNextPage() {
-      this.$store.commit('register/setState', this.$store.state.register.state + 1)
+    async goToNextPage() {
+      if (this.checked) {
+        this.$nuxt.$loading.start()
+        this.$data.sending = true
+        try {
+          let response = await this.$auth.loginWith('register', {
+            data: this.$store.state.register.userData,
+          })
+          this.$store.commit('register/setState', this.$store.state.register.state + 1)
+        } catch (e) {
+          this.$notify({
+            group: 'foo',
+            type: 'error',
+
+            title: 'خطایی پیش آمده',
+          });
+        }finally {
+          this.$nuxt.$loading.finish()
+
+        }
+      } else {
+        this.error = "شما باید این موارد را تایید کنید"
+      }
+    }
+  },
+  watch: {
+    checked() {
+      this.error = null
     }
   }
 }
