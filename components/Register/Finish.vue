@@ -6,10 +6,10 @@
         <v-card shaped class="mainCard">
           <v-row class="firstRow">
             <v-col>
-              <v-card class="cardShape" >
+              <v-card class="cardShape">
                 <div style="padding-top: 6px; padding-bottom: 2px;">
                   <p class="titles" style="text-align: center; ">نام و نام خانوادگی</p>
-                  <p class="content" style="text-align: center;"> {{name}}</p>
+                  <p class="content" style="text-align: center;"> {{ name }}</p>
                 </div>
 
               </v-card>
@@ -23,26 +23,27 @@
               </v-card>
             </v-col>
           </v-row>
-          <v-row class="otherRow">
-            <v-col>
-              <v-card class="cardShape">
-                <v-row>
-                  <v-col style="margin-right: 15px;">
-                    image
-                  </v-col>
-                  <v-col >
-                    name
-                  </v-col>
-                </v-row>
-              </v-card>
-            </v-col>
+          <!--          <v-row class="otherRow">-->
+          <!--            <v-col>-->
+          <!--              <v-card class="cardShape">-->
+          <!--                <v-row>-->
+          <!--                  <v-col style="margin-right: 15px;">-->
+          <!--                    image-->
+          <!--                  </v-col>-->
+          <!--                  <v-col>-->
+          <!--                    name-->
+          <!--                  </v-col>-->
+          <!--                </v-row>-->
+          <!--              </v-card>-->
+          <!--            </v-col>-->
 
-          </v-row>
+          <!--          </v-row>-->
           <v-row class="otherRow">
             <v-col>
               <v-card class="cardShape">
                 <v-row style="margin-bottom: 5px;">
-                  <v-col style="margin-right: 15px; "><p class="titles" style="margin-right: 5em">مبلغ پرداختی</p></v-col>
+                  <v-col style="margin-right: 15px; "><p class="titles" style="margin-right: 5em">مبلغ پرداختی</p>
+                  </v-col>
                   <v-col><p class="content"> ۱۲۰,۰۰۰ تومان</p></v-col>
                 </v-row>
               </v-card>
@@ -52,7 +53,9 @@
           <v-row>
             <v-col cols="3"></v-col>
             <v-col cols="6">
-              <v-btn style="margin-bottom: 2em;margin-right: 1em;width: 100%" to="" class="button-fill" @click="goToNextPage">ورود به درگاه پرداخت </v-btn>
+              <v-btn style="margin-bottom: 2em;margin-right: 1em;width: 100%" to="" class="button-fill"
+                     @click="goToNextPage">ورود به درگاه پرداخت
+              </v-btn>
             </v-col>
             <v-col cols="3"></v-col>
           </v-row>
@@ -66,14 +69,30 @@
 
 <script>
 export default {
-name: "Finish",
-  data(){
-    return{
-      name:"عباس بوعذار",
-      nationalCode:'۲۲۸۳۲۷۷۹۹۱',
-      dargah:null,
+  name: "Finish",
+  computed: {
+    name() {
+      return this.$store.state.register.userData.first_name_persian + " " + this.$store.state.register.userData.last_name_persian
+    },
+    nationalCode() {
+      return this.$store.state.register.userData.national_code
     }
   },
+  methods: {
+    async goToNextPage() {
+      this.$nuxt.$loading.start();
+      try {
+        let response = await this.$axios.get('purchase/request/')
+        if (response.data.error === undefined)
+          window.location.href = response.data.pay_link;
+
+
+      } catch (e) {
+        console.log(e)
+      }
+      this.$nuxt.$loading.finish();
+    }
+  }
 
 }
 </script>
@@ -100,13 +119,15 @@ name: "Finish",
   margin-left: 18px;
   margin-right: 18px;
 }
-.titles{
+
+.titles {
   color: #004948;
   font-family: 'Vazir';
   font-weight: 400;
   font-size: 13px;
 }
-.content{
+
+.content {
   color: #00928F;
   font-family: 'Vazir Black';
   font-weight: 900;

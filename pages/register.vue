@@ -82,7 +82,7 @@ export default {
     }
 
   },
-  auth: 'guest'
+  auth: false
 
 }
 </script>
@@ -153,7 +153,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
 
   i ,svg {
     transition: color 0.7s;
