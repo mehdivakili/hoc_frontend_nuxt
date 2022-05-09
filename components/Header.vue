@@ -8,13 +8,19 @@
           class="nav__btn mx-4 px-4 py-6"
           :to="item.path ? item.path : ''"
           :href="item.href ? item.href : ''"
+          @click="click(item)"
         >{{ item.name }}
         </v-btn
         >
       </div>
       <v-spacer></v-spacer>
       <div class="d-none d-md-flex" v-for="item in ($auth.loggedIn) ?navButtonsLogin:navButtons" :key="item.path">
-        <v-btn :class="item.class" class="py-4 px-6 mx-2" :to="item.path">{{
+        <v-btn :class="item.class" class="py-4 px-6 mx-2"
+               :to="item.path ? item.path : ''"
+               :href="item.href ? item.href : ''"
+               @click="(item.hasClick)?$auth.logout():()=>{}"
+
+        >{{
             item.name
           }}
         </v-btn>
@@ -78,11 +84,11 @@ export default {
         {name: "ورود", path: "/login", class: "nav__btn__login"},
       ],
       navButtonsLogin: [
-        {name: "پروفایل", path: "/profile", class: "nav__btn__register"},
-        {name: "خروج", path: "/logout", click: this.$auth.logout, class: "nav__btn__login"},
+        {name: "پروفایل", path: "/account", class: "nav__btn__register"},
+        {name: "خروج", hasClick: true, class: "nav__btn__login"},
       ],
     };
-  },
+  }
 };
 </script>
 
