@@ -35,10 +35,10 @@
     </v-row>
     <v-row>
       <v-col cols="12" md="6">
-        <v-text-field solo flat :hide-details="!error.code"
-                      :error-messages="error.code"
-                      :error="!!error.code"
-                      v-model="userData.code"
+        <v-text-field solo flat :hide-details="!error.attend_code"
+                      :error-messages="error.attend_code"
+                      :error="!!error.attend_code"
+                      v-model="userData.attend_code"
                       name="code"
                       placeholder="کد معرف"/>
       </v-col>

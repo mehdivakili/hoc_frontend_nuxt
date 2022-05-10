@@ -8,7 +8,7 @@
           class="nav__btn mx-4 px-4 py-6"
           :to="item.path ? item.path : ''"
           :href="item.href ? item.href : ''"
-          @click="click(item)"
+          @click="(item.hasClick)?logout():()=>{}"
         >{{ item.name }}
         </v-btn
         >
@@ -18,7 +18,7 @@
         <v-btn :class="item.class" class="py-4 px-6 mx-2"
                :to="item.path ? item.path : ''"
                :href="item.href ? item.href : ''"
-               @click="(item.hasClick)?$auth.logout():()=>{}"
+               @click="(item.hasClick)?logout():()=>{}"
 
         >{{
             item.name
@@ -73,7 +73,7 @@ export default {
       group: null,
       navItems: [
         {name: "خانه", path: "/"},
-        {name: "اعتبار سنجی مدرک", path: "/verify"},
+        {name: "اعتبار سنجی مدرک", href: "/verify"},
         {
           name: "زنگ برنامه نویسی دوره ششم",
           href: "https://hoc6.hocshirazu.ir",
@@ -88,6 +88,12 @@ export default {
         {name: "خروج", hasClick: true, class: "nav__btn__login"},
       ],
     };
+  },
+  methods: {
+    logout() {
+      this.$auth.logout()
+      this.$store.commit('register/setState', 0)
+    }
   }
 };
 </script>

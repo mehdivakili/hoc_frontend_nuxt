@@ -7,8 +7,12 @@
             <div
               :class="['bar',(state === index)? 'bar-current':(state > index) ?'bar-before': '']">
               <div class="bar-icon">
-                <v-icon v-if="page.icon" :size="page.size" :color="(state === index)? 'white' :'#004948'">{{ page.icon }}</v-icon>
-                <component v-else :is="page.iconComponent" :fill="(state === index)? 'white' :'#004948'" :size="page.size"/>
+                <v-icon v-if="page.icon" :size="page.size" :color="(state === index)? 'white' :'#004948'">{{
+                    page.icon
+                  }}
+                </v-icon>
+                <component v-else :is="page.iconComponent" :fill="(state === index)? 'white' :'#004948'"
+                           :size="page.size"/>
               </div>
 
               <p>{{ page.title }}</p>
@@ -69,6 +73,13 @@ export default {
     }
   },
   mounted() {
+    if (this.$auth.loggedIn) {
+      this.$store.commit('register/setState', 4)
+      this.$store.commit('register/setUserData', {...this.$auth.user})
+    } else {
+      this.$store.commit('register/setState', 0)
+
+    }
     if (this.$route.fullPath.endsWith('register/') || this.$route.fullPath.endsWith('register')) {
       this.$store.commit('setFooterColor', '#A9E3E1');
       var sidebar = new StickySidebar('.image', {
@@ -82,7 +93,7 @@ export default {
     }
 
   },
-  auth: false
+  auth: false,
 
 }
 </script>
@@ -154,7 +165,7 @@ export default {
   justify-content: center;
   align-items: center;
 
-  i ,svg {
+  i, svg {
     transition: color 0.7s;
   }
 }
