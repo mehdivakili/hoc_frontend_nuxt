@@ -177,7 +177,7 @@ export default {
 
   },
   router: {
-    middleware: ['auth']
+    middleware: ['auth','payment']
   },
   loading: '~/components/loading.vue'
 }
