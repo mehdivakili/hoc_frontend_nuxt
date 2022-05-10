@@ -57,7 +57,7 @@ export default {
         {title: 'اطلاعات کاربری', icon: 'mdi-account-circle', size: 80, component: UserPass},
         {title: 'پرسشنامه', icon: 'mdi-help-circle', size: 80, component: UserForm},
         {title: 'تعهد نامه', iconComponent: CertificateSvg, size: 67, component: UserConfirm},
-        {title: 'پایان', iconComponent: FinishFlag, size: 67, component: Finish},
+        {title: 'پرداخت و پایان', iconComponent: FinishFlag, size: 67, component: Finish},
       ]
 
     }
