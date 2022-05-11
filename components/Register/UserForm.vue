@@ -58,8 +58,8 @@ export default {
     return {
       file: null,
       rules: [
-        v => !!v || 'File is required',
-        v => (v && v.size > 0) || 'File is required',
+        v => !!v || 'آپلود کارت واکسن لازم است',
+        v => (v && v.size > 0) || 'آپلود کارت واکسن لازم است',
       ]
     }
   },
