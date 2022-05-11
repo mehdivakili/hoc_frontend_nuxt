@@ -43,6 +43,7 @@
                              separator="&nbsp;"
                              :num-inputs="5"
                              :is-input-num="true"
+                             @on-change="(value) => {otp_code = value}"
               />
 
             </v-col>
