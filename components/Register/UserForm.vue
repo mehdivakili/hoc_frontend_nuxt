@@ -1,9 +1,9 @@
 <template>
   <div>
     <v-row justify="center" class="topRow">
-        <v-col cols="3">
+      <v-col cols="3">
 
-        </v-col>
+      </v-col>
       <v-col cols="6" style="font-family: 'Vazir';
                         font-style: normal;
                         font-weight: 700;
@@ -14,6 +14,11 @@
         <p>عکس کارت واکسن:</p>
         <v-file-input
           class="inputField"
+          accept=".jpeg,.jpg,.png,image/jpeg,image/png"
+          v-model="file"
+          :rules="rules"
+          ref="file_ref"
+
 
           show-size
 
@@ -27,16 +32,18 @@
     </v-row>
     <v-row justify="center" class="botRow">
 
-      <v-card outlined  elevation="15" class="con">
-        <v-card-text >
+      <v-card outlined elevation="15" class="con">
+        <v-card-text>
 
-        <p style="text-align: center;color:#004948; font-weight: bold;">برای ادامه ثبت نام حتما<br />
-          در پرسشنامه شرکت کنید.</p>
+          <p style="text-align: center;color:#004948; font-weight: bold;">برای ادامه ثبت نام حتما<br/>
+            در پرسشنامه شرکت کنید.</p>
 
         </v-card-text>
 
 
-          <v-btn to="/register/form/" class="button-fill" style="width: 70%;margin-right: 2.5em;margin-bottom: 2em">ورود به پرسشنامه</v-btn>
+        <v-btn @click="nextPage" class="button-fill" style="width: 70%;margin-right: 2.5em;margin-bottom: 2em">ورود
+          به پرسشنامه
+        </v-btn>
 
 
       </v-card>
@@ -46,7 +53,30 @@
 
 <script>
 export default {
-  name: "UserForm"
+  name: "UserForm",
+  data() {
+    return {
+      file: null,
+      rules: [
+        v => !!v || 'آپلود کارت واکسن لازم است',
+        v => (v && v.size > 0) || 'آپلود کارت واکسن لازم است',
+      ]
+    }
+  },
+  methods: {
+    nextPage() {
+      if (this.$refs.file_ref.validate())
+        this.$router.push("/register/form/")
+    }
+  },
+  watch: {
+    file: {
+      handler(val, oldVal) {
+        this.$store.commit('register/setVaccine', val)
+      },
+      deep: true
+    }
+  }
 }
 </script>
 
@@ -58,14 +88,17 @@ export default {
   border-radius: 8px;
 
 }
-.inputField{
-  direction:ltr !important;
+
+.inputField {
+  direction: ltr !important;
 }
-.topRow{
+
+.topRow {
   margin-bottom: -5em;
   margin-right: 3em;
 }
-.botRow{
+
+.botRow {
   margin-right: 1em;
 }
 </style>

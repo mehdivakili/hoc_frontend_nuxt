@@ -1,7 +1,8 @@
 export const state = () => ({
   userData: {},
   error: {},
-  state: 0
+  state: 0,
+  vaccine: ''
 })
 
 export const mutations = {
@@ -14,5 +15,8 @@ export const mutations = {
   },
   setState(state, data) {
     state.state = data
+  },
+  setVaccine(state, data) {
+    state.vaccine = data
   }
 }

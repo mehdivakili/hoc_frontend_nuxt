@@ -41,18 +41,37 @@ export default {
   data() {
     return {
       error: "",
-      checked: false
+      checked: false,
+
     }
   },
   methods: {
     async goToNextPage() {
+      function buildFormData(formData, data, parentKey) {
+        if (data && typeof data === 'object' && !(data instanceof Date) && !(data instanceof File)) {
+          Object.keys(data).forEach(key => {
+            console.log(key);
+            buildFormData(formData, data[key], parentKey ? `${parentKey}.${key}` : key);
+          });
+        } else {
+          const value = data == null ? '' : data;
+
+          formData.append(parentKey, value);
+        }
+      }
+
       if (this.checked) {
         this.$nuxt.$loading.start()
         this.$data.sending = true
+        let formData = new FormData()
         try {
+          buildFormData(formData, {...this.$store.state.register.userData});
+          formData.append('vaccine.vaccine_image', this.$store.state.register.vaccine)
+          console.log(formData)
           let response = await this.$auth.loginWith('register', {
-            data: this.$store.state.register.userData,
+            data: formData,
           })
+
           this.$store.commit('register/setState', this.$store.state.register.state + 1)
         } catch (e) {
           this.$notify({
@@ -61,7 +80,7 @@ export default {
 
             title: 'خطایی پیش آمده',
           });
-        }finally {
+        } finally {
           this.$nuxt.$loading.finish()
 
         }
