@@ -53,7 +53,9 @@
             v-for="item in ($auth.loggedIn) ?navButtonsLogin:navButtons"
             :key="item.name + 'mobile'"
           >
-            <v-btn :class="item.class" class="py-4 px-6 my-2" :to="item.path">{{
+            <v-btn :class="item.class" class="py-4 px-6 my-2" :to="item.path"
+                   @click="(item.hasClick)?logout():()=>{}"
+            >{{
                 item.name
               }}
             </v-btn>
