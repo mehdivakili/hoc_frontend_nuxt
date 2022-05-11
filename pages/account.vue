@@ -7,24 +7,27 @@
       <div class="sidebar__inner">
         <div class="profile">
           <div class="img-fluid">
-            <img src="~/assets/images/profile.png" />
+            <img src="~/assets/images/profile.svg" />
           </div>
           <p>
             {{ $auth.user.first_name_persian }}
             {{ $auth.user.last_name_persian }}
           </p>
+          <p>
+            {{$auth.user.national_code}}
+          </p>
         </div>
         <div class="profile-menu">
           <p class="menu-item">
-            <v-icon size="15">mdi-circle</v-icon>
+            <img width="20" src="~/assets/images/dashboard.svg"/>
             <router-link to="/account/">داشبورد</router-link>
           </p>
           <p class="menu-item">
-            <v-icon size="15">mdi-circle</v-icon>
+            <img width="20" src="~/assets/images/edit_user.svg"/>
             <router-link to="/account/edit/">ویرایش حساب کاربری</router-link>
           </p>
           <p class="menu-item">
-            <v-icon size="15">mdi-circle</v-icon>
+            <img width="20" src="~/assets/images/logout.svg"/>
             <a
               @click="
                 () => {
@@ -75,13 +78,13 @@ export default {
 }
 
 .sidebar__inner {
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 15px;
+  background: linear-gradient(146.8deg, #00807E 13.33%, #004746 86.04%);
+  border-radius: 20px;
   padding: 20px;
   width: 300px;
 
   .profile {
-    background: rgba(255, 255, 255, 0.5);
+    background: none;
     border-radius: 15px;
     padding: 15px;
     margin-bottom: 20px;
@@ -103,7 +106,7 @@ export default {
   }
   .profile-menu {
     .menu-item {
-      background: rgba(255, 255, 255, 0.5);
+      background: #C5E3E3;
       padding: 20px;
       border-radius: 15px;
       &:last-child {

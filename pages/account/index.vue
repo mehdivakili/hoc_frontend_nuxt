@@ -1,7 +1,12 @@
 <template>
   <div style="width: 100%">
     <div class="user-info-container">
-      <h2>اطلاعات حساب کاربری</h2>
+      <h2>
+        <img width="15" src="~/assets/images/error_icon.svg"/>
+        اطلاعات حساب کاربری
+        <img width="15" src="~/assets/images/error_icon.svg"/>
+
+      </h2>
       <hr>
       <div class="user-info">
         <p><v-icon>mdi-account</v-icon> نام و نام خانوادگی:  {{$auth.user.first_name_persian}} {{$auth.user.last_name_persian}}</p>
@@ -25,6 +30,9 @@ name: "index"
     border: 3px white solid;
     border-radius: 15px;
     padding: 20px;
+  }
+  h2{
+    text-align: center;
   }
   hr{
     background: white;
