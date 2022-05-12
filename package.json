@@ -25,6 +25,7 @@
     "sticky-sidebar-v2": "^1.1.1",
     "tiny-slider": "^2.9.4",
     "vue": "^2.6.14",
+    "vue-jalali-moment": "^1.0.0",
     "vue-notification": "^1.3.20",
     "vue-persian-datetime-picker": "^2.10.4",
     "vue-select": "^3.18.3",
