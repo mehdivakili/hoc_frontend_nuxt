@@ -37,6 +37,8 @@ export default {
           type: 'success',
           title: 'اطلاعات با موفقیت ذخیره شد',
         });
+        this.$store.commit('register/setError', {})
+
         this.$router.push("/account/")
       } catch (error) {
         this.$store.commit('register/setError', error.response.data)
