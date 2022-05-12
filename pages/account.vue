@@ -7,37 +7,31 @@
       <div class="sidebar__inner">
         <div class="profile">
           <div class="img-fluid">
-            <img src="~/assets/images/profile.svg" />
+            <img src="~/assets/images/profile.svg"/>
           </div>
-          <p>
+          <p class="user_name">
             {{ $auth.user.first_name_persian }}
             {{ $auth.user.last_name_persian }}
           </p>
-          <p>
-            {{$auth.user.national_code}}
+          <p class="national_code">
+            {{ $auth.user.national_code }}
           </p>
         </div>
         <div class="profile-menu">
-          <p class="menu-item">
-            <img width="20" src="~/assets/images/dashboard.svg"/>
-            <router-link to="/account/">داشبورد</router-link>
-          </p>
-          <p class="menu-item">
+            <router-link to="/account/" class="menu-item">
+              <img width="20" src="~/assets/images/dashboard.svg"/>
+              داشبورد
+            </router-link>
+          <router-link to="/account/edit/" class="menu-item">
             <img width="20" src="~/assets/images/edit_user.svg"/>
-            <router-link to="/account/edit/">ویرایش حساب کاربری</router-link>
-          </p>
-          <p class="menu-item">
-            <img width="20" src="~/assets/images/logout.svg"/>
-            <a
-              @click="
-                () => {
+            ویرایش حساب کاربری
+          </router-link>
+          <a class="menu-item"
+            @click="() => {
                   $nuxt.$loading.start();
-                  $auth.logout().then($nuxt.$loading.finish);
-                }
-              "
-              >خروج</a
-            >
-          </p>
+                  $auth.logout().then($nuxt.$loading.finish);}"> <img width="20" src="~/assets/images/logout.svg"/>
+            خروج</a>
+
         </div>
       </div>
     </div>
@@ -86,12 +80,12 @@ export default {
   .profile {
     background: none;
     border-radius: 15px;
-    padding: 15px;
     margin-bottom: 20px;
+
     .img-fluid {
       display: flex;
       justify-content: center;
-      padding: 0 20px;
+
       img {
         max-width: 100%;
 
@@ -99,20 +93,57 @@ export default {
         border-radius: 50%;
       }
     }
+
     p {
       text-align: center;
-      margin-top: 10px;
+      color: #C5E3E3;
+
+      &.user_name {
+        margin: 10px;
+        font-weight: bold;
+        font-size: 20px;
+      }
+
+      &.national_code {
+        margin: 0;
+      }
+
     }
   }
+
   .profile-menu {
     .menu-item {
+      display: block;
       background: #C5E3E3;
       padding: 20px;
       border-radius: 15px;
-      &:last-child {
-        margin-bottom: 0;
+      font-weight: bold;
+      text-decoration: none;
+      color: #004948;
+      margin-top: 20px;
+      margin-bottom: 0;
+
+      transition: 0.4s;
+
+      &.nuxt-link-exact-active {
+        color: #00928F;
+        img{
+          filter: brightness(200%);
+
+        }
+
       }
+      img{
+        margin-left: 20px;
+        transition: 0.4s;
+
+      }
+
+
     }
+
+
   }
+
 }
 </style>
