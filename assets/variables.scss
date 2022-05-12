@@ -32,3 +32,21 @@ $text-field-border-radius: 15px;
   background: none !important;
   color: #03b9b5 !important;
 }
+
+.vpd-input-group {
+  background: white !important;
+  height: 48px !important;
+  border-radius: 15px !important;
+  border: none;
+
+  label {
+    border-radius: 15px !important;
+    display: none;
+
+  }
+
+  input {
+    border: none !important;
+  }
+
+}
