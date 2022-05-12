@@ -13,6 +13,34 @@
 
       </div>
     </div>
+    <div class="user-info-container" style="margin-top: 40px">
+      <h2>
+        <img width="20" src="~/assets/icons/key.svg"/>
+تغییر رمز عبور
+        <img width="20" src="~/assets/icons/key.svg"/>
+      </h2>
+      <hr>
+      <div class="user-info" >
+        <v-row justify="center">
+          <v-col cols="12" md="6">
+            <v-text-field solo flat :hide-details="!error.password"
+                          :error-messages="error.password" :error="!!error.password"
+                          name="password"
+                          v-model="pass_data.password"
+                          placeholder="رمز عبور جدید"/>
+          </v-col>
+          <v-col cols="12" md="6">
+            <v-text-field solo flat :hide-details="!error.password2"
+                          :error-messages="error.password2" :error="!!error.password2"
+                          name="password2"
+                          v-model="pass_data.password2"
+                          placeholder="تکرار رمز عبور جدید"/>
+          </v-col>
+        </v-row>
+        <v-btn class="edit_btn" @click="change_password">تغییر رمز عبور</v-btn>
+
+      </div>
+    </div>
   </div>
 </template>
 
@@ -22,6 +50,12 @@ import Userinfo from "@/components/Register/UserInfo";
 export default {
   name: "edit",
   components: {Userinfo},
+  data() {
+    return {
+      pass_data: {},
+      error: {}
+    }
+  },
   methods: {
     async edit_user() {
       this.$nuxt.$loading.start()
@@ -41,6 +75,31 @@ export default {
         this.$router.push("/account/")
       } catch (error) {
         this.$store.commit('register/setError', error.response.data)
+        this.$notify({
+          group: 'foo',
+          type: 'error',
+          title: 'خطایی پیش آمده',
+        });
+      } finally {
+        this.$nuxt.$loading.finish()
+
+      }
+
+    },
+    async change_password() {
+      this.$nuxt.$loading.start()
+      try {
+        let store = this.$store
+        await this.$axios.patch('password_change/', this.pass_data)
+        this.$notify({
+          group: 'foo',
+          type: 'success',
+          title: 'پسورد با موفقیت تعویض شد',
+        });
+        this.$store.commit('register/setError', {})
+        this.$router.push("/account/")
+      } catch (error) {
+        this.error = error.response.data
         this.$notify({
           group: 'foo',
           type: 'error',
