@@ -5,7 +5,6 @@
         <img width="20" src="~/assets/images/error_icon.svg"/>
         اطلاعات حساب کاربری
         <img width="20" src="~/assets/images/error_icon.svg"/>
-
       </h2>
       <hr>
       <div class="user-info">

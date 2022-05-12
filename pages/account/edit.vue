@@ -5,7 +5,6 @@
         <img width="20" src="~/assets/icons/edit.svg"/>
         ویرایش اطلاعات حساب کاربری
         <img width="20" src="~/assets/icons/edit.svg"/>
-
       </h2>
       <hr>
       <div class="user-info">
@@ -92,6 +91,13 @@ hr {
   font-size: 28px;
   color: #FEFEFE;
   margin-top: 20px;
+}
+
+.vpd-input-group {
+  background: white !important;
+  height: 48px !important;
+  border-radius: 15px !important;
+
 }
 
 </style>

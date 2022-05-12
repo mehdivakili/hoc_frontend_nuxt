@@ -297,7 +297,7 @@ export default {
 .vpd-input-group {
   background: white !important;
   height: 48px !important;
-  border-radius: 5px !important;
+  border-radius: 15px !important;
 
 }
 
