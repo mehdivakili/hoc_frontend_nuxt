@@ -148,7 +148,7 @@
         <v-select :error-messages="error.grade" :error="!!error.grade" hide-details="auto"
                   v-model="userData.grade" :rules="rules" solo flat
                   placeholder="پایه تحصیلی"
-                  :items="['دهم','یازدهم']" name="grade">
+                  :items="['دهم','یازدهم','دوازدهم']" name="grade">
           <template #label>
             پایه تحصیلی <span style="color: red"><strong>* </strong></span>
           </template>
