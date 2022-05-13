@@ -23,14 +23,14 @@
       <div class="user-info" >
         <v-row justify="center">
           <v-col cols="12" md="6">
-            <v-text-field solo flat :hide-details="!error.password"
+            <v-text-field type="password" solo flat :hide-details="!error.password"
                           :error-messages="error.password" :error="!!error.password"
                           name="password"
                           v-model="pass_data.password"
                           placeholder="رمز عبور جدید"/>
           </v-col>
           <v-col cols="12" md="6">
-            <v-text-field solo flat :hide-details="!error.password2"
+            <v-text-field type="password" solo flat :hide-details="!error.password2"
                           :error-messages="error.password2" :error="!!error.password2"
                           name="password2"
                           v-model="pass_data.password2"
