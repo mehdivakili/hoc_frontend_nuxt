@@ -45,7 +45,7 @@ import StickySideber from "sticky-sidebar-v2";
 export default {
   name: "account",
   mounted() {
-    this.$store.commit("setFooterColor", "#A9E3E1");
+    this.$store.commit("setFooterColor", "#C5E3E3");
     var sidebar = new StickySideber(".sidebar", {
       topSpacing: 120,
       bottomSpacing: 20,
