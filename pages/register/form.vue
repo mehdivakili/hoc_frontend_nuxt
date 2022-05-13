@@ -261,7 +261,7 @@
           <v-row>
             <v-col cols="5"></v-col>
             <v-col cols="2">
-              <v-btn style="margin-bottom: 4em;" to="" class="button-fill" @click="goToNextPage">ثبت پرسشنامه و ادامه
+              <v-btn style="margin-bottom: 4em;margin-right: -4em;" to="" class="button-fill" @click="goToNextPage">ثبت پرسشنامه و ادامه
               </v-btn>
             </v-col>
             <v-col cols="5"></v-col>
