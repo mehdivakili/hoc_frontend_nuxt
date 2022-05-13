@@ -113,6 +113,13 @@ export default {
     .image {
       display: none;
     }
+    .content{
+      width: 100%;
+
+    }
+    .login{
+      padding: 15px;
+    }
   }
 
 

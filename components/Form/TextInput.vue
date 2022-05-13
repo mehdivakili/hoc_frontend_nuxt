@@ -13,7 +13,6 @@
     </div>
     <div class="errors" v-show="error && showError">
       <p v-for="err in error">{{ err }}</p>
-
     </div>
   </div>
 </template>
@@ -53,7 +52,8 @@ input {
   line-height: 40px;
   font-size: 25px;
 
-  width: 500px;
+  max-width: 500px;
+  width: 100%;
 }
 
 input:focus {
