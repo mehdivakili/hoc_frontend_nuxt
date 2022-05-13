@@ -134,7 +134,9 @@ export default {
             text: text
           });
           this.$store.commit('register/setError', error.response.data)
-          if (Object.keys(error.response.data).some((v) => !['username','email','password','non_field_errors'].includes(v)))
+          if (Object.keys(error.response.data).some(
+            (v) => !['username','email','password','attend_code','non_field_errors'].includes(v)
+          ))
             this.state = 0
         }
       } finally {
