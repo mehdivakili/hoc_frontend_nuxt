@@ -304,10 +304,13 @@ export default {
     goToNextPage() {
       if (!this.$refs.form.validate())
         return
+      let d = {...this.$data}
+      delete d.rules
+
       this.$store.commit('register/setState', this.$store.state.register.state + 1)
       this.$store.commit('register/setUserData', {
         ...this.$store.state.register.userData,
-        form: {answer: JSON.stringify(this.$data)}
+        form: {answer: JSON.stringify(d)}
       })
       this.$router.push('/register/')
     }
