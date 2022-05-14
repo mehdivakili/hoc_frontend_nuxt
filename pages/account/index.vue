@@ -1,16 +1,38 @@
 <template>
-  <div style="width: 100%">
-    <div class="user-info-container">
-      <h2>
-        <img width="20" src="~/assets/images/error_icon.svg"/>
-        اطلاعات حساب کاربری
-        <img width="20" src="~/assets/images/error_icon.svg"/>
+  <div >
+    <v-container class="user-info-container">
+      <v-row>  <!-- title -->
+        <v-col>
+          <div >
+            <h2>
+              <v-icon>mdi-alert-circle-outline</v-icon>
+              اطلاعات حساب کاربری
+              <v-icon>mdi-alert-circle-outline</v-icon>
 
-      </h2>
+            </h2>
+          </div>
+        </v-col>
+      </v-row>
       <hr>
-      <div class="user-info">
-        <p><img src="~/assets/icons/user.svg"> نام و نام خانوادگی:  {{$auth.user.first_name_persian}} {{$auth.user.last_name_persian}}</p>
-        <p><img src="~/assets/icons/user.svg"> نام و نام خانوادگی(انگلیسی):  {{$auth.user.first_name}} {{$auth.user.last_name}}</p>
+      <v-row> <!-- Body -->
+        <v-col>
+          <v-row> <!-- row names -->
+            <v-col>
+              <p><v-icon color="#004948">mdi-account-outline</v-icon> نام و نام خانوادگی:  {{$auth.user.first_name_persian}} {{$auth.user.last_name_persian}}</p>
+            </v-col>
+            <v-col>
+              <p><v-icon color="#004948">mdi-account-tie-outline</v-icon> نام و نام خانوادگی(انگلیسی):  {{$auth.user.first_name}} {{$auth.user.last_name}}</p>
+            </v-col>
+          </v-row>
+
+        </v-col>
+      </v-row>
+    </v-container>
+
+
+      <div >
+
+
         <p><img src="~/assets/icons/gender.svg"> جنسیت:  {{$auth.user.sex}}</p>
         <p><img src="~/assets/icons/mail.svg"> ایمیل:  {{$auth.user.email}}</p>
         <p><img src="~/assets/icons/id_card.svg">  کد ملی:  {{$auth.user.national_code}}</p>
