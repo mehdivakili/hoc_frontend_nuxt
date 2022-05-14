@@ -27,7 +27,7 @@
         </v-slide-group>
       </v-sheet>
 
-      <v-window show-arrows>
+      <v-window show-arrows v-show="teams">
         <v-window-item
           v-for="n in (activeTab) ?Math.ceil(activeTab.people.length / 4): 0"
           :key="`card-${n}`"
@@ -37,7 +37,7 @@
               <!-- Inner Boxes -->
               <div class="profileContainer">
                 <div
-                  v-for="j of periodMaker(n)"
+                  v-for="j in activeTab.people.length%4 "
                   :key="j"
                   :class="
                     n == 1
@@ -81,6 +81,7 @@
                         ? j == 0 ? require(`~/assets/images/leaderIcon.svg`) :
                         require(`~/assets/images/memberIcon.svg`) :
                         require(`~/assets/images/memberIcon.svg`)" alt="role"
+
                     :style="
                       n == 1
                         ? j == 0
@@ -132,310 +133,10 @@ export default {
   name: "TeamTab",
   data() {
     return {
-      teams: [
-        // {
-        //   name: "سرگروه ها",
-        //   people: [
-        //     {
-        //       name: "مهدی",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "leaderIcon.svg",
-        //     },
-        //     {
-        //       name: "مهدی",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "leaderIcon.svg",
-        //     },
-        //     {
-        //       name: "مهدی",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "leaderIcon.svg",
-        //
-        //     },
-        //     {
-        //       name: "زهرا",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //     {
-        //       name: "علی",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //   ],
-        // },
-        // {
-        //   name: "انفورماتیک",
-        //   people: [
-        //     {
-        //       name: "مهدی",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "leaderIcon.svg",
-        //     },
-        //     {
-        //       name: "زهرا",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //     {
-        //       name: "علی",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //     {
-        //       name: "مریم",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //     {
-        //       name: "مهدی",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //     {
-        //       name: "زهرا",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //     {
-        //       name: "مریم",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //     {
-        //       name: "مهدی",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //     {
-        //       name: "زهرا",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //   ],
-        // },
-        // {
-        //   name: "علمی",
-        //   people: [
-        //     {
-        //       name: "مهدی",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "leaderIcon.svg",
-        //     },
-        //     {
-        //       name: "زهرا",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //     {
-        //       name: "علی",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //     {
-        //       name: "مریم",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //     {
-        //       name: "مهدی",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //     {
-        //       name: "زهرا",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //     {
-        //       name: "مریم",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //     {
-        //       name: "مهدی",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //     {
-        //       name: "زهرا",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //     {
-        //       name: "مهدی",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //     {
-        //       name: "زهرا",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //   ],
-        // },
-        // {
-        //   name: "تولید محتوا",
-        //   people: [
-        //     {
-        //       name: "مهدی",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "leaderIcon.svg",
-        //     },
-        //     {
-        //       name: "زهرا",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //     {
-        //       name: "علی",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //     {
-        //       name: "مریم",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //   ],
-        // },
-        // {
-        //   name: "روابط عمومی",
-        //   people: [
-        //     {
-        //       name: "مهدی",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "leaderIcon.svg",
-        //     },
-        //     {
-        //       name: "زهرا",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //     {
-        //       name: "علی",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //     {
-        //       name: "مریم",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //     {
-        //       name: "علی",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //   ],
-        // },
-        // {
-        //   name: "تبلیغات",
-        //   people: [
-        //     {
-        //       name: "مهدی",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "leaderIcon.svg",
-        //     },
-        //     {
-        //       name: "زهرا",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //     {
-        //       name: "علی",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //     {
-        //       name: "مریم",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //     {
-        //       name: "مهدی",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //     {
-        //       name: "زهرا",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //     {
-        //       name: "مریم",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //   ],
-        // },
-        // {
-        //   name: "تدارکات و دکور",
-        //   people: [
-        //     {
-        //       name: "مهدی",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "leaderIcon.svg",
-        //     },
-        //     {
-        //       name: "زهرا",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //     {
-        //       name: "علی",
-        //       image: "acm.png",
-        //       skill: "توسعه دهنده اندروید و فلاتر",
-        //       icon: "memberIcon.svg",
-        //     },
-        //   ],
-        // },
-      ],
+      teams: [],
       model: null,
       activeTabN: 0,
+
     };
   },
   computed: {
@@ -447,6 +148,16 @@ export default {
     }
   },
 
+  mounted() {
+    let t = this
+    this.$axios.get('team/').then((res) => {
+        t.teams = res.data;
+        t.activeTabCount = t.teams[0].people.length;
+
+      }
+    )
+
+  },
   methods: {
     changeActiveTab(n) {
       this.activeTabN = n;
@@ -470,6 +181,7 @@ export default {
         periodList.push(i);
         i++;
       }
+      console.log("hello")
       return periodList;
     },
     groupsInformation(n) {

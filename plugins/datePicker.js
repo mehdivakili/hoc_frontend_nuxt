@@ -17,3 +17,5 @@ Vue.use(VuePersianDatetimePicker, {
     //...
   }
 });
+
+Vue.use(require('vue-jalali-moment'));

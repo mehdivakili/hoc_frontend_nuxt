@@ -7,34 +7,31 @@
       <div class="sidebar__inner">
         <div class="profile">
           <div class="img-fluid">
-            <img src="~/assets/images/profile.png" />
+            <img src="~/assets/images/profile.svg"/>
           </div>
-          <p>
+          <p class="user_name">
             {{ $auth.user.first_name_persian }}
             {{ $auth.user.last_name_persian }}
           </p>
+          <p class="national_code">
+            {{ $auth.user.national_code }}
+          </p>
         </div>
         <div class="profile-menu">
-          <p class="menu-item">
-            <v-icon size="15">mdi-circle</v-icon>
-            <router-link to="/account/">داشبورد</router-link>
-          </p>
-          <p class="menu-item">
-            <v-icon size="15">mdi-circle</v-icon>
-            <router-link to="/account/edit/">ویرایش حساب کاربری</router-link>
-          </p>
-          <p class="menu-item">
-            <v-icon size="15">mdi-circle</v-icon>
-            <a
-              @click="
-                () => {
+            <router-link to="/account/" class="menu-item">
+              <img width="20" src="~/assets/images/dashboard.svg"/>
+              داشبورد
+            </router-link>
+          <router-link to="/account/edit/" class="menu-item">
+            <img width="20" src="~/assets/images/edit_user.svg"/>
+            ویرایش حساب کاربری
+          </router-link>
+          <a class="menu-item"
+            @click="() => {
                   $nuxt.$loading.start();
-                  $auth.logout().then($nuxt.$loading.finish);
-                }
-              "
-              >خروج</a
-            >
-          </p>
+                  $auth.logout().then($nuxt.$loading.finish);}"> <img width="20" src="~/assets/images/logout.svg"/>
+            خروج</a>
+
         </div>
       </div>
     </div>
@@ -48,7 +45,7 @@ import StickySideber from "sticky-sidebar-v2";
 export default {
   name: "account",
   mounted() {
-    this.$store.commit("setFooterColor", "#A9E3E1");
+    this.$store.commit("setFooterColor", "#C5E3E3");
     var sidebar = new StickySideber(".sidebar", {
       topSpacing: 120,
       bottomSpacing: 20,
@@ -75,20 +72,20 @@ export default {
 }
 
 .sidebar__inner {
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 15px;
+  background: linear-gradient(146.8deg, #00807E 13.33%, #004746 86.04%);
+  border-radius: 20px;
   padding: 20px;
   width: 300px;
 
   .profile {
-    background: rgba(255, 255, 255, 0.5);
+    background: none;
     border-radius: 15px;
-    padding: 15px;
     margin-bottom: 20px;
+
     .img-fluid {
       display: flex;
       justify-content: center;
-      padding: 0 20px;
+
       img {
         max-width: 100%;
 
@@ -96,20 +93,57 @@ export default {
         border-radius: 50%;
       }
     }
+
     p {
       text-align: center;
-      margin-top: 10px;
+      color: #C5E3E3;
+
+      &.user_name {
+        margin: 10px;
+        font-weight: bold;
+        font-size: 20px;
+      }
+
+      &.national_code {
+        margin: 0;
+      }
+
     }
   }
+
   .profile-menu {
     .menu-item {
-      background: rgba(255, 255, 255, 0.5);
+      display: block;
+      background: #C5E3E3;
       padding: 20px;
       border-radius: 15px;
-      &:last-child {
-        margin-bottom: 0;
+      font-weight: bold;
+      text-decoration: none;
+      color: #004948;
+      margin-top: 20px;
+      margin-bottom: 0;
+
+      transition: 0.4s;
+
+      &.nuxt-link-exact-active {
+        color: #00928F;
+        img{
+          filter: brightness(200%);
+
+        }
+
       }
+      img{
+        margin-left: 20px;
+        transition: 0.4s;
+
+      }
+
+
     }
+
+
   }
+
 }
 </style>

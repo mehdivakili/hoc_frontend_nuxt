@@ -44,7 +44,7 @@
                 <v-row style="margin-bottom: 5px;">
                   <v-col style="margin-right: 15px; "><p class="titles" style="margin-right: 5em">مبلغ پرداختی</p>
                   </v-col>
-                  <v-col><p class="content"> ۱۲۰,۰۰۰ تومان</p></v-col>
+                  <v-col><p class="content"> {{ amount }} تومان</p></v-col>
                 </v-row>
               </v-card>
             </v-col>
@@ -70,6 +70,11 @@
 <script>
 export default {
   name: "Finish",
+  data() {
+    return {
+      amount: 132000
+    }
+  },
   computed: {
     name() {
       return this.$store.state.register.userData.first_name_persian + " " + this.$store.state.register.userData.last_name_persian
@@ -92,6 +97,12 @@ export default {
       }
       this.$nuxt.$loading.finish();
     }
+  },
+  beforeMount() {
+    let t = this
+    this.$axios.get('get_option/purchase_amount').then((res) =>
+      t.amount = res.data.value / 10
+    )
   }
 
 }

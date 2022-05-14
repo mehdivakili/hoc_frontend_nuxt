@@ -53,7 +53,9 @@
             v-for="item in ($auth.loggedIn) ?navButtonsLogin:navButtons"
             :key="item.name + 'mobile'"
           >
-            <v-btn :class="item.class" class="py-4 px-6 my-2" :to="item.path">{{
+            <v-btn :class="item.class" class="py-4 px-6 my-2" :to="item.path"
+                   @click="(item.hasClick)?logout():()=>{}"
+            >{{
                 item.name
               }}
             </v-btn>
@@ -113,7 +115,7 @@ export default {
       filter: drop-shadow(0 8px 10px rgba(0, 146, 143, 0.25));
       background: linear-gradient(180deg, #03b9b5, #009592);
       border-radius: 15px;
-      color: #fff;
+      color: #fff !important;
       border: none;
       font-size: 16px;
     }
@@ -124,7 +126,7 @@ export default {
       background-color: #fff !important;
       border-radius: 15px;
       border: 3px solid #03b9b5;
-      color: #03b9b5;
+      color: #03b9b5 !important;
       font-size: 16px;
     }
   }

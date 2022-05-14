@@ -82,7 +82,7 @@ export default {
       this.$store.commit('register/setState', 0)
     }
     if (this.$route.fullPath.endsWith('register/') || this.$route.fullPath.endsWith('register')) {
-      this.$store.commit('setFooterColor', '#A9E3E1');
+      this.$store.commit('setFooterColor', '#C5E3E3');
       var sidebar = new StickySidebar('.image', {
         topSpacing: 130,
         bottomSpacing: 30,
@@ -102,14 +102,14 @@ export default {
 <style scoped lang="scss">
 
 .login {
-  background: #A9E3E1;
+  background: #C5E3E3;
   margin: 30px;
 }
 
 
 @media screen and (min-width: 1000px) {
   .login {
-    background: #A9E3E1;
+    background: #C5E3E3;
     display: flex;
     justify-content: center;
 
@@ -160,7 +160,7 @@ export default {
   width: 80px;
   border-radius: 50%;
   box-sizing: border-box;
-  background: #A9E3E1;
+  background: #C5E3E3;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
   display: flex;
   justify-content: center;
@@ -212,7 +212,7 @@ export default {
 .vpd-input-group {
   background: white !important;
   height: 48px !important;
-  border-radius: 5px !important;
+  border-radius: 15px !important;
 
 }
 

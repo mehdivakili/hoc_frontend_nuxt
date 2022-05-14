@@ -1,10 +1,10 @@
 <template>
-  <p>ثبت نام شما با موفقیت انجام شد</p>
+  <p><img src="~/assets/images/success_icon.svg"/> ثبت نام شما با موفقیت انجام شد</p>
 </template>
 
 <script>
 export default {
-name: "success"
+  name: "success"
 }
 </script>
 

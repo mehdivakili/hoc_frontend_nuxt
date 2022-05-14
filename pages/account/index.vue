@@ -1,14 +1,26 @@
 <template>
   <div style="width: 100%">
     <div class="user-info-container">
-      <h2>اطلاعات حساب کاربری</h2>
+      <h2>
+        <img width="20" src="~/assets/images/error_icon.svg"/>
+        اطلاعات حساب کاربری
+        <img width="20" src="~/assets/images/error_icon.svg"/>
+      </h2>
       <hr>
       <div class="user-info">
-        <p><v-icon>mdi-account</v-icon> نام و نام خانوادگی:  {{$auth.user.first_name_persian}} {{$auth.user.last_name_persian}}</p>
-        <p><v-icon>mdi-gender-male-female</v-icon> جنسیت:  {{$auth.user.sex}}</p>
-        <p><v-icon>mdi-phone-in-talk</v-icon> شماره تماس:  {{$auth.user.phone_number}}</p>
-        <p><v-icon>mdi-email-outline</v-icon> ایمیل:  {{$auth.user.email}}</p>
-        <p><v-icon>mdi-map-marker-outline</v-icon> محل سکونت:  {{$auth.user.address}}</p>
+        <p><img src="~/assets/icons/user.svg"> نام و نام خانوادگی:  {{$auth.user.first_name_persian}} {{$auth.user.last_name_persian}}</p>
+        <p><img src="~/assets/icons/user.svg"> نام و نام خانوادگی(انگلیسی):  {{$auth.user.first_name}} {{$auth.user.last_name}}</p>
+        <p><img src="~/assets/icons/gender.svg"> جنسیت:  {{$auth.user.sex}}</p>
+        <p><img src="~/assets/icons/mail.svg"> ایمیل:  {{$auth.user.email}}</p>
+        <p><img src="~/assets/icons/id_card.svg">  کد ملی:  {{$auth.user.national_code}}</p>
+        <p><img src="~/assets/icons/username.svg"> نام کاربری:  {{$auth.user.username}}</p>
+        <p style="width: 100%"><img src="~/assets/icons/calendar.svg"> تاریخ تولد:  {{new Date($auth.user.birth_date) | moment("jYYYY/jMM/jDD")}}</p>
+        <p><img src="~/assets/icons/phone.svg"> شماره تماس:  {{$auth.user.phone_number}}</p>
+        <p><img src="~/assets/icons/phone.svg"> شماره تماس ضروری:  {{$auth.user.parent_phone_number}}</p>
+        <p><img src="~/assets/icons/grade.svg"> پایه تحصیلی فعلی:  {{$auth.user.grade}}</p>
+        <p><img src="~/assets/icons/star.svg"> معدل پایه تحصیلی قبلی:  {{$auth.user.before_grade_score}}</p>
+        <p><img src="~/assets/icons/school.svg"> نام مدرسه:  {{$auth.user.school_name}}</p>
+        <p><img src="~/assets/icons/map_marker.svg"> ناحیه:  {{$auth.user.aria}}</p>
       </div>
     </div>
   </div>
@@ -22,13 +34,19 @@ name: "index"
 
 <style scoped lang="scss">
   .user-info-container{
-    border: 3px white solid;
+    border: 2px #004948 solid;
     border-radius: 15px;
     padding: 20px;
   }
+  h2{
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px 0 40px 0;
+  }
   hr{
-    background: white;
-    height: 3px;
+    background: #004948;
+    height: 2px;
     opacity: 1;
     border-radius: 3px;
   }
@@ -37,12 +55,15 @@ name: "index"
     flex-wrap: wrap;
     p{
       min-width: 300px;
-      width: 31%;
+      width: calc(50% - 20px);
+      padding-right: 10%;
       word-break: keep-all;
       margin: 10px;
       text-align: right;
-      &:last-child{
-        flex-grow: 2;
+    }
+    @media screen and (max-width: 1000px){
+      p{
+        width: 100%;
       }
     }
   }
