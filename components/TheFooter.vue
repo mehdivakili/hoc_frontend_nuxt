@@ -1,54 +1,60 @@
 <template>
-  <footer>
-        <div id="footer-wave" :style="{'--bgColor': bgColor}"></div>
-    <div class="footer-content">
-      <div class="footer-info">
-        <h5> ارتباط با ما: </h5>
-        <p>
-          <v-icon>mdi-phone</v-icon>
+<footer>
+  <div id="footer-wave" :style="{'--bgColor': bgColor}"></div>
+  <div class="footer-content">
+    <div class="footer-info">
+      <h5> ارتباط با ما: </h5>
+      <p>
+        <v-icon>mdi-phone</v-icon>
+        <a href="tel:09170001234">
           ۰۹۱۷۰۰۰۱۲۳۴
-          <v-icon>mdi-phone</v-icon>
-        </p>
-        <p>
-          <v-icon>mdi-email</v-icon>
-          support@hocshirazu.ir
-          <v-icon>mdi-email</v-icon>
-        </p>
-        <h5>با زنگ برنامه نویسی در شبکه های اجتماعی باشید !</h5>
-        <div class="footer-contacts">
-          <a>
-            <img src="~/assets/images/telegram.png">
-          </a>
-          <a>
-            <img src="~/assets/images/instagram.png">
-          </a>
-          <a>
-            <img src="~/assets/images/linkedin.png">
-          </a>
-        </div>
-      </div>
-      <div class="footer-logos">
-        <a>
-          <img src="~/assets/images/logo.png">
-          <p>زنگ برنامه نویسی بین المللی</p>
         </a>
-        <a>
-          <img src="~/assets/images/shiraz.png">
-          <p>دانشگاه شیراز</p>
+        <v-icon>mdi-phone</v-icon>
+      </p>
+      <p>
+        <v-icon>mdi-email</v-icon>
+        support@hocshirazu.ir
+        <v-icon>mdi-email</v-icon>
+      </p>
+      <h5>با زنگ برنامه نویسی در شبکه های اجتماعی باشید !</h5>
+      <div class="footer-contacts">
+        <a href="https://t.me/hocshirazu">
+          <img src="~/assets/images/telegram.png">
         </a>
-        <a>
-          <img src="~/assets/images/acm.png">
-          <p>انجمن ACM</p>
+        <a href="https://www.instagram.com/hocshirazu/">
+          <img src="~/assets/images/instagram.png">
+        </a>
+        <a href="https://www.linkedin.com/company/hocshirazu/">
+          <img src="~/assets/images/linkedin.png">
         </a>
       </div>
     </div>
-  </footer>
+    <div class="footer-logos">
+      <a href="https://hourofcode.com/ir">
+        <img src="~/assets/images/logo.png">
+        <p>زنگ برنامه نویسی بین المللی</p>
+      </a>
+      <a href="https://shirazu.ac.ir/">
+        <img src="~/assets/images/shiraz.png">
+        <p>دانشگاه شیراز</p>
+      </a>
+      <a href="https://acm.shirazu.ac.ir/">
+        <img src="~/assets/images/acm.png">
+        <p>انجمن ACM</p>
+      </a>
+    </div>
+  </div>
+</footer>
 </template>
 
 <script>
 export default {
   name: "TheFooter",
-  props: {bgColor: {default: 'white'}}
+  props: {
+    bgColor: {
+      default: 'white'
+    }
+  }
 }
 </script>
 
@@ -60,9 +66,7 @@ footer {
   color: black;
 }
 
-@media screen and (min-width: 500px) {
-
-}
+@media screen and (min-width: 500px) {}
 
 .footer-logos {
   display: flex;

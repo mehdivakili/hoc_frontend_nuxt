@@ -1,4 +1,5 @@
 <template>
+
   <div >
     <v-container class="user-info-container">
       <v-row>  <!-- title -->
@@ -74,6 +75,7 @@
         </v-col>
       </v-row>
     </v-container>
+
   </div>
 </template>
 

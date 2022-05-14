@@ -84,7 +84,7 @@ export default {
     },
   },
   mounted() {
-    this.$store.commit('setFooterColor', '#A9E3E1')
+    this.$store.commit('setFooterColor', '#C5E3E3')
   },
   auth: 'guest'
 }
@@ -92,7 +92,7 @@ export default {
 
 <style scoped lang="scss">
 .login {
-  background: #A9E3E1;
+  background: #C5E3E3;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -112,6 +112,13 @@ export default {
   @media screen and (max-width: 1000px) {
     .image {
       display: none;
+    }
+    .content{
+      width: 100%;
+
+    }
+    .login{
+      padding: 15px;
     }
   }
 
