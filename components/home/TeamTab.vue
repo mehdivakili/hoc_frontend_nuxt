@@ -1,65 +1,6 @@
 <template>
   <div class="banner">
     <div class="bannerCover">
-      <!-- <ul class="nav nav-pills" id="TeamTab" role="tablist">
-          <li
-            :key="groupKey"
-            v-for="(group, groupKey) in team"
-            class="nav-item"
-            role="presentation"
-          >
-            <button
-              :class="['nav-link', !groupKey ? 'active' : '']"
-              :id="`group-${groupKey}-tab`"
-              data-bs-toggle="tab"
-              :data-bs-target="`#group-${groupKey}`"
-              type="button"
-              role="tab"
-              :aria-controls="`group-${groupKey}`"
-            >
-              {{ group.name }}
-            </button>
-          </li>
-        </ul> -->
-      <!-- <div class="tab-content" id="TeamTabContent" style="height: 200px">
-          <div
-            :key="groupKey"
-            v-for="(group, groupKey) in team"
-            :class="['tab-pane', 'fade', !groupKey ? 'show' : '']"
-            :id="`group-${groupKey}`"
-            role="tabpanel"
-            :aria-labelledby="`group-${groupKey}-tab`"
-          ></div>
-        </div> -->
-      <!-- <v-sheet class="mx-auto" elevation="8" max-width="800">
-          <v-slide-group
-            v-model="model"
-            class="pa-4"
-            active-class="success"
-            show-arrows
-          >
-            <v-slide-item v-for="n in 15" :key="n" v-slot="{ active, toggle }">
-              <v-card
-                :color="active ? undefined : 'grey lighten-1'"
-                class="ma-4"
-                height="200"
-                width="100"
-                @click="toggle"
-              >
-                <v-row class="fill-height" align="center" justify="center">
-                  <v-scale-transition>
-                    <v-icon
-                      v-if="active"
-                      color="white"
-                      size="48"
-                      v-text="'mdi-close-circle-outline'"
-                    ></v-icon>
-                  </v-scale-transition>
-                </v-row>
-              </v-card>
-            </v-slide-item>
-          </v-slide-group>
-        </v-sheet> -->
 
       <v-sheet color="rgb(0, 0, 0, 0)" class="mx-auto mt-12" max-width="auto">
         <v-slide-group single hide-arrows mandatory>
@@ -88,7 +29,7 @@
 
       <v-window show-arrows v-show="teams">
         <v-window-item
-          v-for="n in (teams === [])? Math.ceil(activeTab.people.length / 4):0"
+          v-for="n in (activeTab) ?Math.ceil(activeTab.people.length / 4): 0"
           :key="`card-${n}`"
         >
           <v-card color="rgb(0, 0, 0, 0)" height="500">
@@ -132,13 +73,15 @@
                     {{ activeTab.people[j].name }}
                   </div>
                   <v-img
-                    :lazy-src="
-                      require(`~/assets/images/memberIcon.svg`)
-                    "
-                    :src="
-                      require(`~/assets/images/memberIcon.svg`)
-                    "
-                    alt="role"
+                    :lazy-src="n == 1
+                        ? j == 0 ? require(`~/assets/images/leaderIcon.svg`) :
+                        require(`~/assets/images/memberIcon.svg`) :
+                        require(`~/assets/images/memberIcon.svg`)"
+                    :src="n == 1
+                        ? j == 0 ? require(`~/assets/images/leaderIcon.svg`) :
+                        require(`~/assets/images/memberIcon.svg`) :
+                        require(`~/assets/images/memberIcon.svg`)" alt="role"
+
                     :style="
                       n == 1
                         ? j == 0
@@ -157,9 +100,9 @@
                         : 'font-size: 12px;'
                     "
                   >
-                    {{ activeTab.people[j].skill }}
+                    {{ activeTab.people[j].description }}
                   </div>
-                  <a href="#">
+                  <a :href="activeTab.people[j].linkedin">
                     <v-img
                       :lazy-src="require(`~/assets/images/linkedin_logo.svg`)"
                       max-height="38"
@@ -178,7 +121,7 @@
       </v-window>
       <div class="groupDutyBoxContainer mb-10">
         <div class="groupDutyBox font-weight-bold">
-          {{ groupsInformation[activeTabN] }}
+          {{ groupsInformation(activeTabN) }}
         </div>
       </div>
     </div>
@@ -190,26 +133,21 @@ export default {
   name: "TeamTab",
   data() {
     return {
-      groupsInformation: [
-        "مسئولیت سرگروهی را بر عهده دارند.",
-        "انفورماتیک مسئول زدن سایت و استریم.",
-        "تولید محتوای علمی میکنند.",
-        "تولید محتوا میکنند.",
-        "مسئولیت روابط عمومی را بر عهده دارند.",
-        "مسئولیت تبلیغات را برعهده دارند.",
-        "مسئولیت تدارکات و دکور را برعهده دارند.",
-      ],
       teams: [],
       model: null,
       activeTabN: 0,
-      activeTabCount: 0,
+
     };
   },
   computed: {
     activeTab(param, n = this.activeTabN) {
       return this.teams[n];
     },
+    activeTabCount() {
+      return this.activeTab.people.length
+    }
   },
+
   mounted() {
     let t = this
     this.$axios.get('team/').then((res) => {
@@ -246,7 +184,16 @@ export default {
       console.log("hello")
       return periodList;
     },
+    groupsInformation(n) {
+      if (this.activeTab)
+        return this.activeTab.information
+      return ""
+    }
   },
+  async mounted() {
+    this.teams = (await this.$axios.get('team/')).data
+
+  }
 };
 </script>
 
@@ -345,9 +292,12 @@ export default {
 .leaderPicture {
   max-width: 102px;
   max-height: 102px;
+  border-radius: 50%;
 }
 
 .memberPicture {
+  border-radius: 50%;
+
   max-width: 84px;
   max-height: 84px;
 }
