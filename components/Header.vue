@@ -31,7 +31,7 @@
       ></v-app-bar-nav-icon>
     </v-app-bar>
 
-    <v-navigation-drawer v-model="drawer" absolute temporary>
+    <v-navigation-drawer v-model="drawer" absolute temporary style="position: fixed;">
       <v-list nav dense>
         <v-list-item-group v-model="group">
           <div
