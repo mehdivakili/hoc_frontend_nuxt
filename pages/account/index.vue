@@ -24,28 +24,56 @@
               <p><v-icon color="#004948">mdi-account-tie-outline</v-icon> نام و نام خانوادگی(انگلیسی):  {{$auth.user.first_name}} {{$auth.user.last_name}}</p>
             </v-col>
           </v-row>
+          <v-row> <!-- row sex -->
+          <v-col>
+            <p><img src="~/assets/icons/gender.svg"> جنسیت:  {{$auth.user.sex}}</p>
+          </v-col>
+          <v-col>
+            <p><img src="~/assets/icons/mail.svg"> ایمیل:  {{$auth.user.email}}</p>
+          </v-col>
+        </v-row>
+          <v-row> <!-- row nationalCode -->
+            <v-col>
+              <p><img src="~/assets/icons/id_card.svg">  کد ملی:  {{$auth.user.national_code}}</p>
+            </v-col>
+            <v-col>
+              <p><img src="~/assets/icons/username.svg"> نام کاربری:  {{$auth.user.username}}</p>
+            </v-col>
+          </v-row>
+          <v-row> <!-- row birthday -->
+            <v-col>
+              <p style="width: 100%"><img src="~/assets/icons/calendar.svg"> تاریخ تولد:  {{new Date($auth.user.birth_date) | moment("jYYYY/jMM/jDD")}}</p>
 
+            </v-col>
+            <v-col>
+              <p><img src="~/assets/icons/phone.svg"> شماره تماس:  {{$auth.user.phone_number}}</p>
+            </v-col>
+          </v-row>
+          <v-row> <!-- row phone -->
+            <v-col>
+              <p><img src="~/assets/icons/phone.svg"> شماره تماس ضروری:  {{$auth.user.parent_phone_number}}</p>
+
+            </v-col>
+            <v-col>
+              <p><img src="~/assets/icons/grade.svg"> پایه تحصیلی فعلی:  {{$auth.user.grade}}</p>
+            </v-col>
+          </v-row>
+          <v-row> <!-- row paye -->
+            <v-col>
+              <p><img src="~/assets/icons/star.svg"> معدل پایه تحصیلی قبلی:  {{$auth.user.before_grade_score}}</p>
+            </v-col>
+            <v-col>
+              <p><img src="~/assets/icons/school.svg"> نام مدرسه:  {{$auth.user.school_name}}</p>
+            </v-col>
+          </v-row>
+          <v-row><!-- last row -->
+            <v-col>
+              <p><img src="~/assets/icons/map_marker.svg"> ناحیه:  {{$auth.user.aria}}</p>
+            </v-col>
+          </v-row>
         </v-col>
       </v-row>
     </v-container>
-
-
-      <div >
-
-
-        <p><img src="~/assets/icons/gender.svg"> جنسیت:  {{$auth.user.sex}}</p>
-        <p><img src="~/assets/icons/mail.svg"> ایمیل:  {{$auth.user.email}}</p>
-        <p><img src="~/assets/icons/id_card.svg">  کد ملی:  {{$auth.user.national_code}}</p>
-        <p><img src="~/assets/icons/username.svg"> نام کاربری:  {{$auth.user.username}}</p>
-        <p style="width: 100%"><img src="~/assets/icons/calendar.svg"> تاریخ تولد:  {{new Date($auth.user.birth_date) | moment("jYYYY/jMM/jDD")}}</p>
-        <p><img src="~/assets/icons/phone.svg"> شماره تماس:  {{$auth.user.phone_number}}</p>
-        <p><img src="~/assets/icons/phone.svg"> شماره تماس ضروری:  {{$auth.user.parent_phone_number}}</p>
-        <p><img src="~/assets/icons/grade.svg"> پایه تحصیلی فعلی:  {{$auth.user.grade}}</p>
-        <p><img src="~/assets/icons/star.svg"> معدل پایه تحصیلی قبلی:  {{$auth.user.before_grade_score}}</p>
-        <p><img src="~/assets/icons/school.svg"> نام مدرسه:  {{$auth.user.school_name}}</p>
-        <p><img src="~/assets/icons/map_marker.svg"> ناحیه:  {{$auth.user.aria}}</p>
-      </div>
-    </div>
   </div>
 </template>
 
