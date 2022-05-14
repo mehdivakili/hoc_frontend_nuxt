@@ -26,6 +26,10 @@
             <img width="20" src="~/assets/images/edit_user.svg"/>
             ویرایش حساب کاربری
           </router-link>
+          <router-link to="/account/ScoreBoard/" class="menu-item">
+            <img width="20" src="~/assets/images/edit_user.svg"/>
+            باشگاه زنگ برنامه نویسی
+          </router-link>
           <a class="menu-item"
             @click="() => {
                   $nuxt.$loading.start();
