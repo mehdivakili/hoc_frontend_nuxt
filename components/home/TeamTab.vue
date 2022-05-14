@@ -49,12 +49,8 @@
                 >
                   <!-- Card's Content -->
                   <v-img
-                    :lazy-src="
-                      require(`~/assets/images/${activeTab.people[j].image}`)
-                    "
-                    :src="
-                      require(`~/assets/images/${activeTab.people[j].image}`)
-                    "
+                    :lazy-src="activeTab.people[j].image"
+                    :src="activeTab.people[j].image"
                     alt="profile Picture"
                     :class="
                       n == 1
