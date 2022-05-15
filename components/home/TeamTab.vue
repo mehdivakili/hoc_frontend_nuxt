@@ -1,33 +1,42 @@
 <template>
-  <div class="banner">
-    <div class="bannerCover">
+  <div class="banner ">
+    <div class="bannerCover " >
 
-      <v-sheet color="rgb(0, 0, 0, 0)" class="mx-auto mt-12" max-width="auto">
-        <v-slide-group single hide-arrows mandatory>
+      <v-sheet color="rgb(0, 0, 0, 0)" class="mx-auto mt-12 " max-width="auto">
+
+        <v-slide-group single show-arrows mandatory >
+          <v-row>
+
+
           <v-slide-item
             v-for="(team, n) in teams"
             :key="n"
             v-slot="{ active, toggle }"
           >
-            <v-btn
-              class="mx-2 noSelected font-weight-bold"
-              :color="active ? 'buttonBox' : ''"
-              :input-value="active"
-              active-class="buttonBox"
-              text
-              x-large
-              @click="
-                toggle();
-                changeActiveTab(n);
-              "
-            >
-              {{ team.name }}
-            </v-btn>
+            <v-col >
+              <v-btn
+                class="mx-2 noSelected font-weight-bold"
+                :color="active ? 'buttonBox' : ''"
+                :input-value="active"
+                active-class="buttonBox"
+                text
+                x-large
+                @click="
+                  toggle();
+                  changeActiveTab(n);
+                "
+              >
+                {{ team.name }}
+              </v-btn>
+            </v-col>
           </v-slide-item>
+          </v-row>
         </v-slide-group>
+
       </v-sheet>
 
-      <v-window show-arrows>
+      <v-window show-arrows  class="overflow-x-hidden overflow-y-auto" >
+
         <v-window-item
           v-for="n in (activeTab) ?Math.ceil(activeTab.people.length / 4): 0"
           :key="`card-${n}`"
@@ -35,86 +44,89 @@
           <v-card color="rgb(0, 0, 0, 0)" height="500">
             <v-row class="fill-height" align="center" justify="center">
               <!-- Inner Boxes -->
-              <div class="profileContainer">
-                <div
-                  v-for="j of periodMaker(n)"
-                  :key="j"
-                  :class="
-                    n == 1
-                      ? j == 0
-                        ? 'groupLeader memberCardContainer'
-                        : 'groupMember memberCardContainer'
-                      : 'groupMember memberCardContainer'
-                  "
-                >
-                  <!-- Card's Content -->
-                  <v-img
-                    :lazy-src="activeTab.people[j].image"
-                    :src="activeTab.people[j].image"
-                    alt="profile Picture"
+              <v-col class="profileContainer">
+                <v-row style="align-items: flex-end !important;">
+                  <v-col
+                    style="margin-left: 2em;margin-right: 3em;margin-top: 2em"
+                    v-for="j of periodMaker(n)"
+                    :key="j"
                     :class="
                       n == 1
                         ? j == 0
-                          ? 'leaderPicture'
-                          : 'memberPicture'
-                        : 'memberPicture'
-                    "
-                  ></v-img>
-                  <div
-                    class="skillText font-weight-bold"
-                    :style="
-                      n == 1
-                        ? j == 0
-                          ? 'font-size: 20px;'
-                          : 'font-size: 16px;'
-                        : 'font-size: 16px;'
+                          ? 'groupLeader memberCardContainer'
+                          : 'groupMember memberCardContainer'
+                        : 'groupMember memberCardContainer'
                     "
                   >
-                    {{ activeTab.people[j].name }}
-                  </div>
-                  <v-img
-
-                    :lazy-src="n == 1
-                        ? j == 0 ? require(`~/assets/images/leaderIcon.svg`) :
-                        require(`~/assets/images/memberIcon.svg`) :
-                        require(`~/assets/images/memberIcon.svg`)"
-                    :src="n == 1
-                        ? j == 0 ? require(`~/assets/images/leaderIcon.svg`) :
-                        require(`~/assets/images/memberIcon.svg`) :
-                        require(`~/assets/images/memberIcon.svg`)" alt="role"
-
-                    :style="
-                      n == 1
-                        ? j == 0
-                          ? 'max-width: 65px; max-height: 26px;'
-                          : 'max-width: 43px; max-height: 28px;'
-                        : 'max-width: 43px; max-height: 28px;'
-                    "
-                  ></v-img>
-                  <div
-                    class="skillText font-weight-bold"
-                    :style="
-                      n == 1
-                        ? j == 0
-                          ? 'font-size: 16px;'
-                          : 'font-size: 12px;'
-                        : 'font-size: 12px;'
-                    "
-                  >
-                    {{ activeTab.people[j].description }}
-                  </div>
-                  <a :href="activeTab.people[j].linkedin">
+                    <!-- Card's Content -->
                     <v-img
-                      :lazy-src="require(`~/assets/images/linkedin_logo.svg`)"
-                      max-height="38"
-                      max-width="113"
-                      :src="require(`~/assets/images/linkedin_logo.svg`)"
-                      alt="linkedIn Icon"
+                      :lazy-src="activeTab.people[j].image"
+                      :src="activeTab.people[j].image"
+                      alt="profile Picture"
+                      :class="
+                        n == 1
+                          ? j == 0
+                            ? 'leaderPicture'
+                            : 'memberPicture'
+                          : 'memberPicture'
+                      "
                     ></v-img>
-                  </a>
-                  <!-- End Of Card's Content -->
-                </div>
-              </div>
+                    <div
+                      class="skillText font-weight-bold"
+                      :style="
+                        n == 1
+                          ? j == 0
+                            ? 'font-size: 20px;'
+                            : 'font-size: 16px;'
+                          : 'font-size: 16px;'
+                      "
+                    >
+                      {{ activeTab.people[j].name }}
+                    </div>
+                    <v-img
+
+                      :lazy-src="n == 1
+                          ? j == 0 ? require(`~/assets/images/leaderIcon.svg`) :
+                          require(`~/assets/images/memberIcon.svg`) :
+                          require(`~/assets/images/memberIcon.svg`)"
+                      :src="n == 1
+                          ? j == 0 ? require(`~/assets/images/leaderIcon.svg`) :
+                          require(`~/assets/images/memberIcon.svg`) :
+                          require(`~/assets/images/memberIcon.svg`)" alt="role"
+
+                      :style="
+                        n == 1
+                          ? j == 0
+                            ? 'max-width: 65px; max-height: 26px;'
+                            : 'max-width: 43px; max-height: 28px;'
+                          : 'max-width: 43px; max-height: 28px;'
+                      "
+                    ></v-img>
+                    <div
+                      class="skillText font-weight-bold"
+                      :style="
+                        n == 1
+                          ? j == 0
+                            ? 'font-size: 16px;'
+                            : 'font-size: 12px;'
+                          : 'font-size: 12px;'
+                      "
+                    >
+                      {{ activeTab.people[j].description }}
+                    </div>
+                    <a :href="activeTab.people[j].linkedin">
+                      <v-img
+                        :lazy-src="require(`~/assets/images/linkedin_logo.svg`)"
+                        max-height="38"
+                        max-width="113"
+                        :src="require(`~/assets/images/linkedin_logo.svg`)"
+                        alt="linkedIn Icon"
+                      ></v-img>
+                    </a>
+                    <!-- End Of Card's Content -->
+                  </v-col>
+                </v-row>
+              </v-col>
               <!-- End Of Inner Boxes -->
             </v-row>
           </v-card>
@@ -200,7 +212,7 @@ export default {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 757px;
+  height: auto;
   /* overflow: hidden; */
 }
 
@@ -213,10 +225,9 @@ export default {
 }
 
 .profileContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: flex-end;
+
+
+  align-items: flex-end !important;
   width: 70%;
   height: 316px;
 }
@@ -332,4 +343,5 @@ export default {
 
   color: #004948;
 }
+
 </style>
