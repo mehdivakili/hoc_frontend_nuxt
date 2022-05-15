@@ -6,10 +6,10 @@
         <v-btn
           elevation="0"
           class="nav__btn mx-4 px-4 py-6"
-          :to="item.path ? item.path : ''"
+          :to="item.to ? item.to : ''"
           :href="item.href ? item.href : ''"
           @click="(item.hasClick)?logout():()=>{}"
-        >{{ item.name }}
+        >{{ item.title }}
         </v-btn
         >
       </div>
@@ -37,21 +37,20 @@
           <div
             class="d-flex flex-column"
             v-for="item in navItems"
-            :key="item.name"
+            :key="item.title"
           >
             <v-btn
               elevation="0"
               class="nav__btn my-2 px-2 py-6"
-              :to="item.path ? item.path : ''"
+              :to="item.to ? item.to : ''"
               :href="item.href ? item.href : ''"
-            >{{ item.name }}
+            >{{ item.title }}
             </v-btn
             >
           </div>
           <div
             class="d-flex flex-column"
             v-for="item in ($auth.loggedIn) ?navButtonsLogin:navButtons"
-            :key="item.name + 'mobile'"
           >
             <v-btn :class="item.class" class="py-4 px-6 my-2" :to="item.path"
                    @click="(item.hasClick)?logout():()=>{}"
@@ -73,14 +72,7 @@ export default {
     return {
       drawer: false,
       group: null,
-      navItems: [
-        {name: "خانه", path: "/"},
-        {name: "اعتبار سنجی مدرک", href: "/verify"},
-        {
-          name: "زنگ برنامه نویسی دوره ششم",
-          href: "https://hoc6.hocshirazu.ir",
-        },
-      ],
+      navItems: [],
       navButtons: [
         {name: "ثبت نام", path: "/register", class: "nav__btn__register"},
         {name: "ورود", path: "/login", class: "nav__btn__login"},
@@ -96,7 +88,11 @@ export default {
       this.$auth.logout()
       this.$store.commit('register/setState', 0)
     }
-  }
+  },
+  async fetch() {
+    this.navItems = await this.$axios.$get('front/menu/')
+  },
+  fetchOnServer: false,
 };
 </script>
 
