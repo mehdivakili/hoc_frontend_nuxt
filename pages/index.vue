@@ -56,7 +56,7 @@
       </template>
     </Banner>
 
-    <TeamTab/>
+    <TeamTab2/>
     <Statistics/>
     <Questions/>
   </div>
@@ -70,13 +70,13 @@ import Banner from "@/components/home/Banner";
 import Questions from "@/components/home/Questions";
 import TeamTab from "@/components/home/TeamTab";
 import Statistics from "@/components/home/Statistics";
-
+import TeamTab2 from "@/components/home/TeamTab2";
 export default {
   name: 'IndexPage',
   components: {
     Statistics,
     MainBanner,
-    Banner, Questions, TeamTab
+    Banner, Questions, TeamTab,TeamTab2,
   },
   auth: false,
   mounted() {

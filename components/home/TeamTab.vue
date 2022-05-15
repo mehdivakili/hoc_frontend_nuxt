@@ -3,31 +3,40 @@
     <div class="bannerCover">
 
       <v-sheet color="rgb(0, 0, 0, 0)" class="mx-auto mt-12" max-width="auto">
-        <v-slide-group single hide-arrows mandatory>
+
+        <v-slide-group single show-arrows mandatory>
+          <v-row>
+
+
           <v-slide-item
             v-for="(team, n) in teams"
             :key="n"
             v-slot="{ active, toggle }"
           >
-            <v-btn
-              class="mx-2 noSelected font-weight-bold"
-              :color="active ? 'buttonBox' : ''"
-              :input-value="active"
-              active-class="buttonBox"
-              text
-              x-large
-              @click="
-                toggle();
-                changeActiveTab(n);
-              "
-            >
-              {{ team.name }}
-            </v-btn>
+            <v-col >
+              <v-btn
+                class="mx-2 noSelected font-weight-bold"
+                :color="active ? 'buttonBox' : ''"
+                :input-value="active"
+                active-class="buttonBox"
+                text
+                x-large
+                @click="
+                  toggle();
+                  changeActiveTab(n);
+                "
+              >
+                {{ team.name }}
+              </v-btn>
+            </v-col>
           </v-slide-item>
+          </v-row>
         </v-slide-group>
+
       </v-sheet>
 
       <v-window show-arrows>
+
         <v-window-item
           v-for="n in (activeTab) ?Math.ceil(activeTab.people.length / 4): 0"
           :key="`card-${n}`"
@@ -36,6 +45,7 @@
             <v-row class="fill-height" align="center" justify="center">
               <!-- Inner Boxes -->
               <div class="profileContainer">
+
                 <div
                   v-for="j of periodMaker(n)"
                   :key="j"
