@@ -3,7 +3,7 @@
   <div style="background-color: #C5E3E3">
     <v-container>
       <v-row>
-        <v-col lg="4" sm="12" >
+        <v-col lg="4" sm="12">
           <v-card style=" background: linear-gradient(146.8deg, #00807E 13.33%, #004746 86.04%);" elevation="2">
             <v-row>
               <v-col cols="12">
@@ -49,7 +49,7 @@
 
         </v-col>
         <v-col lg="8" sm="12" md="12">
-          <div >
+          <div>
             <NuxtChild></NuxtChild>
           </div>
         </v-col>
@@ -65,12 +65,15 @@
 
 export default {
   name: "account",
+  mounted() {
+    this.$store.commit('setFooterColor', '#C5E3E3')
+  },
 
 };
 </script>
 
 <style scoped lang="scss">
-.profile-menu1{
+.profile-menu1 {
   .menu-item {
     display: block;
     background: #C5E3E3;
@@ -102,7 +105,8 @@ export default {
     }
   }
 }
-.profile1{
+
+.profile1 {
   p {
     text-align: center;
     color: #C5E3E3;
@@ -119,7 +123,8 @@ export default {
 
   }
 }
-.img-fluid1{
+
+.img-fluid1 {
   display: flex;
   justify-content: center;
 
@@ -187,13 +192,15 @@ export default {
 
       &.nuxt-link-exact-active {
         color: #00928F;
-        img{
+
+        img {
           filter: brightness(200%);
 
         }
 
       }
-      img{
+
+      img {
         margin-left: 20px;
         transition: 0.4s;
 
