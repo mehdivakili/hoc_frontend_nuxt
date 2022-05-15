@@ -56,7 +56,8 @@
       </template>
     </Banner>
 
-    <TeamTab2/>
+<!--    <TeamTab2/>-->
+    <TeamTab/>
     <Statistics/>
     <Questions/>
   </div>
