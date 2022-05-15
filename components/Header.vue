@@ -50,6 +50,21 @@
           </div>
           <div
             class="d-flex flex-column"
+            v-for="item in sidebarMenus"
+            :key="item.title"
+          >
+            <v-btn
+              elevation="0"
+              class="nav__btn my-2 px-2 py-6"
+              :to="item.to ? item.to : ''"
+              :href="item.href ? item.href : ''"
+            >{{ item.name }}
+            </v-btn
+            >
+          </div>
+
+          <div
+            class="d-flex flex-column"
             v-for="item in ($auth.loggedIn) ?navButtonsLogin:navButtons"
           >
             <v-btn :class="item.class" class="py-4 px-6 my-2" :to="item.path"
@@ -73,6 +88,10 @@ export default {
       drawer: false,
       group: null,
       navItems: [],
+      sidebarMenus: [
+        {name: 'ویرایش حساب کاربری', to: '/account/edit/'},
+        {name: 'باشگاه زنگ برنامه نویسی', to: '/account/ScoreBoard/'},
+      ],
       navButtons: [
         {name: "ثبت نام", path: "/register", class: "nav__btn__register"},
         {name: "ورود", path: "/login", class: "nav__btn__login"},

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-container class="user-info-container">
+    <div class="user-info-container">
       <v-row>
         <v-col>
           <h2>
@@ -91,7 +91,7 @@
           </v-card>
         </v-col>
       </v-row>
-    </v-container>
+    </div>
   </div>
 </template>
 

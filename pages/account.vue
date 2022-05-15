@@ -18,20 +18,16 @@
           </p>
         </div>
         <div class="profile-menu">
-            <router-link to="/account/" class="menu-item">
-              <img width="20" src="~/assets/images/dashboard.svg"/>
-              داشبورد
-            </router-link>
-          <router-link to="/account/edit/" class="menu-item">
-            <img width="20" src="~/assets/images/edit_user.svg"/>
-            ویرایش حساب کاربری
+          <router-link to="/account/" class="menu-item">
+            <img width="20" src="~/assets/images/dashboard.svg"/>
+            داشبورد
           </router-link>
-          <router-link to="/account/ScoreBoard/" class="menu-item">
-            <img width="20" src="~/assets/images/edit_user.svg"/>
-            باشگاه زنگ برنامه نویسی
+          <router-link v-for="item in sidebarMenus" :to="item.to" class="menu-item">
+            <img width="20" :src="require(`~/assets/icons/${item.icon}`)"/>
+            {{ item.name }}
           </router-link>
           <a class="menu-item"
-            @click="() => {
+             @click="() => {
                   $nuxt.$loading.start();
                   $auth.logout().then($nuxt.$loading.finish);}"> <img width="20" src="~/assets/images/logout.svg"/>
             خروج</a>
@@ -43,11 +39,18 @@
 </template>
 
 <script>
-import StickySidebar from "sticky-sidebar-v2";
 import StickySideber from "sticky-sidebar-v2";
 
 export default {
   name: "account",
+  data() {
+    return {
+      sidebarMenus: [
+        {name: 'ویرایش حساب کاربری', to: '/account/edit/', icon: 'edit_user.svg'},
+        {name: 'باشگاه زنگ برنامه نویسی', to: '/account/ScoreBoard/', icon: 'hoc_club_menu.svg'},
+      ]
+    }
+  },
   mounted() {
     this.$store.commit("setFooterColor", "#C5E3E3");
     var sidebar = new StickySideber(".sidebar", {
@@ -63,6 +66,18 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@media screen and (max-width: 1000px) {
+  .content {
+    width: 100% !important;
+  }
+  #sidebar {
+    display: none !important;
+  }
+  .menu-item {
+    display: block;
+  }
+}
+
 .main-content {
   position: relative;
   display: flex;
@@ -131,13 +146,15 @@ export default {
 
       &.nuxt-link-exact-active {
         color: #00928F;
-        img{
+
+        img {
           filter: brightness(200%);
 
         }
 
       }
-      img{
+
+      img {
         margin-left: 20px;
         transition: 0.4s;
 
@@ -148,6 +165,7 @@ export default {
 
 
   }
+
 
 }
 </style>
