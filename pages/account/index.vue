@@ -15,6 +15,7 @@
         </v-col>
       </v-row>
       <hr>
+
       <v-row> <!-- Body -->
         <v-col>
           <v-row> <!-- row names -->
@@ -75,6 +76,7 @@
         </v-col>
       </v-row>
     </v-container>
+
 
   </div>
 </template>

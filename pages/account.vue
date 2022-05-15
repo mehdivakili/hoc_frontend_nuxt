@@ -1,4 +1,5 @@
 <template>
+
   <div style="background-color: #C5E3E3">
     <v-container>
       <v-row>
@@ -36,6 +37,7 @@
 
                   <a class="menu-item"
                      @click="() => {
+
                   $nuxt.$loading.start();
                   $auth.logout().then($nuxt.$loading.finish);}"> <img width="20" src="~/assets/images/logout.svg"/>
                     خروج</a>

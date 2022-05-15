@@ -52,3 +52,10 @@ $text-field-border-radius: 15px;
   }
 
 }
+.v-window__next ,.v-window__prev{
+  background: none;
+  i{
+    color: white!important;
+    font-size: 70px!important;
+  }
+}
