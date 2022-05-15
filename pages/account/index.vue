@@ -14,8 +14,7 @@
         <p><img src="~/assets/icons/mail.svg"> ایمیل:  {{$auth.user.email}}</p>
         <p><img src="~/assets/icons/id_card.svg">  کد ملی:  {{$auth.user.national_code}}</p>
         <p><img src="~/assets/icons/username.svg"> نام کاربری:  {{$auth.user.username}}</p>
-        <p><img src="~/assets/icons/calendar.svg"> تاریخ تولد:  {{new Date($auth.user.birth_date) | moment("jYYYY/jMM/jDD")}}</p>
-        <p><img src="~/assets/icons/gender.svg"> کد معرف شما:  {{$auth.user.hoc_code}}</p>
+        <p style="width: 100%"><img src="~/assets/icons/calendar.svg"> تاریخ تولد:  {{new Date($auth.user.birth_date) | moment("jYYYY/jMM/jDD")}}</p>
         <p><img src="~/assets/icons/phone.svg"> شماره تماس:  {{$auth.user.phone_number}}</p>
         <p><img src="~/assets/icons/phone.svg"> شماره تماس ضروری:  {{$auth.user.parent_phone_number}}</p>
         <p><img src="~/assets/icons/grade.svg"> پایه تحصیلی فعلی:  {{$auth.user.grade}}</p>
