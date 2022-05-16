@@ -53,7 +53,6 @@ export default {
   data() {
     return {
       pages: [
-        {title: 'پرسشنامه', icon: 'mdi-help-circle', size: 80, component: UserForm},
         {title: 'اطلاعات شخصی', icon: 'mdi-alert-circle', size: 80, component: UserInfo},
         {title: 'اطلاعات کاربری', icon: 'mdi-account-circle', size: 80, component: UserPass},
         {title: 'پرسشنامه', icon: 'mdi-help-circle', size: 80, component: UserForm},
