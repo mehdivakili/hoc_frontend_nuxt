@@ -123,7 +123,7 @@
                       :error-messages="error.parent_phone_number" :error="!!error.parent_phone_number"
                       name="parent_phone_number"
                       v-model="userData.parent_phone_number"
-                      placeholder="شماره ضروری">
+                      placeholder="شماره یکی از والدین">
           <template #label>
             شماره ضروری <span style="color: red"><strong>* </strong></span>
           </template>
