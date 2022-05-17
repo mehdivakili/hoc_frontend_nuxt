@@ -12,17 +12,15 @@
                         color: #004948;"
       >
         <p>عکس کارت واکسن:</p>
-        <v-file-input
-          class="inputField"
-          accept=".jpeg,.jpg,.png,image/jpeg,image/png"
-          v-model="file"
-          :rules="rules"
-          ref="file_ref"
-
-
-          show-size
-
-        ></v-file-input>
+        <v-form ref="form">
+          <v-file-input
+            class="inputField"
+            accept=".jpeg,.jpg,.png,image/jpeg,image/png"
+            v-model="file"
+            :rules="rules"
+            show-size
+          ></v-file-input>
+        </v-form>
       </v-col>
       <v-col cols="3">
 
@@ -65,7 +63,7 @@ export default {
   },
   methods: {
     nextPage() {
-      if (this.$refs.file_ref.validate())
+      if (this.$refs.form.validate())
         this.$router.push("/register/form/")
     }
   },

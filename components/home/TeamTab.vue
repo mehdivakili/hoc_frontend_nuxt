@@ -83,25 +83,6 @@
                     >
                       {{ activeTab.people[j].name }}
                     </div>
-                    <v-img
-
-                      :lazy-src="n == 1
-                          ? j == 0 ? require(`~/assets/images/leaderIcon.svg`) :
-                          require(`~/assets/images/memberIcon.svg`) :
-                          require(`~/assets/images/memberIcon.svg`)"
-                      :src="n == 1
-                          ? j == 0 ? require(`~/assets/images/leaderIcon.svg`) :
-                          require(`~/assets/images/memberIcon.svg`) :
-                          require(`~/assets/images/memberIcon.svg`)" alt="role"
-
-                      :style="
-                        n == 1
-                          ? j == 0
-                            ? 'max-width: 65px; max-height: 26px;'
-                            : 'max-width: 43px; max-height: 28px;'
-                          : 'max-width: 43px; max-height: 28px;'
-                      "
-                    ></v-img>
                     <div
                       class="skillText font-weight-bold"
                       :style="
