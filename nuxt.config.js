@@ -33,10 +33,12 @@ export default {
   plugins: [
     '~/plugins/axios',
     '~/plugins/notification.js',
-    '~/plugins/select.js',
+    // '~/plugins/select.js',
     '~/plugins/datePicker.js',
-    '~/plugins/city.js',
+    // '~/plugins/city.js',
     '~/plugins/OTPInput.js',
+    "~/plugins/crisp.client.js"
+
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -63,12 +65,11 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa',
+    // '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
-    '@nuxt/content',
+    // '@nuxt/content',
 
     '@nuxtjs/auth-next',
-
 
   ],
 
@@ -177,7 +178,7 @@ export default {
 
   },
   router: {
-    middleware: ['auth','payment']
+    middleware: ['auth', 'payment']
   },
   loading: '~/components/loading.vue'
 }
