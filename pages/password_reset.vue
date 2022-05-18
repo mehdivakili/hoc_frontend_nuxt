@@ -23,20 +23,20 @@
       <Transition name="fade" :duration="350" mode="out-in">
         <div style="width: 100%" :key="0" v-if="state === 0">
           <v-row justify="center" align="center">
-            <v-col cols="9" md="5">
+            <v-col cols="12" sm="9" md="5">
               <v-text-field :error-messages="error.phone_number" :error="!!error.phone_number" flat
                             :hide-details="!error.phone_number" v-model="phone_number"
                             solo
                             placeholder="شماره همراه">
               </v-text-field>
             </v-col>
-            <v-col cols="2">
+            <v-col cols="12" sm="3" md="2">
               <v-btn class="button-fill" @click="send_sms()">دریافت پیامک</v-btn>
             </v-col>
           </v-row>
 
           <v-row justify="center" align="center">
-            <v-col cols="9" md="5">
+            <v-col cols="12" sm="9" md="5">
               <vue-otp-input dir="ltr"
                              ref="otpInput"
                              input-classes="otp-input"
@@ -47,7 +47,7 @@
               />
 
             </v-col>
-            <v-col cols="2">
+            <v-col cols="12" sm="3" md="2">
               <v-btn class="button-fill" @click="validate_token()">ارسال کد تایید</v-btn>
             </v-col>
           </v-row>

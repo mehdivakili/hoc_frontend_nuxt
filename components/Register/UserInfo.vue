@@ -125,7 +125,7 @@
                       v-model="userData.parent_phone_number"
                       placeholder="شماره یکی از والدین">
           <template #label>
-            شماره ضروری <span style="color: red"><strong>* </strong></span>
+            شماره یکی از والدین <span style="color: red"><strong>* </strong></span>
           </template>
         </v-text-field>
       </v-col>
