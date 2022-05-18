@@ -305,12 +305,14 @@ export default {
 }
 
 .groupDutyBox {
-  width: 418px;
-  height: 76px;
+  max-width: 618px;
+  width: 100% ;
+  min-height: 76px;
   display: flex;
   justify-content: center;
   align-items: center;
   background: #fefefe;
+  padding: 10px 15px;
 
   box-shadow: 5px 5px 10px rgba(32, 32, 32, 0.35);
   border-radius: 30px 0px 30px 30px;
@@ -320,7 +322,7 @@ export default {
   font-size: 20px;
   line-height: 28px;
 
-  text-align: right;
+  text-align: justify ;
 
   color: #004948;
 }
