@@ -161,7 +161,7 @@ hr {
   line-height: 30px;
   /* identical to box height, or 62% */
 
-  text-align: right;
+  text-align: center;
 
   color: #00928F;
 
