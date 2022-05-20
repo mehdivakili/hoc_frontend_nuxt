@@ -51,22 +51,22 @@
                       >
                         <v-radio
                           label="خوب"
-                          value="high"
+                          value="خوب"
                           color="#004948"
                         ></v-radio>
                         <v-radio
                           label="متوسط"
-                          value="normal"
+                          value="متوسط"
                           color="#004948"
                         ></v-radio>
                         <v-radio
                           label="کم"
-                          value="low"
+                          value="کم"
                           color="#004948"
                         ></v-radio>
                         <v-radio
                           label="آشنایی ندارم"
-                          value="zero"
+                          value="آشنایی ندارم"
                           color="#004948"
                         ></v-radio>
                       </v-radio-group>
@@ -97,19 +97,19 @@
                       >
                         <v-radio
                           label="بله"
-                          value="true"
+                          value="بله"
                           color="#004948"
                         ></v-radio>
                         <v-radio
                           label="خیر"
-                          value="false"
+                          value="خیر"
                           color="#004948"
                         ></v-radio>
 
                       </v-radio-group>
                     </v-col>
                   </v-row>
-                  <v-row v-if="q2=== 'true'">
+                  <v-row v-if="q2=== 'بله'">
                     <v-col cols="12">
                       <p style="margin-right: 2em;">با چه زبون هایی؟ از چه طریقی یاد گرفتید؟</p>
                     </v-col>
@@ -149,19 +149,19 @@
                       >
                         <v-radio
                           label="بله"
-                          value="true"
+                          value="بله"
                           color="#004948"
                         ></v-radio>
                         <v-radio
                           label="خیر"
-                          value="false"
+                          value="خیر"
                           color="#004948"
                         ></v-radio>
 
                       </v-radio-group>
                     </v-col>
                   </v-row>
-                  <v-row v-if="q3_1 ==='true'">
+                  <v-row v-if="q3_1 ==='بله'">
                     <v-col>
                       <p style="margin-right: 2em;">کدام دوره؟</p>
                     </v-col>
@@ -176,39 +176,39 @@
                       >
                         <v-radio
                           label="اول"
-                          value="first"
+                          value="اول"
                           color="#004948"
                         ></v-radio>
                         <v-radio
                           label="دوم"
-                          value="second"
+                          value="دوم"
                           color="#004948"
                         ></v-radio>
                         <v-radio
                           label="سوم"
-                          value="third"
+                          value="سوم"
                           color="#004948"
                         ></v-radio>
                         <v-radio
                           label="چهارم"
-                          value="forth"
+                          value="چهارم"
                           color="#004948"
                         ></v-radio>
                         <v-radio
                           label="پنجم"
-                          value="fifth"
+                          value="پنجم"
                           color="#004948"
                         ></v-radio>
                         <v-radio
                           label="ششم"
-                          value="sixth"
+                          value="ششم"
                           color="#004948"
                         ></v-radio>
 
                       </v-radio-group>
                     </v-col>
                   </v-row>
-                  <v-row v-if="q3_1 ==='true'">
+                  <v-row v-if="q3_1 ==='بله'">
                     <v-col>
                       <p style="margin-right: 2em;">تا چه اندازه از حضور در همایش رضایت داشتید؟</p>
                     </v-col>
@@ -223,29 +223,29 @@
                       >
                         <v-radio
                           label="زیاد"
-                          value="high1"
+                          value="زیاد"
                           color="#004948"
                         ></v-radio>
                         <v-radio
                           label="متوسط"
-                          value="normal1"
+                          value="متوسط"
                           color="#004948"
                         ></v-radio>
                         <v-radio
                           label="کم"
-                          value="low1"
+                          value="کم"
                           color="#004948"
                         ></v-radio>
                         <v-radio
                           label="راضی نبودم"
-                          value="zero1"
+                          value="راضی نبودم"
                           color="#004948"
                         ></v-radio>
 
                       </v-radio-group>
                     </v-col>
                   </v-row>
-                  <v-row v-if="q3_1=== 'true'">
+                  <v-row v-if="q3_1=== 'بله'">
                     <v-col cols="12">
                       <p style="margin-right: 2em;">چرا؟</p>
                     </v-col>
