@@ -106,7 +106,7 @@
     </v-row>
     <v-row>
       <v-col cols="12" md="6">
-        <v-text-field :rules="phone_rules" solo flat type="number" hide-details="auto"
+        <v-text-field disabled :rules="phone_rules" solo flat type="number" hide-details="auto"
                       :error-messages="error.phone_number"
                       :error="!!error.phone_number"
                       name="phone_number"

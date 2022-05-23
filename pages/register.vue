@@ -46,13 +46,16 @@ import StickySidebar from "sticky-sidebar-v2";
 import UserForm from "@/components/Register/UserForm";
 
 import CertificateSvg from "@/components/icons/certificate.svg"
+import PhoneValidationSvg from "@/components/icons/phone_validation.svg"
 import FinishFlag from "@/components/icons/finish_flag.svg"
+import UserPhoneVerify from "@/components/Register/UserPhoneVerify";
 
 export default {
   name: "register",
   data() {
     return {
       pages: [
+        {title: 'تاييد شماره موبايل', iconComponent: PhoneValidationSvg, size: 67, component: UserPhoneVerify},
         {title: 'اطلاعات شخصی', icon: 'mdi-alert-circle', size: 80, component: UserInfo},
         {title: 'اطلاعات کاربری', icon: 'mdi-account-circle', size: 80, component: UserPass},
         {title: 'پرسشنامه', icon: 'mdi-help-circle', size: 80, component: UserForm},
@@ -74,7 +77,7 @@ export default {
   },
   mounted() {
     if (this.$auth.loggedIn) {
-      if(this.$auth.user.is_purchased)
+      if (this.$auth.user.is_purchased)
         return this.$router.push("/account/")
       this.$store.commit('register/setState', 4)
       this.$store.commit('register/setUserData', {...this.$auth.user})
