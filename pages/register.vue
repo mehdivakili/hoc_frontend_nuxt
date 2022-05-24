@@ -79,7 +79,7 @@ export default {
     if (this.$auth.loggedIn) {
       if (this.$auth.user.is_purchased)
         return this.$router.push("/account/")
-      this.$store.commit('register/setState', 4)
+      this.$store.commit('register/setState', 5)
       this.$store.commit('register/setUserData', {...this.$auth.user})
     } else {
       this.$store.commit('register/setState', 0)
