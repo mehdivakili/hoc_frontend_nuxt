@@ -46,17 +46,6 @@
 
         <v-btn @click="verify_code" class="button-fill">تاييد کد</v-btn>
       </v-col>
-      <!--      <v-col cols="12" md="6">-->
-      <!--        <v-text-field :rules="rules" solo flat type="number" :hide-details="!error.home_phone_number"-->
-      <!--                      :error-messages="error.home_phone_number" :error="!!error.home_phone_number"-->
-      <!--                      name="home_phone_number"-->
-      <!--                      v-model="userData.home_phone_number"-->
-      <!--                      placeholder="تلفن ثابت"
-                <template #label>
-            ناحیه<span  style="color: red"><strong>* </strong></span>
-          </template>
-        ><v-text-field/-->
-      <!--      </v-col>-->
     </v-row>
   </v-form>
 
@@ -96,6 +85,7 @@ export default {
     },
     async send_verify_code() {
       try {
+        this.$store.commit('register/setError', {})
         this.$nuxt.$loading.start()
         let res = await this.$axios.$post('phone_number_verify/send_token', this.userData)
         this.is_send = true
@@ -103,7 +93,13 @@ export default {
         if (e.response.data.phone_number[0] === "این شماره از قبل موجود است") {
           this.goToNextPage()
         } else {
-          this.error = e.response.data
+          this.$store.commit('register/setError', e.response.data)
+          this.$notify({
+            group: 'foo',
+            type: 'error',
+            title: 'لطفا موارد را با دقت پر کنید',
+
+          });
         }
       }
       this.$nuxt.$loading.finish()
@@ -117,6 +113,15 @@ export default {
         let res = await this.$axios.$post('phone_number_verify/verify_token', this.userData)
         this.goToNextPage()
       } catch (e) {
+        this.$store.commit('register/setError', e.response.data)
+        this.$notify({
+          group: 'foo',
+          type: 'error',
+          title: 'کد تایید اشتباه است',
+
+        });
+        this.$store.commit('register/setError', e.response.data)
+
         this.error = e.response.data
       }
       this.$nuxt.$loading.finish()
