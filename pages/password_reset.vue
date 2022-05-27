@@ -108,12 +108,14 @@ export default {
   },
   methods: {
     async send_sms() {
+      this.$nuxt.$loading.start()
       this.$axios.post('/password_reset/', {phone_number: this.$data.phone_number}).then((response) => {
         this.$notify({
           group: 'foo',
           type: 'success',
           title: 'کد تایید با موفقیت ارسال شد',
         });
+        this.$nuxt.$loading.finish()
       }).catch((reason) => {
         this.$notify({
           group: 'foo',
@@ -121,11 +123,14 @@ export default {
           title: reason.response.data.phone_number[0],
         });
         this.$data.error = reason.response.data
+        this.$nuxt.$loading.finish()
       })
     },
     async validate_token() {
+      this.$nuxt.$loading.start()
       this.$axios.post('/password_reset/validate_token/', {token: this.$data.otp_code}).then((response) => {
         this.$data.state = 1
+        this.$nuxt.$loading.finish()
       }).catch((reason) => {
         this.$notify({
           group: 'foo',
@@ -133,6 +138,7 @@ export default {
           title: reason.response.data.detail,
         });
         this.$data.error.otp_code = reason.response.data.detail
+        this.$nuxt.$loading.finish()
       })
     }, async change_password() {
       if (this.password !== this.confirm_password) {
@@ -146,6 +152,7 @@ export default {
         });
         return
       }
+      this.$nuxt.$loading.start()
       this.$axios.post('/password_reset/confirm/', {
         password: this.$data.password,
         token: this.$data.otp_code
@@ -155,6 +162,7 @@ export default {
           type: 'success',
           title: 'رمز با موفقیت تعویض شد',
         });
+        this.$nuxt.$loading.finish()
         this.$router.push('/login')
       }).catch((reason) => {
         this.$notify({
@@ -164,6 +172,7 @@ export default {
           text: reason.response.data.detail,
         });
         this.$data.error = reason.response.data
+        this.$nuxt.$loading.finish()
       })
     }
   },
