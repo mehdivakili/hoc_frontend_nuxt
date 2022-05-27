@@ -135,9 +135,9 @@ export default {
           });
           this.$store.commit('register/setError', error.response.data)
           if (Object.keys(error.response.data).some(
-            (v) => !['username','email','password','attend_code','non_field_errors'].includes(v)
+            (v) => !['username', 'email', 'password', 'attend_code', 'non_field_errors'].includes(v)
           ))
-            this.state = 0
+            this.state = this.state - 1
         }
       } finally {
         this.$nuxt.$loading.finish()
