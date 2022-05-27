@@ -18,6 +18,9 @@
             accept=".jpeg,.jpg,.png,image/jpeg,image/png"
             v-model="file"
             :rules="rules"
+            hide-details="auto"
+            :error-messages="(error.vaccine) ?error.vaccine.vaccine_image: ''"
+            :error="!!error.vaccine"
             show-size
           ></v-file-input>
         </v-form>
@@ -60,6 +63,11 @@ export default {
         v => (v && v.size > 0) || 'آپلود کارت واکسن لازم است',
       ]
     }
+  },
+  computed: {
+    error() {
+      return this.$store.state.register.error
+    },
   },
   methods: {
     nextPage() {
