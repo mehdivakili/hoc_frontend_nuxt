@@ -90,7 +90,14 @@ export default {
     }
   },
   async fetch() {
-    this.navItems = await this.$axios.$get('front/menu/')
+    try {
+      this.navItems = await this.$axios.$get('front/menu/')
+    } catch (e) {
+      if (e.response.status === 401) {
+        await this.$auth.logout()
+        await this.$fetch()
+      }
+    }
   },
   fetchOnServer: false,
 };
