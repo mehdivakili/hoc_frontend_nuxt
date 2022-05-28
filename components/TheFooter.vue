@@ -6,8 +6,8 @@
       <h5> ارتباط با ما: </h5>
       <p>
         <v-icon>mdi-phone</v-icon>
-        <a href="tel:09170001234">
-          ۰۹۱۷۰۰۰۱۲۳۴
+        <a href="tel:09117861977">
+          09117861977
         </a>
         <v-icon>mdi-phone</v-icon>
       </p>
