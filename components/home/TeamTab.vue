@@ -45,7 +45,7 @@
             <v-row class="fill-height" align="center" justify="center">
               <!-- Inner Boxes -->
               <v-col class="profileContainer">
-                <v-row style="align-items: flex-end !important;">
+                <v-row style="align-items: flex-end !important;" justify="center">
                   <v-col
                     style="margin-left: 2em;margin-right: 3em;margin-top: 2em"
                     v-for="j of periodMaker(n)"
@@ -198,7 +198,6 @@ export default {
 }
 
 .bannerCover {
-  height: 757px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -272,6 +271,7 @@ export default {
   justify-content: space-around;
   align-items: center;
   padding-bottom: 16px;
+  max-width: 250px;
 }
 
 .leaderPicture {
@@ -302,6 +302,7 @@ export default {
   width: 100%;
   display: flex;
   justify-content: center;
+
 }
 
 .groupDutyBox {
@@ -311,7 +312,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #fefefe;
+  background: rgba(254, 254, 254, 0.55);
   padding: 10px 15px;
 
   box-shadow: 5px 5px 10px rgba(32, 32, 32, 0.35);
