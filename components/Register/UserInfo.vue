@@ -72,7 +72,7 @@
                       :error-messages="error.national_code"
                       :error="!!error.national_code"
                       name="national_code" v-model="userData.national_code"
-                      placeholder="کد ملی">
+                      placeholder="کد ملی" type="number">
           <template #label>
             کد ملی <span style="color: red"><strong>* </strong></span>
           </template>
