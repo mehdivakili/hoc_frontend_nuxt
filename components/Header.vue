@@ -14,7 +14,9 @@
         >
       </div>
       <v-spacer></v-spacer>
-      <div class="d-none d-md-flex" v-for="item in ($auth.loggedIn) ?navButtonsLogin:navButtons" :key="item.path">
+      <div class="d-none d-md-flex"
+           v-for="item in ($auth.loggedIn) ?($auth.user.is_purchased)? navButtonsLogin: navButtonsLoginButNotPurchased:navButtons"
+           :key="item.path">
         <v-btn :class="item.class" class="py-4 px-6 mx-2"
                :to="item.path ? item.path : ''"
                :href="item.href ? item.href : ''"
@@ -50,7 +52,7 @@
           </div>
           <div
             class="d-flex flex-column"
-            v-for="item in ($auth.loggedIn) ?navButtonsLogin:navButtons"
+            v-for="item in ($auth.loggedIn) ?($auth.user.is_purchased)? navButtonsLogin: navButtonsLoginButNotPurchased:navButtons"
           >
             <v-btn :class="item.class" class="py-4 px-6 my-2" :to="item.path"
                    @click="(item.hasClick)?logout():()=>{}"
@@ -81,12 +83,18 @@ export default {
         {name: "پروفایل", path: "/account", class: "nav__btn__register"},
         {name: "خروج", hasClick: true, class: "nav__btn__login"},
       ],
+      navButtonsLoginButNotPurchased: [
+        {name: "شروع دوباره ثبت نام", hasClick: true, class: "nav__btn__login"},
+      ],
     };
   },
   methods: {
     logout() {
+      this.$nuxt.$loading.start()
       this.$auth.logout()
       this.$store.commit('register/setState', 0)
+      this.$nuxt.$loading.finish()
+
     }
   },
   async fetch() {
