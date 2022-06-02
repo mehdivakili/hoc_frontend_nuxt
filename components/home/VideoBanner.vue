@@ -1,5 +1,5 @@
 <template>
-  <div class="banner" :style="{flexDirection: direction,background: bgColor}">
+  <div :id="id" class="banner" :style="{flexDirection: direction,background: bgColor}">
     <div class="banner-content" :style="{color: textColor}">
       <h3>
         <slot name="banner-title"></slot>
@@ -22,7 +22,7 @@
 export default {
   name: "Banner",
   props: {
-    bgColor: {}, textColor: {}, video: {}, alt: {default: ''}, direction: {
+    bgColor: {}, textColor: {}, id: {}, video: {}, alt: {default: ''}, direction: {
       default: 'row'
     }
   }
@@ -45,7 +45,6 @@ export default {
 
   width: 100% !important;
 }
-
 
 
 .banner-content {

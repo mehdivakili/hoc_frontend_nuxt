@@ -54,7 +54,7 @@
       </template>
     </Banner>
 
-    <VideoBanner text-color="#FEFEFE" bg-color="linear-gradient(104.71deg, #00928F 11.26%, #00ADAA 90.55%)"
+    <VideoBanner id="registerVideo" text-color="#FEFEFE" bg-color="linear-gradient(104.71deg, #00928F 11.26%, #00ADAA 90.55%)"
                  direction="row-reverse" video="https://api.hocshirazu.ir/media/register_description.mp4" alt="یک فیلم">
       <template v-slot:banner-title>
         نحوه ثبت نام ؟!
