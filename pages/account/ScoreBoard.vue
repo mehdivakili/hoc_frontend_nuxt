@@ -122,6 +122,8 @@ hr {
   height: 2px;
   opacity: 1;
   border-radius: 3px;
+  min-width: 350px;
+
 }
 
 .maincard {
@@ -191,5 +193,12 @@ hr {
   text-align: center;
 
   color: #00928F;
+}
+
+@media screen  and (max-width: 420px) {
+  hr {
+    min-width: 200px;
+
+  }
 }
 </style>

@@ -98,12 +98,14 @@ name: "index"
     font-size: 20px;
     font-weight: bold;
     margin: 20px 0 40px 0;
+    word-break: keep-all;
   }
   hr{
     background: #004948;
     height: 2px;
     opacity: 1;
     border-radius: 3px;
+    min-width: 350px;
   }
   .user-info{
     display: flex;
@@ -120,6 +122,13 @@ name: "index"
       p{
         width: 100%;
       }
+    }
+
+    }
+  @media screen  and (max-width: 420px){
+    hr{
+      min-width: 200px;
+
     }
   }
 </style>

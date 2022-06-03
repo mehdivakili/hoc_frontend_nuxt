@@ -134,6 +134,8 @@ hr {
   height: 2px;
   opacity: 1;
   border-radius: 3px;
+  min-width: 350px;
+
 }
 
 .edit_btn {
@@ -157,6 +159,12 @@ hr {
   height: 48px !important;
   border-radius: 15px !important;
 
+}
+@media screen  and (max-width: 420px) {
+  hr {
+    min-width: 200px;
+
+  }
 }
 
 </style>
