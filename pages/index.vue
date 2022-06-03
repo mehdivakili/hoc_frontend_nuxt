@@ -2,7 +2,7 @@
   <div>
     <MainBanner :image="require('~/assets/images/main_banner.png')" alt="" text-color="white"/>
 
-    <Banner text-color="#004948" bg-color="#FEFEFE" :image="require('~/assets/images/banner1.png')" alt="یک عکس">
+    <Banner text-color="#004948" bg-color="#FEFEFE" :image="require('~/assets/images/banner1.svg')" alt="یک عکس">
       <template v-slot:banner-title>
         چرا برنامه نویسی یاد بگیریم ؟
       </template>
@@ -16,7 +16,7 @@
     </Banner>
 
     <Banner text-color="#FEFEFE" bg-color="linear-gradient(104.71deg, #00928F 11.26%, #00ADAA 90.55%)"
-            direction="row-reverse" :image="require('~/assets/images/banner2.png')" alt="یک عکس">
+            direction="row-reverse" :image="require('~/assets/images/banner2.svg')" alt="یک عکس">
       <template v-slot:banner-title>
         زنگ برنامه نویسی چیست؟
       </template>
@@ -41,13 +41,13 @@
     </Banner>
 
 
-    <Banner text-color="#004948" bg-color="#FEFEFE" :image="require('~/assets/images/banner1.png')" alt="یک عکس">
+    <Banner text-color="#004948" bg-color="#FEFEFE" :image="require('~/assets/images/banner3.svg')" alt="یک عکس">
       <template v-slot:banner-title>
         زنگ برنامه نویسی دانشگاه شیراز
       </template>
 
       <template v-slot:banner-content>
-        
+
 بخش کامپیوتر دانشگاه شیراز یکی از برگزارکنندگان رویداد جهانی زنگ برنامه نویسی در ایران است. دانشجویان این بخش از سال ۱۳۹۳ تا به حال به مدت شش دوره این رویداد را برای دانش‌آموزان ۱۲ تا ۱۸ سال برگزار کرده‌اند و مجموعه‌هایی از جمله کافه‌‌بازار، مکتب‌خونه و … در سال‌های مختلف حامیان این رویداد بود‌ه‌اند.
 امسال نیز دانشگاه شیراز برای هفتمین بار میزبان همۀ دانش‌آموزانی است که به آشنایی با برنامه نویسی علاقه‌مند هستند. هدف این همایش ایجاد فرصتی برای دانش‌آموزان دوره متوسطه است تا به یادگیری مفاهیم پایهٔ برنامه نویسی در فضای دانشگاه بپردازند. همچنین به شرکت‌کنندگان زنگ برنامه نویسی دانشگاه شیراز، مدرک بین‌المللی داده می‌شود که نشان می‌دهد جزو میلیون‌ها دانش‌آموزی هستند که در این رویداد جهانی شرکت داشته‌اند.
 

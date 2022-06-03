@@ -19,13 +19,13 @@
       <h5>با زنگ برنامه نویسی در شبکه های اجتماعی باشید !</h5>
       <div class="footer-contacts">
         <a href="https://t.me/hocshirazu">
-          <img src="~/assets/images/telegram.png">
+          <img src="~/assets/images/telegram.svg">
         </a>
         <a href="https://www.instagram.com/hocshirazu/">
-          <img src="~/assets/images/instagram.png">
+          <img src="~/assets/images/instagram.svg">
         </a>
         <a href="https://www.linkedin.com/company/hocshirazu/">
-          <img src="~/assets/images/linkedin.png">
+          <img src="~/assets/images/linkedin.svg">
         </a>
       </div>
     </div>
@@ -35,7 +35,7 @@
         <p>زنگ برنامه نویسی بین المللی</p>
       </a>
       <a href="https://shirazu.ac.ir/">
-        <img src="~/assets/images/shiraz.png">
+        <img src="~/assets/images/shiraz.svg">
         <p>دانشگاه شیراز</p>
       </a>
       <a href="https://acm.shirazu.ac.ir/">

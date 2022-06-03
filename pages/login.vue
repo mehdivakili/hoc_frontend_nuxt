@@ -21,7 +21,7 @@
       </form>
     </div>
     <div class="image">
-      <img src="~/assets/images/login_image.png">
+      <img src="~/assets/images/login_image.svg">
     </div>
   </div>
 </template>
