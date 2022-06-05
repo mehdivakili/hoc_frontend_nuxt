@@ -31,7 +31,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/axios',
+    '~/plugins/axios.client.js',
     '~/plugins/notification.js',
     // '~/plugins/select.js',
     '~/plugins/datePicker.js',
