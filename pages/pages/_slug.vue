@@ -1,14 +1,16 @@
 <template>
-  <div v-html="content"/>
+  <WPContent :html="'<div>'+content+'</div>'"/>
 </template>
 
 <script>
+import WPContent from "@/components/WPContent";
+
 export default {
   async asyncData({params, $axios}) {
     let data = await $axios.$get('pages/' + params.slug)
-    data.content = data.content.replace(/&amp;/g, "&").replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&quot;/g, "\"");
     return data
   },
+  components: {WPContent},
   auth: false
 }
 </script>

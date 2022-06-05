@@ -126,8 +126,11 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
-  auth: {
+  build: {
+    extend(config) {
+      config.resolve.alias.vue = 'vue/dist/vue.common'
+    }
+  },  auth: {
     strategies: {
       local: {
         token: {
