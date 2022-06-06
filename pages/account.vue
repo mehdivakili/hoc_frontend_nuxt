@@ -38,13 +38,17 @@
                     <img width="20" src="~/assets/icons/team.svg"/>
                     باشگاه زنگ برنامه نویسی
                   </router-link>
+                  <router-link to="/account/quiz/" class="menu-item">
+                    <img width="20" src="~/assets/icons/quiz_icon.svg"/>
+                    کوییز
+                  </router-link>
 
                   <a class="menu-item"
                      @click="() => {
 
                   $nuxt.$loading.start();
                   $auth.logout().then($nuxt.$loading.finish);}"> <img width="20" src="~/assets/images/logout.svg"/>
-                    خروج</a>
+                    خروج از حساب کاربری</a>
 
                 </div>
               </v-col>
@@ -209,6 +213,7 @@ export default {
         transition: 0.4s;
 
       }
+
 
 
     }
