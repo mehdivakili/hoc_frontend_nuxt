@@ -27,7 +27,7 @@
                     </v-col>
                     <v-col>
 
-                      <div class="codeNumber">{{ $auth.user.hoc_code }}</div>
+                      <div class="codeNumber">{{ id_code }}</div>
 
                     </v-col>
                   </v-row>
@@ -43,7 +43,7 @@
                       امتیاز
                     </v-col>
                     <v-col cols="12" class="fonts2">
-                      {{ ($auth.user.attend_code) ? 10 : 0 }}
+                      {{ total_score }}
                     </v-col>
                   </v-row>
                 </v-card>
@@ -67,7 +67,7 @@
                       شانس
                     </v-col>
                     <v-col cols="12" class="fonts2">
-                      {{ ($auth.user.attend_code) ? 10 : 0 }}
+                      {{ total_score }}
 
                     </v-col>
                   </v-row>
@@ -97,7 +97,10 @@
 
 <script>
 export default {
-  name: "ScoreBoard"
+  name: "ScoreBoard",
+  async asyncData({$axios}) {
+    return $axios.$get('/hoc_club/data/')
+  }
 
 }
 </script>
