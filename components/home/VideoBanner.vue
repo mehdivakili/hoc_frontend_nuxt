@@ -9,10 +9,10 @@
       </p>
     </div>
     <div class="banner-img img-fluid">
-      <video controls>
-        <source :src="video" type="video/mp4">
-
-      </video>
+      <div id="29586206303">
+        <script type="text/JavaScript"
+                src="https://www.aparat.com/embed/EcKTh?data[rnddiv]=29586206303&data[responsive]=yes"></script>
+      </div>
     </div>
   </div>
 
