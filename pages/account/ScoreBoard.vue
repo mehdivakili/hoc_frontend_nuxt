@@ -55,7 +55,7 @@
                       رتبه
                     </v-col>
                     <v-col cols="12" class="fonts2">
-                      1
+                      {{ rank }}
                     </v-col>
                   </v-row>
                 </v-card>

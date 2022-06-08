@@ -1,5 +1,5 @@
 var is_401 = true;
-export default ({$axios, app}, inject) => {
+export default ({$axios, app, $store}, inject) => {
   $axios.onError((error) => {
     if (is_401 && error.response.status === 401) {
       app.$auth.logout().then((res) => {
