@@ -69,7 +69,7 @@ export default {
     }
   },
   head() {
-    const title = this.error_data.image
+    const title = this.error_data.text
     return {
       title
     }
