@@ -1,4 +1,4 @@
-export default ($auth) => {
+export default ({$auth},inject) => {
   !function () {
     function t() {
       var t = document.createElement("script");
@@ -11,15 +11,17 @@ export default ($auth) => {
     "complete" == e.readyState ? t() : a.attachEvent ? a.attachEvent("onload", t) : a.addEventListener("load", t, !1)
   }();
   window.addEventListener('raychat_ready', function (ets) {
-    if ($auth.loggedIn) {
-      let user = $auth.user
-      window.Raychat.setUser({
-        email: user.email,
-        name: user.first_name_persian + " " + user.last_name_persian,
-        phone: user.phone_number,
-        updateOnce: true
-      });
-    }
+    window.Raychat.on('open', function (s) {
+      if ($auth.loggedIn) {
+        let user = $auth.user
+        window.Raychat.setUser({
+          email: user.email,
+          name: user.first_name_persian + " " + user.last_name_persian,
+          phone: user.phone_number,
+          updateOnce: false
+        });
+      }
+    });
 
 
   });
