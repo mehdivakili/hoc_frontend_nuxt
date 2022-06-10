@@ -74,7 +74,7 @@ export default {
   },
   methods:{
     participate(){
-      this.$router.push('/account/quizForm')
+      this.$router.push('/forms/quizForm')
     }
   }
 }
