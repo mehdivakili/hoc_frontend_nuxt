@@ -1,13 +1,12 @@
-var is_401 = true;
-export default ({$axios, app, $store}, inject) => {
+export default ({$axios, app, store}, inject) => {
   $axios.onError((error) => {
-    if (is_401 && error.response.status === 401) {
+    if (!store.state.is_401 && error.response.status === 401) {
+      store.commit('is_401', true)
       app.$auth.logout().then((res) => {
         window.location.reload()
       }).cache((res) => {
         window.location.reload()
       });
-      is_401 = false
     }
     throw error
   })
