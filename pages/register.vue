@@ -52,6 +52,11 @@ import UserPhoneVerify from "@/components/Register/UserPhoneVerify";
 
 export default {
   name: "register",
+  head(){
+    return{
+      title: 'ثبت نام'
+    }
+  },
   data() {
     return {
       pages: [

@@ -69,6 +69,11 @@
 
 export default {
   name: "account",
+  head() {
+    return {
+      title: 'حساب کاربری'
+    }
+  },
   mounted() {
     this.$store.commit('setFooterColor', '#C5E3E3')
   },

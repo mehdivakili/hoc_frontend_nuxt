@@ -95,6 +95,11 @@
 
 export default {
   name: "password_reset",
+  head(){
+    return{
+      title: 'بازنشانی رمز عبور'
+    }
+  },
   data() {
     return {
       phone_number: '',

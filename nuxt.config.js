@@ -37,12 +37,15 @@ export default {
     '~/plugins/datePicker.js',
     // '~/plugins/city.js',
     '~/plugins/OTPInput.js',
-    "~/plugins/crisp.client.js"
-
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
+  components: [
+    {
+      path: '~/components', // will get any components nested in let's say /components/test too
+      pathPrefix: true,
+    },
+  ],
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
@@ -174,8 +177,10 @@ export default {
       login: "/login",//this example of the path of login page in your project
       logout: "/", //this will redirect to your home after logout
       home: "/" //this example will redirect to the path of user account page in your project.
-    }
-
+    },
+    plugins: [
+      '~/plugins/crisp.client.js'
+    ]
   },
   router: {
     middleware: ['auth', 'payment']

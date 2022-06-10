@@ -10,6 +10,11 @@
 <script>
 export default {
   name: "payment",
+  head(){
+    return{
+      title: 'پرداخت'
+    }
+  },
 }
 </script>
 
