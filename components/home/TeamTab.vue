@@ -1,27 +1,59 @@
 <template>
   <div class="banner">
     <ul class="nav-tabs">
-      <li v-for="(group,groupKey) in team" :key="`nav-btn-${groupKey}`">
+      <li :class="[(groupKey === currentGroup)? 'active': '','nav-tab-item']" v-for="(group,groupKey) in team"
+          :key="`nav-btn-${groupKey}`" @click="currentGroup = groupKey">
         {{ group.name }}
       </li>
     </ul>
+    <div>
+      <transition name="fade" mode="out-in">
+        <div v-for="(group,groupKey) in team" :key="`nav-${groupKey}`"
+                  v-if="groupKey === currentGroup">
+          <hooper :rtl="true" :settings="hooperSettings" style="height: 400px">
+            <slide style="padding: 20px; display: flex; justify-content: center;align-items: end"
+                   v-for="(person,pk) in group.people"
+                   :key="`nav-${groupKey}-person-${pk}`" :index="pk">
+              <div :class="['person-card',(pk===0)?'admin-card':'']">
+                <div>
+                  <div style="display: flex; justify-content: center">
+                    <v-img class="person-image"
+                           :src="person.image"
+                           :alt="person.name"
+                    ></v-img>
+                  </div>
 
-    <transition type="fade">
-      <split-carousel v-for="(group,groupKey) in team" :key="`nav-${groupKey}`">
-        <split-carousel-item v-for="(person,pk) in group.people" :key="`nav-${groupKey}-person-${pk}`"
-                             v-if="groupKey === currentGroup">
+                  <p class="person-name">{{ person.name }}</p>
+                  <p class="person-description">{{ person.description }}</p>
+                  <a :href="person.linkedin">
+                    <v-img
+                      :lazy-src="require(`~/assets/images/linkedin_logo.svg`)"
+                      max-height="38"
+                      max-width="113"
+                      :src="require(`~/assets/images/linkedin_logo.svg`)"
+                      alt="linkedIn Icon"
+                    ></v-img>
+                  </a>
+                </div>
+              </div>
+            </slide>
+            <hooper-navigation slot="hooper-addons"></hooper-navigation>
 
-          {{ person.name }}
-        </split-carousel-item>
-      </split-carousel>
-    </transition>
+          </hooper>
+          <div class="duty-box">{{group.information}}</div>
+        </div>
+      </transition>
 
-
+    </div>
   </div>
 </template>
 
 <script>
-import {SplitCarousel, SplitCarouselItem} from "vue-split-carousel";
+import {
+  Hooper, Slide, Navigation as HooperNavigation
+} from 'hooper';
+
+import 'hooper/dist/hooper.css';
 
 export default {
   data() {
@@ -418,16 +450,153 @@ export default {
           ]
         }
       ],
-      currentGroup: 0
+      currentGroup: 0,
+
+
+      hooperSettings: {
+        wheelControl: false,
+        infiniteScroll: true,
+        itemsToShow: 1,
+        breakpoints: {
+          500: {
+            itemsToShow: 2
+          },
+          800: {
+            itemsToShow: 3
+          },
+          1000: {
+            itemsToShow: 4,
+          }
+        }
+      }
     }
+
   },
   components: {
-    SplitCarousel,
-    SplitCarouselItem
+    Hooper, Slide, HooperNavigation
   }
 }
 </script>
 
 <style scoped lang="scss">
+.banner {
+  background-image: url(~/assets/images/team_bg.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: auto;
+  /* overflow: hidden; */
+}
+
+.nav-tabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  border: none;
+
+  li {
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    margin: 5px 20px;
+    padding: 5px 10px;
+    text-decoration: none;
+    list-style: none;
+    border: 3px solid rgba(0, 0, 0, 0);
+    transition: 0.4s;
+
+
+    &.active {
+      border: 3px solid white;
+
+    }
+  }
+
+
+}
+
+
+.person-card {
+  background: rgba(254, 254, 254, 0.55);
+  /* grayShadow */
+  box-shadow: 5px 5px 10px rgba(32, 32, 32, 0.35);
+  border-radius: 15px;
+  width: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 20px;
+
+
+  .person-image {
+    max-width: 102px;
+    max-height: 102px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+
+  }
+
+  p {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #004948;
+  }
+
+  a {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  p.person-description {
+    font-size: 12px;
+  }
+
+}
+
+.admin-card {
+  background: white;
+  transform-origin: left bottom;
+
+  transform: scale(1.25);
+}
+
+
+</style>
+
+<style lang="scss">
+.icon {
+  width: 50px !important;
+  height: 50px !important;
+
+  path:last-child {
+    fill: white;
+  }
+}
+.duty-box {
+  max-width: 618px;
+  width: 100% ;
+  min-height: 76px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(254, 254, 254, 0.55);
+  padding: 10px 15px;
+
+  box-shadow: 5px 5px 10px rgba(32, 32, 32, 0.35);
+  border-radius: 30px 0px 30px 30px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+
+  text-align: justify ;
+
+  color: #004948;
+}
 
 </style>
