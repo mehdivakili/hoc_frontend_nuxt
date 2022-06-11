@@ -30,6 +30,7 @@
     "vue-persian-datetime-picker": "^2.10.4",
     "vue-select": "^3.18.3",
     "vue-server-renderer": "^2.6.14",
+    "vue-split-carousel": "^1.1.1",
     "vue-sticky-sidebar": "^1.0.5",
     "vue-template-compiler": "^2.6.14",
     "vuetify": "^2.6.1",
