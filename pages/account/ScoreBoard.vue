@@ -92,12 +92,151 @@
         </v-col>
       </v-row>
     </v-container>
+    <v-container class="user-info-container">
+      <v-row>
+        <v-col>
+          <h2>
+            <v-icon color="#004948">
+              mdi-gift-outline
+            </v-icon>
+            جدول امتیازات
+            <v-icon color="#004948">
+              mdi-gift-outline
+            </v-icon>
+          </h2>
+        </v-col>
+      </v-row>
+      <hr>
+      <v-card class="hocclubtable">
+        <v-card-title>
+          <v-spacer></v-spacer>
+          <v-text-field
+            v-model="search"
+            append-icon="mdi-magnify"
+            label="جستجو"
+            single-line
+            hide-details
+
+          ></v-text-field>
+        </v-card-title>
+        <v-container>
+          <v-data-table
+            :headers="headers"
+            :items="desserts"
+            :search="search"
+          ></v-data-table>
+        </v-container>
+      </v-card>
+
+    </v-container>
   </div>
 </template>
 
 <script>
 export default {
   name: "ScoreBoard",
+  data(){
+    return{
+      search: '' ,
+      headers: [
+        { text: 'رتبه', value: 'rank' , align: 'center'},
+        { text: 'نام', value: 'name', align: 'center' },
+        { text: 'امتیاز', value: 'score', align: 'center' },
+      ],
+      desserts: [
+        {
+          name: 'Frozen Yogurt',
+          rank: 1,
+          score: 100
+        },
+        {
+          name: 'Ice cream sandwich',
+          rank: 1,
+          score: 100
+        },
+        {
+          name: 'Eclair',
+          rank: 1,
+          score: 100
+        },
+        {
+          name: 'Cupcake',
+          rank: 1,
+          score: 100
+        },
+        {
+          name: 'Gingerbread',
+          rank: 1,
+          score: 100
+        },
+        {
+          name: 'Jelly bean',
+          rank: 1,
+          score: 100
+        },
+        {
+          name: 'Lollipop',
+          rank: 1,
+          score: 100
+        },
+        {
+          name: 'Honeycomb',
+          rank: 1,
+          score: 100
+        },
+        {
+          name: 'Donut',
+          rank: 1,
+          score: 100
+        },
+        {
+          name: 'KitKat',
+          rank: 1,
+          score: 100
+        },
+        {
+          name: 'Cupcake',
+          rank: 1,
+          score: 100
+        },
+        {
+          name: 'Cupcake',
+          rank: 1,
+          score: 100
+        },
+        {
+          name: 'Cupcake',
+          rank: 1,
+          score: 100
+        },
+        {
+          name: 'Cupcake',
+          rank: 1,
+          score: 100
+        },        {
+          name: 'Cupcake',
+          rank: 1,
+          score: 100
+        },
+        {
+          name: 'Cupcake',
+          rank: 1,
+          score: 100
+        },
+        {
+          name: 'Cupcake',
+          rank: 1,
+          score: 100
+        },
+        {
+          name: 'Cupcake',
+          rank: 1,
+          score: 100
+        },
+
+      ],
+    }
+  },
   async asyncData({$axios}) {
     return $axios.$get('/hoc_club/data/')
   }
@@ -110,6 +249,7 @@ export default {
   border: 2px #004948 solid;
   border-radius: 15px;
   padding: 20px;
+  margin-bottom: 50px;
 }
 
 h2 {
@@ -198,10 +338,30 @@ hr {
   color: #00928F;
 }
 
+.hocclubtable {
+  background-color: #C5E3E3;
+}
+
+
+
 @media screen  and (max-width: 420px) {
   hr {
     min-width: 200px;
 
   }
 }
+</style>
+
+<style>
+tr, th, td{
+  border: 1px solid #004948 !important;
+  background-color: #99bdbb !important;
+  font-size: 20px !important;
+  text-align: center !important;
+}
+
+.v-data-footer{
+  background-color: #C5E3E3;
+}
+
 </style>
