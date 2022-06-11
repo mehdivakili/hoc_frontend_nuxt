@@ -46,7 +46,7 @@ export default {
 <style scoped>
 
 .banner {
-  background-color: #004948;
+  background: linear-gradient(104.71deg, #00ADAA 11.26%, #00928F 90.55%);
   position: relative;
   padding: 110px 0;
 

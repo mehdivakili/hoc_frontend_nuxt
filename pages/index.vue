@@ -92,7 +92,7 @@ export default {
   },
   auth: false,
   mounted() {
-    this.$store.commit('setFooterColor', '#004948')
+    this.$store.commit('setFooterColor', 'linear-gradient(15deg, #00ADAA 29%, #00928F 71%)')
   }
 }
 </script>
