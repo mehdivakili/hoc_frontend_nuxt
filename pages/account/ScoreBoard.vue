@@ -139,106 +139,16 @@ export default {
     return{
       search: '' ,
       headers: [
-        { text: 'رتبه', value: 'rank' , align: 'center'},
-        { text: 'نام', value: 'name', align: 'center' },
-        { text: 'امتیاز', value: 'score', align: 'center' },
-      ],
-      desserts: [
-        {
-          name: 'Frozen Yogurt',
-          rank: 1,
-          score: 100
-        },
-        {
-          name: 'Ice cream sandwich',
-          rank: 1,
-          score: 100
-        },
-        {
-          name: 'Eclair',
-          rank: 1,
-          score: 100
-        },
-        {
-          name: 'Cupcake',
-          rank: 1,
-          score: 100
-        },
-        {
-          name: 'Gingerbread',
-          rank: 1,
-          score: 100
-        },
-        {
-          name: 'Jelly bean',
-          rank: 1,
-          score: 100
-        },
-        {
-          name: 'Lollipop',
-          rank: 1,
-          score: 100
-        },
-        {
-          name: 'Honeycomb',
-          rank: 1,
-          score: 100
-        },
-        {
-          name: 'Donut',
-          rank: 1,
-          score: 100
-        },
-        {
-          name: 'KitKat',
-          rank: 1,
-          score: 100
-        },
-        {
-          name: 'Cupcake',
-          rank: 1,
-          score: 100
-        },
-        {
-          name: 'Cupcake',
-          rank: 1,
-          score: 100
-        },
-        {
-          name: 'Cupcake',
-          rank: 1,
-          score: 100
-        },
-        {
-          name: 'Cupcake',
-          rank: 1,
-          score: 100
-        },        {
-          name: 'Cupcake',
-          rank: 1,
-          score: 100
-        },
-        {
-          name: 'Cupcake',
-          rank: 1,
-          score: 100
-        },
-        {
-          name: 'Cupcake',
-          rank: 1,
-          score: 100
-        },
-        {
-          name: 'Cupcake',
-          rank: 1,
-          score: 100
-        },
-
+        { text: 'رتبه', value: 'hoc_club_rank' , align: 'center'},
+        { text: 'نام', value: 'last_name_persian', align: 'center' },
+        { text: 'امتیاز', value: 'total_score', align: 'center' },
       ],
     }
   },
   async asyncData({$axios}) {
-    return $axios.$get('/hoc_club/data/')
+    let data = $axios.$get('/hoc_club/data/');
+    data.desserts = $axios.$get('/hoc_club/ranking/');
+    return data;
   }
 
 }
