@@ -6,7 +6,8 @@
           <div class="alertIcon">
             <img src="~/assets/images/warning_alert_icon.svg">
           </div>
-          <p class="alertContent">لطفا موارد زیر را به صورت دقیق تکمیل کنید، از این اطلاعات در جهت ارتباط با شما استفاده خواهد شد. همایش به صورت
+          <p class="alertContent">لطفا موارد زیر را به صورت دقیق تکمیل کنید، از این اطلاعات در جهت ارتباط با شما استفاده
+            خواهد شد. همایش به صورت
             حضوری و مخصوص دانش آموزان شهر شیراز است.</p>
         </div>
       </v-col>
@@ -268,7 +269,7 @@ export default {
 
 <style scoped>
 
-.alertWarning{
+.alertWarning {
   border: 2px solid #FB8C00;
   border-radius: 10px;
   display: flex;
@@ -278,7 +279,7 @@ export default {
   gap: 20px;
 }
 
-.alertContent{
+.alertContent {
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -291,9 +292,11 @@ export default {
   color: #FB8C00;
 }
 
-.next-btn{
-  transform: translateX(-50px) scale(1.2);
-  border-radius: 12px;
+@media screen and (min-width: 1000px) {
+  .next-btn {
+    transform: translateX(-50px) scale(1.2);
+    border-radius: 12px;
+  }
 }
 
 </style>
