@@ -1,27 +1,27 @@
 <template>
   <v-form ref="form">
     <div class="bigDiv">
-      <v-row class="alertCol">
-        <v-col cols="6">
-          <v-alert
-
-            type="info"
-            color="grey"
-            style="width:30em"
-          >
-            صادقانه جواب بدین چون جواب درست یا غلطی وجود نداره!
-
-
-          </v-alert>
-        </v-col>
-      </v-row>
       <v-row>
         <v-col cols="12">
-          <v-card
+          <v-container
             elevation="10"
             outlined
             class="questionCard"
           >
+            <v-row class="alertCol">
+              <v-col cols="12" md="6">
+                <v-alert
+
+                  type="info"
+                  color="grey"
+                  style="width:30em"
+                >
+                  صادقانه جواب بدین چون جواب درست یا غلطی وجود نداره!
+
+
+                </v-alert>
+              </v-col>
+            </v-row>
             <v-card-title class="cardT" style="">
 
               میزان آشنایی با برنامه نویسی
@@ -36,11 +36,11 @@
 
                 >
                   <v-row>
-                    <v-col>
-                      <p style="margin-right: 2em;">تا چه اندازه با علوم کامپیوتر(به طور ویژه، برنامه نویسی) آشنایی
+                    <v-col cols="12" md="6">
+                      <p class="q-text">تا چه اندازه با علوم کامپیوتر(به طور ویژه، برنامه نویسی) آشنایی
                         دارید؟ </p>
                     </v-col>
-                    <v-col>
+                    <v-col cols="12" md="6">
                       <v-radio-group
                         v-model="q1"
                         :rules="rules"
@@ -83,10 +83,10 @@
 
                 >
                   <v-row>
-                    <v-col>
-                      <p style="margin-right: 2em;">تا به حال برنامه نویسی کردید؟ </p>
+                    <v-col cols="12" md="6">
+                      <p class="q-text">تا به حال برنامه نویسی کردید؟ </p>
                     </v-col>
-                    <v-col>
+                    <v-col cols="12" md="6">
                       <v-radio-group
                         v-model="q2"
                         :rules="rules"
@@ -111,7 +111,7 @@
                   </v-row>
                   <v-row v-if="q2=== 'بله'">
                     <v-col cols="12">
-                      <p style="margin-right: 2em;">با چه زبون هایی؟ از چه طریقی یاد گرفتید؟</p>
+                      <p class="q-text">با چه زبون هایی؟ از چه طریقی یاد گرفتید؟</p>
                     </v-col>
                     <v-col cols="12">
                       <v-textarea
@@ -119,7 +119,8 @@
                         name="q2_text_area"
                         :rules="rules"
                         label="اینجا بنویسید . . ."
-                        style="margin-right: 2em;margin-left: 2em;margin-top: -1.5em"
+                        class="text-area"
+                        style="margin-top: -1.5em;border-radius: 10px;"
                         clearable
                         v-model="q2_text"
                       ></v-textarea>
@@ -135,10 +136,10 @@
                   class="Sheets"
                 >
                   <v-row>
-                    <v-col>
-                      <p style="margin-right: 2em;">در دوره های قبلی hoc شرکت کردید؟</p>
+                    <v-col cols="12" md="6">
+                      <p class="q-text">در دوره های قبلی hoc شرکت کردید؟</p>
                     </v-col>
-                    <v-col>
+                    <v-col cols="12" md="6">
                       <v-radio-group
                         v-model="q3_1"
                         :rules="rules"
@@ -162,10 +163,10 @@
                     </v-col>
                   </v-row>
                   <v-row v-if="q3_1 ==='بله'">
-                    <v-col>
-                      <p style="margin-right: 2em;">کدام دوره؟</p>
+                    <v-col cols="12" md="6">
+                      <p class="q-text">کدام دوره؟</p>
                     </v-col>
-                    <v-col>
+                    <v-col cols="12" md="6">
                       <v-radio-group
                         v-model="q3_2"
                         :rules="rules"
@@ -209,10 +210,10 @@
                     </v-col>
                   </v-row>
                   <v-row v-if="q3_1 ==='بله'">
-                    <v-col>
-                      <p style="margin-right: 2em;">تا چه اندازه از حضور در همایش رضایت داشتید؟</p>
+                    <v-col cols="12" md="6">
+                      <p class="q-text">تا چه اندازه از حضور در همایش رضایت داشتید؟</p>
                     </v-col>
-                    <v-col>
+                    <v-col cols="12" md="6">
                       <v-radio-group
                         v-model="q3_3"
                         :rules="rules"
@@ -247,7 +248,7 @@
                   </v-row>
                   <v-row v-if="q3_1=== 'بله'">
                     <v-col cols="12">
-                      <p style="margin-right: 2em;">چرا؟</p>
+                      <p class="q-text">چرا؟</p>
                     </v-col>
                     <v-col cols="12">
                       <v-textarea
@@ -255,7 +256,8 @@
                         solo
                         name="q3_text_area"
                         label="اینجا بنویسید . . ."
-                        style="margin-right: 2em;margin-left: 2em;margin-top: -1.5em"
+                        class="text-area"
+                        style="margin-top: -1.5em;border-radius: 10px;"
                         clearable
                         v-model="q3_text"
                       ></v-textarea>
@@ -265,15 +267,13 @@
                 </v-sheet>
               </v-col>
           </v-row>
-          <v-row>
-            <v-col cols="5"></v-col>
+          <v-row justify="center">
             <v-col cols="2">
-              <v-btn style="margin-bottom: 4em;margin-right: -4em;" to="" class="button-fill" @click="goToNextPage">ثبت پرسشنامه و ادامه
+              <v-btn style="" class="button-fill" @click="goToNextPage">ثبت پرسشنامه و ادامه
               </v-btn>
             </v-col>
-            <v-col cols="5"></v-col>
           </v-row>
-        </v-card>
+        </v-container>
       </v-col>
     </v-row>
 
@@ -321,11 +321,7 @@ export default {
 }
 </script>
 
-<style scoped>
-.alertCol {
-  margin-right: 50px;
-  margin-top: 20px;
-}
+<style scoped lang="scss">
 
 .bigDiv {
   background-color: #C5E3E3;
@@ -333,25 +329,73 @@ export default {
 
 .questionCard {
   background-color: #C5E3E3;
-  margin-right: 50px;
-  margin-left: 50px;
-  margin-bottom: 4em;
 }
 
 .cardT {
+  position: relative;
   color: #004948;
   font-family: 'Vazir';
   font-style: normal;
   font-weight: 700;
-  margin-right: 2em;
+  &::after{
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: #004948;
+    content: "";
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 
 }
 
 .Sheets {
   border: 2px solid #004948 !important;
-  border-radius: 10px;
-  margin-right: 5em;
-  margin-bottom: 2em;
-  margin-left: 5em;
 }
+
+.q-text{
+  margin-right: 20px;
+}
+
+.text-area{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+@media screen and (min-width: 1000px){
+  .alertCol {
+    margin-right: 20px;
+    margin-top: 20px;
+  }
+
+  .questionCard {
+    margin-top: 4em;
+    margin-bottom: 4em;
+    border-radius: 36px;
+    box-shadow: -18px -18px 30px #E0F0F0, 18px 18px 30px #98CDCD !important;
+  }
+
+  .Sheets {
+    border-radius: 10px;
+    margin-right: 100px;
+    margin-left: 100px;
+  }
+
+  .cardT{
+    margin-right: 2em;
+  }
+
+  .q-text{
+    margin-right: 2em;
+  }
+
+  .text-area{
+    margin-left: 2em;
+    margin-right: 2em;
+  }
+}
+
+
 </style>
