@@ -64,9 +64,6 @@ export default {
 
   }
 }
-.out{
-  margin: 0;
-}
 
 @media screen and (min-width: 600px){
   .squire {
