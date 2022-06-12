@@ -193,8 +193,8 @@
       </v-col>
     </v-row>
     <div v-show="is_register"
-         style="display: flex; flex-direction: row-reverse; justify-content: space-between; margin-top: 100px">
-      <v-btn class="button-fill" v-on:click="goToNextPage()">مرحله بعد</v-btn>
+         style="display: flex; flex-direction: row-reverse; justify-content: space-between; margin-top: 30px">
+      <v-btn class="button-fill next-btn" v-on:click="goToNextPage()">مرحله بعد</v-btn>
     </div>
   </v-form>
 
@@ -289,6 +289,11 @@ export default {
   margin: 0px;
 
   color: #FB8C00;
+}
+
+.next-btn{
+  transform: translateX(-50px) scale(1.2);
+  border-radius: 12px;
 }
 
 </style>
