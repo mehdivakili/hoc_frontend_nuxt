@@ -1,4 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
+import fa from 'vuetify/src/locale/fa'
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
@@ -101,7 +102,10 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     rtl: true,
-    theme: {
+    lang: {
+      locales: { fa},
+      current: 'fa',
+    },    theme: {
       dark: false,
       themes: {
         dark: {

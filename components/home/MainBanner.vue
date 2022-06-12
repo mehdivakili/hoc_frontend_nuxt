@@ -44,8 +44,12 @@ export default {
   align-items: center;
   gap: 40px;
   padding: 10px;
+
 }
 
+h1{
+  font-weight: bold;
+}
 
 h4 {
   line-height: 40px;

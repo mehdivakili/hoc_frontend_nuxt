@@ -618,5 +618,7 @@ export default {
 
 .hooper-prev {
   transform: translateX(25px);
+
+
 }
 </style>

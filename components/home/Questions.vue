@@ -10,7 +10,7 @@
         v-for="question in questions"
       >
         <v-expansion-panel-header>{{question.title}}</v-expansion-panel-header>
-        <v-expansion-panel-content>
+        <v-expansion-panel-content class="panelContent">
           {{question.content}}
         </v-expansion-panel-content>
       </v-expansion-panel>
@@ -46,7 +46,7 @@ export default {
 <style scoped>
 
 .banner {
-  background-color: #004948;
+  background: linear-gradient(104.71deg, #00ADAA 11.26%, #00928F 90.55%);
   position: relative;
   padding: 110px 0;
 
@@ -66,6 +66,25 @@ h1 {
   gap: 20px;
   margin-bottom: 60px;
 }
+
+.v-expansion-panels{
+  width: 920px;
+  height: 568px;
+  background: #FEFEFE;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+
+}
+
+.v-expansion-panel-header{
+  color: #004948;
+}
+
+.panelContent{
+  color: #004948;
+
+}
+
 
 @media screen and (min-width: 1000px) {
   .banner {

@@ -31,7 +31,8 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~bootstrap/scss/bootstrap";
+
+@import "~bootstrap/scss/bootstrap.scss";
 
 @font-face {
   font-family: "Vazir";
@@ -67,6 +68,17 @@ nav {
 .fade-enter-from,
 .fade-leave-active {
   opacity: 0;
+}
+
+hr {
+  background: #004948;
+  height: 2px;
+  opacity: 1;
+  border-radius: 3px;
+  min-width: 350px;
+  margin-bottom: 40px;
+  border: none;
+
 }
 
 .v-btn {
