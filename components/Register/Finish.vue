@@ -1,11 +1,10 @@
 <template>
-  <div>
-    <v-row>
-      <v-col cols="2"></v-col>
-      <v-col cols="8">
+  <div style="margin-top: 30px">
+    <v-row justify="center">
+      <v-col cols="12" md="8">
         <v-card shaped class="mainCard">
           <v-row class="firstRow">
-            <v-col>
+            <v-col cols="12" md="6">
               <v-card class="cardShape">
                 <div style="padding-top: 6px; padding-bottom: 2px;">
                   <p class="titles" style="text-align: center; ">نام و نام خانوادگی</p>
@@ -14,7 +13,7 @@
 
               </v-card>
             </v-col>
-            <v-col>
+            <v-col cols="12" md="6">
               <v-card class="cardShape">
                 <div style="padding-top: 6px; padding-bottom: 2px;">
                   <p class="titles" style="text-align: center; ">کد ملی</p>
@@ -23,45 +22,45 @@
               </v-card>
             </v-col>
           </v-row>
-          <!--          <v-row class="otherRow">-->
-          <!--            <v-col>-->
-          <!--              <v-card class="cardShape">-->
-          <!--                <v-row>-->
-          <!--                  <v-col style="margin-right: 15px;">-->
-          <!--                    image-->
-          <!--                  </v-col>-->
-          <!--                  <v-col>-->
-          <!--                    name-->
-          <!--                  </v-col>-->
-          <!--                </v-row>-->
-          <!--              </v-card>-->
-          <!--            </v-col>-->
-
-          <!--          </v-row>-->
           <v-row class="otherRow">
             <v-col>
               <v-card class="cardShape">
                 <v-row style="margin-bottom: 5px;">
-                  <v-col style="margin-right: 15px; "><p class="titles" style="margin-right: 5em">مبلغ پرداختی</p>
+                  <v-col cols="12" md="6" style="display: flex; justify-content: center; align-items: center ">
+                    <img src="~/assets/images/zarinpal.svg" style="max-width: 100%">
                   </v-col>
-                  <v-col><p class="content"> {{ numberToPersian(amount) }} تومان</p></v-col>
+                  <v-col cols="12" md="6" style="display: flex; justify-content: center; align-items:center  ">
+                    <div class="purchase-icon">
+                      <p style="text-align: center">درگاه پرداخت</p>
+                      <p style="margin-bottom: 0;text-align: center">زرین پال</p>
+                    </div>
+                  </v-col>
                 </v-row>
               </v-card>
             </v-col>
 
           </v-row>
-          <v-row>
-            <v-col cols="3"></v-col>
-            <v-col cols="6">
+          <v-row class="otherRow">
+            <v-col >
+              <v-card class="cardShape">
+                <v-row style="margin-bottom: 5px;">
+                  <v-col cols="12" md="6" style="display: flex; justify-content: center; align-items:center"><p class="titles" >مبلغ پرداختی</p>
+                  </v-col>
+                  <v-col cols="12" md="6"><p class="content" style="display: flex; justify-content: center; align-items:center  "> {{ numberToPersian(amount) }} تومان</p></v-col>
+                </v-row>
+              </v-card>
+            </v-col>
+
+          </v-row>
+          <v-row justify="center">
+            <v-col cols="10" sm="6">
               <v-btn style="margin-bottom: 2em;margin-right: 1em;width: 100%" to="" class="button-fill"
                      @click="goToNextPage">ورود به درگاه پرداخت
               </v-btn>
             </v-col>
-            <v-col cols="3"></v-col>
           </v-row>
         </v-card>
       </v-col>
-      <v-col cols="2"></v-col>
     </v-row>
 
   </div>
@@ -112,8 +111,9 @@ export default {
 
 .mainCard {
   background-color: #C5E3E3;
-  border-radius: 36px !important;
+  border-radius: 20px !important;
   box-shadow: -18px -18px 30px #E0F0F0, 18px 18px 30px #98CDCD !important;
+
 }
 
 .firstRow {
@@ -139,7 +139,7 @@ export default {
   font-size: 13px;
 }
 
-.content {
+.content, .purchase-icon p {
   color: #00928F;
   font-family: 'Vazir Black';
   font-weight: 900;
