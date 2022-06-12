@@ -67,9 +67,18 @@ nav {
 .fade-leave-active {
   opacity: 0;
 }
-hr{
+
+hr {
+  background: #004948;
+  height: 2px;
+  opacity: 1;
+  border-radius: 3px;
+  min-width: 350px;
   margin-bottom: 40px;
+  border: none;
+
 }
+
 .v-btn {
   span {
     font-size: 16px;
