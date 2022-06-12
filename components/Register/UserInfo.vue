@@ -1,16 +1,14 @@
 <template>
-  <v-form ref="form">
+  <v-form style="max-width: 600px; margin: auto;" ref="form">
     <v-row v-show="is_register">
       <v-col cols="12">
-        <v-alert
-          outlined
-          type="warning"
-          prominent
-
-        >
-          لطفا موارد زیر را به صورت دقیق تکمیل کنید، از این اطلاعات در جهت ارتباط با شما استفاده خواهد شد. همایش به صورت
-          حضوری و مخصوص دانش آموزان شهر شیراز است.
-        </v-alert>
+        <div class="alertWarning">
+          <div class="alertIcon">
+            <img src="~/assets/images/warning_alert_icon.svg">
+          </div>
+          <p class="alertContent">لطفا موارد زیر را به صورت دقیق تکمیل کنید، از این اطلاعات در جهت ارتباط با شما استفاده خواهد شد. همایش به صورت
+            حضوری و مخصوص دانش آموزان شهر شیراز است.</p>
+        </div>
       </v-col>
     </v-row>
 
@@ -195,8 +193,8 @@
       </v-col>
     </v-row>
     <div v-show="is_register"
-         style="display: flex; flex-direction: row-reverse; justify-content: space-between; margin-top: 100px">
-      <v-btn class="button-fill" v-on:click="goToNextPage()">مرحله بعد</v-btn>
+         style="display: flex; flex-direction: row-reverse; justify-content: space-between; margin-top: 30px">
+      <v-btn class="button-fill next-btn" v-on:click="goToNextPage()">مرحله بعد</v-btn>
     </div>
   </v-form>
 
@@ -267,3 +265,35 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+.alertWarning{
+  border: 2px solid #FB8C00;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 20px;
+}
+
+.alertContent{
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  text-align: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+
+  color: #FB8C00;
+}
+
+.next-btn{
+  transform: translateX(-50px) scale(1.2);
+  border-radius: 12px;
+}
+
+</style>
