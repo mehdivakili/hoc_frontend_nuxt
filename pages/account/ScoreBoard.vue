@@ -92,16 +92,84 @@
         </v-col>
       </v-row>
     </v-container>
+    <v-container class="user-info-container">
+      <v-row>
+        <v-col>
+          <h2>
+            <v-icon color="#004948">
+              mdi-gift-outline
+            </v-icon>
+            جدول امتیازات
+            <v-icon color="#004948">
+              mdi-gift-outline
+            </v-icon>
+          </h2>
+        </v-col>
+      </v-row>
+      <hr>
+      <v-card class="hocclubtable">
+        <v-card-title>
+          <v-spacer></v-spacer>
+          <v-text-field
+            v-model="search"
+            append-icon="mdi-magnify"
+            label="جستجو"
+            single-line
+            hide-details
+
+          ></v-text-field>
+        </v-card-title>
+        <v-container>
+          <v-data-table
+            :headers="headers"
+            :items="desserts"
+            :item-class="get_me"
+            :search="search"
+          ></v-data-table>
+        </v-container>
+      </v-card>
+
+    </v-container>
   </div>
 </template>
 
 <script>
 export default {
   name: "ScoreBoard",
+  data() {
+    return {
+      search: '',
+      headers: [
+        {text: 'رتبه', value: 'hoc_club_rank', align: 'center'},
+        {text: 'نام', value: 'name', align: 'center'},
+        {text: 'امتیاز', value: 'total_score', align: 'center'},
+      ],
+    }
+  },
   async asyncData({$axios}) {
-    return $axios.$get('/hoc_club/data/')
-  }
+    let data = await $axios.$get('/hoc_club/data/');
+    data.desserts = await $axios.$get('/hoc_club/ranking/')
+    let len = data.desserts.length
+    for (let i = 0; i < len; i++) {
+      data.desserts[i].name = data.desserts[i].first_name_persian + " " + data.desserts[i].last_name_persian
+    }
+    return data
+  },
+  methods: {
+    get_me(v) {
 
+      if (v.first_name_persian === this.$auth.user.first_name_persian &&
+        v.last_name_persian === this.$auth.user.last_name_persian &&
+        v.hoc_club_rank == this.rank &&
+        v.total_score == this.total_score) {
+
+        return 'me'
+      }
+      return ''
+
+    }
+
+  }
 }
 </script>
 
@@ -110,6 +178,7 @@ export default {
   border: 2px #004948 solid;
   border-radius: 15px;
   padding: 20px;
+  margin-bottom: 50px;
 }
 
 h2 {
@@ -198,10 +267,37 @@ hr {
   color: #00928F;
 }
 
+.hocclubtable {
+  background-color: #C5E3E3;
+}
+
+
 @media screen  and (max-width: 420px) {
   hr {
     min-width: 200px;
 
   }
 }
+</style>
+
+<style lang="scss">
+tr, th, td {
+  border: 1px solid #004948 !important;
+  background-color: #99bdbb !important;
+  font-size: 20px !important;
+  text-align: center !important;
+}
+
+.v-data-footer {
+  background-color: #C5E3E3;
+}
+
+.me {
+  td{
+    background: #026968 !important;
+    color: white;
+
+  }
+}
+
 </style>

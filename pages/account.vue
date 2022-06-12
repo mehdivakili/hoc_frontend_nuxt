@@ -4,7 +4,7 @@
     <v-container>
       <v-row>
         <v-col lg="4" sm="12">
-          <v-card style=" background: linear-gradient(146.8deg, #00807E 13.33%, #004746 86.04%);" elevation="2">
+          <v-card style=" background: linear-gradient(146.8deg, #00807E 13.33%, #004746 86.04%); margin-top: 12px; border-radius: 15px;" elevation="2">
             <v-row>
               <v-col cols="12">
                 <div class="img-fluid1">
