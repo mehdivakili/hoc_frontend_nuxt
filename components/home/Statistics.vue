@@ -1,6 +1,6 @@
 <template>
   <div class="banner">
-    <div class="out">
+    <v-container class="out">
       <div class="squire">
         <h5>تـــعـــداد دانـــش آمـــوزان
           شرکت کننده تا به امروز </h5>
@@ -16,7 +16,7 @@
           برگزار کننده همایش</h5>
         <p>۱۸۰ +</p>
       </div>
-    </div>
+    </v-container>
   </div>
 </template>
 

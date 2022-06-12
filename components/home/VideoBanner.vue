@@ -1,5 +1,6 @@
 <template>
   <div :id="id" class="banner" :style="{flexDirection: direction,background: bgColor}">
+    <div class="banner-inner" :style="{flexDirection: direction}">
     <div class="banner-content" :style="{color: textColor}">
       <h3>
         <slot name="banner-title"></slot>
@@ -14,6 +15,7 @@
                 src="https://www.aparat.com/embed/EcKTh?data[rnddiv]=29586206303&data[responsive]=yes"></script>
       </div>
     </div>
+  </div>
   </div>
 
 </template>
@@ -41,11 +43,18 @@ export default {
   position: relative;
 }
 
-.banner-img video {
-
+.banner-img img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100% !important;
 }
 
+.banner-img {
+  padding: 110px;
+  display: none;
+}
 
 .banner-content {
   text-align: justify;
@@ -56,12 +65,25 @@ export default {
   margin-bottom: 30px;
 }
 
+.banner-inner{
+  max-width: 2000px;
+  margin: auto;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
 @media screen and (min-width: 1000px) {
   .banner-content, .banner-img {
     width: 50% !important;
-
+    max-width: 800px !important;
   }
 
+  .banner-img {
+    display: block;
+  }
 
   .banner {
     display: flex;
