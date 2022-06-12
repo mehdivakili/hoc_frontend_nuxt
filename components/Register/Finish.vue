@@ -18,7 +18,7 @@
               <v-card class="cardShape">
                 <div style="padding-top: 6px; padding-bottom: 2px;">
                   <p class="titles" style="text-align: center; ">کد ملی</p>
-                  <p class="content" style="text-align: center;">{{ nationalCode }}</p>
+                  <p class="content" style="text-align: center;">{{ numberToPersian(nationalCode) }}</p>
                 </div>
               </v-card>
             </v-col>
@@ -44,7 +44,7 @@
                 <v-row style="margin-bottom: 5px;">
                   <v-col style="margin-right: 15px; "><p class="titles" style="margin-right: 5em">مبلغ پرداختی</p>
                   </v-col>
-                  <v-col><p class="content"> {{ amount }} تومان</p></v-col>
+                  <v-col><p class="content"> {{ numberToPersian(amount) }} تومان</p></v-col>
                 </v-row>
               </v-card>
             </v-col>
@@ -96,7 +96,7 @@ export default {
         console.log(e)
       }
       this.$nuxt.$loading.finish();
-    }
+    },
   },
   beforeMount() {
     let t = this

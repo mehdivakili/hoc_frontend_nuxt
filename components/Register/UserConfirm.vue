@@ -3,10 +3,10 @@
   <div>
     <div style="display: flex; justify-content: center; align-items: center">
       <div style="background: #004948; height: 3px; flex-grow: 3;border-radius: 3px"></div>
-      <span style="margin: 10px; font-size: 30px">فرم تعهد نامه</span>
+      <span style="margin: 10px; font-size: 30px; color: #004948;">فرم تعهد نامه</span>
       <div style="background: #004948; height: 3px; flex-grow: 3; border-radius: 3px"></div>
     </div>
-    اینجانب تعهد می دهم که:
+    <p>اینجانب تعهد می دهم که:</p>
     <ul>
       <li>شئونات اسلامی و موازین اخلاقی را رعایت نمایم.</li>
       <li>پـروتـــــکـل‌ های بهــــــداشـــــتی را رعـــــــایــــت و در طــــــول رویـــــــداد از ماســــــــک
@@ -30,7 +30,7 @@
         شرکت در رویداد محروم شوم.
       </li>
     </ul>
-    تذکرات
+    <p>تذکرات</p>
 
     <ul>
       <li> بدیـهی اســت مســئولیت حراســت از وســایل شــخصی بــر عــهده دانــش آموز بوده و کـادر برگـزاری
@@ -49,7 +49,7 @@
 
 
     <div style="display: flex; justify-content: space-between; align-items: center">
-      <v-checkbox :error-messages="error" v-model="checked"
+      <v-checkbox class="check-box" :error-messages="error" v-model="checked"
                   label="شرایط گفته شده را مطالعه نموده و قبول دارم."></v-checkbox>
       <v-btn class="button-fill" style="color: #FEFEFE" @click="goToNextPage">تکمیل ثبت نام</v-btn>
     </div>
@@ -120,7 +120,32 @@ export default {
 
 <style scoped>
 ul {
-  margin-right: 20px;
   text-align: justify;
 }
+
+li, p{
+  line-height: 40px;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 0px;
+  color: #004948;
+}
+
+.check-box /deep/ label{
+  color: #004948;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+@media screen and (min-width: 1000px){
+  ul {
+    margin-right: 100px;
+  }
+
+  p{
+    margin-right: 70px;
+  }
+}
+
+
 </style>

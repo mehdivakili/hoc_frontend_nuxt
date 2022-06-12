@@ -36,7 +36,7 @@ export default {
     '~/plugins/notification.js',
     // '~/plugins/select.js',
     '~/plugins/datePicker.js',
-    // '~/plugins/city.js',
+    '~/plugins/persianNumberConverter.js',
     '~/plugins/OTPInput.js',
   ],
 
