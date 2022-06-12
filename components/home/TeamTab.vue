@@ -1,50 +1,54 @@
 <template>
   <div class="banner">
-    <ul class="nav-tabs">
-      <li :class="[(groupKey === currentGroup)? 'active': '','nav-tab-item']" v-for="(group,groupKey) in team"
-          :key="`nav-btn-${groupKey}`" @click="currentGroup = groupKey">
-        {{ group.name }}
-      </li>
-    </ul>
-    <div>
-      <transition name="fade" mode="out-in">
-        <div v-for="(group,groupKey) in team" :key="`nav-${groupKey}`"
-                  v-if="groupKey === currentGroup">
-          <hooper :rtl="true" :settings="hooperSettings" style="height: 400px">
-            <slide style="padding: 20px; display: flex; justify-content: center;align-items: end"
-                   v-for="(person,pk) in group.people"
-                   :key="`nav-${groupKey}-person-${pk}`" :index="pk">
-              <div :class="['person-card',(pk===0)?'admin-card':'']">
-                <div>
-                  <div style="display: flex; justify-content: center">
-                    <v-img class="person-image"
-                           :src="person.image"
-                           :alt="person.name"
-                    ></v-img>
+    <v-container>
+      <ul class="nav-tabs">
+        <li :class="[(groupKey === currentGroup)? 'active': '','nav-tab-item']" v-for="(group,groupKey) in team"
+            :key="`nav-btn-${groupKey}`" @click="currentGroup = groupKey">
+          {{ group.name }}
+        </li>
+      </ul>
+      <div>
+        <transition name="fade" mode="out-in">
+          <div v-for="(group,groupKey) in team" :key="`nav-${groupKey}`"
+               v-if="groupKey === currentGroup">
+            <hooper :rtl="true" :settings="hooperSettings" style="height: 400px">
+              <slide style="padding: 20px; display: flex; justify-content: center;align-items: end"
+                     v-for="(person,pk) in group.people"
+                     :key="`nav-${groupKey}-person-${pk}`" :index="pk">
+                <div :class="['person-card','admin-card']">
+                  <div>
+                    <div style="display: flex; justify-content: center">
+                      <v-img class="person-image"
+                             :src="person.image"
+                             :alt="person.name"
+                      ></v-img>
+                    </div>
+
+                    <p class="person-name">{{ person.name }}</p>
+                    <p class="person-description">{{ person.description }}</p>
+                    <a :href="person.linkedin">
+                      <v-img
+                        :lazy-src="require(`~/assets/images/linkedin_logo.svg`)"
+                        max-height="38"
+                        max-width="113"
+                        :src="require(`~/assets/images/linkedin_logo.svg`)"
+                        alt="linkedIn Icon"
+                      ></v-img>
+                    </a>
                   </div>
-
-                  <p class="person-name">{{ person.name }}</p>
-                  <p class="person-description">{{ person.description }}</p>
-                  <a :href="person.linkedin">
-                    <v-img
-                      :lazy-src="require(`~/assets/images/linkedin_logo.svg`)"
-                      max-height="38"
-                      max-width="113"
-                      :src="require(`~/assets/images/linkedin_logo.svg`)"
-                      alt="linkedIn Icon"
-                    ></v-img>
-                  </a>
                 </div>
-              </div>
-            </slide>
-            <hooper-navigation slot="hooper-addons"></hooper-navigation>
+              </slide>
+              <hooper-navigation slot="hooper-addons"></hooper-navigation>
 
-          </hooper>
-          <div class="duty-box">{{group.information}}</div>
-        </div>
-      </transition>
+            </hooper>
+            <div style="display: flex; justify-content: center">
+              <div class="duty-box">{{ group.information }}</div>
+            </div>
+          </div>
+        </transition>
 
-    </div>
+      </div>
+    </v-container>
   </div>
 </template>
 
@@ -501,7 +505,6 @@ export default {
     text-align: center;
     font-weight: bold;
     color: white;
-    margin: 5px 20px;
     padding: 5px 10px;
     text-decoration: none;
     list-style: none;
@@ -524,7 +527,7 @@ export default {
   /* grayShadow */
   box-shadow: 5px 5px 10px rgba(32, 32, 32, 0.35);
   border-radius: 15px;
-  width: 220px;
+  width: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -560,9 +563,8 @@ export default {
 
 .admin-card {
   background: white;
-  transform-origin: left bottom;
+  transform-origin: center bottom;
 
-  transform: scale(1.25);
 }
 
 
@@ -577,26 +579,44 @@ export default {
     fill: white;
   }
 }
+
 .duty-box {
-  max-width: 618px;
-  width: 100% ;
-  min-height: 76px;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(254, 254, 254, 0.55);
+  background: white;
   padding: 10px 15px;
 
-  box-shadow: 5px 5px 10px rgba(32, 32, 32, 0.35);
   border-radius: 30px 0px 30px 30px;
   font-style: normal;
   font-weight: 400;
-  font-size: 20px;
   line-height: 28px;
 
-  text-align: justify ;
-
+  text-align: justify;
+  margin: 10px;
+  font-size: 14px;
   color: #004948;
 }
 
+@media screen and (min-width: 1000px) {
+  .duty-box {
+    font-size: 16px;
+    max-width: 618px;
+    width: 100%;
+    padding: 20px;
+  }
+  .nav-tabs li {
+    margin: 5px 20px;
+
+  }
+}
+
+.hooper-next {
+  transform: translateX(-25px);
+}
+
+.hooper-prev {
+  transform: translateX(25px);
+}
 </style>
