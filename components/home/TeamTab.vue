@@ -175,7 +175,6 @@ export default {
   background: rgba(255,255,255,0.6);
   transform-origin: center bottom;
   transition: 0.4s;
-  min-height: 500px;
 
   &:hover{
     transform: scale(1.1);
