@@ -86,7 +86,7 @@ export default {
 
   },
   async mounted() {
-    this.teams = (await this.$axios.get('team/')).data
+    this.team = await this.$axios.$get('team/')
   },
   components: {
     Hooper, Slide, HooperNavigation
