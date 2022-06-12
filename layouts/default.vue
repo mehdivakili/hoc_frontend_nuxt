@@ -31,7 +31,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~bootstrap/scss/bootstrap";
 
 @font-face {
   font-family: "Vazir";
@@ -68,7 +67,9 @@ nav {
 .fade-leave-active {
   opacity: 0;
 }
-
+hr{
+  margin-bottom: 40px;
+}
 .v-btn {
   span {
     font-size: 16px;
