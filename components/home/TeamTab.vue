@@ -328,4 +328,7 @@ export default {
   color: #004948;
 }
 
+.theme--light.v-icon{
+  color: rgba(255,255,255, 0.9);
+}
 </style>
