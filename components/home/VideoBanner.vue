@@ -43,7 +43,7 @@ export default {
   position: relative;
 }
 
-.banner-img img {
+.banner-img video {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -51,10 +51,7 @@ export default {
   width: 100% !important;
 }
 
-.banner-img {
-  padding: 110px;
-  display: none;
-}
+
 
 .banner-content {
   text-align: justify;
@@ -68,10 +65,7 @@ export default {
 .banner-inner{
   max-width: 2000px;
   margin: auto;
-  display: flex;
   width: 100%;
-  justify-content: center;
-  align-items: center;
   gap: 50px;
 }
 
@@ -93,6 +87,14 @@ export default {
     gap: 110px;
     height: 684px;
 
+  }
+  .banner-inner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .banner-img {
+    padding: 110px;
   }
 }
 
