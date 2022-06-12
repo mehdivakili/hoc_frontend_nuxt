@@ -22,6 +22,9 @@ $text-field-border-radius: 15px;
   border-radius: 15px;
   color: #fff !important;
   border: none;
+  span{
+    font-weight: bold;
+  }
 }
 
 .button-outline {
@@ -31,6 +34,9 @@ $text-field-border-radius: 15px;
   border: 3px solid #03b9b5;
   background: none !important;
   color: #03b9b5 !important;
+  span{
+    font-weight: bold;
+  }
 }
 
 .vpd-input-group {

@@ -1,5 +1,6 @@
 <template>
   <div class="banner" :style="{flexDirection: direction,background: bgColor}">
+    <div class="banner-inner" :style="{flexDirection: direction}">
     <div class="banner-content" :style="{color: textColor}">
       <h3>
         <slot name="banner-title"></slot>
@@ -11,6 +12,7 @@
     <div class="banner-img img-fluid">
       <img :src="image" :alt="alt"/>
     </div>
+  </div>
   </div>
 
 </template>
@@ -27,7 +29,6 @@ export default {
 </script>
 
 <style scoped>
-
 
 .banner {
   width: 100%;
@@ -60,10 +61,20 @@ export default {
   margin-bottom: 30px;
 }
 
+.banner-inner{
+  max-width: 2000px;
+  margin: auto;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
 @media screen and (min-width: 1000px) {
   .banner-content, .banner-img {
     width: 50% !important;
-
+    max-width: 800px !important;
   }
 
   .banner-img {

@@ -5,7 +5,7 @@
       سوالات متداول
       <v-icon size="60px" color="white" >mdi-help-circle</v-icon>
     </h1>
-    <v-expansion-panels accordion>
+    <v-expansion-panels accordion class="accordion">
       <v-expansion-panel
         v-for="question in questions"
       >
@@ -85,6 +85,11 @@ h1 {
 
 }
 
+.accordion{
+  max-width: calc(100% - 20px);
+  margin-right: 10px;
+}
+
 
 @media screen and (min-width: 1000px) {
   .banner {
@@ -99,13 +104,7 @@ h1 {
 
   }
 
-  .accordion {
-    width: 100%;
-    max-width: 1000px;
-    border-radius: 15px;
-    overflow: hidden;
-    margin: auto;
-  }
+
 
 
 }

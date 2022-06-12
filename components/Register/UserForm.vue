@@ -33,21 +33,19 @@
     </v-row>
     <v-row justify="center" class="botRow">
 
-      <v-card outlined elevation="15" class="con">
-        <v-card-text>
-
-          <p style="text-align: center;color:#004948; font-weight: bold;">برای ادامه ثبت نام حتما<br/>
-            در پرسشنامه شرکت کنید.</p>
-
-        </v-card-text>
-
-
-        <v-btn @click="nextPage" class="button-fill" style="width: 70%;margin-right: 2.5em;margin-bottom: 2em">ورود
-          به پرسشنامه
-        </v-btn>
+      <div class="con">
+        <p style="text-align: center;color:#004948; font-weight: bold; font-size: 20px; margin-bottom: 40px;">برای ادامه
+          ثبت نام حتما<br/>
+          در پرسشنامه شرکت کنید.</p>
+        <div style="width: 100%; display: flex; justify-content: center; align-items: center">
+          <v-btn @click="nextPage" class="button-fill go-to-form-btn"
+                 style="width: 70%;margin-right: 2.5em;margin-bottom: 2em">ورود
+            به پرسشنامه
+          </v-btn>
+        </div>
 
 
-      </v-card>
+      </div>
     </v-row>
   </div>
 </template>
@@ -86,12 +84,15 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .con {
   margin-top: 100px;
   max-width: 300px;
   background: #C7E4E4;
-  border-radius: 8px;
+  border-radius: 10px;
+  box-shadow: -18px -18px 30px #E0F0F0, 18px 18px 30px #98CDCD;
+  padding-top: 30px;
+  padding-bottom: 10px;
 
 }
 
@@ -107,4 +108,12 @@ export default {
 .botRow {
   margin-right: 1em;
 }
+
+.go-to-form-btn {
+  transform: scale(1.2);
+  border-radius: 12px;
+  margin-right: 0px !important;
+
+}
+
 </style>
