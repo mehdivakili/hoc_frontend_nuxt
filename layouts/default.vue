@@ -32,6 +32,8 @@ export default {
 
 <style lang="scss">
 
+@import "~bootstrap/scss/bootstrap.scss";
+
 @font-face {
   font-family: "Vazir";
   src: url('@/assets/fonts/Vazir.ttf') format('truetype');
