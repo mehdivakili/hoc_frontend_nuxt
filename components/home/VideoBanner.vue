@@ -93,9 +93,6 @@ export default {
     justify-content: center;
     align-items: center;
   }
-  .banner-img {
-    padding: 110px;
-  }
 }
 
 
