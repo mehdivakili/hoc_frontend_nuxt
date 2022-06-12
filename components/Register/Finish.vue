@@ -109,21 +109,22 @@ export default {
 </script>
 
 <style scoped>
+
 .mainCard {
   background-color: #C5E3E3;
+  border-radius: 36px !important;
+  box-shadow: -18px -18px 30px #E0F0F0, 18px 18px 30px #98CDCD !important;
 }
 
 .firstRow {
   margin-left: 4px;
   margin-right: 4px;
-
 }
 
 .cardShape {
   box-shadow: inset -18px -18px 30px #E0F0F0, inset 18px 18px 30px #98CDCD !important;
   background: #C5E3E3;
   border-radius: 10px;
-
 }
 
 .otherRow {
