@@ -510,7 +510,7 @@ export default {
     list-style: none;
     border: 3px solid rgba(0, 0, 0, 0);
     transition: 0.4s;
-
+    cursor: pointer;
 
     &.active {
       border: 3px solid white;
