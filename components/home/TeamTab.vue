@@ -28,9 +28,6 @@
                     <p class="person-description">{{ person.description }}</p>
                     <a :href="person.linkedin">
                       <v-img
-                        :lazy-src="require(`~/assets/images/linkedin_logo.svg`)"
-                        max-height="38"
-                        max-width="113"
                         :src="require(`~/assets/images/linkedin_logo.svg`)"
                         alt="linkedIn Icon"
                       ></v-img>
@@ -175,9 +172,14 @@ export default {
 }
 
 .admin-card {
-  background: white;
+  background: rgba(255,255,255,0.6);
   transform-origin: center bottom;
+  transition: 0.4s;
+  min-height: 500px;
 
+  &:hover{
+    transform: scale(1.1);
+  }
 }
 
 
@@ -198,7 +200,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: white;
+  background: rgba(255,255,255,0.6);
   padding: 10px 15px;
 
   border-radius: 30px 0px 30px 30px;
