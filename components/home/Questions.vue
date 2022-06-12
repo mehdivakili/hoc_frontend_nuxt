@@ -82,6 +82,7 @@ h1 {
 
 .panelContent{
   color: #004948;
+
 }
 
 
