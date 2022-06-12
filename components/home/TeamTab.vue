@@ -123,6 +123,7 @@ export default {
     border: 3px solid rgba(0, 0, 0, 0);
     transition: 0.4s;
     cursor: pointer;
+    margin-top: 20px;
 
     &.active {
       border: 3px solid white;
