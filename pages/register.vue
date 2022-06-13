@@ -108,13 +108,15 @@ export default {
   methods: {
     scrollBar() {
       let s = this.$store.state.register.state;
-
+      let t = this
       if (this.oldState !== s) {
         let content = this.$refs.bar
         if (content) {
           let pre = (s === 0) ? '' : 'line-'
           this.$refs['bar-' + pre + s][0].scrollIntoView({behavior: 'smooth', block: "center"})
-          this.oldState = s
+          setTimeout(function () {
+            t.oldState = s
+          }, 500)
         }
       }
     }
