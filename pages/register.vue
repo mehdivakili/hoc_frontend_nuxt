@@ -2,10 +2,10 @@
   <div v-if="$route.fullPath.endsWith('register/') || $route.fullPath.endsWith('register')" class="login">
     <div class="content">
       <v-form style="width: 100% !important;" @submit.prevent="logInUser($store.state.register.userData)" method="post">
-        <div class="p-bars">
+        <div class="p-bars" ref="bar">
           <template v-for="(page,index) in pages">
-            <div
-              :class="['bar',(state === index)? 'bar-current':(state > index) ?'bar-before': '']">
+            <div :ref="`bar-${index}`"
+                 :class="['bar',(state === index)? 'bar-current':(state > index) ?'bar-before': '']">
               <div class="bar-icon">
                 <v-icon v-if="page.icon" :size="page.size" :color="(state === index)? 'white' :'#004948'">{{
                     page.icon
@@ -17,8 +17,8 @@
 
               <p>{{ page.title }}</p>
             </div>
-            <div v-if="index !== pages.length -1"
-                 :class="['line',(state === index)? 'line-current':(state > index) ?'line-before': '']"></div>
+            <div :ref="`bar-line-${index}`"
+                 :class="['line',(state === index)? 'line-current':(state > index) ?'line-before': '',(index === pages.length -1)?'bar-last':'' ]"></div>
           </template>
         </div>
         <Transition name="fade" :duration="350" mode="out-in">
@@ -52,13 +52,15 @@ import UserPhoneVerify from "@/components/Register/UserPhoneVerify";
 
 export default {
   name: "register",
-  head(){
-    return{
+  head() {
+    return {
       title: 'ثبت نام'
     }
   },
   data() {
+
     return {
+      oldState: -1,
       pages: [
         {title: 'تاييد شماره موبايل', iconComponent: PhoneValidationSvg, size: 67, component: UserPhoneVerify},
         {title: 'اطلاعات شخصی', icon: 'mdi-alert-circle', size: 80, component: UserInfo},
@@ -73,6 +75,7 @@ export default {
   computed: {
     state: {
       get() {
+        this.scrollBar()
         return this.$store.state.register.state
       },
       set(data) {
@@ -100,7 +103,21 @@ export default {
         scrollContainer: '#main-viewport'
       });
     }
+    setInterval(this.scrollBar.bind(this), 1000)
+  },
+  methods: {
+    scrollBar() {
+      let s = this.$store.state.register.state;
 
+      if (this.oldState !== s) {
+        let content = this.$refs.bar
+        if (content) {
+          let pre = (s === 0) ? '' : 'line-'
+          this.$refs['bar-' + pre + s][0].scrollIntoView({behavior: 'smooth', block: "center"})
+          this.oldState = s
+        }
+      }
+    }
   },
   auth: false,
 
@@ -134,20 +151,47 @@ export default {
 
 }
 
+.p-bars {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
 
-@media screen and (max-width: 1000px) {
+}
+
+@media screen and (max-width: 1420px) {
   .image {
     display: none;
   }
 }
 
-.p-bars {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
+.bar-last {
+  opacity: 0;
+  display: none;
 
 }
+
+@media screen and (max-width: 1420px) {
+  .bar-last {
+    display: block;
+  }
+  .p-bars {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    overflow-x: scroll;
+    flex-wrap: nowrap;
+    scroll-behavior: smooth;
+    transition: 0.4s;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  .line {
+    min-width: 50px;
+  }
+}
+
 
 .bar {
   display: flex;
@@ -160,6 +204,7 @@ export default {
     margin-top: 10px;
     color: white;
     transition: color 0.7s;
+    white-space: nowrap;
   }
 }
 

@@ -48,7 +48,7 @@
     </ul>
 
 
-    <div style="display: flex; justify-content: space-between; align-items: center">
+    <div class="check">
       <v-checkbox class="check-box" :error-messages="error" v-model="checked"
                   label="شرایط گفته شده را مطالعه نموده و قبول دارم."></v-checkbox>
       <v-btn class="button-fill" style="color: #FEFEFE" @click="goToNextPage">تکمیل ثبت نام</v-btn>
@@ -123,7 +123,7 @@ ul {
   text-align: justify;
 }
 
-li, p{
+li, p {
   line-height: 40px;
   font-weight: bold;
   font-size: 16px;
@@ -131,18 +131,27 @@ li, p{
   color: #004948;
 }
 
-.check-box /deep/ label{
+.check-box /deep/ label {
   color: #004948;
   font-weight: bold;
+  text-align: right;
   font-size: 20px;
 }
 
-@media screen and (min-width: 1000px){
+
+@media screen and (min-width: 1000px) {
+
+  .check {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+  }
+
   ul {
     margin-right: 100px;
   }
 
-  p{
+  p {
     margin-right: 70px;
   }
 }
