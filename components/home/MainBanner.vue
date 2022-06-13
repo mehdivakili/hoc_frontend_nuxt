@@ -12,6 +12,7 @@
     <h3>
       تاریخ همایش: ۲۵ تا ۳۱ تیر ماه ۱۴۰۱
     </h3>
+    <v-btn class="button-fill px-7 py-4 my-2 d-flex d-md-none" to="register/" style="transform: scale(1.4)"> ثبت نام </v-btn>
   </div>
 
 </template>

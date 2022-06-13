@@ -1,6 +1,6 @@
 <template>
   <div class="banner">
-    <v-container>
+    <v-container style="overflow: hidden">
       <ul class="nav-tabs">
         <li :class="[(groupKey === currentGroup)? 'active': '','nav-tab-item']" v-for="(group,groupKey) in team"
             :key="`nav-btn-${groupKey}`" @click="currentGroup = groupKey">
