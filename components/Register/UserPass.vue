@@ -130,7 +130,7 @@ export default {
             group: 'foo',
             type: 'error',
 
-            title: 'لطفا موارد را با دقت پر کنید',
+            title: 'خطا در ثبت نام!!',
             text: text
           });
           this.$store.commit('register/setError', error.response.data)
