@@ -81,7 +81,7 @@
                       Coin
                     </v-col>
                     <v-col cols="12" class="fonts2">
-                      0
+                      {{ quiz_coin }}
                     </v-col>
                   </v-row>
                 </v-card>
@@ -293,7 +293,7 @@ tr, th, td {
 }
 
 .me {
-  td{
+  td {
     background: #026968 !important;
     color: white;
 
