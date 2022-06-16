@@ -5,11 +5,11 @@
         <v-col>
           <h2>
             <v-icon color="#004948">
-              mdi-gift-outline
+              mdi-account
             </v-icon>
             اطلاعات حساب کاربری
             <v-icon color="#004948">
-              mdi-gift-outline
+              mdi-account
             </v-icon>
           </h2>
         </v-col>
@@ -137,7 +137,7 @@
             <v-icon color="#004948">
               mdi-clipboard-text-clock-outline
             </v-icon>
-            اطلاعات حساب کاربری
+            تاریخچه امتیازات
             <v-icon color="#004948">
               mdi-clipboard-text-clock-outline
             </v-icon>
