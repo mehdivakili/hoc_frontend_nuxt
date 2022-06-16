@@ -41,12 +41,15 @@
 
           </v-row>
           <v-row class="otherRow">
-            <v-col >
+            <v-col>
               <v-card class="cardShape">
                 <v-row style="margin-bottom: 5px;">
-                  <v-col cols="12" md="6" style="display: flex; justify-content: center; align-items:center"><p class="titles" >مبلغ پرداختی</p>
+                  <v-col cols="12" md="6" style="display: flex; justify-content: center; align-items:center"><p
+                    class="titles">مبلغ پرداختی</p>
                   </v-col>
-                  <v-col cols="12" md="6"><p class="content" style="display: flex; justify-content: center; align-items:center  "> {{ numberToPersian(amount) }} تومان</p></v-col>
+                  <v-col cols="12" md="6"><p class="content"
+                                             style="display: flex; justify-content: center; align-items:center  ">
+                    {{ numberToPersian(amount) }} تومان</p></v-col>
                 </v-row>
               </v-card>
             </v-col>
@@ -92,11 +95,25 @@ export default {
 
 
       } catch (e) {
-        console.log(e)
+        if (error.response !== undefined) {
+          if (error.response.data.error !== undefined) {
+            let text = error.response.data.error
+
+            this.$notify({
+              group: 'foo',
+              type: 'error',
+
+              title: 'خطا در پرداخت!!',
+              text: text
+            });
+          }
+        }
       }
       this.$nuxt.$loading.finish();
-    },
-  },
+    }
+    ,
+  }
+  ,
   beforeMount() {
     let t = this
     this.$axios.get('get_option/purchase_amount').then((res) =>
