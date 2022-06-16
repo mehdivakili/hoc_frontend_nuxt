@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MainBanner :image="require('~/assets/images/main_banner.png')" alt="" text-color="white"/>
+    <MainBanner :image="require('~/assets/images/main_banner.png')" alt="" text-color="white" :count="count"/>
 
     <Banner text-color="#004948" bg-color="#FEFEFE" :image="require('~/assets/images/banner1.svg')" alt="یک عکس">
       <template v-slot:banner-title>
@@ -91,6 +91,12 @@ export default {
   auth: false,
   mounted() {
     this.$store.commit('setFooterColor', 'linear-gradient(15deg, #00ADAA 29%, #00928F 71%)')
+  },
+  async asyncData({$axios}) {
+    let count = await $axios.$get('/remaining');
+    return{
+      count: count,
+    }
   }
 }
 </script>
