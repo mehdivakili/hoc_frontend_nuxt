@@ -130,10 +130,49 @@
       </v-card>
 
     </v-container>
+    <v-container class="user-info-container">
+      <v-row>
+        <v-col>
+          <h2>
+            <v-icon color="#004948">
+              mdi-clipboard-text-clock-outline
+            </v-icon>
+            اطلاعات حساب کاربری
+            <v-icon color="#004948">
+              mdi-clipboard-text-clock-outline
+            </v-icon>
+          </h2>
+        </v-col>
+      </v-row>
+      <hr>
+      <v-card class="hocclubtable">
+        <v-card-title>
+          <v-spacer></v-spacer>
+          <v-text-field
+            v-model="historySearch"
+            append-icon="mdi-magnify"
+            label="جستجو"
+            single-line
+            hide-details
+
+          ></v-text-field>
+        </v-card-title>
+        <v-container>
+          <v-data-table
+            :headers="historyHeaders"
+            :items="historyDesserts"
+            :search="historySearch"
+          ></v-data-table>
+        </v-container>
+      </v-card>
+
+    </v-container>
   </div>
 </template>
 
 <script>
+import Vue from "vue"
+
 export default {
   name: "ScoreBoard",
   data() {
@@ -144,14 +183,25 @@ export default {
         {text: 'نام', value: 'name', align: 'center'},
         {text: 'امتیاز', value: 'total_score', align: 'center'},
       ],
+      historySearch: '',
+      historyHeaders: [
+        {text: 'تاریخ', value: 'date', align: 'center'},
+        {text: 'توضیح', value: 'description', align: 'center'},
+        {text: 'امتیاز', value: 'score', align: 'center'},
+      ],
     }
   },
   async asyncData({$axios}) {
     let data = await $axios.$get('/hoc_club/data/');
     data.desserts = await $axios.$get('/hoc_club/ranking/')
+    data.historyDesserts = await $axios.$get('/hoc_club/history/')
     let len = data.desserts.length
+    let historyLen = data.historyDesserts.length
     for (let i = 0; i < len; i++) {
       data.desserts[i].name = data.desserts[i].first_name_persian + " " + data.desserts[i].last_name_persian
+    }
+    for (let i = 0; i < historyLen; i++) {
+      data.historyDesserts[i].date = Vue.filter("moment")(data.historyDesserts[i].date, "hh:mm - jYYYY/jMM/jDD ")
     }
     return data
   },
