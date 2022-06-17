@@ -124,6 +124,7 @@ h2 {
     min-width: 200px;
 
   }
+}
 
   .cardShape {
     background: #C5E3E3;
