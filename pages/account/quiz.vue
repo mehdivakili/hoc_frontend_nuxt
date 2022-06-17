@@ -119,46 +119,52 @@ h2 {
   color: #004948;
 }
 
-.cardShape {
-  background: #C5E3E3;
-  box-shadow: inset -18px -18px 30px #E0F0F0, inset 18px 18px 30px #98CDCD !important;
-  border-radius: 15px;
-  padding-top: 2em;
-  padding-bottom: 2em;
+@media screen  and (max-width: 420px) {
+  hr {
+    min-width: 200px;
 
-}
+  }
 
-.mainCard {
-  background: #C5E3E3;
-  /* sabz-bar */
+  .cardShape {
+    background: #C5E3E3;
+    box-shadow: inset -18px -18px 30px #E0F0F0, inset 18px 18px 30px #98CDCD !important;
+    border-radius: 15px;
+    padding-top: 2em;
+    padding-bottom: 2em;
 
-  box-shadow: -18px -18px 30px #E0F0F0, 18px 18px 30px #98CDCD;
-  border-radius: 15px;
-}
+  }
 
-.mainText {
-  color: #004948;
-  font-family: 'Vazir';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-}
+  .mainCard {
+    background: #C5E3E3;
+    /* sabz-bar */
 
-.innerText {
-  font-weight: 900 !important;
-}
+    box-shadow: -18px -18px 30px #E0F0F0, 18px 18px 30px #98CDCD;
+    border-radius: 15px;
+  }
 
-.edit_btn {
-  box-shadow: inset 0px -4px 4px rgba(255, 252, 252, 0.25);
-  filter: drop-shadow(0px 8px 10px rgba(0, 146, 143, 0.25));
-  background: linear-gradient(180deg, #03B9B5 0%, #009592 100%);
-  border-radius: 15px;
-  padding: 10px 15px;
-  border: none;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 28px;
-  color: #FEFEFE;
-  margin-top: 20px;
-}
+  .mainText {
+    color: #004948;
+    font-family: 'Vazir';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+  }
+
+  .innerText {
+    font-weight: 900 !important;
+  }
+
+  .edit_btn {
+    box-shadow: inset 0px -4px 4px rgba(255, 252, 252, 0.25);
+    filter: drop-shadow(0px 8px 10px rgba(0, 146, 143, 0.25));
+    background: linear-gradient(180deg, #03B9B5 0%, #009592 100%);
+    border-radius: 15px;
+    padding: 10px 15px;
+    border: none;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    color: #FEFEFE;
+    margin-top: 20px;
+  }
 </style>
