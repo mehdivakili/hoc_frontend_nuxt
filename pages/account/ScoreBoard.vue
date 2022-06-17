@@ -64,19 +64,6 @@
                 <v-card class="cardShape">
                   <v-row>
                     <v-col cols="12" class="fonts1">
-                      شانس
-                    </v-col>
-                    <v-col cols="12" class="fonts2">
-                      {{ total_score }}
-
-                    </v-col>
-                  </v-row>
-                </v-card>
-              </v-col>
-              <v-col>
-                <v-card class="cardShape">
-                  <v-row>
-                    <v-col cols="12" class="fonts1">
                       Quiz
                       Coin
                     </v-col>
@@ -86,7 +73,6 @@
                   </v-row>
                 </v-card>
               </v-col>
-
             </v-row>
           </v-card>
         </v-col>
