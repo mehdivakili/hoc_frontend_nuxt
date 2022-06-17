@@ -1,6 +1,6 @@
 <template>
   <div class="banner" :style="{backgroundImage: imageUrl,color: textColor}">
-    <h1>
+    <h1 style="margin-top: 45px">
       هفتمین همایش زنگ برنامه نویسی (۱۴۰۱)
     </h1>
     <h4>
