@@ -44,12 +44,6 @@
                       <p style="margin-top: -2rem" class="mainText">نوع سوالات: <span class="innerText">تستی</span></p>
                     </v-col>
                   </v-row>
-                  <v-row> <!-- 5 -->
-                    <v-col>
-                      <p style="margin-top: -2rem" class="mainText">نوع کوییز: <span
-                        class="innerText">کوییز پیش فرض</span></p>
-                    </v-col>
-                  </v-row>
                   <v-row>
                     <v-col>
                       <v-btn class="edit_btn" @click="participate" style="margin-top: -2rem">شرکت در کوییز</v-btn>
@@ -132,7 +126,7 @@ h2 {
   background: #C5E3E3;
   /* sabz-bar */
 
-  box-shadow: -18px -18px 30px #E0F0F0, 18px 18px 30px #98CDCD;
+  box-shadow: -18px -18px 30px #E0F0F0, 18px 18px 30px #98CDCD !important;
   border-radius: 15px;
 }
 
