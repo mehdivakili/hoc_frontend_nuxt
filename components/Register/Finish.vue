@@ -3,6 +3,7 @@
     <v-row justify="center">
       <v-col cols="12" md="8">
         <v-card shaped class="mainCard">
+          <template v-if="notReserve">
           <v-row class="firstRow">
             <v-col cols="12" md="6">
               <v-card class="cardShape">
@@ -53,7 +54,6 @@
                 </v-row>
               </v-card>
             </v-col>
-
           </v-row>
           <v-row justify="center">
             <v-col cols="10" sm="6">
@@ -62,6 +62,45 @@
               </v-btn>
             </v-col>
           </v-row>
+          </template>
+          <template v-else>
+            <v-row class="firstRow">
+              <v-col cols="12" md="6">
+                <v-card class="cardShape">
+                  <div style="padding-top: 6px; padding-bottom: 2px;">
+                    <p class="titles" style="text-align: center; ">نام و نام خانوادگی</p>
+                    <p class="content" style="text-align: center;"> {{ name }}</p>
+                  </div>
+
+                </v-card>
+              </v-col>
+              <v-col cols="12" md="6">
+                <v-card class="cardShape">
+                  <div style="padding-top: 6px; padding-bottom: 2px;">
+                    <p class="titles" style="text-align: center; ">کد ملی</p>
+                    <p class="content" style="text-align: center;">{{ numberToPersian(nationalCode) }}</p>
+                  </div>
+                </v-card>
+              </v-col>
+            </v-row>
+            <v-row class="otherRow">
+              <v-col>
+                <v-card class="cardShape">
+                  <div class="reserve">
+                    <p><img src="~/assets/images/success_icon.svg"/> شما در لیست انتظار قرار گرفتید</p>
+                    <ul>
+                      <li>متأسفانه ظرفیت ثبت‌نام به پایان رسیده است :(
+
+                      </li>
+                      <li>اسم شما در لیست انتظار قرار می‌گیرد و به‌محض افزایش ظرفیت با شما تماس می‌گیریم تا بتوانید در همایش زنگ برنامه‌نویسی شرکت کنید.
+
+                      </li>
+                    </ul>
+                  </div>
+                </v-card>
+              </v-col>
+            </v-row>
+          </template>
         </v-card>
       </v-col>
     </v-row>
@@ -74,7 +113,8 @@ export default {
   name: "Finish",
   data() {
     return {
-      amount: 132000
+      amount: 132000,
+      notReserve: false
     }
   },
   computed: {
@@ -119,12 +159,21 @@ export default {
     this.$axios.get('get_option/purchase_amount').then((res) =>
       t.amount = res.data.value / 10
     )
+    this.$axios.get('remaining').then((res) =>{
+      let count = res.data
+      let gender = this.$auth.user.sex
+      if(gender == 'مرد'){
+        t.notReserve = count.male != 0
+      }else{
+        t.notReserve = count.female != 0
+      }
+      })
   }
 
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 
 .mainCard {
   background-color: #C5E3E3;
@@ -161,5 +210,28 @@ export default {
   font-family: 'Vazir Black';
   font-weight: 900;
   font-size: 18px;
+}
+
+.reserve {
+  background: #C5E3E3;
+  box-shadow: inset -18px -18px 30px #E0F0F0, inset 18px 18px 30px #98CDCD;
+  border-radius: 15px;
+  color: #00928F;
+  padding: 30px;
+
+p {
+  font-size: 24px;
+  line-height: 45px;
+  text-align: right;
+  font-weight: 900;
+
+}
+ul {
+  padding-right: 70px;
+}
+
+/* identical to box height, or 189% */
+
+
 }
 </style>

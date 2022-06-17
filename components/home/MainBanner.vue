@@ -12,19 +12,35 @@
     <h3>
       تاریخ همایش: ۲۵ تا ۳۱ تیر ماه ۱۴۰۱
     </h3>
-    <v-btn class="button-fill px-7 py-4 my-2 d-flex d-md-none" to="register/" style="transform: scale(1.4)"> ثبت نام </v-btn>
+    <!--    <v-btn class="button-fill px-7 py-4 my-2 d-flex d-md-none" to="/register" style="transform: scale(1.4)"> ثبت نام </v-btn>-->
     <div class="remaining">
-    <h2 style="margin-bottom: 50px">ظرفیت باقی مانده</h2>
-    <div class="d-flex d-md-flex" style="width: 100%; justify-content: center; align-items: center" >
-        <div class="d-block d-md-flex" style="justify-content: space-around; align-items: center; flex-grow: 1;">
-        <h3 style="text-align: center; margin: 0">پسران: {{numberToPersian(count.male)}}</h3>
-<!--        <v-btn class="button-fill px-7 py-4 my-2 d-flex " to="register/" style="transform: scale(1.4)"> ثبت نام </v-btn>-->
+      <h2 style="margin-bottom: 50px">ظرفیت باقی مانده</h2>
+      <div class="d-block d-md-flex" style="width: 100%; justify-content: center; align-items: center">
+        <div class="d-flex d-md-flex"
+             style="justify-content: space-around; align-items: center; flex-grow: 1; margin: 10px;">
+          <h3 style="text-align: center; margin: 0">پسران: {{ numberToPersian(count.male) }}</h3>
+          <div class="d-flex" style="justify-content: center">
+            <v-btn v-if="count.male != 0" class="button-fill px-7 py-4 my-2 d-flex " to="/register"
+                   style="transform: scale(1.1);"> ثبت نام
+            </v-btn>
+            <v-btn v-else class="button-fill px-7 py-4 my-2 d-flex " to="/register" style="transform: scale(1.1);">
+              رزرو
+            </v-btn>
+          </div>
         </div>
-        <div class="d-block d-md-flex" style="justify-content: space-around; align-items: center; flex-grow: 1;">
-        <h3 style="text-align: center; margin: 0"> دختران: {{numberToPersian(count.female)}}</h3>
-<!--        <v-btn class="button-fill px-7 py-4 my-2 d-flex " to="register/" style="transform: scale(1.4)"> ثبت نام </v-btn>-->
+        <div class="d-flex d-md-flex"
+             style="justify-content: space-around; align-items: center; flex-grow: 1; margin: 10px;">
+          <h3 style="text-align: center; margin: 0"> دختران: {{ numberToPersian(count.female) }}</h3>
+          <div class="d-flex" style="justify-content: center">
+            <v-btn v-if="count.female != 0" class="button-fill px-7 py-4 my-2 d-flex " to="/register"
+                   style="transform: scale(1.1);"> ثبت نام
+            </v-btn>
+            <v-btn v-else class="button-fill px-7 py-4 my-2 d-flex " to="/register" style="transform: scale(1.1);">
+              رزرو
+            </v-btn>
+          </div>
         </div>
-    </div>
+      </div>
     </div>
   </div>
 
@@ -61,7 +77,7 @@ export default {
 
 }
 
-h1{
+h1 {
   font-weight: bold;
 }
 
@@ -69,19 +85,21 @@ h4 {
   line-height: 40px;
 }
 
-.remaining{
+.remaining {
   width: 100%;
-  padding: 10px;
+  padding: 20px;
   border-radius: 15px;
   border: 2px solid white;
+  margin-bottom: 40px;
+
 }
 
-@media screen and (min-width: 1000px){
-  .banner{
+@media screen and (min-width: 1000px) {
+  .banner {
     padding: 100px;
   }
 
-  .remaining{
+  .remaining {
     width: 50%;
   }
 }
