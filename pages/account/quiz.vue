@@ -161,4 +161,11 @@ h2 {
   color: #FEFEFE;
   margin-top: 20px;
 }
+
+@media screen  and (max-width: 420px) {
+  hr {
+    min-width: 200px;
+
+  }
+}
 </style>
