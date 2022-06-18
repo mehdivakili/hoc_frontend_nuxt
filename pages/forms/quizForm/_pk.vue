@@ -64,6 +64,7 @@ export default {
 
   data() {
     return {
+      force_end: false,
       answers: {},
       answersSubmit: {},
       t: setTimeout(() => {
@@ -92,7 +93,10 @@ export default {
       this.timerCount = Math.floor(new Date(this.end) / 1000 - new Date() / 1000)
 
       let t = this
-      if (forceEnd || this.timerCount <= 0) {
+      if (forceEnd || this.force_end || this.timerCount <= 0) {
+        if (this.force_end)
+          return
+        this.force_end = true
         this.$nuxt.$loading.start()
         clearTimeout(this.t)
         await this.submitAnswer()
