@@ -88,17 +88,18 @@ export default {
     }
   },
   methods: {
-    setTime(forceEnd = false) {
+    async setTime(forceEnd = false) {
       this.timerCount = Math.floor(new Date(this.end) / 1000 - new Date() / 1000)
-      console.log(new Date(this.end) / 1000)
-      console.log(Math.floor(new Date() / 1000))
 
       let t = this
       if (forceEnd || this.timerCount <= 0) {
         this.$nuxt.$loading.start()
-        this.$axios.$get(`/quiz/${this.pk}/get-score/`).then(function (res) {
-          t.$router.push('/account/quiz') //TODO Send Exam result here for backend
-          console.log(res)
+        clearTimeout(this.t)
+        await this.submitAnswer()
+        try {
+          let res = await this.$axios.$get(`/quiz/${this.pk}/get-score/`)
+          t.$router.push('/account/quiz')
+
           t.$notify({
             group: 'foo',
             type: 'success',
@@ -106,72 +107,59 @@ export default {
             title: `نمره شما از این کوییز: ${res.score}`,
           });
           t.$nuxt.$loading.finish()
-
-        }).catch(function (error) {
-          t.$router.push('/account/quiz') //TODO Send Exam result here for backend
+        } catch (error) {
           t.$notify({
             group: 'foo',
             type: 'error',
 
             title: error.response.data.detail,
           });
-        })
+        }
 
 
       } else {
         setTimeout(this.setTime.bind(this), 1000)
-
       }
 
     },
-    submitAnswer() {
+    async submitAnswer() {
       let t = this
       for (const [key, o] of Object.entries(this.answers)) {
         if (this.answersSubmit[key] !== o) {
-          this.$axios.$post('/quiz/answer/', {quiz: t.pk, option: o.pk}).then((res) => {
-              t.$notify({
-                group: 'foo',
-                type: 'success',
+          try {
+            let res = await this.$axios.$post('/quiz/answer/', {quiz: t.pk, option: o.pk})
+            t.$notify({
+              group: 'foo',
+              type: 'success',
 
-                title: 'جواب شما ثبت شد',
-              })
-            }
-          ).catch((res) => {
+              title: 'جواب شما ثبت شد',
+            })
+            this.answersSubmit[key] = o
+          } catch {
             t.$notify({
               group: 'foo',
               type: 'error',
 
               title: 'مشکلی در ثبت جواب پیش آمد',
             })
-          })
+          }
         }
-        this.answersSubmit[key] = o
 
       }
 
 
-    },
+    }
+    ,
     changeAnswer(o, q) {
       clearTimeout(this.t)
       this.answers[q.pk] = o
 
       this.t = setTimeout(this.submitAnswer.bind(this), 1000)
     }
-  }
-  ,
-  watch: {
-    answers(newData, oldData) {
-
-
-    }
-
-
-  }
-  ,
+  },
   mounted() {
     setTimeout(this.setTime.bind(this), 1000)
   }
-  ,
 }
 </script>
 
