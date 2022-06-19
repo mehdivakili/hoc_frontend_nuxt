@@ -164,14 +164,8 @@ export default {
     this.$axios.get('get_option/purchase_amount').then((res) =>
       t.amount = res.data.value / 10
     )
-    this.$axios.get('remaining').then((res) => {
-      let count = res.data
-      let gender = this.$auth.user.sex
-      if (gender == 'مرد') {
-        t.notReserve = count.male != 0
-      } else {
-        t.notReserve = count.female != 0
-      }
+    this.$axios.get('pass_register_limit/').then((res) => {
+      t.notReserve = res.data
       t.loaded = true
     })
   }
