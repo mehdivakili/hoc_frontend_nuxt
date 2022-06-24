@@ -72,7 +72,7 @@ export default {
     // '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
     // '@nuxt/content',
-
+    'nuxt-compress',
     '@nuxtjs/auth-next',
 
   ],
@@ -103,9 +103,9 @@ export default {
     customVariables: ['~/assets/variables.scss'],
     rtl: true,
     lang: {
-      locales: { fa},
+      locales: {fa},
       current: 'fa',
-    },    theme: {
+    }, theme: {
       dark: false,
       themes: {
         dark: {

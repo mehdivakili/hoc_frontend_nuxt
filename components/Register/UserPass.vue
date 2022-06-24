@@ -1,7 +1,7 @@
 <template>
 
   <div :key="2" v-else-if="state === 2">
-    <v-form style="max-width: 600px; margin: auto;" ref="form">
+    <v-form method="POST" @submit.prevent="goToNextPage" style="max-width: 600px; margin: auto;" ref="form">
       <v-row>
         <v-col cols="12" md="6">
           <v-text-field :rules="rules" solo flat hide-details="auto" :error-messages="error.username"
@@ -156,13 +156,13 @@ export default {
 
 <style scoped lang="scss">
 
-.prev-btn{
+.prev-btn {
   transform: scale(1.2);
   transform-origin: right bottom;
   border-radius: 12px;
 }
 
-.next-btn{
+.next-btn {
   transform: scale(1.2);
   transform-origin: left bottom;
   border-radius: 12px;

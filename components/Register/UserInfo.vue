@@ -1,5 +1,5 @@
 <template>
-  <v-form style="max-width: 600px; margin: auto;" ref="form">
+  <v-form method="POST" @submit.prevent="goToNextPage" style="max-width: 600px; margin: auto;" ref="form">
     <v-row v-show="is_register">
       <v-col cols="12">
         <div class="alertWarning">

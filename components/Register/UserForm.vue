@@ -12,7 +12,7 @@
                         color: #004948;"
       >
         <p>عکس کارت واکسن:</p>
-        <v-form ref="form">
+        <v-form method="POST" @submit.prevent="nextPage" ref="form">
           <v-file-input
             class="inputField"
             accept=".jpeg,.jpg,.png,image/jpeg,image/png"
