@@ -87,7 +87,55 @@
               </v-radio-group>
             </v-col>
             <v-col>
-              <v-btn class="edit_btn" @click="" style="">ثبت نهایی</v-btn>
+              <v-dialog
+                v-model="dialog"
+                persistent
+                max-width="290"
+              >
+                <template v-slot:activator="{ on, attrs }">
+
+                  <v-btn
+                    class="edit_btn"
+                    v-bind="attrs"
+                    v-on="on"
+                  >
+                    ثبت نهایی
+                  </v-btn>
+                </template>
+                <v-card>
+                  <v-card-title class="text-h5">
+
+                  </v-card-title>
+                  <v-card-text style="text-align: center"  >
+                   <div class="text--class1">
+                     آیا از انتخاب خود مطمئن هستید ؟
+                   </div>
+                  </v-card-text>
+                  <v-card-actions style="margin-left: 4em; padding-bottom: 2em; padding-top: 2em" >
+                    <v-spacer></v-spacer>
+                    <v-btn
+                      outlined
+                      elevation="5"
+                      color="error"
+                      text
+                      @click="dialog = false"
+                      style="margin-left: 1em"
+                    >
+                      لغو
+                    </v-btn>
+                    <v-btn
+                      outlined
+                      elevation="5"
+                      color="#004948"
+                      text
+                      @click="handler()"
+                    >
+                      بله
+                    </v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-dialog>
+
             </v-col>
 
 
@@ -105,6 +153,7 @@ export default {
   name: "GroupSelection",
   data(){
     return{
+      dialog: false,
       items:[
         {
           groupNumber : 1,
@@ -161,6 +210,25 @@ export default {
         }
 
       ]
+    }
+  },
+  methods:{
+    async handler() {
+      this.$nuxt.$loading.start()
+      this.dialog = false;
+      try {
+        // TODO pls fix here
+        // let data = await this.$axios.$post('')
+        // this.$router.push()
+      } catch (e) {
+        this.$notify({
+          group: 'foo',
+          type: 'error',
+
+          title: e.response.data.error,
+        });
+      }
+      this.$nuxt.$loading.finish()
     }
   }
 }
@@ -235,4 +303,6 @@ tr {
   font-weight: 500;
   font-size: 14px;
 }
+
+
 </style>
