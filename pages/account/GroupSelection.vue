@@ -68,6 +68,27 @@
 
           </v-row>
           <v-row> <!-- buttons -->
+            <v-col>
+              <div class="text--class1">گروه مورد نظر خود را انتخاب کنید:</div>
+            </v-col>
+            <v-col cols="5">
+              <v-radio-group
+
+                row
+                dense
+                style=""
+              >
+                <v-radio  v-for="option in options"
+                          class="textStyle1"
+                          :label="option.label"
+                          :value="option.value"
+                          color="#004948"
+                ></v-radio>
+              </v-radio-group>
+            </v-col>
+            <v-col>
+              <v-btn class="edit_btn" @click="" style="">ثبت نهایی</v-btn>
+            </v-col>
 
 
           </v-row>
@@ -124,13 +145,28 @@ export default {
             'ساعت ۱۱ تا ۱۲:۳۰',
           capacity: '۵۰ نفر'
         }
+      ],
+      options :[
+        {
+          label:"گروه ۱",
+          value:"gp1"
+        },
+        {
+          label:"گروه ۲",
+          value:"gp2"
+        },
+        {
+          label:"گروه ۳",
+          value:"gp3"
+        }
+
       ]
     }
   }
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped >
 .user-info-container{
   border: 2px #004948 solid;
   border-radius: 15px;
@@ -169,5 +205,34 @@ tr {
     min-width: 200px;
 
   }
+}
+.edit_btn {
+  box-shadow: inset 0px -4px 4px rgba(255, 252, 252, 0.25);
+  filter: drop-shadow(0px 8px 10px rgba(0, 146, 143, 0.25));
+  background: linear-gradient(180deg, #03B9B5 0%, #009592 100%);
+  border-radius: 15px;
+  border: none;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  color: #FEFEFE;
+  margin-top: 13px;
+
+}
+
+.text--class1 {
+
+  font-family: 'Vazir';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  text-align: right;
+  color: #004948;
+  margin-top:1.15em;
+}
+.textStyle1 /deep/ label {
+  color: #004948;
+  font-weight: 500;
+  font-size: 14px;
 }
 </style>
