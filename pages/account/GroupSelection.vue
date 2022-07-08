@@ -5,9 +5,15 @@
       <v-row>  <!-- title -->
         <v-col>
           <div >
-            <h2>
+            <h2 v-if="stageOne">
               <v-icon color="#004948">mdi-account-group-outline </v-icon>
               انتخاب گروه همایش
+              <v-icon color="#004948">mdi-account-group-outline</v-icon>
+
+            </h2>
+            <h2 v-if="stageTwo">
+              <v-icon color="#004948">mdi-account-group-outline </v-icon>
+              اطلاعات گروه شما
               <v-icon color="#004948">mdi-account-group-outline</v-icon>
 
             </h2>
@@ -17,8 +23,8 @@
       <hr>
 
       <v-row> <!-- Body -->
-        <v-col>
-          <v-row> <!-- groups row -->
+        <v-col v-if="stageOne">
+          <v-row > <!-- groups row -->
             <v-col v-for="item in items">
               <v-simple-table style="border: 1px solid #004948;border-radius: 10px;">
                 <template>
@@ -43,7 +49,7 @@
                       <p>روز اول</p>
                     </th>
                     <td>
-                      <p style="width: 5rem;">{{ item["dayOne"] }}</p>
+                      <p style="width: 7rem;">{{ item["dayOne"] }}</p>
                     </td>
                   </tr>
                   <tr > <!-- 4 -->
@@ -51,7 +57,7 @@
                       <p>روز دوم</p>
                     </th>
                     <td>
-                      <p style="width: 5rem">{{ item["dayTwo"] }}</p>
+                      <p style="width: 7rem">{{ item["dayTwo"] }}</p>
                     </td>
                   </tr>
                   <tr > <!-- 5 -->
@@ -135,11 +141,62 @@
                   </v-card-actions>
                 </v-card>
               </v-dialog>
+            </v-col>
+          </v-row>
 
+        </v-col>
+        <v-col v-if="stageTwo">
+
+          <v-row > <!-- groups row -->
+            <v-col v-for="item in chosenGroup">
+              <v-simple-table style="border: 1px solid #004948;border-radius: 10px;">
+                <template>
+                  <tr  > <!-- 1 -->
+                    <th>
+                      <p>شماره گروه</p>
+                    </th>
+                    <td >
+                      <p>{{ item["groupNumber"] }}</p>
+                    </td>
+                  </tr>
+                  <tr > <!-- 2 -->
+                    <th>
+                      <p>جنسیت</p>
+                    </th>
+                    <td>
+                      <p>{{ item["gender"] }}</p>
+                    </td>
+                  </tr>
+                  <tr > <!-- 3 -->
+                    <th>
+                      <p>روز اول</p>
+                    </th>
+                    <td>
+                      <p >{{ item["dayOne"] }}</p>
+                    </td>
+                  </tr>
+                  <tr > <!-- 4 -->
+                    <th>
+                      <p>روز دوم</p>
+                    </th>
+                    <td>
+                      <p>{{ item["dayTwo"] }}</p>
+                    </td>
+                  </tr>
+                  <tr > <!-- 5 -->
+                    <th>
+                      <p>ظرفیت</p>
+                    </th>
+                    <td>
+                      <p>{{ item["capacity"] }}</p>
+                    </td>
+                  </tr>
+                </template>
+              </v-simple-table>
             </v-col>
 
-
           </v-row>
+
         </v-col>
       </v-row>
     </v-container>
@@ -153,6 +210,8 @@ export default {
   name: "GroupSelection",
   data(){
     return{
+      stageOne:true,
+      stageTwo:false,
       dialog: false,
       items:[
         {
@@ -209,6 +268,21 @@ export default {
           value:"gp3"
         }
 
+      ],
+      chosenGroup:[
+        {
+          groupNumber : 3,
+          gender: 'دختر',
+          dayOne: '۲۵ تیر\n' +
+            'ساعت ۹ تا ۱۰:۳۰\n' +
+            'و\n' +
+            'ساعت ۱۱ تا ۱۲:۳۰',
+          dayTwo: '۲۶ تیر\n' +
+            'ساعت ۹ تا ۱۰:۳۰\n' +
+            'و\n' +
+            'ساعت ۱۱ تا ۱۲:۳۰',
+          capacity: '۵۰ نفر'
+        }
       ]
     }
   },
