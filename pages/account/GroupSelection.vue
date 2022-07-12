@@ -273,7 +273,7 @@ export default {
   },
   computed: {
     chosenGroup() {
-      return [this.items[this.$auth.user.profile.group]]
+      return [this.items[this.$auth.user.profile.group - 1]]
     }
   },
   methods: {
@@ -292,7 +292,7 @@ export default {
           group: 'foo',
           type: 'error',
 
-          title: e.response.data.error,
+          title: e.response.data.group,
         });
       }
       this.$nuxt.$loading.finish()
