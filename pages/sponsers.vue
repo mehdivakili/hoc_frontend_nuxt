@@ -11,7 +11,7 @@
                 indeterminate
               ></v-progress-linear>
             </template>
-              <v-img ></v-img>
+              <v-img style="height: 100px;" ></v-img>
             <v-card-title>
               <div>
                 {{item.name}}
