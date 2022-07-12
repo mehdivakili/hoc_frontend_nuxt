@@ -116,7 +116,24 @@ export default {
       this.$nuxt.$loading.start()
       let form = new FormData();
       form.append('image', this.$refs.im.files[0])
-      await this.$axios.$put('/user/profile_image/', form);
+      try {
+        await this.$axios.$put('/user/profile_image/', form);
+        await this.$auth.fetchUser()
+        this.$notify({
+          group: 'foo',
+          type: 'success',
+
+          title: 'عکس با موفقیت آپلود شد',
+        });
+      } catch (e){
+        this.$notify({
+          group: 'foo',
+          type: 'error',
+
+          title: 'ارسال عکس با مشکل مواجه شد',
+        });
+      }
+
       this.file = null
       this.$nuxt.$loading.finish()
 
@@ -198,6 +215,7 @@ export default {
   img {
     max-width: 100%;
     width: 150px;
+    height: 150px;
 
     margin: auto;
     border-radius: 50%;
