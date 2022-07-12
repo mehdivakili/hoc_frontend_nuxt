@@ -22,7 +22,7 @@
       </v-row>
       <hr>
 
-      <v-row> <!-- Body -->
+      <v-row  v-if="!isClose"> <!-- Body -->
         <v-col v-if="!$auth.user.profile.group">
           <v-row> <!-- groups row -->
             <v-col v-for="item in items">
@@ -199,6 +199,9 @@
 
         </v-col>
       </v-row>
+      <v-row v-else>
+        <h4 style="text-align: center">در حال حاضر انتخاب گروه امکان پذیر نمی باشد</h4>
+      </v-row>
     </v-container>
 
 
@@ -212,6 +215,7 @@ export default {
   data() {
     return {
       dialog: false,
+      isClose: true,
       choose: 0,
       items: [
         {
