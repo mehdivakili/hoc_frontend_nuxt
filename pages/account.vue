@@ -10,6 +10,7 @@
             <v-row>
               <v-col cols="12">
                 <div>
+                  <p class="user_name"><v-icon color="#C5E3E3">mdi-alert-octagram-outline</v-icon>برای <span style="color: #C62828">آپلود</span> عکس، روی عکس کلیک نمایید<v-icon color="#C5E3E3">mdi-alert-octagram-outline</v-icon></p>
                   <div class="img-fluid1" style="position: relative">
                     <input class="file-input" type="file" ref="im" @change="uploadImage"/>
                     <img :src="getUrl"/>
@@ -188,17 +189,19 @@ export default {
     }
   }
 }
+.user_name {
+  margin: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  color: #C5E3E3;
+  text-align: center;
 
+
+}
 .profile1 {
   p {
     text-align: center;
     color: #C5E3E3;
-
-    &.user_name {
-      margin: 10px;
-      font-weight: bold;
-      font-size: 20px;
-    }
 
     &.national_code {
       margin: 0;
