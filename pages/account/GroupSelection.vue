@@ -1,18 +1,18 @@
 <template>
 
-  <div >
+  <div>
     <v-container class="user-info-container">
       <v-row>  <!-- title -->
         <v-col>
-          <div >
-            <h2 v-if="stageOne">
-              <v-icon color="#004948">mdi-account-group-outline </v-icon>
+          <div>
+            <h2 v-if="!$auth.user.profile.group">
+              <v-icon color="#004948">mdi-account-group-outline</v-icon>
               انتخاب گروه همایش
               <v-icon color="#004948">mdi-account-group-outline</v-icon>
 
             </h2>
-            <h2 v-if="stageTwo">
-              <v-icon color="#004948">mdi-account-group-outline </v-icon>
+            <h2 v-if="!!$auth.user.profile.group">
+              <v-icon color="#004948">mdi-account-group-outline</v-icon>
               اطلاعات گروه شما
               <v-icon color="#004948">mdi-account-group-outline</v-icon>
 
@@ -23,20 +23,20 @@
       <hr>
 
       <v-row> <!-- Body -->
-        <v-col v-if="stageOne">
-          <v-row > <!-- groups row -->
+        <v-col v-if="!$auth.user.profile.group">
+          <v-row> <!-- groups row -->
             <v-col v-for="item in items">
               <v-simple-table style="border: 1px solid #004948;border-radius: 10px;">
                 <template>
-                  <tr  > <!-- 1 -->
+                  <tr> <!-- 1 -->
                     <th>
                       <p>شماره گروه</p>
                     </th>
-                    <td >
+                    <td>
                       <p>{{ item["groupNumber"] }}</p>
                     </td>
                   </tr>
-                  <tr > <!-- 2 -->
+                  <tr> <!-- 2 -->
                     <th>
                       <p>جنسیت</p>
                     </th>
@@ -44,7 +44,7 @@
                       <p>{{ item["gender"] }}</p>
                     </td>
                   </tr>
-                  <tr > <!-- 3 -->
+                  <tr> <!-- 3 -->
                     <th>
                       <p>روز اول</p>
                     </th>
@@ -52,7 +52,7 @@
                       <p style="width: 7rem;">{{ item["dayOne"] }}</p>
                     </td>
                   </tr>
-                  <tr > <!-- 4 -->
+                  <tr> <!-- 4 -->
                     <th>
                       <p>روز دوم</p>
                     </th>
@@ -60,7 +60,7 @@
                       <p style="width: 7rem">{{ item["dayTwo"] }}</p>
                     </td>
                   </tr>
-                  <tr > <!-- 5 -->
+                  <tr> <!-- 5 -->
                     <th>
                       <p>ظرفیت</p>
                     </th>
@@ -79,16 +79,16 @@
             </v-col>
             <v-col cols="5">
               <v-radio-group
-
+                v-model="choose"
                 row
                 dense
                 style=""
               >
-                <v-radio  v-for="option in options"
-                          class="textStyle1"
-                          :label="option.label"
-                          :value="option.value"
-                          color="#004948"
+                <v-radio v-for="option in options"
+                         class="textStyle1"
+                         :label="option.label"
+                         :value="option.value"
+                         color="#004948"
                 ></v-radio>
               </v-radio-group>
             </v-col>
@@ -112,12 +112,12 @@
                   <v-card-title class="text-h5">
 
                   </v-card-title>
-                  <v-card-text style="text-align: center"  >
-                   <div class="text--class1">
-                     آیا از انتخاب خود مطمئن هستید ؟
-                   </div>
+                  <v-card-text style="text-align: center">
+                    <div class="text--class1">
+                      آیا از انتخاب خود مطمئن هستید ؟
+                    </div>
                   </v-card-text>
-                  <v-card-actions style="margin-left: 4em; padding-bottom: 2em; padding-top: 2em" >
+                  <v-card-actions style="margin-left: 4em; padding-bottom: 2em; padding-top: 2em">
                     <v-spacer></v-spacer>
                     <v-btn
                       outlined
@@ -145,21 +145,21 @@
           </v-row>
 
         </v-col>
-        <v-col v-if="stageTwo">
+        <v-col v-if="!!$auth.user.profile.group">
 
-          <v-row > <!-- groups row -->
+          <v-row> <!-- groups row -->
             <v-col v-for="item in chosenGroup">
               <v-simple-table style="border: 1px solid #004948;border-radius: 10px;">
                 <template>
-                  <tr  > <!-- 1 -->
+                  <tr> <!-- 1 -->
                     <th>
                       <p>شماره گروه</p>
                     </th>
-                    <td >
+                    <td>
                       <p>{{ item["groupNumber"] }}</p>
                     </td>
                   </tr>
-                  <tr > <!-- 2 -->
+                  <tr> <!-- 2 -->
                     <th>
                       <p>جنسیت</p>
                     </th>
@@ -167,15 +167,15 @@
                       <p>{{ item["gender"] }}</p>
                     </td>
                   </tr>
-                  <tr > <!-- 3 -->
+                  <tr> <!-- 3 -->
                     <th>
                       <p>روز اول</p>
                     </th>
                     <td>
-                      <p >{{ item["dayOne"] }}</p>
+                      <p>{{ item["dayOne"] }}</p>
                     </td>
                   </tr>
-                  <tr > <!-- 4 -->
+                  <tr> <!-- 4 -->
                     <th>
                       <p>روز دوم</p>
                     </th>
@@ -183,7 +183,7 @@
                       <p>{{ item["dayTwo"] }}</p>
                     </td>
                   </tr>
-                  <tr > <!-- 5 -->
+                  <tr> <!-- 5 -->
                     <th>
                       <p>ظرفیت</p>
                     </th>
@@ -208,15 +208,15 @@
 <script>
 export default {
   name: "GroupSelection",
-  data(){
-    return{
-      stageOne:true,
-      stageTwo:false,
+
+  data() {
+    return {
       dialog: false,
-      items:[
+      choose: 0,
+      items: [
         {
-          groupNumber : 1,
-          gender: 'دختر',
+          groupNumber: 1,
+          gender: this.$auth.user.sex,
           dayOne: '۲۵ تیر\n' +
             'ساعت ۹ تا ۱۰:۳۰\n' +
             'و\n' +
@@ -228,8 +228,8 @@ export default {
           capacity: '۵۰ نفر'
         },
         {
-          groupNumber : 2,
-          gender: 'دختر',
+          groupNumber: 2,
+          gender: this.$auth.user.sex,
           dayOne: '۲۵ تیر\n' +
             'ساعت ۹ تا ۱۰:۳۰\n' +
             'و\n' +
@@ -241,8 +241,8 @@ export default {
           capacity: '۵۰ نفر'
         },
         {
-          groupNumber : 3,
-          gender: 'دختر',
+          groupNumber: 3,
+          gender: this.$auth.user.sex,
           dayOne: '۲۵ تیر\n' +
             'ساعت ۹ تا ۱۰:۳۰\n' +
             'و\n' +
@@ -254,46 +254,39 @@ export default {
           capacity: '۵۰ نفر'
         }
       ],
-      options :[
+      options: [
         {
-          label:"گروه ۱",
-          value:"gp1"
+          label: "گروه ۱",
+          value: "1"
         },
         {
-          label:"گروه ۲",
-          value:"gp2"
+          label: "گروه ۲",
+          value: "2"
         },
         {
-          label:"گروه ۳",
-          value:"gp3"
+          label: "گروه ۳",
+          value: "3"
         }
 
-      ],
-      chosenGroup:[
-        {
-          groupNumber : 3,
-          gender: 'دختر',
-          dayOne: '۲۵ تیر\n' +
-            'ساعت ۹ تا ۱۰:۳۰\n' +
-            'و\n' +
-            'ساعت ۱۱ تا ۱۲:۳۰',
-          dayTwo: '۲۶ تیر\n' +
-            'ساعت ۹ تا ۱۰:۳۰\n' +
-            'و\n' +
-            'ساعت ۱۱ تا ۱۲:۳۰',
-          capacity: '۵۰ نفر'
-        }
       ]
     }
   },
-  methods:{
+  computed: {
+    chosenGroup() {
+      return [this.items[this.$auth.user.profile.group]]
+    }
+  },
+  methods: {
     async handler() {
       this.$nuxt.$loading.start()
       this.dialog = false;
       try {
-        // TODO pls fix here
-        // let data = await this.$axios.$post('')
-        // this.$router.push()
+        let group = this.choose
+        let data = await this.$axios.$put('user/set_group/', {group: group})
+        const userToUpdate = {...this.$auth.user}
+        userToUpdate.profile.group = group;
+        this.$auth.setUser(userToUpdate)
+        this.$router.push('/account/')
       } catch (e) {
         this.$notify({
           group: 'foo',
@@ -308,13 +301,14 @@ export default {
 }
 </script>
 
-<style scoped >
-.user-info-container{
+<style scoped>
+.user-info-container {
   border: 2px #004948 solid;
   border-radius: 15px;
   padding: 20px;
 }
-h2{
+
+h2 {
   text-align: center;
   font-size: 20px;
   font-weight: bold;
@@ -322,32 +316,39 @@ h2{
   word-break: keep-all;
   color: #004948;
 }
-hr{
+
+hr {
   background: #004948;
   height: 2px;
   opacity: 1;
   border-radius: 3px;
   min-width: 350px;
 }
-th p{
+
+th p {
   margin-right: 1em;
-  margin-top:1em;
+  margin-top: 1em;
 }
+
 td p {
   margin-top: 1em;
 }
+
 tr:nth-child(even) {
   background-color: #C5E3E3;
 }
+
 tr {
   text-align: center;
 }
-@media screen  and (max-width: 420px){
-  hr{
+
+@media screen  and (max-width: 420px) {
+  hr {
     min-width: 200px;
 
   }
 }
+
 .edit_btn {
   box-shadow: inset 0px -4px 4px rgba(255, 252, 252, 0.25);
   filter: drop-shadow(0px 8px 10px rgba(0, 146, 143, 0.25));
@@ -370,8 +371,9 @@ tr {
   font-size: 16px;
   text-align: right;
   color: #004948;
-  margin-top:1.15em;
+  margin-top: 1.15em;
 }
+
 .textStyle1 /deep/ label {
   color: #004948;
   font-weight: 500;
