@@ -76,7 +76,7 @@ export default {
       group: null,
       navItems: [],
       navButtons: [
-        {name: "ثبت نام", path: "/register", class: "nav__btn__register"},
+        // {name: "ثبت نام", path: "/register", class: "nav__btn__register"},
         {name: "ورود", path: "/login", class: "nav__btn__login"},
       ],
       navButtonsLogin: [
