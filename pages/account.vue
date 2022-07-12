@@ -42,6 +42,10 @@
                     <img width="20" src="~/assets/icons/quiz_icon.svg"/>
                     کوییز
                   </router-link>
+                  <router-link to="/account/GroupSelection/" class="menu-item">
+                    <img width="20" src="~/assets/icons/quiz_icon.svg"/>
+                    انتخاب گروه همایش
+                  </router-link>
 
                   <a class="menu-item"
                      @click="() => {
