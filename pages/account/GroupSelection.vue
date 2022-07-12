@@ -22,10 +22,10 @@
       </v-row>
       <hr>
 
-      <v-row  v-if="!isClose"> <!-- Body -->
+      <v-row v-if="!isClose"> <!-- Body -->
         <v-col v-if="!$auth.user.profile.group">
           <v-row> <!-- groups row -->
-            <v-col v-for="item in items">
+            <v-col v-for="item in items[gender]">
               <v-simple-table style="border: 1px solid #004948;border-radius: 10px;">
                 <template>
                   <tr> <!-- 1 -->
@@ -215,49 +215,91 @@ export default {
   data() {
     return {
       dialog: false,
-      isClose: true,
+      isClose: false,
       choose: 0,
-      items: [
-        {
-          groupNumber: 1,
-          gender: this.$auth.user.sex,
-          dayOne: '۲۵ تیر\n' +
-            'ساعت ۹ تا ۱۰:۳۰\n' +
-            'و\n' +
-            'ساعت ۱۱ تا ۱۲:۳۰',
-          dayTwo: '۲۶ تیر\n' +
-            'ساعت ۹ تا ۱۰:۳۰\n' +
-            'و\n' +
-            'ساعت ۱۱ تا ۱۲:۳۰',
-          capacity: '۵۰ نفر'
-        },
-        {
-          groupNumber: 2,
-          gender: this.$auth.user.sex,
-          dayOne: '۲۵ تیر\n' +
-            'ساعت ۹ تا ۱۰:۳۰\n' +
-            'و\n' +
-            'ساعت ۱۱ تا ۱۲:۳۰',
-          dayTwo: '۲۶ تیر\n' +
-            'ساعت ۹ تا ۱۰:۳۰\n' +
-            'و\n' +
-            'ساعت ۱۱ تا ۱۲:۳۰',
-          capacity: '۵۰ نفر'
-        },
-        {
-          groupNumber: 3,
-          gender: this.$auth.user.sex,
-          dayOne: '۲۵ تیر\n' +
-            'ساعت ۹ تا ۱۰:۳۰\n' +
-            'و\n' +
-            'ساعت ۱۱ تا ۱۲:۳۰',
-          dayTwo: '۲۶ تیر\n' +
-            'ساعت ۹ تا ۱۰:۳۰\n' +
-            'و\n' +
-            'ساعت ۱۱ تا ۱۲:۳۰',
-          capacity: '۵۰ نفر'
-        }
-      ],
+      items: {
+        male: [
+          {
+            groupNumber: 1,
+            gender: 'پسر',
+            dayOne: '۲۴ تیر\n' +
+              'ساعت ۳ تا ۴:۳۰\n' +
+              'و\n' +
+              'ساعت ۵ تا ۶:۳۰',
+            dayTwo: '۲۵ تیر\n' +
+              'ساعت ۳ تا ۴:۳۰\n' +
+              'و\n' +
+              'ساعت ۵ تا ۶:۳۰',
+            capacity: '۴۱ نفر'
+          },
+          {
+            groupNumber: 2,
+            gender: 'پسر',
+            dayOne: '۲۶ تیر\n' +
+              'ساعت ۹ تا ۱۰:۳۰\n' +
+              'و\n' +
+              'ساعت ۱۱ تا ۱۲:۳۰',
+            dayTwo: '۲۷ تیر\n' +
+              'ساعت ۹ تا ۱۰:۳۰\n' +
+              'و\n' +
+              'ساعت ۱۱ تا ۱۲:۳۰',
+            capacity: '۴۱ نفر'
+          },
+          {
+            groupNumber: 3,
+            gender: 'پسر',
+            dayOne: '۲۸ تیر\n' +
+              'ساعت ۳ تا ۴:۳۰\n' +
+              'و\n' +
+              'ساعت ۵ تا ۶:۳۰',
+            dayTwo: '۲۹ تیر\n' +
+              'ساعت ۳ تا ۴:۳۰\n' +
+              'و\n' +
+              'ساعت ۵ تا ۶:۳۰',
+            capacity: '۴۱ نفر'
+          }
+        ], female: [
+          {
+            groupNumber: 1,
+            gender: 'دختر',
+            dayOne: '۲۴ تیر\n' +
+              'ساعت ۹ تا ۱۰:۳۰\n' +
+              'و\n' +
+              'ساعت ۱۱ تا ۱۲:۳۰',
+            dayTwo: '۲۵ تیر\n' +
+              'ساعت ۹ تا ۱۰:۳۰\n' +
+              'و\n' +
+              'ساعت ۱۱ تا ۱۲:۳۰',
+            capacity: '۴۸ نفر'
+          },
+          {
+            groupNumber: 2,
+            gender: 'دختر',
+            dayOne: '۲۶ تیر\n' +
+              'ساعت ۳ تا ۴:۳۰\n' +
+              'و\n' +
+              'ساعت ۵ تا ۶:۳۰',
+            dayTwo: '۲۷ تیر\n' +
+              'ساعت ۳ تا ۴:۳۰\n' +
+              'و\n' +
+              'ساعت ۵ تا ۶:۳۰',
+            capacity: '۴۸ نفر'
+          },
+          {
+            groupNumber: 3,
+            gender: 'دختر',
+            dayOne: '۲۸ تیر\n' +
+              'ساعت ۹ تا ۱۰:۳۰\n' +
+              'و\n' +
+              'ساعت ۱۱ تا ۱۲:۳۰',
+            dayTwo: '۲۹ تیر\n' +
+              'ساعت ۹ تا ۱۰:۳۰\n' +
+              'و\n' +
+              'ساعت ۱۱ تا ۱۲:۳۰',
+            capacity: '۴۸ نفر'
+          }
+        ]
+      },
       options: [
         {
           label: "گروه ۱",
@@ -277,7 +319,13 @@ export default {
   },
   computed: {
     chosenGroup() {
-      return [this.items[this.$auth.user.profile.group - 1]]
+      return [this.items[this.gender][this.$auth.user.profile.group - 1]]
+    },
+    gender() {
+      if (this.$auth.user.sex === "زن") {
+        return 'female'
+      }
+      return 'male'
     }
   },
   methods: {
