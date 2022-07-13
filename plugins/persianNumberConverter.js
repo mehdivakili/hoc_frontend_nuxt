@@ -7,17 +7,21 @@ if (!Vue.__persian_number_mixin__) {
   Vue.mixin({
     methods: {
       numberToPersian(number) {
-        const persian = { 0: "۰", 1: "۱", 2: "۲", 3: "۳", 4: "۴", 5: "۵", 6: "۶", 7: "۷",
-          8: "۸", 9: "۹" };
-        number = number.toString().split("");
+        const persian = {
+          0: "۰", 1: "۱", 2: "۲", 3: "۳", 4: "۴", 5: "۵", 6: "۶", 7: "۷",
+          8: "۸", 9: "۹"
+        };
+        let suffix = (number < 0) ? "-" : ""
         let persianNumber = ""
+
+        number = Math.abs(number).toString().split("");
         for (let i = 0; i < number.length; i++) {
           number[i] = persian[number[i]];
         }
         for (let i = 0; i < number.length; i++) {
           persianNumber += number[i];
         }
-        return persianNumber;
+        return persianNumber + suffix;
       }
     }
 

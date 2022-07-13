@@ -18,7 +18,7 @@
                   <v-row justify="center">
                     <v-col cols="10" md="5">
                       <v-row justify="center">
-                        <v-btn class="button-fill" v-show="file" @click="realUploadImage">ارسال</v-btn>
+                        <v-btn class="button-fill" style="z-index: 1001" v-show="file" @click="realUploadImage">ارسال</v-btn>
                       </v-row>
                     </v-col>
                   </v-row>
@@ -192,7 +192,7 @@ export default {
 .user_name {
   margin: 10px;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 17px;
   color: #C5E3E3;
   text-align: center;
 
@@ -214,6 +214,8 @@ export default {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
+  width: 150px;
+  margin: auto;
 
   img {
     max-width: 100%;

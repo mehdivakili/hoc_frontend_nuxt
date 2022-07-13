@@ -65,7 +65,7 @@
                       <p>ظرفیت</p>
                     </th>
                     <td>
-                      <p>{{ item["capacity"] }}</p>
+                      <p>{{ numberToPersian(capacity[gender][item['groupNumber']]) }} نفر</p>
                     </td>
                   </tr>
                 </template>
@@ -188,7 +188,7 @@
                       <p>ظرفیت</p>
                     </th>
                     <td>
-                      <p>{{ item["capacity"] }}</p>
+                      <p>{{ numberToPersian(capacity[gender][item['groupNumber']]) }} نفر</p>
                     </td>
                   </tr>
                 </template>
@@ -211,7 +211,9 @@
 <script>
 export default {
   name: "GroupSelection",
-
+  async asyncData({$axios}) {
+    return {capacity: (await $axios.$get('groups_remaining/'))}
+  },
   data() {
     return {
       dialog: false,
@@ -334,7 +336,7 @@ export default {
       this.dialog = false;
       try {
         let group = this.choose
-        let data = await this.$axios.$put('user/set_group/', {group: group})
+        await this.$axios.$put('user/set_group/', {group: group})
         const userToUpdate = {...this.$auth.user}
         userToUpdate.profile.group = group;
         this.$auth.setUser(userToUpdate)
@@ -344,7 +346,7 @@ export default {
           group: 'foo',
           type: 'error',
 
-          title: e.response.data.group,
+          title: e.response.data.group[0],
         });
       }
       this.$nuxt.$loading.finish()
