@@ -56,7 +56,7 @@
                     کوییز
                   </router-link>
                   <router-link to="/account/GroupSelection/" class="menu-item">
-                    <img width="20" src="~/assets/icons/quiz_icon.svg"/>
+                    <img width="20" src="~/assets/icons/group.svg"/>
                     انتخاب گروه همایش
                   </router-link>
 
