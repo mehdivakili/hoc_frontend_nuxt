@@ -316,24 +316,23 @@ hr {
 }
 </style>
 
-<style lang="scss">
-tr, th, td {
-  border: 1px solid #004948 !important;
-  background-color: #99bdbb !important;
-  font-size: 20px !important;
-  text-align: center !important;
-}
+<style scoped>
 
-.v-data-footer {
-  background-color: #C5E3E3;
-}
-
-.me {
-  td {
-    background: #026968 !important;
+.hocclubtable /deep/ tr,.hocclubtable /deep/ th,.hocclubtable /deep/ td {
+    border: 1px solid #004948 ;
+    background-color: #99bdbb;
+    font-size: 20px !important;
+    text-align: center;
+  }
+.hocclubtable /deep/ .v-data-footer {
+    background-color: #C5E3E3;
+  }
+.hocclubtable /deep/ .me /deep/ td {
+    background: #026968;
     color: white;
 
   }
-}
+
+
 
 </style>
