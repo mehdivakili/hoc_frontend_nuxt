@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MainBanner :image="require('~/assets/images/main_banner.png')" alt="" text-color="white"/>
+    <MainBanner :image="require('~/assets/images/main_banner.png')" alt="" text-color="white" :count="count"/>
 
     <Banner text-color="#004948" bg-color="#FEFEFE" :image="require('~/assets/images/banner1.svg')" alt="یک عکس">
       <template v-slot:banner-title>
@@ -66,7 +66,6 @@
         سایت دایرکت اینستاگرام و بشتیبان تلگرام با ما درمیون بگذارید. </template>
     </VideoBanner>
 
-<!--    <TeamTab2/>-->
     <TeamTab/>
     <Statistics/>
     <Questions/>
@@ -82,17 +81,22 @@ import VideoBanner from "@/components/home/VideoBanner";
 import Questions from "@/components/home/Questions";
 import TeamTab from "@/components/home/TeamTab";
 import Statistics from "@/components/home/Statistics";
-import TeamTab2 from "@/components/home/TeamTab2";
 export default {
   name: 'IndexPage',
   components: {
     Statistics,
     MainBanner,
-    Banner, Questions, TeamTab,TeamTab2,VideoBanner
+    Banner, Questions, TeamTab,VideoBanner
   },
   auth: false,
   mounted() {
-    this.$store.commit('setFooterColor', '#004948')
+    this.$store.commit('setFooterColor', 'linear-gradient(15deg, #00ADAA 29%, #00928F 71%)')
+  },
+  async asyncData({$axios}) {
+    let count = await $axios.$get('/remaining');
+    return{
+      count: count,
+    }
   }
 }
 </script>

@@ -4,11 +4,24 @@
     <v-container>
       <v-row>
         <v-col lg="4" sm="12">
-          <v-card style=" background: linear-gradient(146.8deg, #00807E 13.33%, #004746 86.04%);" elevation="2">
+          <v-card
+            style=" background: linear-gradient(146.8deg, #00807E 13.33%, #004746 86.04%); margin-top: 12px; border-radius: 15px;"
+            elevation="2">
             <v-row>
               <v-col cols="12">
-                <div class="img-fluid1">
-                  <img src="~/assets/images/profile.svg"/>
+                <div>
+                  <p class="user_name"><v-icon color="#C5E3E3">mdi-alert-octagram-outline</v-icon>برای <span style="color: #C62828">آپلود</span> عکس، روی عکس کلیک نمایید<v-icon color="#C5E3E3">mdi-alert-octagram-outline</v-icon></p>
+                  <div class="img-fluid1" style="position: relative">
+                    <input class="file-input" type="file" ref="im" @change="uploadImage"/>
+                    <img :src="getUrl"/>
+                  </div>
+                  <v-row justify="center">
+                    <v-col cols="10" md="5">
+                      <v-row justify="center">
+                        <v-btn class="button-fill" style="z-index: 1001" v-show="file" @click="realUploadImage">ارسال</v-btn>
+                      </v-row>
+                    </v-col>
+                  </v-row>
                 </div>
               </v-col>
               <v-col cols="12">
@@ -38,13 +51,21 @@
                     <img width="20" src="~/assets/icons/team.svg"/>
                     باشگاه زنگ برنامه نویسی
                   </router-link>
+                  <router-link to="/account/quiz/" class="menu-item">
+                    <img width="20" src="~/assets/icons/quiz_icon.svg"/>
+                    کوییز
+                  </router-link>
+                  <router-link to="/account/GroupSelection/" class="menu-item">
+                    <img width="20" src="~/assets/icons/group.svg"/>
+                    انتخاب گروه همایش
+                  </router-link>
 
                   <a class="menu-item"
                      @click="() => {
 
                   $nuxt.$loading.start();
                   $auth.logout().then($nuxt.$loading.finish);}"> <img width="20" src="~/assets/images/logout.svg"/>
-                    خروج</a>
+                    خروج از حساب کاربری</a>
 
                 </div>
               </v-col>
@@ -69,9 +90,68 @@
 
 export default {
   name: "account",
+  head() {
+    return {
+      title: 'حساب کاربری'
+    }
+  },
+  data() {
+    return {
+      file: null
+    }
+  },
   mounted() {
     this.$store.commit('setFooterColor', '#C5E3E3')
   },
+  methods: {
+    uploadImage(event) {
+      const reader = new FileReader();
+      let t = this
+      reader.addEventListener('load', (event) => {
+        t.file = event.target.result;
+      });
+      if (event.target.files[0])
+        reader.readAsDataURL(event.target.files[0])
+    },
+    async realUploadImage() {
+      this.$nuxt.$loading.start()
+      let form = new FormData();
+      form.append('image', this.$refs.im.files[0])
+      try {
+        await this.$axios.$put('/user/profile_image/', form);
+        await this.$auth.fetchUser()
+        this.$notify({
+          group: 'foo',
+          type: 'success',
+
+          title: 'عکس با موفقیت آپلود شد',
+        });
+      } catch (e){
+        this.$notify({
+          group: 'foo',
+          type: 'error',
+
+          title: 'ارسال عکس با مشکل مواجه شد',
+        });
+      }
+
+      this.file = null
+      this.$nuxt.$loading.finish()
+
+    }
+
+  },
+  computed: {
+    getUrl() {
+      if (this.file) {
+        return this.file
+      } else if (this.$auth.user.profile.image) {
+        return "https://api.hocshirazu.ir/" + this.$auth.user.profile.image
+      } else {
+        return require("~/assets/images/profile.svg")
+      }
+    }
+  }
 
 };
 </script>
@@ -109,17 +189,19 @@ export default {
     }
   }
 }
+.user_name {
+  margin: 10px;
+  font-weight: bold;
+  font-size: 17px;
+  color: #C5E3E3;
+  text-align: center;
 
+
+}
 .profile1 {
   p {
     text-align: center;
     color: #C5E3E3;
-
-    &.user_name {
-      margin: 10px;
-      font-weight: bold;
-      font-size: 20px;
-    }
 
     &.national_code {
       margin: 0;
@@ -131,13 +213,31 @@ export default {
 .img-fluid1 {
   display: flex;
   justify-content: center;
+  margin-top: 1rem;
+  width: 150px;
+  margin: auto;
 
   img {
     max-width: 100%;
+    width: 150px;
+    height: 150px;
 
     margin: auto;
     border-radius: 50%;
   }
+}
+
+.file-input {
+  opacity: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  cursor: pointer;
+
 }
 
 .sidebar__inner {
@@ -150,6 +250,7 @@ export default {
     background: none;
     border-radius: 15px;
     margin-bottom: 20px;
+
 
     .img-fluid {
       display: flex;

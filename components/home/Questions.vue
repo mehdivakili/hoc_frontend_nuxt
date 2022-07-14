@@ -5,12 +5,12 @@
       سوالات متداول
       <v-icon size="60px" color="white" >mdi-help-circle</v-icon>
     </h1>
-    <v-expansion-panels accordion>
+    <v-expansion-panels accordion class="accordion">
       <v-expansion-panel
         v-for="question in questions"
       >
         <v-expansion-panel-header>{{question.title}}</v-expansion-panel-header>
-        <v-expansion-panel-content>
+        <v-expansion-panel-content class="panelContent">
           {{question.content}}
         </v-expansion-panel-content>
       </v-expansion-panel>
@@ -33,7 +33,7 @@ export default {
         {'title': 'توی همایش چه چیزهایی یاد میگیرم؟ ', 'content': 'هدف این همایش آشنایی با مفاهیم اولیهٔ برنامه نویسیه و از طریق آموزش‌های جذاب با مباحثی مثل تفکر الگوریتمی و مهارت حل مسئله آشنا میشی.'},
         {'title': 'همایش مناسب چه افرادیه؟', 'content': 'همهٔ دانش‌آموزانی که دوست دارن با برنامه نویسی آشنا و وارد این دنیای جذاب بشن، می‌تونن توی همایش شرکت کنن!'},
         {'title': 'همایش به صورت حضوری برگزار میشه؟', 'content': 'آره! امسال همایش به صورت حضوری و در دانشگاه شیراز برگزار میشه؛ پس اگه شیراز هستی فرصت رو از دست نده!'},
-        {'title': 'مدت زمان همایش چقدره و چه روزهایی برگزار میشه؟', 'content': 'هر گروه از شما دانش‌آموزان ۲ روز به صورت حضوری به دانشگاه میاین و آموزش می‌بینین. علاوه بر اون، ۴ روز دیگه هم براتون ویدیوهایی به صورت مجازی قرار میدیم که با مباحث جالبی آشنا بشین و لذت ببرین. در انتها هم توی مراسم جشن اختتامیه در دانشگاه، در خدمت همهٔ شما دانش‌آموزان عزیز خواهیم بود. :)'},
+        {'title': 'مدت زمان همایش چقدره و چه روزهایی برگزار میشه؟', 'content': 'هر گروه از شما دانش‌آموزان ۲ روز به صورت حضوری - مجازی به دانشگاه میاین و آموزش می‌بینین. علاوه بر اون، ۴ روز دیگه هم براتون ویدیوهایی به صورت مجازی قرار میدیم که با مباحث جالبی آشنا بشین و لذت ببرین. در انتها هم توی مراسم جشن اختتامیه در دانشگاه، در خدمت همهٔ شما دانش‌آموزان عزیز خواهیم بود. :)'},
         {'title': 'آیا ظرفیت ثبت نام محدوده؟ ', 'content': 'آره!!  پس هر چه زودتر ثبت نام کن! توی همایش منتظرت هستیم :)'},
 
 
@@ -46,7 +46,7 @@ export default {
 <style scoped>
 
 .banner {
-  background-color: #004948;
+  background: linear-gradient(104.71deg, #00ADAA 11.26%, #00928F 90.55%);
   position: relative;
   padding: 110px 0;
 
@@ -67,6 +67,30 @@ h1 {
   margin-bottom: 60px;
 }
 
+.v-expansion-panels{
+  width: 920px;
+  height: 568px;
+  background: #FEFEFE;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+
+}
+
+.v-expansion-panel-header{
+  color: #004948;
+}
+
+.panelContent{
+  color: #004948;
+
+}
+
+.accordion{
+  max-width: calc(100% - 20px);
+  margin-right: 10px;
+}
+
+
 @media screen and (min-width: 1000px) {
   .banner {
     width: 100%;
@@ -80,13 +104,7 @@ h1 {
 
   }
 
-  .accordion {
-    width: 100%;
-    max-width: 1000px;
-    border-radius: 15px;
-    overflow: hidden;
-    margin: auto;
-  }
+
 
 
 }

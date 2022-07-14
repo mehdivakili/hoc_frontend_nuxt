@@ -5,11 +5,11 @@
         <v-col>
           <h2>
             <v-icon color="#004948">
-              mdi-gift-outline
+              mdi-account
             </v-icon>
             اطلاعات حساب کاربری
             <v-icon color="#004948">
-              mdi-gift-outline
+              mdi-account
             </v-icon>
           </h2>
         </v-col>
@@ -27,7 +27,7 @@
                     </v-col>
                     <v-col>
 
-                      <div class="codeNumber">{{ $auth.user.hoc_code }}</div>
+                      <div class="codeNumber">{{ id_code }}</div>
 
                     </v-col>
                   </v-row>
@@ -43,7 +43,7 @@
                       امتیاز
                     </v-col>
                     <v-col cols="12" class="fonts2">
-                      {{ ($auth.user.attend_code) ? 10 : 0 }}
+                      {{ total_score }}
                     </v-col>
                   </v-row>
                 </v-card>
@@ -55,20 +55,7 @@
                       رتبه
                     </v-col>
                     <v-col cols="12" class="fonts2">
-                      1
-                    </v-col>
-                  </v-row>
-                </v-card>
-              </v-col>
-              <v-col>
-                <v-card class="cardShape">
-                  <v-row>
-                    <v-col cols="12" class="fonts1">
-                      شانس
-                    </v-col>
-                    <v-col cols="12" class="fonts2">
-                      {{ ($auth.user.attend_code) ? 10 : 0 }}
-
+                      {{ rank }}
                     </v-col>
                   </v-row>
                 </v-card>
@@ -81,24 +68,144 @@
                       Coin
                     </v-col>
                     <v-col cols="12" class="fonts2">
-                      0
+                      {{ quiz_coin }}
                     </v-col>
                   </v-row>
                 </v-card>
               </v-col>
-
             </v-row>
           </v-card>
         </v-col>
       </v-row>
     </v-container>
+    <v-container class="user-info-container">
+      <v-row>
+        <v-col>
+          <h2>
+            <v-icon color="#004948">
+              mdi-gift-outline
+            </v-icon>
+            جدول امتیازات
+            <v-icon color="#004948">
+              mdi-gift-outline
+            </v-icon>
+          </h2>
+        </v-col>
+      </v-row>
+      <hr>
+      <v-card class="hocclubtable">
+        <v-card-title>
+          <v-spacer></v-spacer>
+          <v-text-field
+            v-model="search"
+            append-icon="mdi-magnify"
+            label="جستجو"
+            single-line
+            hide-details
+
+          ></v-text-field>
+        </v-card-title>
+        <v-container>
+          <v-data-table
+            :headers="headers"
+            :items="desserts"
+            :item-class="get_me"
+            :search="search"
+          ></v-data-table>
+        </v-container>
+      </v-card>
+
+    </v-container>
+    <v-container class="user-info-container">
+      <v-row>
+        <v-col>
+          <h2>
+            <v-icon color="#004948">
+              mdi-clipboard-text-clock-outline
+            </v-icon>
+            تاریخچه امتیازات
+            <v-icon color="#004948">
+              mdi-clipboard-text-clock-outline
+            </v-icon>
+          </h2>
+        </v-col>
+      </v-row>
+      <hr>
+      <v-card class="hocclubtable">
+        <v-card-title>
+          <v-spacer></v-spacer>
+          <v-text-field
+            v-model="historySearch"
+            append-icon="mdi-magnify"
+            label="جستجو"
+            single-line
+            hide-details
+
+          ></v-text-field>
+        </v-card-title>
+        <v-container>
+          <v-data-table
+            :headers="historyHeaders"
+            :items="historyDesserts"
+            :search="historySearch"
+          ></v-data-table>
+        </v-container>
+      </v-card>
+
+    </v-container>
   </div>
 </template>
 
 <script>
-export default {
-  name: "ScoreBoard"
+import Vue from "vue"
 
+export default {
+  name: "ScoreBoard",
+  data() {
+    return {
+      search: '',
+      headers: [
+        {text: 'رتبه', value: 'hoc_club_rank', align: 'center'},
+        {text: 'نام', value: 'name', align: 'center'},
+        {text: 'امتیاز', value: 'total_score', align: 'center'},
+      ],
+      historySearch: '',
+      historyHeaders: [
+        {text: 'تاریخ', value: 'date', align: 'center'},
+        {text: 'توضیح', value: 'description', align: 'center'},
+        {text: 'امتیاز', value: 'score', align: 'center'},
+      ],
+    }
+  },
+  async asyncData({$axios}) {
+    let data = await $axios.$get('/hoc_club/data/');
+    data.desserts = await $axios.$get('/hoc_club/ranking/')
+    data.historyDesserts = await $axios.$get('/hoc_club/history/')
+    let len = data.desserts.length
+    let historyLen = data.historyDesserts.length
+    for (let i = 0; i < len; i++) {
+      data.desserts[i].name = data.desserts[i].first_name_persian + " " + data.desserts[i].last_name_persian
+    }
+    for (let i = 0; i < historyLen; i++) {
+      data.historyDesserts[i].date = Vue.filter("moment")(data.historyDesserts[i].date, "hh:mm - jYYYY/jMM/jDD ")
+    }
+    return data
+  },
+  methods: {
+    get_me(v) {
+
+      if (v.first_name_persian === this.$auth.user.first_name_persian &&
+        v.last_name_persian === this.$auth.user.last_name_persian &&
+        v.hoc_club_rank == this.rank &&
+        v.total_score == this.total_score) {
+
+        return 'me'
+      }
+      return ''
+
+    }
+
+  }
 }
 </script>
 
@@ -107,6 +214,7 @@ export default {
   border: 2px #004948 solid;
   border-radius: 15px;
   padding: 20px;
+  margin-bottom: 50px;
 }
 
 h2 {
@@ -195,10 +303,36 @@ hr {
   color: #00928F;
 }
 
+.hocclubtable {
+  background-color: #C5E3E3;
+}
+
+
 @media screen  and (max-width: 420px) {
   hr {
     min-width: 200px;
 
   }
 }
+</style>
+
+<style scoped>
+
+.hocclubtable /deep/ tr,.hocclubtable /deep/ th,.hocclubtable /deep/ td {
+    border: 1px solid #004948 ;
+    background-color: #99bdbb;
+    font-size: 20px !important;
+    text-align: center;
+  }
+.hocclubtable /deep/ .v-data-footer {
+    background-color: #C5E3E3;
+  }
+.hocclubtable /deep/ .me /deep/ td {
+    background: #026968;
+    color: white;
+
+  }
+
+
+
 </style>

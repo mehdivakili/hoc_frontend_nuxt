@@ -1,19 +1,6 @@
 <template>
-  <v-form ref="form">
-    <!--    <v-row justify="center" class="alertCol">-->
-    <!--      <v-col cols="6">-->
-    <!--        <v-alert-->
-
-    <!--          type="info"-->
-    <!--          style="width:30em"-->
-    <!--        >-->
-    <!--          صادقانه جواب بدین چون جواب درست یا غلطی وجود نداره!-->
-
-
-    <!--        </v-alert>-->
-    <!--      </v-col>-->
-    <!--    </v-row>-->
-    <v-row justify="center">
+  <v-form method="POST" @submit.prevent="submit" ref="form">
+    <v-row justify="center" style="margin-top: 100px">
       <v-col cols="12" md="6">
         <v-text-field :rules="phone_rules" solo flat type="number" hide-details="auto"
                       :error-messages="error.phone_number"
@@ -87,6 +74,8 @@ export default {
     },
     async send_verify_code() {
       try {
+        if (!this.$refs.form.validate())
+          return
         this.$store.commit('register/setError', {})
         this.$nuxt.$loading.start()
         let res = await this.$axios.$post('phone_number_verify/send_token', this.userData)
@@ -107,6 +96,11 @@ export default {
       this.$nuxt.$loading.finish()
 
 
+    },
+    async submit() {
+      if (this.is_send)
+        return await this.verify_code()
+      return await this.send_verify_code()
     },
     async verify_code() {
       this.$nuxt.$loading.start()

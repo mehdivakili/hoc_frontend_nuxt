@@ -1,4 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
+import fa from 'vuetify/src/locale/fa'
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
@@ -31,18 +32,21 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/axios',
+    '~/plugins/axios.client.js',
     '~/plugins/notification.js',
     // '~/plugins/select.js',
     '~/plugins/datePicker.js',
-    // '~/plugins/city.js',
+    '~/plugins/persianNumberConverter.js',
     '~/plugins/OTPInput.js',
-    "~/plugins/crisp.client.js"
-
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
+  components: [
+    {
+      path: '~/components', // will get any components nested in let's say /components/test too
+      pathPrefix: true,
+    },
+  ],
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
@@ -67,7 +71,7 @@ export default {
     // https://go.nuxtjs.dev/pwa
     // '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
-    '@nuxt/content',
+    // '@nuxt/content',
 
     '@nuxtjs/auth-next',
 
@@ -80,15 +84,7 @@ export default {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: 'https://api.hocshirazu.ir/api/',
   },
-  markdownit: {
-    preset: 'default',
-    linkify: true,
-    breaks: true,
-    use: [
-      'markdown-it-attrs'
-    ],
-    runtime: true // Support `$md()`
-  },
+
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
@@ -108,7 +104,10 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     rtl: true,
-    theme: {
+    lang: {
+      locales: {fa},
+      current: 'fa',
+    }, theme: {
       dark: false,
       themes: {
         dark: {
@@ -187,8 +186,10 @@ export default {
       login: "/login",//this example of the path of login page in your project
       logout: "/", //this will redirect to your home after logout
       home: "/" //this example will redirect to the path of user account page in your project.
-    }
-
+    },
+    plugins: [
+      '~/plugins/crisp.client.js'
+    ]
   },
   router: {
     middleware: ['auth', 'payment']

@@ -13,7 +13,7 @@
       </p>
       <p>
         <v-icon>mdi-email</v-icon>
-        support@hocshirazu.ir
+        <a href="mailto:support@hocshirazu.ir">support@hocshirazu.ir</a>
         <v-icon>mdi-email</v-icon>
       </p>
       <h5>با زنگ برنامه نویسی در شبکه های اجتماعی باشید !</h5>

@@ -1,5 +1,6 @@
 <template>
   <div :id="id" class="banner" :style="{flexDirection: direction,background: bgColor}">
+    <div class="banner-inner" :style="{flexDirection: direction}">
     <div class="banner-content" :style="{color: textColor}">
       <h3>
         <slot name="banner-title"></slot>
@@ -9,11 +10,12 @@
       </p>
     </div>
     <div class="banner-img img-fluid">
-      <video controls>
-        <source :src="video" type="video/mp4">
-
-      </video>
+      <div id="29586206303">
+        <script type="text/JavaScript"
+                src="https://www.aparat.com/embed/EcKTh?data[rnddiv]=29586206303&data[responsive]=yes"></script>
+      </div>
     </div>
+  </div>
   </div>
 
 </template>
@@ -42,9 +44,13 @@ export default {
 }
 
 .banner-img video {
-
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100% !important;
 }
+
 
 
 .banner-content {
@@ -56,12 +62,22 @@ export default {
   margin-bottom: 30px;
 }
 
+.banner-inner{
+  max-width: 2000px;
+  margin: auto;
+  width: 100%;
+  gap: 50px;
+}
+
 @media screen and (min-width: 1000px) {
   .banner-content, .banner-img {
     width: 50% !important;
-
+    max-width: 800px !important;
   }
 
+  .banner-img {
+    display: block;
+  }
 
   .banner {
     display: flex;
@@ -71,6 +87,11 @@ export default {
     gap: 110px;
     height: 684px;
 
+  }
+  .banner-inner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 

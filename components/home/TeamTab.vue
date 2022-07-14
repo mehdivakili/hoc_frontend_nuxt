@@ -1,193 +1,97 @@
 <template>
-  <div class="banner ">
-    <div class="bannerCover " >
-
-      <v-sheet color="rgb(0, 0, 0, 0)" class="mx-auto mt-12 " max-width="auto">
-
-        <v-slide-group single show-arrows mandatory >
-          <v-row>
-
-
-          <v-slide-item
-            v-for="(team, n) in teams"
-            :key="n"
-            v-slot="{ active, toggle }"
-          >
-            <v-col >
-              <v-btn
-                class="mx-2 noSelected font-weight-bold"
-                :color="active ? 'buttonBox' : ''"
-                :input-value="active"
-                active-class="buttonBox"
-                text
-                x-large
-                @click="
-                  toggle();
-                  changeActiveTab(n);
-                "
-              >
-                {{ team.name }}
-              </v-btn>
-            </v-col>
-          </v-slide-item>
-          </v-row>
-        </v-slide-group>
-
-      </v-sheet>
-
-      <v-window show-arrows  class="overflow-x-hidden overflow-y-auto" >
-
-        <v-window-item
-          v-for="n in (activeTab) ?Math.ceil(activeTab.people.length / 4): 0"
-          :key="`card-${n}`"
-        >
-          <v-card color="rgb(0, 0, 0, 0)" height="500">
-            <v-row class="fill-height" align="center" justify="center">
-              <!-- Inner Boxes -->
-              <v-col class="profileContainer">
-                <v-row style="align-items: flex-end !important;" justify="center">
-                  <v-col
-                    style="margin-left: 2em;margin-right: 3em;margin-top: 2em"
-                    v-for="j of periodMaker(n)"
-                    :key="j"
-                    :class="
-                      n == 1
-                        ? j == 0
-                          ? 'groupLeader memberCardContainer'
-                          : 'groupMember memberCardContainer'
-                        : 'groupMember memberCardContainer'
-                    "
-                  >
-                    <!-- Card's Content -->
-                    <v-img
-                      :lazy-src="activeTab.people[j].image"
-                      :src="activeTab.people[j].image"
-                      alt="profile Picture"
-                      :class="
-                        n == 1
-                          ? j == 0
-                            ? 'leaderPicture'
-                            : 'memberPicture'
-                          : 'memberPicture'
-                      "
-                    ></v-img>
-                    <div
-                      class="skillText font-weight-bold"
-                      :style="
-                        n == 1
-                          ? j == 0
-                            ? 'font-size: 20px;'
-                            : 'font-size: 16px;'
-                          : 'font-size: 16px;'
-                      "
-                    >
-                      {{ activeTab.people[j].name }}
+  <div class="banner">
+    <v-container style="overflow: hidden">
+      <ul class="nav-tabs">
+        <li :class="[(groupKey === currentGroup)? 'active': '','nav-tab-item']" v-for="(group,groupKey) in team"
+            :key="`nav-btn-${groupKey}`" @click="currentGroup = groupKey">
+          {{ group.name }}
+        </li>
+      </ul>
+      <div>
+        <transition name="fade" mode="out-in">
+          <div v-for="(group,groupKey) in team" :key="`nav-${groupKey}`"
+               v-if="groupKey === currentGroup">
+            <hooper :rtl="true" :settings="hooperSettings" style="height: 400px">
+              <slide style="padding: 20px; display: flex; justify-content: center;align-items: end"
+                     v-for="(person,pk) in group.people"
+                     :key="`nav-${groupKey}-person-${pk}`" :index="pk">
+                <div :class="['person-card','admin-card']">
+                  <div>
+                    <div style="display: flex; justify-content: center">
+                      <v-img class="person-image"
+                             :src="person.image"
+                             :alt="person.name"
+                      ></v-img>
                     </div>
-                    <div
-                      class="skillText font-weight-bold"
-                      :style="
-                        n == 1
-                          ? j == 0
-                            ? 'font-size: 16px;'
-                            : 'font-size: 12px;'
-                          : 'font-size: 12px;'
-                      "
-                    >
-                      {{ activeTab.people[j].description }}
-                    </div>
-                    <a :href="activeTab.people[j].linkedin">
+
+                    <p class="person-name">{{ person.name }}</p>
+                    <p class="person-description">{{ person.description }}</p>
+                    <a :href="person.linkedin">
                       <v-img
-                        :lazy-src="require(`~/assets/images/linkedin_logo.svg`)"
-                        max-height="38"
-                        max-width="113"
                         :src="require(`~/assets/images/linkedin_logo.svg`)"
                         alt="linkedIn Icon"
                       ></v-img>
                     </a>
-                    <!-- End Of Card's Content -->
-                  </v-col>
-                </v-row>
-              </v-col>
-              <!-- End Of Inner Boxes -->
-            </v-row>
-          </v-card>
-        </v-window-item>
-      </v-window>
-      <div class="groupDutyBoxContainer mb-10">
-        <div class="groupDutyBox font-weight-bold">
-          {{ groupsInformation(activeTabN) }}
-        </div>
+                  </div>
+                </div>
+              </slide>
+              <hooper-navigation slot="hooper-addons"></hooper-navigation>
+
+            </hooper>
+            <div style="display: flex; justify-content: center">
+              <div class="duty-box">{{ group.information }}</div>
+            </div>
+          </div>
+        </transition>
+
       </div>
-    </div>
+    </v-container>
   </div>
 </template>
 
 <script>
+import {
+  Hooper, Slide, Navigation as HooperNavigation
+} from 'hooper';
+
+import 'hooper/dist/hooper.css';
+
 export default {
-  name: "TeamTab",
   data() {
     return {
+      team: [],
+      currentGroup: 0,
 
 
-      teams: [],
-      model: null,
-      activeTabN: 0,
-
-    };
-  },
-  computed: {
-    activeTab(param, n = this.activeTabN) {
-      return this.teams[n];
-    },
-    activeTabCount() {
-      return this.activeTab.people.length
-    }
-  },
-
-
-  methods: {
-    changeActiveTab(n) {
-      this.activeTabN = n;
-      // console.log("count is", this.teams[n].count);
-      this.activeTabCount = this.teams[n].count;
-      // Be sure to change (activeTabCount) default num if, first group count changes.
-    },
-    periodMaker(n) {
-      var periodList = [];
-      var start = 4 * (n - 1);
-      var i = start;
-      var highestPage = Math.ceil(this.activeTabCount / 4);
-      // console.log("highest page is", highestPage, "n is", n);
-      if (n == highestPage && this.activeTabCount % 4 != 0) {
-        var end = start + (this.activeTabCount % 4);
-      } else {
-        var end = 4 * n;
+      hooperSettings: {
+        wheelControl: false,
+        infiniteScroll: true,
+        itemsToShow: 1,
+        breakpoints: {
+          500: {
+            itemsToShow: 2
+          },
+          800: {
+            itemsToShow: 3
+          },
+          1000: {
+            itemsToShow: 4,
+          }
+        }
       }
-      // console.log("start is", start, "end is", end);
-      while (i >= start && i < end) {
-        periodList.push(i);
-        i++;
-      }
-      return periodList;
-    },
-    groupsInformation(n) {
-      if (this.activeTab)
-        return this.activeTab.information
-      return ""
     }
+
   },
   async mounted() {
-    this.teams = (await this.$axios.get('team/')).data
-
+    this.team = await this.$axios.$get('team/')
+  },
+  components: {
+    Hooper, Slide, HooperNavigation
   }
-};
+}
 </script>
 
 <style scoped lang="scss">
-@import "~bootstrap/scss/bootstrap.scss";
-</style>
-
-<style scoped>
 .banner {
   background-image: url(~/assets/images/team_bg.png);
   background-size: cover;
@@ -197,135 +101,138 @@ export default {
   /* overflow: hidden; */
 }
 
-.bannerCover {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  background: rgba(44, 44, 44, 0.7);
-}
-
-.profileContainer {
-
-
-  align-items: flex-end !important;
-  width: 70%;
-  height: 316px;
-}
-
-/* .bringCardDown {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-} */
-
-.noSelected {
+.nav-tabs {
   display: flex;
   flex-direction: row;
-  /* border: 3px solid #fefefe; */
-  box-sizing: border-box;
-  border-radius: 15px;
-  font-family: "Vazir FD";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  color: #fefefe;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  border: none;
+
+  li {
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    list-style: none;
+    border: 3px solid rgba(0, 0, 0, 0);
+    transition: 0.4s;
+    cursor: pointer;
+    margin-top: 20px;
+
+    &.active {
+      border: 3px solid white;
+
+    }
+  }
+
+
 }
 
-.buttonBox {
-  display: flex;
-  flex-direction: row;
-  border: 3px solid #fefefe;
-  box-sizing: border-box;
-  border-radius: 15px;
-  font-family: "Vazir FD";
-  font-style: normal;
-  font-weight: 550;
-  font-size: 20px;
-  color: #fefefe;
-}
 
-.groupMember {
+.person-card {
   background: rgba(254, 254, 254, 0.55);
   /* grayShadow */
   box-shadow: 5px 5px 10px rgba(32, 32, 32, 0.35);
   border-radius: 15px;
-  width: 177px;
-  height: 258px;
-}
-
-.groupLeader {
-  background-color: #efefef;
-  width: 217px;
-  height: 316px;
-  box-shadow: 5px 5px 10px rgba(32, 32, 32, 0.35);
-  border-radius: 15px;
-}
-
-.vectorIcon {
-  font-size: 60px;
-}
-
-.memberCardContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  padding-bottom: 16px;
-  max-width: 250px;
-}
-
-.leaderPicture {
-  max-width: 102px;
-  max-height: 102px;
-  border-radius: 50%;
-}
-
-.memberPicture {
-  border-radius: 50%;
-
-  max-width: 84px;
-  max-height: 84px;
-}
-
-.skillText {
-  font-family: "Vazir FD";
-  font-style: normal;
-  font-weight: 400;
-  line-height: 28px;
-
-  text-align: right;
-
-  color: #004948;
-}
-
-.groupDutyBoxContainer {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-
-}
-
-.groupDutyBox {
-  max-width: 618px;
-  width: 100% ;
-  min-height: 76px;
+  width: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(254, 254, 254, 0.55);
+  padding: 30px 20px;
+
+
+  .person-image {
+    max-width: 102px;
+    max-height: 102px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+
+  }
+
+  p {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #004948;
+  }
+
+  a {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  p.person-description {
+    font-size: 12px;
+  }
+
+}
+
+.admin-card {
+  background: rgba(255,255,255,0.6);
+  transform-origin: center bottom;
+  transition: 0.4s;
+
+  &:hover{
+    transform: scale(1.1);
+  }
+}
+
+
+</style>
+
+<style lang="scss">
+.icon {
+  width: 50px !important;
+  height: 50px !important;
+
+  path:last-child {
+    fill: white;
+  }
+}
+
+.duty-box {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255,255,255,0.6);
   padding: 10px 15px;
 
-  box-shadow: 5px 5px 10px rgba(32, 32, 32, 0.35);
   border-radius: 30px 0px 30px 30px;
-  font-family: "Vazir FD";
   font-style: normal;
   font-weight: 400;
-  font-size: 20px;
   line-height: 28px;
 
-  text-align: justify ;
-
+  text-align: justify;
+  margin: 10px;
+  font-size: 14px;
   color: #004948;
 }
 
+@media screen and (min-width: 1000px) {
+  .duty-box {
+    font-size: 16px;
+    max-width: 618px;
+    width: 100%;
+    padding: 20px;
+  }
+  .nav-tabs li {
+    margin: 5px 20px;
+
+  }
+}
+
+.hooper-next {
+  transform: translateX(-25px);
+}
+
+.hooper-prev {
+  transform: translateX(25px);
+
+
+}
 </style>

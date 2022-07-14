@@ -3,9 +3,9 @@
     <div class="content">
       <h1>ورود به حساب کاربری</h1>
       <form @submit.prevent="logInUser(userData)" method="post">
-        <TextInput :error="error" name="username" v-model="userData.username" placeholder="نام کاربری یا ایمیل"
+        <form-text-input :error="error" name="username" v-model="userData.username" placeholder="نام کاربری یا ایمیل"
                    icon="account"/>
-        <TextInput :error="error" :password="!passwordShow" v-model="userData.password" name="password"
+        <form-text-input :error="error" :password="!passwordShow" v-model="userData.password" name="password"
                    placeholder="رمز عبور"
                    icon="key"/>
         <div>
@@ -27,11 +27,14 @@
 </template>
 
 <script>
-import TextInput from "@/components/Form/TextInput";
 
 export default {
   name: "login",
-  components: {TextInput},
+  head(){
+    return{
+      title: 'ورود'
+    }
+  },
   data() {
     return {
       passwordShow: false,

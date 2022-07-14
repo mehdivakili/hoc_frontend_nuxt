@@ -1,7 +1,7 @@
 <template>
 
   <div :key="2" v-else-if="state === 2">
-    <v-form ref="form">
+    <v-form method="POST" @submit.prevent="goToNextPage" style="max-width: 600px; margin: auto;" ref="form">
       <v-row>
         <v-col cols="12" md="6">
           <v-text-field :rules="rules" solo flat hide-details="auto" :error-messages="error.username"
@@ -62,9 +62,9 @@
         </v-col>
       </v-row>
       <div style="display: flex; flex-direction: row; justify-content: space-between; margin-top: 100px">
-        <v-btn class="button-outline" v-on:click="goToPrevPage()">مرحله قبل</v-btn>
+        <v-btn class="button-outline prev-btn" v-on:click="goToPrevPage()">مرحله قبل</v-btn>
 
-        <v-btn class="button-fill" v-on:click="goToNextPage()">مرحله بعد</v-btn>
+        <v-btn class="button-fill next-btn" v-on:click="goToNextPage()">مرحله بعد</v-btn>
       </div>
     </v-form>
   </div>
@@ -130,7 +130,7 @@ export default {
             group: 'foo',
             type: 'error',
 
-            title: 'لطفا موارد را با دقت پر کنید',
+            title: 'خطا در ثبت نام!!',
             text: text
           });
           this.$store.commit('register/setError', error.response.data)
@@ -154,6 +154,18 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+
+.prev-btn {
+  transform: scale(1.2);
+  transform-origin: right bottom;
+  border-radius: 12px;
+}
+
+.next-btn {
+  transform: scale(1.2);
+  transform-origin: left bottom;
+  border-radius: 12px;
+}
 
 </style>

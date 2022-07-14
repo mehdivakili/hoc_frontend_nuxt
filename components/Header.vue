@@ -76,7 +76,7 @@ export default {
       group: null,
       navItems: [],
       navButtons: [
-        {name: "ثبت نام", path: "/register", class: "nav__btn__register"},
+        // {name: "ثبت نام", path: "/register", class: "nav__btn__register"},
         {name: "ورود", path: "/login", class: "nav__btn__login"},
       ],
       navButtonsLogin: [
@@ -98,14 +98,9 @@ export default {
     }
   },
   async fetch() {
-    try {
-      this.navItems = await this.$axios.$get('front/menu/')
-    } catch (e) {
-      if (e.response.status === 401) {
-        await this.$auth.logout()
-        await this.$fetch()
-      }
-    }
+
+    this.navItems = await this.$axios.$get('front/menu/')
+
   },
   fetchOnServer: false,
 };
