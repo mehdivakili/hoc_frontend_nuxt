@@ -11,7 +11,7 @@
                 indeterminate
               ></v-progress-linear>
             </template>
-              <v-img style="height: 100px;" ></v-img>
+              <v-img style="height: 100px;" :src="item.image"></v-img>
             <v-card-title>
               <div>
                 {{item.name}}
@@ -26,14 +26,12 @@
                   </div>
                 </v-col>
                 <v-col>
-
                 </v-col>
-
               </v-row>
             </v-card-text>
             <v-card-actions>
               <v-btn
-               color="teal lighten-3"
+               class="button-fill"
                elevation="4"
                style="margin-bottom: 1rem;margin-right: 0.5rem"
               >
@@ -60,34 +58,40 @@ export default {
     return{
       items: [
         {
-          name:"ایرانسل",
+          name:"سروناز",
           description:"ایرانسل یکی از حامیان هفتمین دوره\n" +
-            "زنگ برنامه نویسی میباشد."
+            "زنگ برنامه نویسی میباشد.",
+          image: require("~/assets/images/sarvenaz.png")
         },
         {
           name:"ایرانسل",
           description:"ایرانسل یکی از حامیان هفتمین دوره\n" +
-            "زنگ برنامه نویسی میباشد."
+            "زنگ برنامه نویسی میباشد.",
+          image: require("~/assets/images/jalbo.png")
         },
         {
           name:"ایرانسل",
           description:"ایرانسل یکی از حامیان هفتمین دوره\n" +
-            "زنگ برنامه نویسی میباشد."
+            "زنگ برنامه نویسی میباشد.",
+          image: require("~/assets/images/seven.png")
         },
         {
           name:"ایرانسل",
           description:"ایرانسل یکی از حامیان هفتمین دوره\n" +
-            "زنگ برنامه نویسی میباشد."
+            "زنگ برنامه نویسی میباشد.",
+          image: require("~/assets/images/hab.png")
         },
         {
           name:"ایرانسل",
           description:"ایرانسل یکی از حامیان هفتمین دوره\n" +
-            "زنگ برنامه نویسی میباشد."
+            "زنگ برنامه نویسی میباشد.",
+          image:""
         },
         {
           name:"ایرانسل",
           description:"ایرانسل یکی از حامیان هفتمین دوره\n" +
-            "زنگ برنامه نویسی میباشد."
+            "زنگ برنامه نویسی میباشد.",
+          image:""
         },
 
       ]
