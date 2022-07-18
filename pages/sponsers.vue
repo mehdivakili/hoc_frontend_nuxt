@@ -1,40 +1,36 @@
 <template>
-  <div style="background-color: #C5E3E3;">
-    <div style="">
-      <v-row class="bigRow">
-        <v-col class="eachCol" v-for="item in items" md="3" sm="6" xs="12">
-          <v-card class="eachCard">
-            <v-img :src="item.image"></v-img>
-            <v-row align="center">
-              <v-col cols="12" md="8">
-                <h3 style="font-size: 20px; font-weight: bold">
-                  {{ item.name }}
-                </h3>
-                <p style="font-size: 14px">
-                  {{ item.description }}
-                </p>
-                <v-btn
-                  class="button-fill"
-                >
-                  اطلاعات بیشتر
-                  <v-icon style="margin-right: 10px"
-                          left
-                          dark
-                  >
-                    mdi-chevron-left
-                  </v-icon>
-                </v-btn>
-              </v-col>
-              <v-col class="d-none d-md-flex">
-                <medal :fill="getColor(item.status)"></medal>
-              </v-col>
-            </v-row>
+  <v-row class="bigRow">
+    <v-col class="eachCol" v-for="item in items" md="3" sm="6" xs="12">
+      <v-card class="eachCard">
+        <v-img :src="item.image"/>
+        <v-row align="center">
+          <v-col cols="12" md="8">
+            <h3 style="font-size: 20px; font-weight: bold">
+              {{ item.name }}
+            </h3>
+            <p style="font-size: 14px">
+              {{ item.description }}
+            </p>
+            <v-btn
+              class="button-fill"
+            >
+              اطلاعات بیشتر
+              <v-icon style="margin-right: 10px"
+                      left
+                      dark
+              >
+                mdi-chevron-left
+              </v-icon>
+            </v-btn>
+          </v-col>
+          <v-col class="d-none d-md-flex">
+            <medal :fill="getColor(item.status)"></medal>
+          </v-col>
+        </v-row>
 
-          </v-card>
-        </v-col>
-      </v-row>
-    </div>
-  </div>
+      </v-card>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
@@ -98,6 +94,9 @@ export default {
       if (status === 'gold')
         return "#FFCF00"
     }
+  },
+  mounted() {
+    this.$store.commit('setFooterColor', "#C5E3E3")
   }
 }
 </script>
