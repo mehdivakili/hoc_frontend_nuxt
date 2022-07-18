@@ -39,6 +39,7 @@ import MedalsSvg from "@/components/icons/medal.svg";
 export default {
   name: "sponsers",
   components: {'medal': MedalsSvg},
+  auth: false,
 
   data() {
     return {
@@ -75,15 +76,57 @@ export default {
           name: "ایرانسل",
           description: "ایرانسل یکی از حامیان هفتمین دوره\n" +
             "زنگ برنامه نویسی میباشد.",
-          status: "gold",
-          image: ""
+          status: "silver",
+          image: require("~/assets/images/derak.png")
         },
         {
           name: "ایرانسل",
           description: "ایرانسل یکی از حامیان هفتمین دوره\n" +
             "زنگ برنامه نویسی میباشد.",
-          status: "gold",
-          image: ""
+          status: "silver",
+          image: require("~/assets/images/itool.png")
+        },
+        {
+          name: "ایرانسل",
+          description: "ایرانسل یکی از حامیان هفتمین دوره\n" +
+            "زنگ برنامه نویسی میباشد.",
+          status: "silver",
+          image: require("~/assets/images/acmm.png")
+        },
+        {
+          name: "ایرانسل",
+          description: "ایرانسل یکی از حامیان هفتمین دوره\n" +
+            "زنگ برنامه نویسی میباشد.",
+          status: "silver",
+          image: require("~/assets/images/vhd.png")
+        },
+        {
+          name: "ایرانسل",
+          description: "ایرانسل یکی از حامیان هفتمین دوره\n" +
+            "زنگ برنامه نویسی میباشد.",
+          status: "bronze",
+          image: require("~/assets/images/abrak.png")
+        },
+        {
+          name: "ایرانسل",
+          description: "ایرانسل یکی از حامیان هفتمین دوره\n" +
+            "زنگ برنامه نویسی میباشد.",
+          status: "bronze",
+          image: require("~/assets/images/khaier.png")
+        },
+        {
+          name: "ایرانسل",
+          description: "ایرانسل یکی از حامیان هفتمین دوره\n" +
+            "زنگ برنامه نویسی میباشد.",
+          status: "bronze",
+          image: require("~/assets/images/acmm.png")
+        },
+        {
+          name: "ایرانسل",
+          description: "ایرانسل یکی از حامیان هفتمین دوره\n" +
+            "زنگ برنامه نویسی میباشد.",
+          status: "bronze",
+          image: require("~/assets/images/shirazu.png")
         },
 
       ]
@@ -93,6 +136,10 @@ export default {
     getColor(status) {
       if (status === 'gold')
         return "#FFCF00"
+      if (status === 'silver')
+        return "#89939A"
+      if (status === 'bronze')
+        return "#967444"
     }
   },
   mounted() {
