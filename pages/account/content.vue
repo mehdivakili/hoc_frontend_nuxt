@@ -2,16 +2,16 @@
 
   <div>
     <v-container class="user-info-container">
-      <template v-if="!!items">
+      <template v-if="!!items[0]">
         <v-tabs
           v-model="tab"
           background-color="transparent"
-          color="basil"
+          color="black"
           grow
         >
-          <v-tab
-            v-for="item in items"
-            :key="item.slug"
+          <v-tab tag="h2"
+                 v-for="item in items"
+                 :key="item.slug"
           >
             {{ item.title }}
           </v-tab>
@@ -26,7 +26,7 @@
           </v-tab-item>
         </v-tabs-items>
       </template>
-      <h1 v-else>محتوایی هنوز آپلود نشده</h1>
+      <h1 v-else style="text-align: center">محتوایی هنوز آپلود نشده</h1>
     </v-container>
 
 

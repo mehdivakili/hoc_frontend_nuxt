@@ -43,6 +43,10 @@
                     <img width="20" src="~/assets/images/dashboard.svg"/>
                     داشبورد
                   </router-link>
+                  <router-link to="/account/content/" class="menu-item">
+                    <img width="20" src="~/assets/images/dashboard.svg"/>
+                    محتوا
+                  </router-link>
                   <router-link to="/account/edit/" class="menu-item">
                     <img width="20" src="~/assets/images/edit_user.svg"/>
                     ویرایش حساب کاربری
