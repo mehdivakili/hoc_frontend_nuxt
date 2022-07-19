@@ -22,7 +22,7 @@
                       v-for="item in items"
                       :key="item.slug"
           >
-            <WPContent :html="'<div>'+item.content+'<div>'"></WPContent>
+            <WPContent :html="'<div>'+item.content+'</div>'"></WPContent>
           </v-tab-item>
         </v-tabs-items>
       </template>
@@ -55,6 +55,12 @@ export default {
   border: 2px #004948 solid;
   border-radius: 15px;
   padding: 20px;
+}
+
+@media screen and (max-width: 600px){
+  .user-info-container{
+    width: 100%;
+  }
 }
 
 h2 {
