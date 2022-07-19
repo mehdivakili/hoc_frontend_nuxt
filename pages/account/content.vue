@@ -59,7 +59,7 @@ export default {
 
 @media screen and (max-width: 600px){
   .user-info-container{
-    width: 100%;
+    width: calc(100vw - 20px);
   }
 }
 
