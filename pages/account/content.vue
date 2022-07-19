@@ -22,7 +22,7 @@
                       v-for="item in items"
                       :key="item.slug"
           >
-            <WPContent :html="item.content"></WPContent>
+            <WPContent :html="'<div>'+item.content+'<div>'"></WPContent>
           </v-tab-item>
         </v-tabs-items>
       </template>
