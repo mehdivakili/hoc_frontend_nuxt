@@ -50,42 +50,42 @@ export default {
           description: "...",
           status: "gold",
           image: require("~/assets/images/sarvenaz.png"),
-          link: "https://www.google.com/"
+          link: "https://www.instagram.com/sarv_e_naz_gallery/"
         },
         {
           name: "جالبو",
           description: "...",
           status: "gold",
           image: require("~/assets/images/jalbo.png"),
-          link: ""
+          link: "https://jalbo.net/"
         },
         {
           name: "سون لرن",
           description: "...",
           status: "gold",
           image: require("~/assets/images/seven.png"),
-          link: ""
+          link: "https://7learn.com/"
         },
         {
           name: "هاب شیراز",
           description: "...",
           status: "gold",
           image: require("~/assets/images/hab.png"),
-          link: ""
+          link: "https://hubshiraz.ir/"
         },
         {
           name: "ابر دراک",
           description: "...",
           status: "silver",
           image: require("~/assets/images/derak.png"),
-          link: ""
+          link: "https://derak.cloud/"
         },
         {
           name: "آیتول",
           description: "...",
           status: "silver",
           image: require("~/assets/images/itool.png"),
-          link: ""
+          link: "https://itoll.ir/"
         },
         {
           name: "آیتن",
@@ -106,7 +106,7 @@ export default {
           description: "...",
           status: "bronze",
           image: require("~/assets/images/abrak.png"),
-          link: ""
+          link: "https://www.instagram.com/abrak.home/"
         },
         {
           name: "بنیاد نخبگان و مجمع خیران",
