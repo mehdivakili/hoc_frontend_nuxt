@@ -50,84 +50,84 @@ export default {
           description: "...",
           status: "gold",
           image: require("~/assets/images/sarvenaz.png"),
-          link: "https://www.google.com/"
+          link: "https://www.instagram.com/sarv_e_naz_gallery/"
         },
         {
           name: "جالبو",
           description: "...",
           status: "gold",
           image: require("~/assets/images/jalbo.png"),
-          link: ""
+          link: "https://jalbo.net/"
         },
         {
           name: "سون لرن",
           description: "...",
           status: "gold",
           image: require("~/assets/images/seven.png"),
-          link: ""
+          link: "https://7learn.com/"
         },
         {
           name: "هاب شیراز",
           description: "...",
           status: "gold",
           image: require("~/assets/images/hab.png"),
-          link: ""
+          link: "https://hubshiraz.ir/"
         },
         {
           name: "ابر دراک",
           description: "...",
           status: "silver",
           image: require("~/assets/images/derak.png"),
-          link: ""
+          link: "https://derak.cloud/"
         },
         {
           name: "آیتول",
           description: "...",
           status: "silver",
           image: require("~/assets/images/itool.png"),
-          link: ""
+          link: "https://itoll.ir/"
         },
         {
           name: "آیتن",
           description: "...",
           status: "silver",
           image: require("~/assets/images/iten.png"),
-          link: ""
+          link: "https://www.instagram.com/ayten.ir/"
         },
         {
           name: "گروه هنری VHD",
           description: "...",
           status: "silver",
           image: require("~/assets/images/vhd.png"),
-          link: ""
+          link: "https://www.instagram.com/vhdartgroup"
         },
         {
           name: "آبرک",
           description: "...",
           status: "bronze",
           image: require("~/assets/images/abrak.png"),
-          link: ""
+          link: "https://www.instagram.com/abrak.home/"
         },
         {
           name: "بنیاد نخبگان و مجمع خیران",
           description: "...",
           status: "bronze",
           image: require("~/assets/images/khaier.png"),
-          link: ""
+          link: "http://sb.shiraz-feca.ir/"
         },
         {
           name: "استعدادهای درخشان",
           description: "...",
           status: "bronze",
           image: require("~/assets/images/estedad.png"),
-          link: ""
+          link: "https://gifted.shirazu.ac.ir/"
         },
         {
           name: "پویش بانوان استاد",
           description: "...",
           status: "bronze",
           image: require("~/assets/images/banovan.png"),
-          link: ""
+          link: "https://www.instagram.com/suwfea/"
         },
 
       ]
