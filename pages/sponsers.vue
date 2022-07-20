@@ -4,7 +4,7 @@
       <v-card class="eachCard">
         <v-img :src="item.image"/>
         <v-row align="center">
-          <v-col cols="12" md="8">
+          <v-col cols="8">
             <h3 style="font-size: 20px; font-weight: bold">
               {{ item.name }}
             </h3>
@@ -13,6 +13,7 @@
             </p>
             <v-btn
               class="button-fill"
+              :href="item.link"
             >
               اطلاعات بیشتر
               <v-icon style="margin-right: 10px"
@@ -23,8 +24,8 @@
               </v-icon>
             </v-btn>
           </v-col>
-          <v-col class="d-none d-md-flex">
-            <medal :fill="getColor(item.status)"></medal>
+          <v-col class="d-md-flex">
+            <medal class="medal" :fill="getColor(item.status)"></medal>
           </v-col>
         </v-row>
 
@@ -45,88 +46,88 @@ export default {
     return {
       items: [
         {
-          name: "سروناز",
-          description: "ایرانسل یکی از حامیان هفتمین دوره\n" +
-            "زنگ برنامه نویسی میباشد.",
+          name: "گالری سروناز",
+          description: "...",
           status: "gold",
-          image: require("~/assets/images/sarvenaz.png")
+          image: require("~/assets/images/sarvenaz.png"),
+          link: "https://www.google.com/"
         },
         {
           name: "جالبو",
-          description: "ایرانسل یکی از حامیان هفتمین دوره\n" +
-            "زنگ برنامه نویسی میباشد.",
+          description: "...",
           status: "gold",
-          image: require("~/assets/images/jalbo.png")
+          image: require("~/assets/images/jalbo.png"),
+          link: ""
         },
         {
           name: "سون لرن",
-          description: "ایرانسل یکی از حامیان هفتمین دوره\n" +
-            "زنگ برنامه نویسی میباشد.",
+          description: "...",
           status: "gold",
-          image: require("~/assets/images/seven.png")
+          image: require("~/assets/images/seven.png"),
+          link: ""
         },
         {
           name: "هاب شیراز",
-          description: "ایرانسل یکی از حامیان هفتمین دوره\n" +
-            "زنگ برنامه نویسی میباشد.",
+          description: "...",
           status: "gold",
-          image: require("~/assets/images/hab.png")
+          image: require("~/assets/images/hab.png"),
+          link: ""
         },
         {
           name: "ابر دراک",
-          description: "ایرانسل یکی از حامیان هفتمین دوره\n" +
-            "زنگ برنامه نویسی میباشد.",
+          description: "...",
           status: "silver",
-          image: require("~/assets/images/derak.png")
+          image: require("~/assets/images/derak.png"),
+          link: ""
         },
         {
           name: "آیتول",
-          description: "ایرانسل یکی از حامیان هفتمین دوره\n" +
-            "زنگ برنامه نویسی میباشد.",
+          description: "...",
           status: "silver",
-          image: require("~/assets/images/itool.png")
+          image: require("~/assets/images/itool.png"),
+          link: ""
         },
         {
           name: "آیتن",
-          description: "ایرانسل یکی از حامیان هفتمین دوره\n" +
-            "زنگ برنامه نویسی میباشد.",
+          description: "...",
           status: "silver",
-          image: require("~/assets/images/iten.png")
+          image: require("~/assets/images/iten.png"),
+          link: ""
         },
         {
           name: "گروه هنری VHD",
-          description: "ایرانسل یکی از حامیان هفتمین دوره\n" +
-            "زنگ برنامه نویسی میباشد.",
+          description: "...",
           status: "silver",
-          image: require("~/assets/images/vhd.png")
+          image: require("~/assets/images/vhd.png"),
+          link: ""
         },
         {
           name: "آبرک",
-          description: "ایرانسل یکی از حامیان هفتمین دوره\n" +
-            "زنگ برنامه نویسی میباشد.",
+          description: "...",
           status: "bronze",
-          image: require("~/assets/images/abrak.png")
+          image: require("~/assets/images/abrak.png"),
+          link: ""
         },
         {
           name: "بنیاد نخبگان و مجمع خیران",
-          description: "ایرانسل یکی از حامیان هفتمین دوره\n" +
-            "زنگ برنامه نویسی میباشد.",
+          description: "...",
           status: "bronze",
-          image: require("~/assets/images/khaier.png")
+          image: require("~/assets/images/khaier.png"),
+          link: ""
         },
         {
           name: "استعدادهای درخشان",
-          description: "ایرانسل یکی از حامیان هفتمین دوره\n" +
-            "زنگ برنامه نویسی میباشد.",
+          description: "...",
           status: "bronze",
-          image: require("~/assets/images/estedad.png")
+          image: require("~/assets/images/estedad.png"),
+          link: ""
         },
         {
           name: "پویش بانوان استاد",
-          description: "ایرانسل یکی از حامیان هفتمین دوره\n" +
-            "زنگ برنامه نویسی میباشد.",
+          description: "...",
           status: "bronze",
-          image: require("~/assets/images/banovan.png")
+          image: require("~/assets/images/banovan.png"),
+          link: ""
         },
 
       ]
@@ -170,4 +171,10 @@ export default {
   padding-bottom: 2rem;
   padding-top: 2rem;
 }
+
+.medal{
+  width: 80%;
+}
+
+
 </style>
