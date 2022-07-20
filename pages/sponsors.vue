@@ -92,7 +92,7 @@ export default {
           description: "...",
           status: "silver",
           image: require("~/assets/images/iten.png"),
-          link: "https://www.instagram.com/ayten.ir/"
+          link: "https://ayten.studio/about-us/"
         },
         {
           name: "گروه هنری VHD",
