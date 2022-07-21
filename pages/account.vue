@@ -64,6 +64,11 @@
                     انتخاب گروه همایش
                   </router-link>
 
+                  <router-link to="/account/certificates/" class="menu-item">
+                    <img width="20" src="~/assets/icons/group.svg"/>
+                    مدارک همایش
+                  </router-link>
+
                   <a class="menu-item"
                      @click="() => {
 
