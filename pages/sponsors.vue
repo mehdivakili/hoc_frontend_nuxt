@@ -96,7 +96,7 @@ export default {
         },
         {
           name: "گروه هنری VHD",
-          description: "...",
+          description: "مجموعه VHD art group با بیش از یک دهه سابقه در حوزه ساخت تیزر های صنعتی و تبلیغاتی، سینمایی، مستند، عکاسی و برگزاری همایش ها فعالیت می کند.",
           status: "silver",
           image: require("~/assets/images/vhd.png"),
           link: "https://www.instagram.com/vhdartgroup"
