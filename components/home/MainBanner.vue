@@ -12,7 +12,7 @@
     <h3>
       تاریخ همایش: ۲۴ تا ۳۱ تیر ماه ۱۴۰۱
     </h3>
-    <v-btn to="live" class="button-fill">پخش زنده اختتامیه</v-btn>
+<!--    <v-btn to="live" class="button-fill">پخش زنده اختتامیه</v-btn>-->
     <!--    <v-btn class="button-fill px-7 py-4 my-2 d-flex d-md-none" to="/register" style="transform: scale(1.4)"> ثبت نام </v-btn>-->
 <!--    <div class="remaining">-->
 <!--      <h2 style="margin-bottom: 50px">ظرفیت باقی مانده</h2>-->
