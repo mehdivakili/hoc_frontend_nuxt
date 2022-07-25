@@ -89,7 +89,7 @@ export default {
         },
         {
           name: "آیتن",
-          description: "...",
+          description: "آیتن به عنوان یک Product Studio یا استودیو طراحی و تولید محصول، در تلاش است تا کسب‌وکارها بتوانند تمام نیازهای تکنیکال استارت‌آپ‌ خود مانند طراحی و توسعه وب‌سایت‌، اپلیکیشن، زیرساخت‌های تجزیه و تحلیل داده و انواع دیگر نیازمندی‌های نرم‌افزاری را در یک پکیج دریافت نمایند.",
           status: "silver",
           image: require("~/assets/images/iten.png"),
           link: "https://ayten.studio/about-us/"
