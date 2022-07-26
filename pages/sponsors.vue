@@ -75,7 +75,7 @@ export default {
         },
         {
           name: "ابر دراک",
-          description: "...",
+          description: "رایا ابر دراک پارس با تمرکز بر توسعه فناوری‌های هوشمند ابری و مالکیت PoP سایت‌های توزیع‌شده‌ی انتقال محتوا در سراسر دنیا، تلاش میکنه تا قویترین خدمات در زمینه مدیریت توزیع محتوا رو به وب‌سایت‌ها، اپلیکیشن‌ها و رسانه‌های مجازی رو به کسب‌وکارها و کاربرانش ارائه بده.",
           status: "silver",
           image: require("~/assets/images/derak.png"),
           link: "https://derak.cloud/"
@@ -103,7 +103,9 @@ export default {
         },
         {
           name: "آبرک",
-          description: "...",
+          description: "خانه رویداد آبرک یک استارت آپ در حوزه خلق تجربه است که با طراحی و برگزاری تخصصی ایونت ها، تجربه متمایزی از برند ها را در ذهن مخاطبانشان ماندگار میکند.\n" +
+            "\n" +
+            "با آبرک تو خاطره ها بمون!",
           status: "bronze",
           image: require("~/assets/images/abrak.png"),
           link: "https://www.instagram.com/abrak.home/"
