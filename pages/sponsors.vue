@@ -119,7 +119,7 @@ export default {
         },
         {
           name: "استعدادهای درخشان",
-          description: "...",
+          description: "دفتر استعدادهای درخشان دانشگاه شیراز به عنوان یکی از واحدهای معاونت آموزشی و تحصیلات تکمیلی دانشگاه، در جهت پشتیبانی از دانشجویان و دانش‌آموزان ممتاز، برگزاری المپیادهای علمی دانشجویی و... فعالیت می‌کند.",
           status: "bronze",
           image: require("~/assets/images/estedad.png"),
           link: "https://gifted.shirazu.ac.ir/"
