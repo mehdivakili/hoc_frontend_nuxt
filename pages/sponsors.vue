@@ -115,7 +115,7 @@ export default {
           description: "...",
           status: "bronze",
           image: require("~/assets/images/khaier.png"),
-          link: "http://sb.shiraz-feca.ir/"
+          link: "http://shiraz-feca.ir/"
         },
         {
           name: "استعدادهای درخشان",
