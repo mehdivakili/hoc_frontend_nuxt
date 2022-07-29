@@ -112,7 +112,7 @@ export default {
         },
         {
           name: "بنیاد نخبگان و مجمع خیران",
-          description: "...",
+          description: "«مجمع خیران نخبه پرور فارس» در راستای فراهم کردن بستری جهت شناسایی و حمایت از استعدادهای برتر و نخبگان استان فارس فعالیت می‌کند.",
           status: "bronze",
           image: require("~/assets/images/khaier.png"),
           link: "http://shiraz-feca.ir/"
