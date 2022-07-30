@@ -5,12 +5,15 @@
         <v-img :src="item.image"/>
         <v-row align="center">
           <v-col cols="8">
+            <div>
             <h3 style="font-size: 20px; font-weight: bold">
               {{ item.name }}
             </h3>
             <p style="font-size: 14px">
               {{ item.description }}
             </p>
+            </div>
+
             <v-btn
               class="button-fill"
               :href="item.link"
@@ -160,6 +163,7 @@ export default {
   margin-right: 0.1rem;
   padding: 12px;
   border-radius: 8px;
+  height: 100%;
 
   h3, p {
     color: #004948;
