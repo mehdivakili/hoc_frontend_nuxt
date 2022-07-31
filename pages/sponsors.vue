@@ -2,20 +2,19 @@
   <v-row class="bigRow">
     <v-col class="eachCol" v-for="item in items" md="3" sm="6" xs="12">
       <v-card class="eachCard">
-        <v-img :src="item.image"/>
-        <v-row align="center">
-          <v-col cols="8">
-            <div>
+        <div style="width: 100%;margin-bottom: 10px">
+          <v-img :src="item.image" style="width: 100%"/>
+        </div>
+        <v-row>
+          <v-col cols="8" style="display: flex; flex-direction: column;">
             <h3 style="font-size: 20px; font-weight: bold">
               {{ item.name }}
             </h3>
-            <p style="font-size: 14px">
+            <p style="font-size: 14px; flex-grow: 10">
               {{ item.description }}
             </p>
-            </div>
-
             <v-btn
-              class="button-fill"
+              class="button-fill" style="min-width: 140px"
               :href="item.link"
             >
               اطلاعات بیشتر
@@ -28,7 +27,7 @@
             </v-btn>
           </v-col>
           <v-col class="d-md-flex">
-            <medal class="medal" :fill="getColor(item.status)"></medal>
+            <medal class="medal" :fill="getColor(item.status)" style="height: fit-content"></medal>
           </v-col>
         </v-row>
 
@@ -164,7 +163,9 @@ export default {
   padding: 12px;
   border-radius: 8px;
   height: 100%;
-
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
   h3, p {
     color: #004948;
   }
