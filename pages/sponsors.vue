@@ -50,7 +50,7 @@ export default {
       items: [
         {
           name: "گالری سروناز",
-          description: "...",
+          description: "گالری سروناز بزرگ‌ترین گالری جنوب کشور شامل دو سالن نمایش آثار، کافه، آرت شاپ، آموزش، گلخانه هنر و دارای فضای باز برای نمایش آثار می‌باشد.",
           status: "gold",
           image: require("~/assets/images/sarvenaz.png"),
           link: "https://www.instagram.com/sarv_e_naz_gallery/"
