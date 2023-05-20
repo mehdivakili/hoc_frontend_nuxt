@@ -1,11 +1,16 @@
 <template>
   <div>
-    <p><img src="~/assets/images/success_icon.svg"/> ثبت نام شما با موفقیت انجام شد</p>
+    <p>
+      <img src="~/assets/images/success_icon.svg" /> ثبت نام شما با موفقیت انجام
+      شد
+    </p>
     <ul>
-      <li>تاریخ برگزاری همایش<br>
-        ۲۴ تا ۳۱ تیرماه ۱۴۰۱
+      <li>
+        تاریخ برگزاری همایش<br />
+        ۲۵ مرداد لغایت ۳ شهریور ۱۴۰2
       </li>
-      <li>به زودی به کانال واتساپ اطلاع رسانی همایش<br>
+      <li>
+        به زودی به کانال واتساپ اطلاع رسانی همایش<br />
         اضافه می شوید!
       </li>
       <li>در همایش منتظرتان هستیم!</li>
@@ -15,15 +20,14 @@
 
 <script>
 export default {
-  name: "success"
-}
+  name: "success",
+};
 </script>
 
 <style scoped lang="scss">
-
 div {
-  background: #C5E3E3;
-  box-shadow: inset -18px -18px 30px #E0F0F0, inset 18px 18px 30px #98CDCD;
+  background: #c5e3e3;
+  box-shadow: inset -18px -18px 30px #e0f0f0, inset 18px 18px 30px #98cdcd;
   border-radius: 15px;
   padding: 30px 20px;
 
@@ -38,7 +42,5 @@ div {
   }
 
   /* identical to box height, or 189% */
-
-
 }
 </style>

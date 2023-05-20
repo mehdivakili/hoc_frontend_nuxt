@@ -1,41 +1,47 @@
 <template>
-  <div class="banner" :style="{flexDirection: direction,background: bgColor}">
-    <div class="banner-inner" :style="{flexDirection: direction}">
-    <div class="banner-content" :style="{color: textColor}">
-      <h3>
-        <slot name="banner-title"></slot>
-      </h3>
-      <p>
-        <slot name="banner-content" :style="{color: textColor}"></slot>
-      </p>
-    </div>
-    <div class="banner-img img-fluid">
-      <img :src="image" :alt="alt"/>
+  <div
+    class="banner"
+    :style="{ flexDirection: direction, background: bgColor }"
+  >
+    <div class="banner-inner" :style="{ flexDirection: direction }">
+      <div class="banner-content" :style="{ color: textColor }">
+        <h3>
+          <slot name="banner-title"></slot>
+        </h3>
+        <p>
+          <slot name="banner-content" :style="{ color: textColor }"></slot>
+        </p>
+      </div>
+      <div class="banner-img img-fluid">
+        <img :src="image" :alt="alt" />
+      </div>
     </div>
   </div>
-  </div>
-
 </template>
 
 <script>
 export default {
   name: "Banner",
   props: {
-    bgColor: {}, textColor: {}, image: {}, alt: {default: ''}, direction: {
-      default: 'row'
-    }
-  }
-}
+    bgColor: {},
+    textColor: {},
+    image: {},
+    alt: { default: "" },
+    direction: {
+      default: "row",
+    },
+  },
+};
 </script>
 
 <style scoped>
-
 .banner {
   width: 100%;
   margin: 0;
 }
 
-.banner-content, .banner-img {
+.banner-content,
+.banner-img {
   position: relative;
 }
 
@@ -61,7 +67,7 @@ export default {
   margin-bottom: 30px;
 }
 
-.banner-inner{
+.banner-inner {
   max-width: 2000px;
   margin: auto;
   display: flex;
@@ -72,7 +78,8 @@ export default {
 }
 
 @media screen and (min-width: 1000px) {
-  .banner-content, .banner-img {
+  .banner-content,
+  .banner-img {
     width: 50% !important;
     max-width: 800px !important;
   }
@@ -88,9 +95,6 @@ export default {
     padding: 110px;
     gap: 110px;
     height: 684px;
-
   }
 }
-
-
 </style>
