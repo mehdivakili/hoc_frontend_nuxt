@@ -51,18 +51,18 @@
                     <img width="20" src="~/assets/images/edit_user.svg"/>
                     ویرایش حساب کاربری
                   </router-link>
-                  <router-link to="/account/ScoreBoard/" class="menu-item">
-                    <img width="20" src="~/assets/icons/team.svg"/>
-                    باشگاه زنگ برنامه نویسی
-                  </router-link>
-                  <router-link to="/account/quiz/" class="menu-item">
-                    <img width="20" src="~/assets/icons/quiz_icon.svg"/>
-                    کوییز
-                  </router-link>
-                  <router-link to="/account/GroupSelection/" class="menu-item">
-                    <img width="20" src="~/assets/icons/group.svg"/>
-                    انتخاب گروه همایش
-                  </router-link>
+<!--                  <router-link to="/account/ScoreBoard/" class="menu-item">-->
+<!--                    <img width="20" src="~/assets/icons/team.svg"/>-->
+<!--                    باشگاه زنگ برنامه نویسی-->
+<!--                  </router-link>-->
+<!--                  <router-link to="/account/quiz/" class="menu-item">-->
+<!--                    <img width="20" src="~/assets/icons/quiz_icon.svg"/>-->
+<!--                    کوییز-->
+<!--                  </router-link>-->
+<!--                  <router-link to="/account/GroupSelection/" class="menu-item">-->
+<!--                    <img width="20" src="~/assets/icons/group.svg"/>-->
+<!--                    انتخاب گروه همایش-->
+<!--                  </router-link>-->
 
                   <router-link to="/account/certificates/" class="menu-item">
                     <img width="20" src="~/assets/icons/group.svg"/>
