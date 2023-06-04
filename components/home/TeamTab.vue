@@ -2,25 +2,45 @@
   <div class="banner">
     <v-container style="overflow: hidden">
       <ul class="nav-tabs">
-        <li :class="[(groupKey === currentGroup)? 'active': '','nav-tab-item']" v-for="(group,groupKey) in team"
-            :key="`nav-btn-${groupKey}`" @click="currentGroup = groupKey">
+        <li
+          :class="[groupKey === currentGroup ? 'active' : '', 'nav-tab-item']"
+          v-for="(group, groupKey) in team"
+          :key="`nav-btn-${groupKey}`"
+          @click="currentGroup = groupKey"
+        >
           {{ group.name }}
         </li>
       </ul>
       <div>
         <transition name="fade" mode="out-in">
-          <div v-for="(group,groupKey) in team" :key="`nav-${groupKey}`"
-               v-if="groupKey === currentGroup">
-            <hooper :rtl="true" :settings="hooperSettings" style="height: 400px">
-              <slide style="padding: 20px; display: flex; justify-content: center;align-items: end"
-                     v-for="(person,pk) in group.people"
-                     :key="`nav-${groupKey}-person-${pk}`" :index="pk">
-                <div :class="['person-card','admin-card']">
+          <div
+            v-for="(group, groupKey) in team"
+            :key="`nav-${groupKey}`"
+            v-if="groupKey === currentGroup"
+          >
+            <hooper
+              :rtl="true"
+              :settings="hooperSettings"
+              style="height: 400px"
+            >
+              <slide
+                style="
+                  padding: 20px;
+                  display: flex;
+                  justify-content: center;
+                  align-items: end;
+                "
+                v-for="(person, pk) in group.people"
+                :key="`nav-${groupKey}-person-${pk}`"
+                :index="pk"
+              >
+                <div :class="['person-card', 'admin-card']">
                   <div>
                     <div style="display: flex; justify-content: center">
-                      <v-img class="person-image"
-                             :src="person.image"
-                             :alt="person.name"
+                      <v-img
+                        class="person-image"
+                        :src="person.image"
+                        :alt="person.name"
                       ></v-img>
                     </div>
 
@@ -36,25 +56,21 @@
                 </div>
               </slide>
               <hooper-navigation slot="hooper-addons"></hooper-navigation>
-
             </hooper>
             <div style="display: flex; justify-content: center">
               <div class="duty-box">{{ group.information }}</div>
             </div>
           </div>
         </transition>
-
       </div>
     </v-container>
   </div>
 </template>
 
 <script>
-import {
-  Hooper, Slide, Navigation as HooperNavigation
-} from 'hooper';
+import { Hooper, Slide, Navigation as HooperNavigation } from "hooper";
 
-import 'hooper/dist/hooper.css';
+import "hooper/dist/hooper.css";
 
 export default {
   data() {
@@ -62,33 +78,33 @@ export default {
       team: [],
       currentGroup: 0,
 
-
       hooperSettings: {
         wheelControl: false,
-        infiniteScroll: true,
+        trimWhiteSpace: true,
         itemsToShow: 1,
         breakpoints: {
           500: {
-            itemsToShow: 2
+            itemsToShow: 2,
           },
           800: {
-            itemsToShow: 3
+            itemsToShow: 3,
           },
           1000: {
             itemsToShow: 4,
-          }
-        }
-      }
-    }
-
+          },
+        },
+      },
+    };
   },
   async mounted() {
-    this.team = await this.$axios.$get('team/')
+    this.team = await this.$axios.$get("team/");
   },
   components: {
-    Hooper, Slide, HooperNavigation
-  }
-}
+    Hooper,
+    Slide,
+    HooperNavigation,
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -124,13 +140,9 @@ export default {
 
     &.active {
       border: 3px solid white;
-
     }
   }
-
-
 }
-
 
 .person-card {
   background: rgba(254, 254, 254, 0.55);
@@ -143,13 +155,11 @@ export default {
   align-items: center;
   padding: 30px 20px;
 
-
   .person-image {
     max-width: 102px;
     max-height: 102px;
     border-radius: 50%;
     margin-bottom: 20px;
-
   }
 
   p {
@@ -168,20 +178,17 @@ export default {
   p.person-description {
     font-size: 12px;
   }
-
 }
 
 .admin-card {
-  background: rgba(255,255,255,0.6);
+  background: rgba(255, 255, 255, 0.6);
   transform-origin: center bottom;
   transition: 0.4s;
 
-  &:hover{
+  &:hover {
     transform: scale(1.1);
   }
 }
-
-
 </style>
 
 <style lang="scss">
@@ -195,11 +202,10 @@ export default {
 }
 
 .duty-box {
-
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(255,255,255,0.6);
+  background: rgba(255, 255, 255, 0.6);
   padding: 10px 15px;
 
   border-radius: 30px 0px 30px 30px;
@@ -222,7 +228,6 @@ export default {
   }
   .nav-tabs li {
     margin: 5px 20px;
-
   }
 }
 
@@ -232,7 +237,5 @@ export default {
 
 .hooper-prev {
   transform: translateX(25px);
-
-
 }
 </style>
