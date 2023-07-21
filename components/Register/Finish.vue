@@ -78,7 +78,7 @@
                       "
                       ><p class="titles">مبلغ پرداختی</p>
                     </v-col>
-                    <v-col cols="12" md="6"
+                    <v-col cols="12" md="6" v-if="!discount"
                       ><p
                         class="content"
                         style="
@@ -90,6 +90,30 @@
                         {{ numberToPersian(amount) }} تومان
                       </p></v-col
                     >
+                    <v-col cols="12" md="6" v-if="discount"
+                      ><p
+                        class="content"
+                        style="
+                          display: flex;
+                          justify-content: center;
+                          align-items: center;
+                          text-decoration-line: line-through;
+                          color: red;
+                        "
+                      >
+                        {{ numberToPersian(amount) }} تومان
+                      </p>
+                      <p
+                        class="content"
+                        style="
+                          display: flex;
+                          justify-content: center;
+                          align-items: center;
+                        "
+                      >
+                        {{ numberToPersian(discountAmount) }} تومان
+                      </p>
+                    </v-col>
                   </v-row>
                 </v-card>
               </v-col>
@@ -165,7 +189,9 @@ export default {
   name: "Finish",
   data() {
     return {
-      amount: 249000,
+      amount: 199000,
+      discount: false,
+      discountAmount: 199000,
       notReserve: false,
       loaded: false,
     };
@@ -211,11 +237,13 @@ export default {
     let t = this;
     this.$axios
       .get("get_option/purchase_amount")
-      .then((res) => (t.amount = res.data.value / 10));
+      .then((res) => (t.discountAmount = res.data.value / 10));
     this.$axios.get("pass_register_limit/").then((res) => {
       t.notReserve = res.data;
       t.loaded = true;
     });
+    t.discount =
+      this.$store.state.register.userData.discount_code === "" ? false : true;
   },
 };
 </script>
