@@ -5,11 +5,21 @@
       <div class="d-none d-md-flex" v-for="item in navItems" :key="item.path">
         <v-btn
           elevation="0"
-          class="nav__btn mx-4 px-4 py-6"
+          :class="
+            item.href
+              ? 'nav__btn mx-4 px-4 py-6'
+              : 'nav__btn__login mx-4 px-4 py-6'
+          "
           :to="item.to ? item.to : ''"
+          :target="item.href ? '_blank' : '_self'"
           :href="item.href ? item.href : ''"
           @click="item.hasClick ? logout() : () => {}"
-          >{{ item.title }}
+        >
+          <span style="word-wrap: break-word">
+            {{ item.title.split(".")[0] }}
+            <br />
+            {{ item.title.split(".")[1] }}
+          </span>
         </v-btn>
       </div>
       <v-spacer></v-spacer>
@@ -54,8 +64,14 @@
               elevation="0"
               class="nav__btn my-2 px-2 py-6"
               :to="item.to ? item.to : ''"
+              :target="item.href ? '_blank' : '_self'"
               :href="item.href ? item.href : ''"
-              >{{ item.title }}
+            >
+              <span style="word-wrap: break-word; font-size: 0.875em">
+                {{ item.title.split(".")[0] }}
+                <br />
+                {{ item.title.split(".")[1] }}
+              </span>
             </v-btn>
           </div>
           <div
