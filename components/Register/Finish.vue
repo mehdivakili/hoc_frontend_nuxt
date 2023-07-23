@@ -243,7 +243,10 @@ export default {
       t.loaded = true;
     });
     t.discount =
-      this.$store.state.register.userData.discount_code === "" ? false : true;
+      this.$store.state.register.userData.discount_code === "" ||
+      this.$store.state.register.userData.discount_code === null
+        ? false
+        : true;
   },
 };
 </script>
