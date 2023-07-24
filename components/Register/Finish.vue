@@ -244,7 +244,8 @@ export default {
     });
     t.discount =
       this.$store.state.register.userData.discount_code === "" ||
-      this.$store.state.register.userData.discount_code === null
+      this.$store.state.register.userData.discount_code === null ||
+      this.$store.state.register.userData.discount_code === undefined
         ? false
         : true;
   },
