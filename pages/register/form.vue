@@ -4,6 +4,59 @@
       <v-row>
         <v-col cols="12">
           <v-container elevation="10" outlined class="questionCard">
+            <v-card-title class="cardT" style="">
+              اطلاعات محل سکونت
+            </v-card-title>
+
+            <v-row>
+              <v-col cols="12">
+                <v-sheet color="#C5E3E3" outlined class="Sheets">
+                  <v-row>
+                    <v-col cols="12" md="6">
+                      <p class="q-text">متقاضی دریافت خوابگاه هستم.</p>
+                    </v-col>
+                    <v-col cols="12" md="6">
+                      <v-radio-group
+                        v-model="q4"
+                        :rules="rules"
+                        row
+                        dense
+                        style="margin-top: -2px"
+                      >
+                        <v-radio
+                          label="بله"
+                          value="بله"
+                          color="#004948"
+                        ></v-radio>
+                        <v-radio
+                          label="خیر"
+                          value="خیر"
+                          color="#004948"
+                        ></v-radio>
+                      </v-radio-group>
+                    </v-col>
+                  </v-row>
+                  <v-row>
+                    <v-col cols="12">
+                      <p class="q-text">نام شهر محل سکونت خود را بنویسید.</p>
+                    </v-col>
+                    <v-col cols="12">
+                      <v-textarea
+                        solo
+                        name="q4_text_area"
+                        :rules="rules"
+                        label="اینجا بنویسید . . ."
+                        class="text-area"
+                        style="margin-top: -1.5em; border-radius: 10px"
+                        clearable
+                        v-model="q4_text"
+                      ></v-textarea>
+                    </v-col>
+                  </v-row>
+                </v-sheet>
+              </v-col>
+            </v-row>
+
             <v-row class="alertCol">
               <v-col cols="12" md="6">
                 <v-alert type="info" color="grey" style="width: 30em">
@@ -260,6 +313,8 @@ export default {
       q3_2: null,
       q3_3: null,
       q3_text: null,
+      q4: null,
+      q4_text: null,
       rules: [(v) => !!v || "این مقدار لازم است"],
     };
   },
