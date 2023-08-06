@@ -95,14 +95,14 @@
       text-color="#FEFEFE"
       bg-color="linear-gradient(104.71deg, #00928F 11.26%, #00ADAA 90.55%)"
       direction="row-reverse"
-      video="https://api.hocshirazu.ir/media/register_description.mp4"
+      video="http://localhost:8000/media/register_description.mp4"
       alt="یک فیلم"
     >
       <template v-slot:banner-title> نحوه ثبت نام ؟! </template>
 
       <template v-slot:banner-content>
-        اگر هنگام ثبت نام براتون مشکل یا سوالی پیش اومد میتونید از طریق بشتیبان
-        سایت دایرکت اینستاگرام و بشتیبان تلگرام با ما درمیون بگذارید.
+        اگر هنگام ثبت نام براتون مشکل یا سوالی پیش اومد میتونید از طریق پشتیبان
+        سایت دایرکت اینستاگرام و پشتیبان تلگرام با ما درمیون بگذارید.
       </template>
     </VideoBanner>
 
