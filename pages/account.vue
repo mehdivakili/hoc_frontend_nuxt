@@ -177,7 +177,7 @@ export default {
       if (this.file) {
         return this.file;
       } else if (this.$auth.user.profile.image) {
-        return "http://localhost:8000/" + this.$auth.user.profile.image;
+        return "https://api.hocshirazu.ir/" + this.$auth.user.profile.image;
       } else {
         return require("~/assets/images/profile.svg");
       }
