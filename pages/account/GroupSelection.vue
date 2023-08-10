@@ -22,7 +22,7 @@
 
       <v-row v-if="!isClose">
         <!-- Body -->
-        <v-col v-if="!$auth.user.profile.group">
+        <v-col v-if="!$auth.user.profile.group && !$auth.user.is_dormitory">
           <v-row>
             <!-- groups row -->
             <v-col
@@ -186,7 +186,7 @@
             </v-col>
           </v-row>
         </v-col>
-        <v-col v-if="!!$auth.user.profile.group">
+        <v-col v-if="!!$auth.user.profile.group || !!$auth.user.is_dormitory">
           <v-row>
             <!-- groups row -->
             <v-col v-for="item in chosenGroup" :key="chosenGroup.indexOf(item)">
@@ -519,9 +519,18 @@ export default {
   computed: {
     chosenGroup() {
       let groupNumber = this.$auth.user.profile.group;
+
+      if (this.$auth.user.is_dormitory) {
+        groupNumber = this.$auth.user.sex === "زن" ? 6 : 5;
+        this.choose = groupNumber;
+      }
+
+      console.log(groupNumber);
+
       let userItems = this.items[this.gender][this.grade];
       for (let group in userItems) {
         if (userItems[group].groupNumber == groupNumber) {
+          console.log(userItems[group]);
           return [userItems[group]];
         }
       }
@@ -534,6 +543,7 @@ export default {
     },
     grade() {
       let userGrade = this.$auth.user.grade;
+      console.log(this.$auth.user);
       if (["دهم", "یازدهم", "دوازدهم"].includes(userGrade)) {
         return "secondry";
       }
@@ -561,6 +571,22 @@ export default {
       }
       this.$nuxt.$loading.finish();
     },
+  },
+  async created() {
+    if (this.$auth.user.profile.group == 0 && this.$auth.user.is_dormitory) {
+      let userItems = this.items[this.gender][this.grade];
+      let groupNumberHere;
+      for (let group in userItems) {
+        if (userItems[group].dorm) {
+          groupNumberHere = userItems[group].groupNumber;
+        }
+      }
+
+      console.log(groupNumberHere + "Adding user group");
+      await this.$axios.$put("user/set_group/", { group: groupNumberHere });
+      console.log(this.$auth.user.profile.group + "Added user group");
+    } else
+      console.log("User already has group" + this.$auth.user.profile.group);
   },
 };
 </script>
