@@ -4,11 +4,11 @@
       <v-row>
         <v-col cols="12">
           <v-container elevation="10" outlined class="questionCard">
-            <v-card-title class="cardT" style="">
+            <v-card-title class="cardT" style="" v-if="isDormAllowed">
               اطلاعات محل سکونت
             </v-card-title>
 
-            <v-row>
+            <v-row v-if="isDormAllowed">
               <v-col cols="12">
                 <v-sheet color="#C5E3E3" outlined class="Sheets">
                   <v-row>
@@ -333,6 +333,13 @@ export default {
         form: { answer: JSON.stringify(d) },
       });
       this.$router.push("/register/");
+    },
+  },
+  computed: {
+    isDormAllowed() {
+      return ["دهم", "یازدهم", "دوازدهم"].includes(
+        this.$store.state.register.userData.grade
+      );
     },
   },
   mounted() {
