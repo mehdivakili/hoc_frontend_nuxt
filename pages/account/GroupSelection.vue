@@ -496,12 +496,9 @@ export default {
         this.choose = groupNumber;
       }
 
-      console.log(groupNumber);
-
       let userItems = this.items[this.gender][this.grade];
       for (let group in userItems) {
         if (userItems[group].groupNumber == groupNumber) {
-          console.log(userItems[group]);
           return [userItems[group]];
         }
       }
@@ -514,7 +511,6 @@ export default {
     },
     grade() {
       let userGrade = this.$auth.user.grade;
-      console.log(this.$auth.user);
       if (["دهم", "یازدهم", "دوازدهم"].includes(userGrade)) {
         return "secondry";
       }
@@ -553,11 +549,8 @@ export default {
         }
       }
 
-      console.log(groupNumberHere + "Adding user group");
       await this.$axios.$put("user/set_group/", { group: groupNumberHere });
-      console.log(this.$auth.user.profile.group + "Added user group");
-    } else
-      console.log("User already has group" + this.$auth.user.profile.group);
+    }
   },
 };
 </script>
