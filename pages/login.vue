@@ -3,7 +3,7 @@
     <div class="content">
       <h1>ورود به حساب کاربری</h1>
       <form @submit.prevent="logInUser(userData)" method="post">
-        <form-text-input :error="error" name="username" v-model="userData.username" placeholder="نام کاربری یا ایمیل"
+        <form-text-input :error="error" name="username" v-model="userData.username" placeholder="نام کاربری"
                    icon="account"/>
         <form-text-input :error="error" :password="!passwordShow" v-model="userData.password" name="password"
                    placeholder="رمز عبور"
