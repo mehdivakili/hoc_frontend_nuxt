@@ -218,7 +218,7 @@
           solo
           flat
           placeholder="پایه تحصیلی"
-          :items="grades"
+          :items="grade"
           name="grade"
         >
           <template #label>
@@ -308,6 +308,8 @@ export default {
   components: { Form },
   data() {
     return {
+      male_junior_reg: false,
+      female_junior_reg: false,
       userData: this.$auth.loggedIn
         ? { ...this.$auth.user }
         : { ...this.$store.state.register.userData },
@@ -349,18 +351,28 @@ export default {
         return this.$store.commit("register/setState", data);
       },
     },
-    grades() {
+    grade() {
+      let grades = {
+        1: ["هفتم", "هشتم", "نهم", "دهم", "یازدهم", "دوازدهم"],
+        2: ["دهم", "یازدهم", "دوازدهم"],
+      };
+      let t = this;
       if (
-        this.userData.sex == "مرد" &&
-        ["هفتم", "هشتم", "نهم"].includes(this.userData.grade)
-      ) {
-        this.userData.grade = undefined;
-      }
+        (t.male_junior_reg && t.userData.sex == "مرد") ||
+        (t.female_junior_reg && t.userData.sex == "زن")
+      )
+        return grades["1"];
+      else if (
+        (!t.male_junior_reg &&
+          t.userData.sex == "مرد" &&
+          ["هفتم", "هشتم", "نهم"].includes(t.userData.grade)) ||
+        (!t.female_junior_reg &&
+          t.userData.sex == "زن" &&
+          ["هفتم", "هشتم", "نهم"].includes(t.userData.grade))
+      )
+        t.userData.grade = undefined;
 
-      if (this.userData.sex === "زن") {
-        return ["هفتم", "هشتم", "نهم", "دهم", "یازدهم", "دوازدهم"];
-      }
-      return ["دهم", "یازدهم", "دوازدهم"];
+      return grades["2"];
     },
   },
   watch: {
@@ -373,6 +385,20 @@ export default {
   },
   props: {
     is_register: { default: true },
+  },
+  beforeMount() {
+    let t = this;
+    this.$axios
+      .get("get_option/male_aval_reg")
+      .then(
+        (res) => (t.male_junior_reg = res.data.value === "close" ? false : true)
+      );
+    this.$axios
+      .get("get_option/female_aval_reg")
+      .then(
+        (res) =>
+          (t.female_junior_reg = res.data.value === "close" ? false : true)
+      );
   },
 };
 </script>
