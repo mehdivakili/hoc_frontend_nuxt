@@ -218,7 +218,7 @@
           solo
           flat
           placeholder="پایه تحصیلی"
-          :items="['هفتم', 'هشتم', 'نهم', 'دهم', 'یازدهم', 'دوازدهم']"
+          :items="grades"
           name="grade"
         >
           <template #label>
@@ -348,6 +348,19 @@ export default {
       set(data) {
         return this.$store.commit("register/setState", data);
       },
+    },
+    grades() {
+      if (
+        this.userData.sex == "مرد" &&
+        ["هفتم", "هشتم", "نهم"].includes(this.userData.grade)
+      ) {
+        this.userData.grade = undefined;
+      }
+
+      if (this.userData.sex === "زن") {
+        return ["هفتم", "هشتم", "نهم", "دهم", "یازدهم", "دوازدهم"];
+      }
+      return ["دهم", "یازدهم", "دوازدهم"];
     },
   },
   watch: {
