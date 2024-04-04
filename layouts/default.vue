@@ -1,55 +1,55 @@
 <template>
   <v-app>
-    <Header/>
+    <Header />
 
     <!-- <div style="height: 100px"></div> -->
 
-    <v-main :style=" {backgroundColor:footerColor}">
-      <notifications style="margin-top: 110px" position="top left" group="foo"/>
+    <v-main :style="{ backgroundColor: footerColor }">
+      <notifications
+        style="margin-top: 110px"
+        position="top left"
+        group="foo"
+      />
 
-      <Nuxt/>
+      <Nuxt />
     </v-main>
-    <TheFooter :bg-color="footerColor"/>
-
+    <TheFooter :bg-color="footerColor" />
   </v-app>
 </template>
 
-<script setup>
+<script>
 import TheFooter from "@/components/TheFooter";
 import Header from "@/components/Header";
 
-
 export default {
-  name: 'DefaultLayout',
-  components: {Header, TheFooter},
+  name: "DefaultLayout",
+  components: { Header, TheFooter },
   computed: {
     footerColor() {
-      return this.$store.state.footerColor
-    }
-  }
-}
+      return this.$store.state.footerColor;
+    },
+  },
+};
 </script>
 
 <style lang="scss">
-
 @import "~bootstrap/scss/bootstrap.scss";
 
 @font-face {
   font-family: "Vazir";
-  src: url('@/assets/fonts/Vazir.ttf') format('truetype');
+  src: url("@/assets/fonts/Vazir.ttf") format("truetype");
   font-weight: normal;
 }
 
 @font-face {
   font-family: "Vazir";
-  src: url('@/assets/fonts/Vazir-Bold.ttf') format('truetype');
+  src: url("@/assets/fonts/Vazir-Bold.ttf") format("truetype");
   font-weight: bold;
 }
 
 * {
   font-family: "Vazir" !important;
   letter-spacing: 0;
-
 }
 
 footer {
@@ -78,7 +78,6 @@ hr {
   min-width: 350px;
   margin-bottom: 40px;
   border: none;
-
 }
 
 .v-btn {

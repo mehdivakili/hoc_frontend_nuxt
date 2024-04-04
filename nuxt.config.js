@@ -2,6 +2,12 @@ import colors from "vuetify/es5/util/colors";
 import fa from "vuetify/src/locale/fa";
 
 export default {
+  tailwindcss: {
+    exposeConfig: true,
+    viewer: true,
+    // and more...
+  },
+
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
@@ -69,6 +75,8 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    "@nuxtjs/tailwindcss",
+
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
     // https://go.nuxtjs.dev/pwa
@@ -84,7 +92,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: "https://api.hocshirazu.ir/api/",
+    baseURL: "http://localhost:8000/api/",
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
