@@ -1,10 +1,12 @@
 <template>
   <div class="banner">
-    <v-container style="overflow: hidden">
+    <v-container class="mt-10" style="overflow: hidden">
       <v-btn
+        class="mx-5"
         :color="activeIndex === i ? 'primary' : undefined"
         v-for="(year, i) in executionYears"
         :key="i"
+        @click="activeIndex = i"
       >
         {{ year.label }}
       </v-btn>
@@ -115,6 +117,17 @@ export default {
     Hooper,
     Slide,
     HooperNavigation,
+  },
+  watch: {
+    activeIndex(newValue, oldValue) {
+      const executionYear = this.executionYears[newValue];
+
+      if (!executionYear) return;
+
+      this.$axios.$get("team/" + executionYear.year + "/").then((res) => {
+        this.team = res;
+      });
+    },
   },
 };
 </script>
