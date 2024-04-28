@@ -1,6 +1,15 @@
 <template>
   <div class="banner">
     <v-container style="overflow: hidden">
+      <v-btn
+        :color="activeIndex === i ? 'primary' : undefined"
+        v-for="(year, i) in executionYears"
+        :key="i"
+      >
+        {{ year.label }}
+      </v-btn>
+    </v-container>
+    <v-container style="overflow: hidden">
       <ul class="nav-tabs">
         <li
           :class="[groupKey === currentGroup ? 'active' : '', 'nav-tab-item']"
@@ -76,6 +85,8 @@ export default {
   data() {
     return {
       team: [],
+      activeIndex: 0,
+      executionYears: [],
       currentGroup: 0,
 
       hooperSettings: {
@@ -97,7 +108,8 @@ export default {
     };
   },
   async mounted() {
-    this.team = await this.$axios.$get("team/");
+    this.team = await this.$axios.$get("team/last-team/");
+    this.executionYears = await this.$axios.$get("team/years/");
   },
   components: {
     Hooper,
