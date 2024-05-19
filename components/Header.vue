@@ -1,7 +1,15 @@
 <template>
   <div>
     <v-app-bar height="100" class="white" app>
-      <img class="ml-6" src="../assets/images/logo.png" alt="hoc" />
+      <router-link to="/">
+        <img
+          class="ml-6"
+          width="70"
+          height="70"
+          src="../assets/images/logo.png"
+          alt="hoc"
+        />
+      </router-link>
       <div class="d-none d-md-flex" v-for="item in navItems" :key="item.path">
         <v-btn
           elevation="0"
@@ -81,6 +89,7 @@
                 ? navButtonsLogin
                 : navButtonsLoginButNotPurchased
               : navButtons"
+            :key="item.id"
           >
             <v-btn
               :class="item.class"

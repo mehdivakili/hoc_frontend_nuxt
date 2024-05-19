@@ -2,6 +2,12 @@ import colors from "vuetify/es5/util/colors";
 import fa from "vuetify/src/locale/fa";
 
 export default {
+  tailwindcss: {
+    exposeConfig: true,
+    viewer: true,
+    // and more...
+  },
+
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
@@ -69,6 +75,8 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    "@nuxtjs/tailwindcss",
+
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
     // https://go.nuxtjs.dev/pwa

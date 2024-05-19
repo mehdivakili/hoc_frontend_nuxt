@@ -5,14 +5,14 @@
   >
     <div class="banner-inner" :style="{ flexDirection: direction }">
       <div class="banner-content" :style="{ color: textColor }">
-        <h3>
+        <h3 class="font-semibold">
           <slot name="banner-title"></slot>
         </h3>
-        <p>
+        <p class="leading-loose">
           <slot name="banner-content" :style="{ color: textColor }"></slot>
         </p>
       </div>
-      <div class="banner-img img-fluid">
+      <div class="banner-img !-mt-20 img-fluid">
         <img :src="image" :alt="alt" />
       </div>
     </div>

@@ -1,5 +1,16 @@
 <template>
   <div class="banner">
+    <v-container class="mt-10" style="overflow: hidden">
+      <v-btn
+        class="mx-5"
+        :color="activeIndex === i ? 'primary' : undefined"
+        v-for="(year, i) in executionYears"
+        :key="i"
+        @click="activeIndex = i"
+      >
+        {{ year.label }}
+      </v-btn>
+    </v-container>
     <v-container style="overflow: hidden">
       <ul class="nav-tabs">
         <li
@@ -76,6 +87,8 @@ export default {
   data() {
     return {
       team: [],
+      activeIndex: 0,
+      executionYears: [],
       currentGroup: 0,
 
       hooperSettings: {
@@ -97,12 +110,24 @@ export default {
     };
   },
   async mounted() {
-    this.team = await this.$axios.$get("team/");
+    this.team = await this.$axios.$get("team/last-team/");
+    this.executionYears = await this.$axios.$get("team/years/");
   },
   components: {
     Hooper,
     Slide,
     HooperNavigation,
+  },
+  watch: {
+    activeIndex(newValue, oldValue) {
+      const executionYear = this.executionYears[newValue];
+
+      if (!executionYear) return;
+
+      this.$axios.$get("team/" + executionYear.year + "/").then((res) => {
+        this.team = res;
+      });
+    },
   },
 };
 </script>
