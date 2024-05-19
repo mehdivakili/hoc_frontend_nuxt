@@ -4,14 +4,14 @@
     class="flex flex-col items-center md:flex-row gap-4 px-5 min-h-[650px] bg-cover justify-between"
   >
     <div class="banner text-right">
-      <h1 style="margin-top: 45px">هشتمین دوره همایش زنگ برنامه نویسی</h1>
+      <h1 style="margin-top: 45px">نهمین دوره همایش زنگ برنامه نویسی</h1>
       <h2>(بزرگترین همایش علمی دانش آموزی کشور)</h2>
       <h4>
         باکیفیت‌ترین نوع یادگیری،<br />
         همگام با تکنولوژی و هم‌نبض با آینده‌ است <br />
         و کدنویسی ادبیات تکنولوژی و بذر آینده است.
       </h4>
-      <h3>تاریخ همایش: ۲۵ مرداد لغایت ۳ شهریور ماه ۱۴۰۲</h3>
+      <h3>تاریخ همایش: ۱۳ مرداد لغایت ۱۹ مرداد ماه ۱۴۰۳</h3>
       <v-btn
         class="button-fill px-7 py-4 my-2 d-flex d-md-none"
         to="/register"

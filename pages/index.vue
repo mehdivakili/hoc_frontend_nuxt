@@ -119,6 +119,7 @@ import VideoBanner from "@/components/home/VideoBanner";
 import Questions from "@/components/home/Questions";
 import TeamTab from "@/components/home/TeamTab";
 import Statistics from "@/components/home/Statistics";
+
 export default {
   name: "IndexPage",
   components: {
