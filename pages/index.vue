@@ -137,7 +137,7 @@ export default {
     );
   },
   async asyncData({ $axios }) {
-    let count = await $axios.$get("/remaining");
+    let count = await $axios.$get("/remaining/");
     return {
       count: count,
     };

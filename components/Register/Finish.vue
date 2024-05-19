@@ -189,7 +189,7 @@ export default {
   name: "Finish",
   data() {
     return {
-      amount: 199000,
+      amount: 299000,
       discount: false,
       discountAmount: 199000,
       notReserve: false,
