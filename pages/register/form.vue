@@ -337,7 +337,7 @@ export default {
   },
   computed: {
     isDormAllowed() {
-      return ["دهم", "یازدهم", "دوازدهم"].includes(
+      return ["هفتم", "هشتم", "نهم", "دهم", "یازدهم", "دوازدهم"].includes(
         this.$store.state.register.userData.grade
       );
     },

@@ -180,10 +180,10 @@ export default {
       let sex = this.$store.state.register.userData.sex;
       let grade = this.$store.state.register.userData.grade;
       if (
-        (["دوازدهم", "یازدهم", "دهم"].includes(grade) &&
+        (["هفتم", "هشتم", "نهم", "دهم", "یازدهم", "دوازدهم"].includes(grade) &&
           !t.male_secondry_reg &&
           sex === "مرد") ||
-        (["دوازدهم", "یازدهم", "دهم"].includes(grade) &&
+        (["هفتم", "هشتم", "نهم", "دهم", "یازدهم", "دوازدهم"].includes(grade) &&
           !t.female_secondry_reg &&
           sex === "زن")
       )
