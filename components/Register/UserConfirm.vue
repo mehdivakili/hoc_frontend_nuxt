@@ -72,20 +72,6 @@
         بعد از تکمیل ثبت‌نام و پرداخت هزینه، در صورت انصراف از همایش به هیچ
         عنوان وجه پرداخت‌شده به شما مسترد نخواهد شد.
       </li>
-      <div
-        v-if="toShow"
-        style="
-          background: pink;
-          border: 4px solid red;
-          border-radius: 5px;
-          padding: 2em;
-        "
-      >
-        <li>
-          در حال حاضر تنها گروه دارای ظرفیت گروهیست که در روزهای ۱ و ۲ شهریور
-          برگزار میگردد.
-        </li>
-      </div>
     </ul>
 
     <div class="check">
@@ -180,10 +166,10 @@ export default {
       let sex = this.$store.state.register.userData.sex;
       let grade = this.$store.state.register.userData.grade;
       if (
-        (["هفتم", "هشتم", "نهم", "دهم", "یازدهم", "دوازدهم"].includes(grade) &&
+        (["هفتم", "هشتم", "نهم", "دوازدهم", "یازدهم", "دهم"].includes(grade) &&
           !t.male_secondry_reg &&
           sex === "مرد") ||
-        (["هفتم", "هشتم", "نهم", "دهم", "یازدهم", "دوازدهم"].includes(grade) &&
+        (["هفتم", "هشتم", "نهم", "دوازدهم", "یازدهم", "دهم"].includes(grade) &&
           !t.female_secondry_reg &&
           sex === "زن")
       )
