@@ -362,15 +362,15 @@ export default {
         (t.female_junior_reg && t.userData.sex == "زن")
       )
         return grades["1"];
-      else if (
-        (!t.male_junior_reg &&
-          t.userData.sex == "مرد" &&
-          ["هفتم", "هشتم", "نهم"].includes(t.userData.grade)) ||
-        (!t.female_junior_reg &&
-          t.userData.sex == "زن" &&
-          ["هفتم", "هشتم", "نهم"].includes(t.userData.grade))
-      )
-        t.userData.grade = undefined;
+      // else if (
+      //   (!t.male_junior_reg &&
+      //     t.userData.sex == "مرد" &&
+      //     ["هفتم", "هشتم", "نهم"].includes(t.userData.grade)) ||
+      //   (!t.female_junior_reg &&
+      //     t.userData.sex == "زن" &&
+      //     ["هفتم", "هشتم", "نهم"].includes(t.userData.grade))
+      // )
+      //   t.userData.grade = undefined;
 
       return grades["2"];
     },
