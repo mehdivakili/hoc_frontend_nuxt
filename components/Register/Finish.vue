@@ -27,6 +27,16 @@
               </v-col>
             </v-row>
             <v-row class="otherRow">
+              <v-col class="cardShape">
+                <v-select
+                  flat
+                  label="نوع برگزاری کلاس ها"
+                  v-model="serviceType"
+                  placeholder="نوع برگزاری"
+                  :items="['غیر حضوری', 'حضوری']"
+                >
+                </v-select>
+              </v-col>
               <v-col>
                 <v-card class="cardShape">
                   <v-row style="margin-bottom: 5px">
@@ -87,7 +97,10 @@
                           align-items: center;
                         "
                       >
-                        {{ numberToPersian(amount) }} تومان
+                        {{
+                          numberToPersian((serviceType ? 100000 : 0) + amount)
+                        }}
+                        تومان
                       </p></v-col
                     >
                     <v-col cols="12" md="6" v-if="discount"
@@ -101,7 +114,10 @@
                           color: red;
                         "
                       >
-                        {{ numberToPersian(amount) }} تومان
+                        {{
+                          numberToPersian((serviceType ? 100000 : 0) + amount)
+                        }}
+                        تومان
                       </p>
                       <p
                         class="content"
@@ -194,6 +210,7 @@ export default {
       discountAmount: 199000,
       notReserve: false,
       loaded: false,
+      serviceType: undefined,
     };
   },
   computed: {
@@ -210,9 +227,25 @@ export default {
   },
   methods: {
     async goToNextPage() {
+      if (!this.serviceType) {
+        this.$notify({
+          group: "foo",
+          type: "error",
+
+          title: "خطا در ثبت نام!!",
+          text: "نوع برگزاری را انتخاب کنید",
+        });
+
+        return;
+      }
+
       this.$nuxt.$loading.start();
       try {
-        let response = await this.$axios.get("purchase/request/");
+        let response = await this.$axios.get(
+          this.serviceType === "حضوری"
+            ? "purchase/request/"
+            : "purchase/request-remote/"
+        );
         if (response.data.error === undefined)
           window.location.href = response.data.pay_link;
       } catch (e) {
