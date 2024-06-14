@@ -11,7 +11,7 @@
             <v-row v-if="isDormAllowed">
               <v-col cols="12">
                 <v-sheet color="#C5E3E3" outlined class="Sheets">
-                  <v-row>
+                  <!-- <v-row>
                     <v-col cols="12" md="6">
                       <p class="q-text">متقاضی دریافت خوابگاه هستم.</p>
                     </v-col>
@@ -35,7 +35,7 @@
                         ></v-radio>
                       </v-radio-group>
                     </v-col>
-                  </v-row>
+                  </v-row> -->
                   <v-row>
                     <v-col cols="12">
                       <p class="q-text">نام شهر محل سکونت خود را بنویسید.</p>
@@ -227,6 +227,16 @@
                           value="ششم"
                           color="#004948"
                         ></v-radio>
+                        <v-radio
+                          label="هفتم"
+                          value="هفتم"
+                          color="#004948"
+                        ></v-radio>
+                        <v-radio
+                          label="هشتم"
+                          value="هشتم"
+                          color="#004948"
+                        ></v-radio>
                       </v-radio-group>
                     </v-col>
                   </v-row>
@@ -313,7 +323,7 @@ export default {
       q3_2: null,
       q3_3: null,
       q3_text: null,
-      q4: null,
+      q4: "خیر",
       q4_text: null,
       rules: [(v) => !!v || "این مقدار لازم است"],
     };

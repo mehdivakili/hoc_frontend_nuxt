@@ -3,149 +3,153 @@
     <v-row justify="center">
       <v-col cols="12" md="8">
         <v-card v-if="loaded" shaped class="mainCard">
-          <template v-if="notReserve">
-            <v-row class="firstRow">
-              <v-col cols="12" md="6">
-                <v-card class="cardShape">
-                  <div style="padding-top: 6px; padding-bottom: 2px">
-                    <p class="titles" style="text-align: center">
-                      نام و نام خانوادگی
-                    </p>
-                    <p class="content" style="text-align: center">{{ name }}</p>
-                  </div>
-                </v-card>
-              </v-col>
-              <v-col cols="12" md="6">
-                <v-card class="cardShape">
-                  <div style="padding-top: 6px; padding-bottom: 2px">
-                    <p class="titles" style="text-align: center">کد ملی</p>
-                    <p class="content" style="text-align: center">
-                      {{ numberToPersian(nationalCode) }}
-                    </p>
-                  </div>
-                </v-card>
-              </v-col>
-            </v-row>
-            <v-row class="otherRow">
-              <v-col class="cardShape">
-                <v-select
-                  flat
-                  label="نوع برگزاری کلاس ها"
-                  v-model="serviceType"
-                  placeholder="نوع برگزاری"
-                  :items="['غیر حضوری', 'حضوری']"
-                >
-                </v-select>
-              </v-col>
-              <v-col>
-                <v-card class="cardShape">
-                  <v-row style="margin-bottom: 5px">
-                    <v-col
-                      cols="12"
-                      md="6"
-                      style="
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                      "
-                    >
-                      <img
-                        src="~/assets/images/zarinpal.svg"
-                        style="max-width: 100%"
-                      />
-                    </v-col>
-                    <v-col
-                      cols="12"
-                      md="6"
-                      style="
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                      "
-                    >
-                      <div class="purchase-icon">
-                        <p style="text-align: center">درگاه پرداخت</p>
-                        <p style="margin-bottom: 0; text-align: center">
-                          زرین پال
-                        </p>
-                      </div>
-                    </v-col>
-                  </v-row>
-                </v-card>
-              </v-col>
-            </v-row>
-            <v-row class="otherRow">
-              <v-col>
-                <v-card class="cardShape">
-                  <v-row style="margin-bottom: 5px">
-                    <v-col
-                      cols="12"
-                      md="6"
-                      style="
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                      "
-                      ><p class="titles">مبلغ پرداختی</p>
-                    </v-col>
-                    <v-col cols="12" md="6" v-if="!discount"
-                      ><p
-                        class="content"
-                        style="
-                          display: flex;
-                          justify-content: center;
-                          align-items: center;
-                        "
-                      >
-                        {{
-                          numberToPersian((serviceType ? 100000 : 0) + amount)
-                        }}
-                        تومان
-                      </p></v-col
-                    >
-                    <v-col cols="12" md="6" v-if="discount"
-                      ><p
-                        class="content"
-                        style="
-                          display: flex;
-                          justify-content: center;
-                          align-items: center;
-                          text-decoration-line: line-through;
-                          color: red;
-                        "
-                      >
-                        {{
-                          numberToPersian((serviceType ? 100000 : 0) + amount)
-                        }}
-                        تومان
+          <!-- <template v-if="notReserve"> -->
+          <v-row class="firstRow">
+            <v-col cols="12" md="6">
+              <v-card class="cardShape">
+                <div style="padding-top: 6px; padding-bottom: 2px">
+                  <p class="titles" style="text-align: center">
+                    نام و نام خانوادگی
+                  </p>
+                  <p class="content" style="text-align: center">{{ name }}</p>
+                </div>
+              </v-card>
+            </v-col>
+            <v-col cols="12" md="6">
+              <v-card class="cardShape">
+                <div style="padding-top: 6px; padding-bottom: 2px">
+                  <p class="titles" style="text-align: center">کد ملی</p>
+                  <p class="content" style="text-align: center">
+                    {{ numberToPersian(nationalCode) }}
+                  </p>
+                </div>
+              </v-card>
+            </v-col>
+          </v-row>
+          <v-row class="otherRow">
+            <v-col class="cardShape">
+              <v-select
+                flat
+                label="نوع برگزاری کلاس ها"
+                v-model="serviceType"
+                placeholder="نوع برگزاری"
+                :items="['غیر حضوری', 'حضوری']"
+              >
+              </v-select>
+            </v-col>
+            <v-col>
+              <v-card class="cardShape">
+                <v-row style="margin-bottom: 5px">
+                  <v-col
+                    cols="12"
+                    md="6"
+                    style="
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                    "
+                  >
+                    <img
+                      src="~/assets/images/zarinpal.svg"
+                      style="max-width: 100%"
+                    />
+                  </v-col>
+                  <v-col
+                    cols="12"
+                    md="6"
+                    style="
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                    "
+                  >
+                    <div class="purchase-icon">
+                      <p style="text-align: center">درگاه پرداخت</p>
+                      <p style="margin-bottom: 0; text-align: center">
+                        زرین پال
                       </p>
-                      <p
-                        class="content"
-                        style="
-                          display: flex;
-                          justify-content: center;
-                          align-items: center;
-                        "
-                      >
-                        {{ numberToPersian(discountAmount) }} تومان
-                      </p>
-                    </v-col>
-                  </v-row>
-                </v-card>
-              </v-col>
-            </v-row>
-            <v-row justify="center">
-              <v-col cols="10" sm="6">
-                <v-btn
-                  style="margin-bottom: 2em; margin-right: 1em; width: 100%"
-                  to=""
-                  class="button-fill"
-                  @click="goToNextPage"
-                  >ورود به درگاه پرداخت
-                </v-btn>
-              </v-col>
-            </v-row>
-          </template>
+                    </div>
+                  </v-col>
+                </v-row>
+              </v-card>
+            </v-col>
+          </v-row>
+          <v-row class="otherRow">
+            <v-col>
+              <v-card class="cardShape">
+                <v-row style="margin-bottom: 5px">
+                  <v-col
+                    cols="12"
+                    md="6"
+                    style="
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                    "
+                    ><p class="titles">مبلغ پرداختی</p>
+                  </v-col>
+                  <v-col cols="12" md="6" v-if="!discount"
+                    ><p
+                      class="content"
+                      style="
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                      "
+                    >
+                      {{
+                        numberToPersian(
+                          amount - (serviceType === "غیر حضوری" ? 100000 : 0)
+                        )
+                      }}
+                      تومان
+                    </p></v-col
+                  >
+                  <v-col cols="12" md="6" v-if="discount"
+                    ><p
+                      class="content"
+                      style="
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        text-decoration-line: line-through;
+                        color: red;
+                      "
+                    >
+                      {{
+                        numberToPersian(
+                          amount - (serviceType === "غیر حضوری" ? 100000 : 0)
+                        )
+                      }}
+                      تومان
+                    </p>
+                    <p
+                      class="content"
+                      style="
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                      "
+                    >
+                      {{ numberToPersian(discountAmount) }} تومان
+                    </p>
+                  </v-col>
+                </v-row>
+              </v-card>
+            </v-col>
+          </v-row>
+          <v-row justify="center">
+            <v-col cols="10" sm="6">
+              <v-btn
+                style="margin-bottom: 2em; margin-right: 1em; width: 100%"
+                to=""
+                class="button-fill"
+                @click="goToNextPage"
+                >ورود به درگاه پرداخت
+              </v-btn>
+            </v-col>
+          </v-row>
+          <!-- </template>
           <template v-else>
             <v-row class="firstRow">
               <v-col cols="12" md="6">
@@ -193,7 +197,7 @@
                 </v-card>
               </v-col>
             </v-row>
-          </template>
+          </template> -->
         </v-card>
       </v-col>
     </v-row>
