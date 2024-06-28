@@ -274,7 +274,9 @@ export default {
     let t = this;
     this.$axios
       .get("get_option/purchase_amount")
-      .then((res) => (t.discountAmount = res.data.value / 10));
+      .then(
+        (res) => (t.discountAmount = Math.floor(Number(res.data.value) / 10))
+      );
     this.$axios.get("pass_register_limit/").then((res) => {
       t.notReserve = res.data;
       t.loaded = true;
