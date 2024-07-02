@@ -1,30 +1,52 @@
 <template>
   <div>
     <v-app-bar height="100" class="white" app>
-      <img class="ml-6" src="../assets/images/logo.png" alt="hoc"/>
+      <router-link to="/">
+        <img
+          class="ml-6"
+          width="70"
+          height="70"
+          src="../assets/images/logo.png"
+          alt="hoc"
+        />
+      </router-link>
       <div class="d-none d-md-flex" v-for="item in navItems" :key="item.path">
         <v-btn
           elevation="0"
-          class="nav__btn mx-4 px-4 py-6"
+          :class="
+            item.href
+              ? 'nav__btn mx-4 px-4 py-6'
+              : 'nav__btn__login mx-4 px-4 py-6'
+          "
           :to="item.to ? item.to : ''"
+          :target="item.href ? '_blank' : '_self'"
           :href="item.href ? item.href : ''"
-          @click="(item.hasClick)?logout():()=>{}"
-        >{{ item.title }}
-        </v-btn
+          @click="item.hasClick ? logout() : () => {}"
         >
+          <span style="word-wrap: break-word">
+            {{ item.title.split(".")[0] }}
+            <br />
+            {{ item.title.split(".")[1] }}
+          </span>
+        </v-btn>
       </div>
       <v-spacer></v-spacer>
-      <div class="d-none d-md-flex"
-           v-for="item in ($auth.loggedIn) ?($auth.user.is_purchased)? navButtonsLogin: navButtonsLoginButNotPurchased:navButtons"
-           :key="item.path">
-        <v-btn :class="item.class" class="py-4 px-6 mx-2"
-               :to="item.path ? item.path : ''"
-               :href="item.href ? item.href : ''"
-               @click="(item.hasClick)?logout():()=>{}"
-
-        >{{
-            item.name
-          }}
+      <div
+        class="d-none d-md-flex"
+        v-for="item in $auth.loggedIn
+          ? $auth.user.is_purchased
+            ? navButtonsLogin
+            : navButtonsLoginButNotPurchased
+          : navButtons"
+        :key="item.path"
+      >
+        <v-btn
+          :class="item.class"
+          class="py-4 px-6 mx-2"
+          :to="item.path ? item.path : ''"
+          :href="item.href ? item.href : ''"
+          @click="item.hasClick ? logout() : () => {}"
+          >{{ item.name }}
         </v-btn>
       </div>
       <v-app-bar-nav-icon
@@ -33,7 +55,12 @@
       ></v-app-bar-nav-icon>
     </v-app-bar>
 
-    <v-navigation-drawer v-model="drawer" absolute temporary style="position: fixed;">
+    <v-navigation-drawer
+      v-model="drawer"
+      absolute
+      temporary
+      style="position: fixed"
+    >
       <v-list nav dense>
         <v-list-item-group v-model="group">
           <div
@@ -45,20 +72,31 @@
               elevation="0"
               class="nav__btn my-2 px-2 py-6"
               :to="item.to ? item.to : ''"
+              :target="item.href ? '_blank' : '_self'"
               :href="item.href ? item.href : ''"
-            >{{ item.title }}
-            </v-btn
             >
+              <span style="word-wrap: break-word; font-size: 0.875em">
+                {{ item.title.split(".")[0] }}
+                <br />
+                {{ item.title.split(".")[1] }}
+              </span>
+            </v-btn>
           </div>
           <div
             class="d-flex flex-column"
-            v-for="item in ($auth.loggedIn) ?($auth.user.is_purchased)? navButtonsLogin: navButtonsLoginButNotPurchased:navButtons"
+            v-for="item in $auth.loggedIn
+              ? $auth.user.is_purchased
+                ? navButtonsLogin
+                : navButtonsLoginButNotPurchased
+              : navButtons"
+            :key="item.id"
           >
-            <v-btn :class="item.class" class="py-4 px-6 my-2" :to="item.path"
-                   @click="(item.hasClick)?logout():()=>{}"
-            >{{
-                item.name
-              }}
+            <v-btn
+              :class="item.class"
+              class="py-4 px-6 my-2"
+              :to="item.path"
+              @click="item.hasClick ? logout() : () => {}"
+              >{{ item.name }}
             </v-btn>
           </div>
         </v-list-item-group>
@@ -76,31 +114,32 @@ export default {
       group: null,
       navItems: [],
       navButtons: [
-        // {name: "ثبت نام", path: "/register", class: "nav__btn__register"},
-        {name: "ورود", path: "/login", class: "nav__btn__login"},
+        { name: "ثبت نام", path: "/register", class: "nav__btn__register" },
+        { name: "ورود", path: "/login", class: "nav__btn__login" },
       ],
       navButtonsLogin: [
-        {name: "پروفایل", path: "/account", class: "nav__btn__register"},
-        {name: "خروج", hasClick: true, class: "nav__btn__login"},
+        { name: "پروفایل", path: "/account", class: "nav__btn__register" },
+        { name: "خروج", hasClick: true, class: "nav__btn__login" },
       ],
       navButtonsLoginButNotPurchased: [
-        {name: "شروع دوباره ثبت نام", hasClick: true, class: "nav__btn__login"},
+        {
+          name: "شروع دوباره ثبت نام",
+          hasClick: true,
+          class: "nav__btn__login",
+        },
       ],
     };
   },
   methods: {
     logout() {
-      this.$nuxt.$loading.start()
-      this.$auth.logout()
-      this.$store.commit('register/setState', 0)
-      this.$nuxt.$loading.finish()
-
-    }
+      this.$nuxt.$loading.start();
+      this.$auth.logout();
+      this.$store.commit("register/setState", 0);
+      this.$nuxt.$loading.finish();
+    },
   },
   async fetch() {
-
-    this.navItems = await this.$axios.$get('front/menu/')
-
+    this.navItems = await this.$axios.$get("front/menu/");
   },
   fetchOnServer: false,
 };

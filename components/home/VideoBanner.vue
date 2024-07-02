@@ -1,45 +1,58 @@
 <template>
-  <div :id="id" class="banner" :style="{flexDirection: direction,background: bgColor}">
-    <div class="banner-inner" :style="{flexDirection: direction}">
-    <div class="banner-content" :style="{color: textColor}">
-      <h3>
-        <slot name="banner-title"></slot>
-      </h3>
-      <p>
-        <slot name="banner-content" :style="{color: textColor}"></slot>
-      </p>
-    </div>
-    <div class="banner-img img-fluid">
-      <div id="29586206303">
+  <div
+    :id="id"
+    class="banner"
+    :style="{ flexDirection: direction, background: bgColor }"
+  >
+    <div class="banner-inner" :style="{ flexDirection: direction }">
+      <div class="banner-content" :style="{ color: textColor }">
+        <h3>
+          <slot name="banner-title"></slot>
+        </h3>
+        <p>
+          <slot name="banner-content" :style="{ color: textColor }"></slot>
+        </p>
+      </div>
+      <div class="banner-img img-fluid">
+        <div id="95697430279">
+          <script
+            type="text/JavaScript"
+            src="https://www.aparat.com/embed/OuG8a?data[rnddiv]=95697430279&data[responsive]=yes&recom=self"
+          ></script>
+        </div>
+        <!-- <div id="29586206303">
         <script type="text/JavaScript"
                 src="https://www.aparat.com/embed/EcKTh?data[rnddiv]=29586206303&data[responsive]=yes"></script>
+      </div> -->
       </div>
     </div>
   </div>
-  </div>
-
 </template>
 
 <script>
 export default {
   name: "Banner",
   props: {
-    bgColor: {}, textColor: {}, id: {}, video: {}, alt: {default: ''}, direction: {
-      default: 'row'
-    }
-  }
-}
+    bgColor: {},
+    textColor: {},
+    id: {},
+    video: {},
+    alt: { default: "" },
+    direction: {
+      default: "row",
+    },
+  },
+};
 </script>
 
 <style scoped>
-
-
 .banner {
   width: 100%;
   margin: 0;
 }
 
-.banner-content, .banner-img {
+.banner-content,
+.banner-img {
   position: relative;
 }
 
@@ -51,8 +64,6 @@ export default {
   width: 100% !important;
 }
 
-
-
 .banner-content {
   text-align: justify;
   padding: 20px;
@@ -62,7 +73,7 @@ export default {
   margin-bottom: 30px;
 }
 
-.banner-inner{
+.banner-inner {
   max-width: 2000px;
   margin: auto;
   width: 100%;
@@ -70,7 +81,8 @@ export default {
 }
 
 @media screen and (min-width: 1000px) {
-  .banner-content, .banner-img {
+  .banner-content,
+  .banner-img {
     width: 50% !important;
     max-width: 800px !important;
   }
@@ -86,14 +98,11 @@ export default {
     padding: 110px;
     gap: 110px;
     height: 684px;
-
   }
-  .banner-inner{
+  .banner-inner {
     display: flex;
     justify-content: center;
     align-items: center;
   }
 }
-
-
 </style>
